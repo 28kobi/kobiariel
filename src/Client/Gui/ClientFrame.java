@@ -143,9 +143,14 @@ public class ClientFrame extends JFrame implements ClientIF {
 		this.user = user;
 		topBar.setName(user.toString());
 		sideBar.setUser(user);
-		switch(user.getPermission())
+		switch(user.getPrivilge())
 		{
-		// TODO
+		case 0:
+		sideBar.initAdmin();
+		swap(new HomePanelAdmin(this));
+		break;
+		
+		
 		}
 		topBar.reset();
 	}

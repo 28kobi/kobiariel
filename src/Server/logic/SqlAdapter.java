@@ -26,7 +26,7 @@ public class SqlAdapter {
     
 		try 
 		{
-			connection = DriverManager.getConnection("jdbc:mysql://localhost/matdb",username,password);
+			connection = DriverManager.getConnection("jdbc:mysql://localhost/tndb",username,password);
 		} catch (SQLException ex) 
  	    	{/* handle any errors*/
 				System.out.println("SQLException: " + ex.getMessage());
