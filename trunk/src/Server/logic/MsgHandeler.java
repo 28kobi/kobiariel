@@ -6,6 +6,7 @@ import Server.DataBase.User;
 import Server.DataBase.UserQuery;
 import Server.Message.MessageLogin;
 import Server.Message.MessageLoginReplay;
+import Server.Message.MessageLogout;
 import ocsf.server.ConnectionToClient;
 /**
  * 
@@ -38,6 +39,12 @@ public class MsgHandeler {
 		switch (message.getMessageType()){
 		case MESSAGE_LOGIN:
 			login();
+			break;
+		case MESSAGE_LOGOUT: 
+			MessageLogout logout = (MessageLogout) message;
+			UserQuery userQuery2 = new UserQuery();
+			userQuery2.setOffline(logout.getUser().getIdUser());
+			userQuery2.close();
 			break;
 		
 		
