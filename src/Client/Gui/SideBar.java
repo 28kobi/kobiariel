@@ -61,52 +61,52 @@ public class SideBar extends JPanel {
 				clientFrame.swap(new HomePanelAdmin(clientFrame));
 			}
 		});
-		/*
+		
 		this.add(home);
-		JLinkButton addClass = new JLinkButton("Add Class");
-		addClass.addActionListener(new ActionListener() {
+		JLinkButton EditCoach = new JLinkButton("Edit Coach");
+		EditCoach.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				clientFrame.swap(new AddClassPanel(clientFrame));
+				clientFrame.swap(new EditCoachPanel(clientFrame));
 			}
 		});
-		JLinkButton assignStudentToClass = new JLinkButton("Assign Student to Class");
-		assignStudentToClass.addActionListener(new ActionListener() {
+		JLinkButton CreateNewCoach = new JLinkButton("Create New Coach");
+		CreateNewCoach.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				clientFrame.swap(new AssignStudentToClassPanel(clientFrame));
+				clientFrame.swap(new CreateNewCoachPanel(clientFrame));
 			}
 		});
-		JLinkButton changeTeacher = new JLinkButton("Change Teacher");
-		changeTeacher.addActionListener(new ActionListener() {
+		JLinkButton EditTeam = new JLinkButton("Edit Team");
+		EditTeam.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				clientFrame.swap(new ChangeTeacherPanel(clientFrame));
+				clientFrame.swap(new EditTeamPanel(clientFrame));
 			}
 		});
-		JLinkButton openSemster = new JLinkButton("Open Semster");
-		openSemster.addActionListener(new ActionListener() {
+		JLinkButton CreateNewTeam = new JLinkButton("Create New Team");
+		CreateNewTeam.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				clientFrame.swap(new OpenSemesterPanel(clientFrame));
+				clientFrame.swap(new CreateNewTeamPanel(clientFrame));
 			}
 		});
-		JLinkButton removeStudentFromCourse = new JLinkButton("Remove Student From Course");
-		removeStudentFromCourse.addActionListener(new ActionListener() {
+		JLinkButton AddTrainingMethod = new JLinkButton("Add Training Method");
+		AddTrainingMethod.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				clientFrame.swap(new RemoveStudentFromCoursePanel(clientFrame));
+				clientFrame.swap(new AddTrainingMethodPanel(clientFrame));
 			}
 		});
-		JLinkButton assignStudentToCourse = new JLinkButton("Assign Student to Course");
-		assignStudentToCourse.addActionListener(new ActionListener() {
+		JLinkButton RemoveTrainingMethod = new JLinkButton("Remove Training Method");
+		RemoveTrainingMethod.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				clientFrame.swap(new AssignStudentToCoursePanel(clientFrame));
+				clientFrame.swap(new RemoveTrainingMethodPanel(clientFrame));
 			}
 		});
-	this.add(addClass);
-	this.add(assignStudentToClass);
-	this.add(changeTeacher);
-	this.add(openSemster);
-	this.add(removeStudentFromCourse);
-	this.add(assignStudentToCourse);
+	this.add(EditCoach);
+	this.add(CreateNewCoach);
+	this.add(EditTeam);
+	this.add(CreateNewTeam);
+	this.add(AddTrainingMethod);
+	this.add(RemoveTrainingMethod);
 	
-	*/
+	
 	clientFrame.setVisible();
 }
 	
