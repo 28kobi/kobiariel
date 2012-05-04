@@ -17,6 +17,13 @@ public abstract class MyJPanel extends JPanel {
 	public enum PanelType{
 		LOGIN_PANEL,
 		LOGIN_SETTING_PANEL,
+		HOME_PANEL_ADMIN,
+		
+		
+		
+		
+		
+		
 		ADD_CLASS_PANEL,
 		ADD_COURSE_PANEL,
 		ADD_TASK_PANEL,

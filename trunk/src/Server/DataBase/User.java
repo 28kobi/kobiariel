@@ -3,7 +3,7 @@ package Server.DataBase;
 import java.io.Serializable;
 /**
  * 
- * @author Polak Ido
+ * @author kobiariel
  *
  *
  */
@@ -15,15 +15,24 @@ public class User implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	
 	/**
 	 * user id number
 	 */
-	private int idUser;
+	private int UserId;
+	
+	private String UserName;
 	
 	/**
-	 * user name
+	 * FirstName
 	 */
-	private String userName = null;
+	private String FirstName = null;
+
+	/**
+	 * user  LastName
+	 */
+	private String LastName=null;
+	
 	
 	/**
 	 * login password
@@ -31,37 +40,35 @@ public class User implements Serializable{
 	private String password = null;
 	
 	/**
-	 * users permission 
+	 * users Privilge
 	 */
-	private int permission;
+	private int Privilge;
 	
 	/**
 	 * online state 
 	 */
-	private int online = 0;
-
-	/**
-	 * user first name
-	 */
-	private String firstName;
+	private int Online = 0;
 	
-	/**
-	 * user last name
-	 */
-	private String lastName;
+	
+	private  String PhoneNumber;
+	
+	private String Address;
 	
 	
 	
-	public User(int idUser, String userName, String password, int permission,
-			int online, String firstName, String lastName) {
+	
+	public User(int UserId,String  FirstName,String LastName ,String UserName, String password, int Privilge,
+			   String PhoneNumber ,String Address,int  Online) {
 		super();
-		this.idUser = idUser;
-		this.userName = userName;
+		this. UserId =  UserId;
+		this.UserName = UserName;
 		this.password = password;
-		this.permission = permission;
-		this.online = online;
-		this.firstName = firstName;
-		this.lastName = lastName;
+		this.Privilge = Privilge;
+		this.Online =  Online;
+		this.FirstName =  FirstName;
+		this.LastName= LastName;
+		this.setPhoneNumber(PhoneNumber);
+		this.setAddress(Address);
 	}
 	
 	
@@ -70,30 +77,30 @@ public class User implements Serializable{
 	 * @return user id number
 	 */
 	public int getIdUser() {
-		return idUser;
+		return  UserId;
 	}
 	
 	/**
 	 * set user id number
-	 * @param idUser
+	 * @param  UserId
 	 */
-	public void setIdUser(int idUser) {
-		this.idUser = idUser;
+	public void setIdUser(int UserId) {
+		this.UserId=UserId;
 	}
 	
 	/**
 	 * @return user name
 	 */
 	public String getUserName() {
-		return userName;
+		return UserName;
 	}
 	
 	/**
 	 * set user name
 	 * @param userName
 	 */
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUserName(String UserName) {
+		this.UserName = UserName;
 	}
 	
 	/**
@@ -114,57 +121,57 @@ public class User implements Serializable{
 	/**
 	 * @return user permission
 	 */
-	public int getPermission() {
-		return permission;
+	public int getPrivilge() {
+		return Privilge;
 	}
 	
 	/**
 	 * set permission
 	 * @param permission
 	 */
-	public void setPermission(int permission) {
-		this.permission = permission;
+	public void setPrivilge(int  Privilge) {
+		this.Privilge = Privilge;
 	}
 	
 	/**
 	 * @return online state
 	 */
 	public int isOnline() {
-		return online;
+		return  Online;
 	}
 	
 	/**
 	 * change online state
 	 * @param online
 	 */
-	public void setOnline(int online) {
-		this.online = online;
+	public void setOnline(int Online) {
+		this.Online=  Online;
 	}
 	
 	/**
-	 * @return first name
+	 * @return  FirstName
 	 */
 	public String getFirstName() {
-		return firstName;
+		return FirstName;
 	}
 	
 	/**
 	 * set first name
 	 * @param firstName
 	 */
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setFirstName(String FirstName) {
+		this.FirstName = FirstName;
 	}
 	
 	/**
-	 * @return last name
+	 * @return LastName
 	 */
 	public String getLastName() {
-		return lastName;
+		return LastName;
 	}
 	
 	public String toString() {
-		return lastName+" "+firstName;
+		return LastName+" "+FirstName;
 	}
 	
 	/**
@@ -172,7 +179,31 @@ public class User implements Serializable{
 	 * @param lastName
 	 */
 	public void setLastName(String lastName) {
-		this.lastName = lastName;
+		this.LastName = lastName;
+	}
+
+
+
+	public String getPhoneNumber() {
+		return PhoneNumber;
+	}
+
+
+
+	public void setPhoneNumber(String phoneNumber) {
+		PhoneNumber = phoneNumber;
+	}
+
+
+
+	public String getAddress() {
+		return Address;
+	}
+
+
+
+	public void setAddress(String address) {
+		Address = address;
 	}
 	
 	
