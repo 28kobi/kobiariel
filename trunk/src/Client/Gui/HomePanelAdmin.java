@@ -24,7 +24,7 @@ public class HomePanelAdmin extends MyJPanel {
 		super(PanelType.HOME_PANEL_ADMIN, client);
 		BufferedImage myPic;
 		try {
-			myPic = ImageIO.read(new File("images"+ File.separator+"home.jpg"));
+			myPic = ImageIO.read(new File("image"+ File.separator+"home.jpg"));
 		
 			JLabel lblAddClass = new JLabel(new ImageIcon(myPic), JLabel.CENTER);
 			lblAddClass.setBounds(12, 13, 585, 99);

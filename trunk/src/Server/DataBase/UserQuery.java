@@ -143,11 +143,24 @@ public class UserQuery extends Query{
 	public void resetOnline() throws SQLException{
 		ArrayList<User> array = getAllUsers();
 		for (User user: array){
-			setQuery("UPDATE users SET Online='0' WHERE UserId=?");
+			setQuery("UPDATE users SET Online='0' WHERE UserId= ?");
 			PreparedStatement query = getPS();
 			query.setInt(1, user.getIdUser());
 			query.executeUpdate();
 			query.close();
 		}
 	}
+	public ArrayList<User> getAllCoach() throws SQLException{
+		ArrayList<User> array = new ArrayList<User>();
+		setQuery("SELECT * " + "FROM users " + "WHERE Privilge='1'");
+		ResultSet rs=execQuery();
+		while (rs.next()){
+			User user = new User(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4), 
+					rs.getString(5),rs.getInt(6), rs.getString(7),rs.getString(8),rs.getInt(9));
+			array.add(user);
+		}
+		return array;
+	}
+
 }
+

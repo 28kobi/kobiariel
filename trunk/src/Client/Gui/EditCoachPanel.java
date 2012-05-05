@@ -1,18 +1,17 @@
 package Client.Gui;
-
-import java.awt.Color;
-import java.awt.Font;
+import javax.imageio.ImageIO;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
-import javax.imageio.ImageIO;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JTextPane;
-
-import Client.Gui.MyJPanel.PanelType;
 import Client.Logic.ClientIF;
+import Server.DataBase.User;
+import Server.Message.MessageGetAllCoach;
+import Server.Message.MessageGetAllCoachReplay;
 import javax.swing.JComboBox;
 
 
@@ -20,11 +19,15 @@ public class EditCoachPanel extends MyJPanel {
 	
 	
 	private static final long serialVersionUID = 1L;
-	private String str;
+	private User coach;
+	private JComboBox ChooseCoach;
+	private ArrayList<User> allCoachArray =null;
+    private	JLabel lblChooseCoach;
 	
 	
 	public EditCoachPanel(ClientIF client) {
 		super(PanelType.EDIT_COACH_PANEL, client);
+		setLayout(null);
 		BufferedImage myPic;
 		try {
 			myPic = ImageIO.read(new File("image"+ File.separator+"home.jpg"));
@@ -33,21 +36,55 @@ public class EditCoachPanel extends MyJPanel {
 			lblEditCoach.setBounds(149, 11, 340, 46);
 			add(lblEditCoach);
 			
-			str = getClient().getUser().toString();
-		
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		setLayout(null);
 		
-		JLabel lblChooseCoach = new JLabel("Choose Coach:");
-		lblChooseCoach.setBounds(23, 67, 109, 23);
-		add(lblChooseCoach);
+	
+	   init();
+	   
+	}
+	
+	public void initArrays(){
+		allCoachArray = new ArrayList<User>();
+		getClient().sendMsgToServer(new MessageGetAllCoach());
+		MessageGetAllCoachReplay rep= (MessageGetAllCoachReplay) getClient().getMessageFromServer();
+		allCoachArray = rep.getArray();
+	}
+	public void initComboBoxs()
+	{
+	    ChooseCoach =new JComboBox();
+		ChooseCoach.setBounds(119, 68, 109, 20);
+		add(ChooseCoach);
+		ChooseCoach.setEnabled(true);
+	}
+    public void initLabels(){
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(119, 68, 109, 20);
-		add(comboBox);
+    lblChooseCoach = new JLabel("Choose Coach:");
+	lblChooseCoach.setBounds(23, 67, 109, 23);
+	add(lblChooseCoach);
+	}
+	  public void init()
+    {
+		  initArrays();
+		  initComboBoxs();
+		  initLabels();
+		
+		for (int i=0; i<=allCoachArray.size(); i++)
+		{
+			if (i==0) ChooseCoach.addItem("Choose..");
+			else ChooseCoach.addItem(allCoachArray.get(i-1).getFirstName());
+	     }
+		ChooseCoach.addActionListener(new CoachListener());
+    }
+
+	
+	private class CoachListener implements ActionListener{
+		public void actionPerformed(ActionEvent event) {
+			coach=(User)ChooseCoach.getSelectedItem();
+		}
+	
 	}
 
 	@Override
