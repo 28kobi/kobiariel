@@ -25,7 +25,7 @@ public class AddTrainingMethodPanel extends MyJPanel {
 		super(PanelType.ADD_TRAINING_METHOD_PANEL, client);
 		BufferedImage myPic;
 		try {
-			myPic = ImageIO.read(new File("images"+ File.separator+"home.jpg"));
+			myPic = ImageIO.read(new File("image"+ File.separator+"home.jpg"));
 		
 			JLabel lblAddClass = new JLabel(new ImageIcon(myPic), JLabel.CENTER);
 			lblAddClass.setBounds(12, 13, 585, 99);

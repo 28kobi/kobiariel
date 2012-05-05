@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import Server.DataBase.User;
 import Server.DataBase.UserQuery;
+import Server.Message.MessageGetAllCoachReplay;
 import Server.Message.MessageLogin;
 import Server.Message.MessageLoginReplay;
 import Server.Message.MessageLogout;
@@ -46,6 +47,17 @@ public class MsgHandeler {
 			userQuery2.setOffline(logout.getUser().getIdUser());
 			userQuery2.close();
 			break;
+		case MESSAGE_GET_ALL_COACH:
+			UserQuery UserQuery = new UserQuery();
+			MessageGetAllCoachReplay mgsr = new MessageGetAllCoachReplay(UserQuery.getAllCoach());
+			client.sendToClient(mgsr);
+			UserQuery.close();
+			break;
+		
+		
+			
+			
+			
 		
 		
 		

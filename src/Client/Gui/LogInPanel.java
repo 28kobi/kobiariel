@@ -47,13 +47,13 @@ public class LogInPanel extends MyJPanel{
 		
 		BufferedImage myPic;
 		try {
-			myPic = ImageIO.read(new File("images"+ File.separator+"login.jpg"));
+			myPic = ImageIO.read(new File("image"+ File.separator+"login.jpg"));
 		
 			JLabel lblLogin = new JLabel(new ImageIcon(myPic), JLabel.CENTER);
 			lblLogin.setBounds(29, 0, 306, 127);
 			add(lblLogin);
 		
-			BufferedImage myPic2 = ImageIO.read(new File("images"+ File.separator+"baglama_logo_v1.png"));
+			BufferedImage myPic2 = ImageIO.read(new File("image"+ File.separator+"baglama_logo_v1.png"));
 			lblLogo = new JLabel(new ImageIcon(myPic2), JLabel.CENTER);
 			lblLogo.setBounds(651, 413, 208, 113);
 			add(lblLogo);

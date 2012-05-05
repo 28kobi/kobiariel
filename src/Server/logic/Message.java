@@ -18,7 +18,9 @@ public class Message implements Serializable {
 	public enum MessageType {
 		MESSAGE_LOGIN,
 		MESSAGE_LOGOUT,
-		MESSAGE_LOGIN_REPLY
+		MESSAGE_LOGIN_REPLY,
+		MESSAGE_GET_ALL_COACH,
+		MESSAGE_GET_ALL_COACH_REPLAY,
 	   
 	}
 	
