@@ -8,6 +8,8 @@ import Server.Message.MessageGetAllCoachReplay;
 import Server.Message.MessageLogin;
 import Server.Message.MessageLoginReplay;
 import Server.Message.MessageLogout;
+import Server.Message.MessageUpdateCoach;
+import Server.Message.MessageUpdateCoachReplay;
 import ocsf.server.ConnectionToClient;
 /**
  * 
@@ -27,6 +29,7 @@ public class MsgHandeler {
 	public MsgHandeler(Object message, ConnectionToClient client){
 		this.message = (Message) message;
 		this.client = client;
+		
 	}
 	/**
 	 * 
@@ -53,7 +56,13 @@ public class MsgHandeler {
 			client.sendToClient(mgsr);
 			UserQuery.close();
 			break;
-		
+		case MESSAGE_UPDATE_COACH:
+			UserQuery UserQuery1 = new UserQuery();
+			MessageUpdateCoach Messageupdatecoach = (MessageUpdateCoach) message ;
+			MessageUpdateCoachReplay mgsr1 = new MessageUpdateCoachReplay(UserQuery1.UpdateUser(Messageupdatecoach.getCoach()));
+			client.sendToClient(mgsr1);
+			UserQuery1.close();
+			break;
 		
 			
 			

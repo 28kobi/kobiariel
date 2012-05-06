@@ -21,7 +21,9 @@ public class Message implements Serializable {
 		MESSAGE_LOGIN_REPLY,
 		MESSAGE_GET_ALL_COACH,
 		MESSAGE_GET_ALL_COACH_REPLAY,
-	   
+		MESSAGE_UPDATE_COACH,
+		MESSAGE_UPDATE_COACH_REPLAY,
+		
 	}
 	
 	private MessageType messageType;

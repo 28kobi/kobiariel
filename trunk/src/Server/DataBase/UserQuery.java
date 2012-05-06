@@ -161,6 +161,26 @@ public class UserQuery extends Query{
 		}
 		return array;
 	}
+	public boolean UpdateUser(User coach) throws SQLException{
+		
+
+		setQuery("UPDATE users set FirstName=?, LastName=?, UserName=?, Password=?, Privilge=?,PhoneNumber=?,Address=? WHERE UserId=?");
+		PreparedStatement query2 = getPS();
+		
+		query2.setString(1, coach.getFirstName());
+		query2.setString(2, coach.getLastName());
+		query2.setString(3, coach.getUserName());
+		query2.setString(4, coach.getPassword());
+		query2.setInt(5, coach.getPrivilge());
+		query2.setString(6, coach.getPhoneNumber());
+		query2.setString(7, coach.getAddress());
+		query2.setInt(8, coach.getIdUser());
+		query2.executeUpdate();
+		query2.close();
+		
+		return true;
+	}
+	
 
 }
 
