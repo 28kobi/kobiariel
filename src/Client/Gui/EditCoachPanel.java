@@ -12,6 +12,9 @@ import Client.Logic.ClientIF;
 import Server.DataBase.User;
 import Server.Message.MessageGetAllCoach;
 import Server.Message.MessageGetAllCoachReplay;
+import Server.Message.MessageUpdateCoach;
+import Server.Message.MessageUpdateCoachReplay;
+
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -22,6 +25,7 @@ public class EditCoachPanel extends MyJPanel {
 	
 	private static final long serialVersionUID = 1L;
 	private User coach;
+	private boolean UpdateAnswer;
 	private JComboBox ChooseCoach;
 	private ArrayList<User> allCoachArray =null;
     private	JLabel lblChooseCoach;
@@ -65,12 +69,15 @@ public class EditCoachPanel extends MyJPanel {
 	   
 	}
 	
+	
 	public void initArrays(){
 		allCoachArray = new ArrayList<User>();
 		getClient().sendMsgToServer(new MessageGetAllCoach());
 		MessageGetAllCoachReplay rep= (MessageGetAllCoachReplay) getClient().getMessageFromServer();
 		allCoachArray = rep.getArray();
 	}
+	
+	
 	public void initComboBoxs()
 	{
 	    ChooseCoach =new JComboBox();
@@ -78,6 +85,8 @@ public class EditCoachPanel extends MyJPanel {
 		add(ChooseCoach);
 		ChooseCoach.setEnabled(true);
 	}
+	
+	
     public void initLabels(){
 		
     lblChooseCoach = new JLabel("Choose Coach:");
@@ -117,6 +126,8 @@ public class EditCoachPanel extends MyJPanel {
 	add(lblAddress);
 		
 	}
+    
+    
     public void initTextField(){
     	
     	textFieldFirstName = new JTextField();
@@ -157,6 +168,8 @@ public class EditCoachPanel extends MyJPanel {
     	
     }
     
+    
+    
    public void initButton(){
 	   btnUpdate = new JButton("Update");
 	   btnUpdate.addActionListener(new ActionListener() {
@@ -166,8 +179,22 @@ public class EditCoachPanel extends MyJPanel {
 	   		coach.setUserName(textFieldUserName.getText());
 	   		coach.setPassword(textFieldPassword.getText());
 	   		coach.setAddress(textFieldAddress.getText());
-	   		coach.setPrivilge(Integer.parseInt(textFieldLastName.getText()));
+	   		coach.setPrivilge(Integer.parseInt(textFieldPrivilge.getText()));
 	   		coach.setPhoneNumber(textFieldPhoneNumber.getText());
+	   		
+	   		
+	   		getClient().sendMsgToServer(new MessageUpdateCoach(coach));
+	   		MessageUpdateCoachReplay rep= (MessageUpdateCoachReplay) getClient().getMessageFromServer();
+			
+			if(rep.getBoolean()){
+				System.out.println("Update coach succsess");
+				
+			}
+			else System.out.println("Update coach fail");
+					
+			
+			
+		
 	   			   		
 	   	}
 	   });
@@ -202,6 +229,8 @@ public class EditCoachPanel extends MyJPanel {
 			textFieldPrivilge.setText(Integer.toString(coach.getPrivilge()));
 			textFieldPhoneNumber.setText(coach.getPhoneNumber());
 			textFieldAddress.setText(coach.getAddress());
+			
+			
 		}
 	
 	}
