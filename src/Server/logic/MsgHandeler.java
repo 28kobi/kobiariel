@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import Server.DataBase.User;
 import Server.DataBase.UserQuery;
+import Server.Message.MessageCreateNewCoach;
+import Server.Message.MessageCreateNewCoachReplay;
 import Server.Message.MessageGetAllCoachReplay;
 import Server.Message.MessageLogin;
 import Server.Message.MessageLoginReplay;
@@ -63,6 +65,15 @@ public class MsgHandeler {
 			client.sendToClient(mgsr1);
 			UserQuery1.close();
 			break;
+		case MESSAGE_CREATE_NEW_COACH:
+			UserQuery UserQuery2 = new UserQuery();
+			int Privilge=1,online=0;
+			MessageCreateNewCoach MessageCreateNewCoach = (MessageCreateNewCoach) message ;
+			MessageCreateNewCoachReplay mgsr2 = new MessageCreateNewCoachReplay(UserQuery2.addUser(MessageCreateNewCoach.getCoach().getFirstName(),MessageCreateNewCoach.getCoach().getLastName(),MessageCreateNewCoach.getCoach().getUserName(),MessageCreateNewCoach.getCoach().getPassword(), Privilge,MessageCreateNewCoach.getCoach().getPhoneNumber(),MessageCreateNewCoach.getCoach().getAddress(),online));
+			client.sendToClient(mgsr2);
+			UserQuery2.close();
+			break;
+			
 		
 			
 			

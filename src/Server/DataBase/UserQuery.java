@@ -134,7 +134,7 @@ public class UserQuery extends Query{
 		query2.close();
 		info.incUserId();
 		info.close();
-		return 0;
+		return 1;
 	}
 	/**
 	 * 
