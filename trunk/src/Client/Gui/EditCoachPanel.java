@@ -1,5 +1,8 @@
 package Client.Gui;
 import javax.imageio.ImageIO;
+
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -16,6 +19,7 @@ import Server.Message.MessageUpdateCoach;
 import Server.Message.MessageUpdateCoachReplay;
 
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
@@ -37,7 +41,7 @@ public class EditCoachPanel extends MyJPanel {
     private	JLabel lblPhoneNumber;
     private	JLabel lblAddress;
     private JButton btnUpdate;
-    
+    private JLabel lblNewLabelAnswer;
     private JTextField textFieldFirstName;
     private JTextField textFieldLastName;
     private JTextField textFieldUserName;
@@ -45,6 +49,7 @@ public class EditCoachPanel extends MyJPanel {
     private JTextField textFieldPrivilge;
     private JTextField textFieldPhoneNumber;
     private JTextField textFieldAddress;
+   
     
 	
 	
@@ -124,6 +129,11 @@ public class EditCoachPanel extends MyJPanel {
 	lblAddress = new JLabel("Address:");
 	lblAddress.setBounds(23, 330, 64, 14);
 	add(lblAddress);
+	
+	lblNewLabelAnswer = new JLabel("");
+	lblNewLabelAnswer.setForeground(Color.blue);
+	lblNewLabelAnswer.setBounds(300, 390,350, 23);
+	add(lblNewLabelAnswer);
 		
 	}
     
@@ -186,11 +196,17 @@ public class EditCoachPanel extends MyJPanel {
 	   		getClient().sendMsgToServer(new MessageUpdateCoach(coach));
 	   		MessageUpdateCoachReplay rep= (MessageUpdateCoachReplay) getClient().getMessageFromServer();
 			
-			if(rep.getBoolean()){
-				System.out.println("Update coach succsess");
+	   		
+			if(rep.getBoolean()==true){
+				
+				popUp();
+				
+				getClient().swapFromBack(pushPanel());
+				
 				
 			}
-			else System.out.println("Update coach fail");
+			
+			else lblNewLabelAnswer.setText("Update coach fail");
 					
 			
 			
@@ -234,6 +250,13 @@ public class EditCoachPanel extends MyJPanel {
 		}
 	
 	}
+	private void popUp(){
+		Object[] options = {"Ok"};
+		JOptionPane.showMessageDialog((Component) getClient(),"All Coach Details  Updates");
+			
+		return ;
+	}
+	
 
 	@Override
 	public MyJPanel pushPanel() {
