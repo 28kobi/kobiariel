@@ -6,8 +6,7 @@ import Client.Gui.ClientFrame;
 
 /**
  * Initialize client thread  start client panel
- * @author Baglam Dev
- *
+ * @author Kobi & Ariel
  */
 public class Client {
 	public static void main(String[] args){

@@ -53,9 +53,9 @@ public class LogInPanel extends MyJPanel{
 			lblLogin.setBounds(29, 0, 306, 127);
 			add(lblLogin);
 		
-			BufferedImage myPic2 = ImageIO.read(new File("image"+ File.separator+"baglama_logo_v1.png"));
+			BufferedImage myPic2 = ImageIO.read(new File("image"+ File.separator+"logo_isoa.gif"));
 			lblLogo = new JLabel(new ImageIcon(myPic2), JLabel.CENTER);
-			lblLogo.setBounds(651, 413, 208, 113);
+			lblLogo.setBounds(450, 100, 400, 400);
 			add(lblLogo);
 		} catch (IOException e) {
 			e.printStackTrace();

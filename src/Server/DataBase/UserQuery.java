@@ -36,8 +36,8 @@ public class UserQuery extends Query{
 	 * @return
 	 * @throws SQLException
 	 */
-	public User getUserByIdUser(int UserId) throws SQLException{
-		setQuery("SELECT * FROM users " + "WHERE idUser = '"+UserId+"'");
+	public User getUserByUserId(int UserId) throws SQLException{
+		setQuery("SELECT * FROM users " + "WHERE UserId = '"+UserId+"'");
 		ResultSet rs = execQuery();
 		if (rs.next()){
 			User user = new User(UserId, rs.getString(2), rs.getString(3),rs.getString(4), 
@@ -56,7 +56,7 @@ public class UserQuery extends Query{
 		setQuery("SELECT * FROM users");
 		ResultSet rs = execQuery();
 		while (rs.next())
-			array.add(getUserByIdUser(rs.getInt(1)));
+			array.add(getUserByUserId(rs.getInt(1)));
 		return array;
 	}
 	/**

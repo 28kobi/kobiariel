@@ -36,5 +36,22 @@ public class Info extends Query{
 		update.executeUpdate();
 		update.close();
 	}
+	
+	public int getNewTeamId() throws SQLException{
+		setQuery("SELECT * FROM info " + "WHERE name = ?");
+		PreparedStatement query = getPS();
+		query.setString(1, "lastTeam");
+		ResultSet rs = query.executeQuery();
+		if (rs.next()) return rs.getInt(3) + 1;
+		else return 0;
+	}
+	public void incTeamId() throws SQLException{
+		setQuery("UPDATE info "+"SET data = ? WHERE name = ? ");
+		PreparedStatement update = getPS();
+		update.setInt(1, getNewTeamId());
+		update.setString(2, "lastTeam");
+		update.executeUpdate();
+		update.close();
+	}
 }
 

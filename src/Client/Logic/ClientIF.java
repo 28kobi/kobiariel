@@ -7,7 +7,7 @@ import Client.Gui.MyJPanel;
 import Server.logic.Message;
 /**
  * 
- * @author Baglama
+ * @author Kobi&Ariel
  * 
  *
  */
