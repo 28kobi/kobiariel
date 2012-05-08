@@ -2,11 +2,14 @@ package Server.logic;
 
 import java.io.IOException;
 import java.sql.SQLException;
+
+import Server.DataBase.TeamQuery;
 import Server.DataBase.User;
 import Server.DataBase.UserQuery;
 import Server.Message.MessageCreateNewCoach;
 import Server.Message.MessageCreateNewCoachReplay;
 import Server.Message.MessageGetAllCoachReplay;
+import Server.Message.MessageGetAllTeamReplay;
 import Server.Message.MessageLogin;
 import Server.Message.MessageLoginReplay;
 import Server.Message.MessageLogout;
@@ -72,6 +75,12 @@ public class MsgHandeler {
 			MessageCreateNewCoachReplay mgsr2 = new MessageCreateNewCoachReplay(UserQuery2.addUser(MessageCreateNewCoach.getCoach().getFirstName(),MessageCreateNewCoach.getCoach().getLastName(),MessageCreateNewCoach.getCoach().getUserName(),MessageCreateNewCoach.getCoach().getPassword(), Privilge,MessageCreateNewCoach.getCoach().getPhoneNumber(),MessageCreateNewCoach.getCoach().getAddress(),online));
 			client.sendToClient(mgsr2);
 			UserQuery2.close();
+			break;
+		case MESSAGE_GET_ALL_TEAM:
+			TeamQuery TeamQuery1 = new TeamQuery();
+			MessageGetAllTeamReplay mgsr11 = new MessageGetAllTeamReplay(TeamQuery1.getAllTeams());
+			client.sendToClient(mgsr11);
+			TeamQuery1.close();
 			break;
 			
 		

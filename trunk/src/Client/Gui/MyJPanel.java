@@ -46,7 +46,7 @@ public abstract class MyJPanel extends JPanel {
 	}
 	
 	public ClientIF getClient(){
-		return client;
+ 		return client;
 	}
 	
 	public PanelType getType(){

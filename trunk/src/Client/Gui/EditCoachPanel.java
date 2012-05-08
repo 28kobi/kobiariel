@@ -29,7 +29,6 @@ public class EditCoachPanel extends MyJPanel {
 	
 	private static final long serialVersionUID = 1L;
 	private User coach;
-	private boolean UpdateAnswer;
 	private JComboBox ChooseCoach;
 	private ArrayList<User> allCoachArray =null;
     private	JLabel lblChooseCoach;
