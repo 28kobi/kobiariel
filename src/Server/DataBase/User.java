@@ -1,5 +1,4 @@
 package Server.DataBase;
-
 import java.io.Serializable;
 /**
  * 

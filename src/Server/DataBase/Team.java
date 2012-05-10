@@ -33,12 +33,13 @@ public class Team implements Serializable{
 	 */
 	public Team(int TeamId,int CoachId , String TeamName) {
 		super();
-		this.setTeamId(TeamId);
-		this.setCoachId(CoachId);
-		this.setTeamName(TeamName);
+		this.TeamId=TeamId;
+		this.CoachId=CoachId;
+		this.TeamName=TeamName;
 		
 	}
 
+	
 	public int getTeamId() {
 		return TeamId;
 	}
@@ -62,6 +63,10 @@ public class Team implements Serializable{
 	public void setCoachId(int coachId) {
 		CoachId = coachId;
 	}
+	public String toString() {
+		return TeamName;
+	}
+	
 
 	
 }

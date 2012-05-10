@@ -1,11 +1,8 @@
 package Client.Gui;
-import java.awt.Color;
 import java.awt.Component;
-import java.awt.Font;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
@@ -15,17 +12,17 @@ import javax.swing.JOptionPane;
 
 import Client.Logic.ClientIF;
 import Server.DataBase.Team;
-import Server.DataBase.TeamQuery;
 import Server.DataBase.User;
-import Server.DataBase.UserQuery;
 import Server.Message.MessageGetAllCoach;
 import Server.Message.MessageGetAllCoachReplay;
 import Server.Message.MessageGetAllTeam;
 import Server.Message.MessageGetAllTeamReplay;
+import Server.Message.MessageGetUserByUserId;
+import Server.Message.MessageGetUserByUserIdReplay;
+import Server.Message.MessageUpdateTeam;
+import Server.Message.MessageUpdateTeamReplay;
 
 import javax.swing.JComboBox;
-import javax.swing.JTextPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import java.awt.event.ActionListener;
@@ -37,15 +34,26 @@ public class EditTeamPanel extends MyJPanel {
 	
 	
 	private static final long serialVersionUID = 1L;
+
+
+	protected static final JTextField ChooseUserCombo = null;
 	
+	
+	private Team team;
+	private User coach;
+	private String selectedteam;
+	private String TeamNameStr;
+	private String CoachNameStr;
+	private String CoachNameStr2;
+	private int SelectedCoachId;
 	private ArrayList<User> allCoachArray =null;
 	private ArrayList<Team> allTeamArray =null;
+	private JComboBox ChooseTeamCombo;
+	private JComboBox ChooseCoachCombo;
 	private JTextField TeamName;
 	private JTextField CoachName;
 	private JLabel lblEditTeam;
 	private JLabel lblChooseTeam;
-	private JComboBox ChooseTeamCombo;
-	private JComboBox ChooseCoachCombo;
 	private JLabel lblTeamName;
 	private JLabel lblCoachName;
 	private JRadioButton rdbtnChangeCoach;
@@ -96,16 +104,11 @@ public class EditTeamPanel extends MyJPanel {
 	public void initComboBoxs()
 	{
 		ChooseCoachCombo = new JComboBox();
-		ChooseCoachCombo.setBounds(176, 273, 174, 20);
+		ChooseCoachCombo.setBounds(191, 230, 174, 20);
 		add(ChooseCoachCombo);
 		
 		ChooseTeamCombo = new JComboBox();
-		ChooseTeamCombo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-				
-			}});
-		ChooseTeamCombo.setBounds(176, 68, 175, 20);
+		ChooseTeamCombo.setBounds(191, 65, 174, 20);
 		add(ChooseTeamCombo);
 	}
 	
@@ -117,11 +120,11 @@ public class EditTeamPanel extends MyJPanel {
 		add(lblChooseTeam);
 		
 		lblTeamName = new JLabel("Team Name:");
-		lblTeamName.setBounds(53, 133, 94, 14);
+		lblTeamName.setBounds(53, 133, 128, 14);
 		add(lblTeamName);
 		
 		lblCoachName = new JLabel("Coach Name:");
-		lblCoachName.setBounds(53, 177, 74, 14);
+		lblCoachName.setBounds(53, 177, 128, 14);
 		add(lblCoachName);
 	 
 	 }
@@ -129,12 +132,12 @@ public class EditTeamPanel extends MyJPanel {
 		 
 
 			TeamName = new JTextField();
-			TeamName.setBounds(176, 130, 175, 20);
+			TeamName.setBounds(190, 130, 175, 20);
 			add(TeamName);
 			TeamName.setColumns(10);
 			
 			CoachName = new JTextField();
-			CoachName.setBounds(176, 174, 174, 20);
+			CoachName.setBounds(191, 174, 174, 20);
 			add(CoachName);
 			CoachName.setColumns(10);
 		 
@@ -144,26 +147,92 @@ public class EditTeamPanel extends MyJPanel {
 	 
 	 public void initRadio(){
 		 
-		 rdbtnChangeCoach = new JRadioButton("Change Coach");
+		 rdbtnChangeCoach = new JRadioButton("Change Coach To:");
 		 rdbtnChangeCoach.addActionListener(new ActionListener() {
 		 	public void actionPerformed(ActionEvent e) {
-		 		if(rdbtnChangeCoach.isSelected())
+		 		if(rdbtnChangeCoach.isSelected()){
 		 			 ChooseCoachCombo.setEnabled(true);
-		 		else ChooseCoachCombo.setEnabled(false);
+		 			 ChooseCoachCombo.addActionListener(new CoachListener());
+		 	
+		 		}
+		 		else
+		 			{
+		 			ChooseCoachCombo.setEnabled(false);
+		 			
+		 			
+		 			
+		 			 selectedteam = (String)ChooseTeamCombo.getSelectedItem();
+					 int i=0;
+						while(!allTeamArray.get(i).getTeamName().equals(selectedteam))i++;
+						TeamNameStr= allTeamArray.get(i).getTeamName();
+						TeamName.setText(TeamNameStr);
+						SelectedCoachId= allTeamArray.get(i).getCoachId();
+						
+						
+						getClient().sendMsgToServer(new MessageGetUserByUserId(SelectedCoachId));
+						MessageGetUserByUserIdReplay rep = (MessageGetUserByUserIdReplay) getClient().getMessageFromServer();
+						CoachNameStr=rep.getCoach().getFirstName()+" "+rep.getCoach().getLastName();
+						CoachName.setText(CoachNameStr);
+						
+	
+		 			
+		 			}
+		 		
 		 			
 		 	 	}
 		 });
-		 rdbtnChangeCoach.setBounds(38, 229, 109, 23);
+		 rdbtnChangeCoach.setBounds(38, 229, 128, 23);
 		 add(rdbtnChangeCoach);
 		 
 		 
 	 }
 	 public void initButton(){
-		 btnUpdate = new JButton("Update");
-		  btnUpdate.setBounds(176, 399, 89, 23);
-		  add(btnUpdate);
+			   btnUpdate = new JButton("Update");
+			   btnUpdate.addActionListener(new ActionListener() {
+			   	public void actionPerformed(ActionEvent e) {
+			   		int i=0;
+		    		int flag=0;
+		    		while(i<allTeamArray.size()){
+		    			if((allTeamArray.get(i).getTeamName().equals(TeamName.getText()))&&!(TeamName.getText().equals(team.getTeamName()))){
+		    				popUp("Name already exists");
+		    				flag=1;
+		    				break;
+		    				}	 
+		    			i++;
+		    		}
+		    		if(flag==0){
+		    		
+			   		
+			   		
+			   		team.setTeamName(TeamName.getText());
+			   		if(rdbtnChangeCoach.isSelected())
+			   		team.setCoachId(coach.getIdUser());
+			   		
+			   		getClient().sendMsgToServer(new MessageUpdateTeam(team));
+			   		MessageUpdateTeamReplay rep= (MessageUpdateTeamReplay) getClient().getMessageFromServer();
+					
+			   		
+					if(rep.getBoolean()==true){
+						
+						popUp("Update Team Success");
+						
+						getClient().swapFromBack(pushPanel());
+						
+						
+					}
+					
+					else popUp("Update Team fail");
+							
+		    		}
+		    		
+			   			   		
+			   	}
+			   });
+			   btnUpdate.setBounds(191, 397, 89, 23);
+				  add(btnUpdate);
+		   }
 		 
-	 }
+	
 	 
 	 
 	
@@ -189,16 +258,47 @@ public class EditTeamPanel extends MyJPanel {
 			  for (int i=0; i<=allTeamArray.size(); i++)
 				{
 					if (i==0) ChooseTeamCombo.addItem("Choose..");
-					else ChooseTeamCombo.addItem(allTeamArray.get(i-1).getTeamName());
+					else ChooseTeamCombo.addItem(allTeamArray.get(i-1));
 					}
+			  ChooseTeamCombo.addActionListener(new TeamListener());
 
 	    }
+	 private class TeamListener implements ActionListener{
+			public void actionPerformed(ActionEvent event) {
+				 team=(Team)ChooseTeamCombo.getSelectedItem();
+					TeamName.setText(team.getTeamName());
+					SelectedCoachId= team.getCoachId();
+					
+					
+					
+					getClient().sendMsgToServer(new MessageGetUserByUserId(SelectedCoachId));
+					MessageGetUserByUserIdReplay rep = (MessageGetUserByUserIdReplay) getClient().getMessageFromServer();
+					CoachNameStr=rep.getCoach().getFirstName()+" "+rep.getCoach().getLastName();
+					CoachName.setText(CoachNameStr);
+					
+					
+						
+					
+				}
+			
+				
+			
+			}
+	 private class CoachListener implements ActionListener{
+			public void actionPerformed(ActionEvent event) {
+				coach=(User)ChooseCoachCombo.getSelectedItem();
+				CoachNameStr2=coach.getFirstName()+" "+coach.getLastName();
+				CoachName.setText(CoachNameStr2);
+				
+			}
+				
+			}
 	
+		
 	
-	
-	private void popUp(){
+	private void popUp(String str){
 		Object[] options = {"Ok"};
-		JOptionPane.showMessageDialog((Component) getClient(),"All Coach Details  Updates");
+		JOptionPane.showMessageDialog((Component) getClient(),str);
 			
 		return ;
 	}
