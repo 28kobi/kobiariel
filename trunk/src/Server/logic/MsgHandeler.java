@@ -10,11 +10,15 @@ import Server.Message.MessageCreateNewCoach;
 import Server.Message.MessageCreateNewCoachReplay;
 import Server.Message.MessageGetAllCoachReplay;
 import Server.Message.MessageGetAllTeamReplay;
+import Server.Message.MessageGetUserByUserId;
+import Server.Message.MessageGetUserByUserIdReplay;
 import Server.Message.MessageLogin;
 import Server.Message.MessageLoginReplay;
 import Server.Message.MessageLogout;
 import Server.Message.MessageUpdateCoach;
 import Server.Message.MessageUpdateCoachReplay;
+import Server.Message.MessageUpdateTeam;
+import Server.Message.MessageUpdateTeamReplay;
 import ocsf.server.ConnectionToClient;
 /**
  * 
@@ -82,6 +86,21 @@ public class MsgHandeler {
 			client.sendToClient(mgsr11);
 			TeamQuery1.close();
 			break;
+		case MESSAGE_GET_USER_BY_USER_ID:
+			UserQuery UserQuery3 = new UserQuery();
+			MessageGetUserByUserId MessageGetCoachByCoachId = (MessageGetUserByUserId) message ;
+			MessageGetUserByUserIdReplay mgcbid  = new MessageGetUserByUserIdReplay(UserQuery3.getUserByUserId(MessageGetCoachByCoachId.getUserId()));
+			client.sendToClient(mgcbid);
+			UserQuery3.close();
+			break;
+		case MESSAGE_UPDATE_TEAM:
+			TeamQuery TeamQuery= new TeamQuery();
+			MessageUpdateTeam MessageUpdateTeam = (MessageUpdateTeam) message ;
+			MessageUpdateTeamReplay mutr = new MessageUpdateTeamReplay(TeamQuery.UpdateTeam(MessageUpdateTeam.getTeam()));
+			client.sendToClient(mutr);
+			TeamQuery.close();
+			break;
+			
 			
 		
 			

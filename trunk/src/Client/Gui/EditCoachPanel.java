@@ -39,7 +39,6 @@ public class EditCoachPanel extends MyJPanel {
     private	JLabel lblPrivilige;
     private	JLabel lblPhoneNumber;
     private	JLabel lblAddress;
-    private JButton btnUpdate;
     private JLabel lblNewLabelAnswer;
     private JTextField textFieldFirstName;
     private JTextField textFieldLastName;
@@ -48,6 +47,7 @@ public class EditCoachPanel extends MyJPanel {
     private JTextField textFieldPrivilge;
     private JTextField textFieldPhoneNumber;
     private JTextField textFieldAddress;
+    private JButton btnUpdate;
    
     
 	
