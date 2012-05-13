@@ -146,9 +146,17 @@ public class ClientFrame extends JFrame implements ClientIF {
 		switch(user.getPrivilge())
 		{
 		case 0:
-		sideBar.initAdmin();
-		swap(new HomePanelAdmin(this));
-		break;
+			sideBar.initAdmin();
+			swap(new HomePanelAdmin(this));
+			break;
+		case 1:
+			sideBar.initCoach();
+			swap(new HomePanelCoach(this));
+			break;
+		case 2:
+			sideBar.initAtlete();
+			swap(new HomePanelAthlete(this));
+			break;
 		
 		
 		}

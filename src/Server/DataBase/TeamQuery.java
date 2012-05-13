@@ -107,7 +107,16 @@ public class TeamQuery extends Query{
 		
 		return true;
 	}
-	
+	public ArrayList<Team> getTeamByCoachId(int Coachid) throws SQLException{
+		ArrayList<Team> array = new ArrayList<Team>();
+		setQuery("SELECT * FROM team " + "WHERE CoachId = '"+Coachid+"'");
+		ResultSet rs = execQuery();
+		while (rs.next()){
+			Team team = new Team(rs.getInt(1), rs.getInt(2), rs.getString(3));		
+			array.add(team);
+		}
+		return array;
+	}
 
 }
 
