@@ -105,7 +105,119 @@ public class SideBar extends JPanel {
 	this.add(CreateNewTeam);
 	this.add(AddTrainingMethod);
 	this.add(RemoveTrainingMethod);
+	clientFrame.setVisible();
+}
 	
+	public void initCoach(){	
+		removeAll();
+		JLinkButton home = new JLinkButton("Home");
+		home.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				clientFrame.swap(new HomePanelCoach(clientFrame));
+			}
+		});
+		this.add(home);
+		JLinkButton createAthlete = new JLinkButton("Create new athlete");
+		createAthlete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				clientFrame.swap(new CreateNewAthletePanel(clientFrame));
+			}
+		});
+		JLinkButton addAthleteToTeam = new JLinkButton("Add athlete to team");
+		addAthleteToTeam.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				clientFrame.swap(new AddAthleteToTeamPanel(clientFrame));
+			}
+		});
+		JLinkButton EditAthleteInfo = new JLinkButton("Edit athlete info");
+		EditAthleteInfo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				clientFrame.swap(new EditAthletePanel(clientFrame));
+			}
+		});
+		JLinkButton RemoveAthleteFromTeam = new JLinkButton("Remove athlete from team");
+		RemoveAthleteFromTeam.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				clientFrame.swap(new RemoveAthleteFromTeamPanel(clientFrame));
+			}
+		});
+		JLinkButton createNewTraining = new JLinkButton("Creat new training");
+		createNewTraining.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				clientFrame.swap(new CreateNewTrainingPanel(clientFrame));
+			}
+		});
+		JLinkButton EditTraingin = new JLinkButton("Edit training");
+		EditTraingin.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent arg0) {
+				clientFrame.swap(new EditTrainingPanel(clientFrame));			
+			}
+		});
+		JLinkButton CoachViewPlannedTraining = new JLinkButton("view planned training");
+		CoachViewPlannedTraining.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent arg0) {
+			clientFrame.swap(new ViewPlannedTrainingPanel(clientFrame));
+			}
+		});
+		JLinkButton ViewPerformedTraining = new JLinkButton("view performed training");
+		ViewPerformedTraining.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				clientFrame.swap(new ViewPerformedTrainingPanel(clientFrame));			
+			}
+		});
+		
+		
+	this.add(createAthlete);
+	this.add(addAthleteToTeam);
+	this.add(EditAthleteInfo);
+	this.add(createNewTraining);
+	this.add(EditAthleteInfo);
+	this.add(EditTraingin);
+	this.add(CoachViewPlannedTraining);
+	this.add(ViewPerformedTraining);
+	
+	
+	clientFrame.setVisible();
+}
+	
+	public void initAtlete(){	
+		removeAll();
+		JLinkButton home = new JLinkButton("Home");
+		home.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				clientFrame.swap(new HomePanelAthlete(clientFrame));
+			}
+		});
+		this.add(home);
+		JLinkButton viewPlannedTraining = new JLinkButton("view planned training");
+		viewPlannedTraining.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent arg0) {
+		clientFrame.swap(new AthleteViewPlannedTrainingPanel(clientFrame));
+			}
+		});
+		JLinkButton viewPerformedTraining = new JLinkButton("view performed training");
+		viewPerformedTraining.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent arg0) {
+		clientFrame.swap(new AthleteViewPerformedTrainingPanel(clientFrame));
+			}
+		});
+		JLinkButton ViewStatisticInfo = new JLinkButton("View statistic info");
+		ViewStatisticInfo.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent arg0) {
+		clientFrame.swap(new AthleteViewStatisticInfoPanel(clientFrame));
+			}
+		});
+		JLinkButton ReportTraining = new JLinkButton("Report training");
+		ReportTraining.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			clientFrame.swap(new AthleteReportTrainingPanel(clientFrame));
+			}
+		});
+		
+	this.add(viewPlannedTraining);
+	this.add(viewPerformedTraining);
+	this.add(ViewStatisticInfo);
+	this.add(ReportTraining);
 	
 	clientFrame.setVisible();
 }

@@ -9,7 +9,7 @@ public class SqlAdapter {
 	/** Variable represents connection instance */
 	private Connection connection;
 	/** Variable represents password */
-	private static String password = "";
+	private static String password = "051211565";
 	/** Variable represents username */
 	private static String username = "root";
 	

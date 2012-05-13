@@ -181,6 +181,29 @@ public class UserQuery extends Query{
 		return true;
 	}
 	
+	public int addAthlete(String  FirstName,String LastName ,String UserName, String Password, int Privilge,
+			   String PhoneNumber ,String Address,int  Online) throws SQLException{
+		Info info = new Info();
+		int newIdUser = info.getNewUserId();
+		if (isExist(UserName)) return 1;
+		setQuery("INSERT INTO users(UserId, FirstName, LastName, UserName, Password, Privilge,PhoneNumber,Address,Online) VALUES(?,?,?,?,?,?,?,?,?)");
+		PreparedStatement query2 = getPS();
+		query2.setInt(1, newIdUser);
+		query2.setString(2, FirstName);
+		query2.setString(3, LastName);
+		query2.setString(4, UserName);
+		query2.setString(5, Password);
+		query2.setInt(6, Privilge);
+		query2.setString(7, PhoneNumber);
+		query2.setString(8, Address);
+		query2.setInt(9, Online);
+		query2.executeUpdate();
+		query2.close();
+		info.incUserId();
+		info.close();
+		return newIdUser;
+	}
+	
 
 }
 
