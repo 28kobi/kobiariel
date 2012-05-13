@@ -6,9 +6,18 @@ import java.sql.SQLException;
 import Server.DataBase.TeamQuery;
 import Server.DataBase.User;
 import Server.DataBase.UserQuery;
+import Server.DataBase.athleteQuery;
+import Server.Message.MessageAssignAthleteToTeam;
+import Server.Message.MessageAssignAthleteToTeamReplay;
+import Server.Message.MessageCreateNewAthlete;
+import Server.Message.MessageCreateNewAthleteReplay;
 import Server.Message.MessageCreateNewCoach;
 import Server.Message.MessageCreateNewCoachReplay;
+import Server.Message.MessageCreateNewTeam;
+import Server.Message.MessageCreateNewTeamReplay;
 import Server.Message.MessageGetAllCoachReplay;
+import Server.Message.MessageGetAllTeamByCoachId;
+import Server.Message.MessageGetAllTeamByCoachReplay;
 import Server.Message.MessageGetAllTeamReplay;
 import Server.Message.MessageGetUserByUserId;
 import Server.Message.MessageGetUserByUserIdReplay;
@@ -99,6 +108,36 @@ public class MsgHandeler {
 			MessageUpdateTeamReplay mutr = new MessageUpdateTeamReplay(TeamQuery.UpdateTeam(MessageUpdateTeam.getTeam()));
 			client.sendToClient(mutr);
 			TeamQuery.close();
+			break;
+		case MESSAGE_CREATE_NEW_ATHLETE:
+			int offline=0;
+			UserQuery userQuery= new UserQuery();
+			MessageCreateNewAthlete Messagecreatenewathlete = (MessageCreateNewAthlete) message ;
+			MessageCreateNewAthleteReplay msgr = new MessageCreateNewAthleteReplay(userQuery.addAthlete(Messagecreatenewathlete.getAthlete().getFirstName(),Messagecreatenewathlete.getAthlete().getLastName(),Messagecreatenewathlete.getAthlete().getUserName(),Messagecreatenewathlete.getAthlete().getPassword(),Messagecreatenewathlete.getAthlete().getPrivilge(),Messagecreatenewathlete.getAthlete().getPhoneNumber(),Messagecreatenewathlete.getAthlete().getAddress(),offline));
+			client.sendToClient(msgr);
+			userQuery.close();
+			break;
+		case MESSAGE_GET_ALL_TEAM_BY_COACH_ID:
+			TeamQuery teamquery1= new TeamQuery();
+			MessageGetAllTeamByCoachId MessageGetAllTeamByCoachId = (MessageGetAllTeamByCoachId) message ;
+			MessageGetAllTeamByCoachReplay msgr1 = new MessageGetAllTeamByCoachReplay(teamquery1.getTeamByCoachId(MessageGetAllTeamByCoachId.getCoachId()));
+			client.sendToClient(msgr1);
+			teamquery1.close();
+			break;	
+		case MESSAGE_ASSIGN_ATHLETE_TO_TEAM:
+			athleteQuery athleteQuery1= new athleteQuery();
+			MessageAssignAthleteToTeam MessageAssignAthleteToTeam1 = (MessageAssignAthleteToTeam) message ;
+			MessageAssignAthleteToTeamReplay msgr2 = new MessageAssignAthleteToTeamReplay(athleteQuery1.addAthleteToTeam(MessageAssignAthleteToTeam1.getUserid(),MessageAssignAthleteToTeam1.getTeamhid()));
+			client.sendToClient(msgr2);
+			athleteQuery1.close();
+			break;
+		case MESSAGE_CREATE_NEW_TEAM:
+			TeamQuery teamquery = new TeamQuery();
+			int teamid=1;
+			MessageCreateNewTeam MessageCreateNewteam = (MessageCreateNewTeam) message ;
+			MessageCreateNewTeamReplay msg = new MessageCreateNewTeamReplay(teamquery.addTeam(teamid, MessageCreateNewteam.getCoachId(), MessageCreateNewteam.getTeamName()));
+			client.sendToClient(msg);
+			teamquery.close();
 			break;
 			
 			
