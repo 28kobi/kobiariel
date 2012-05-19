@@ -21,6 +21,7 @@ import Server.Message.MessageGetAllCoachReplay;
 import Server.Message.MessageGetAllTeamByCoachId;
 import Server.Message.MessageGetAllTeamByCoachReplay;
 import Server.Message.MessageGetAllTeamReplay;
+import Server.Message.MessageGetAllUnTeamedAthleteReplay;
 import Server.Message.MessageGetUserByUserId;
 import Server.Message.MessageGetUserByUserIdReplay;
 import Server.Message.MessageLogin;
@@ -157,7 +158,12 @@ public class MsgHandeler {
 			client.sendToClient(mgsr5);
 			UserQuery4.close();
 			break;
-			
+		case MESSAGE_GET_ALL_UNTEAMED_ATHLETE:
+			UserQuery UserQuery5 = new UserQuery();
+			MessageGetAllUnTeamedAthleteReplay mgsre = new MessageGetAllUnTeamedAthleteReplay(UserQuery5.getAllUnTeamedAthlete());
+			client.sendToClient(mgsre);
+			UserQuery5.close();
+			break;
 		
 		
 		}

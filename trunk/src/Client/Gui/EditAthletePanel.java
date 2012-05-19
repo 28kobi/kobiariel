@@ -12,8 +12,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import Client.Logic.ClientIF;
 import Server.DataBase.User;
+import Server.Message.MessageGetAllAthleteByCoachId;
+import Server.Message.MessageGetAllAthleteByCoachIdReplay;
 import Server.Message.MessageGetAllCoach;
 import Server.Message.MessageGetAllCoachReplay;
+import Server.Message.MessageUpdateAthlete;
+import Server.Message.MessageUpdateAthleteReplay;
 import Server.Message.MessageUpdateCoach;
 import Server.Message.MessageUpdateCoachReplay;
 
@@ -27,15 +31,14 @@ public class EditAthletePanel extends MyJPanel {
 	
 	
 	private static final long serialVersionUID = 1L;
-	private User coach;
-	private JComboBox ChooseCoach;
-	private ArrayList<User> allCoachArray =null;
-    private	JLabel lblChooseCoach;
+	private User Athlete;
+	private JComboBox ChooseAthlete;
+	private ArrayList<User> allAthleteArray =null;
+    private	JLabel lblChooseAthlete;
     private	JLabel lblNewLabel;
     private	JLabel lblLastName;
     private	JLabel lblUserName;
     private	JLabel lblPassword;
-    private	JLabel lblPrivilige;
     private	JLabel lblPhoneNumber;
     private	JLabel lblAddress;
     private JLabel lblNewLabelAnswer;
@@ -43,7 +46,6 @@ public class EditAthletePanel extends MyJPanel {
     private JTextField textFieldLastName;
     private JTextField textFieldUserName;
     private JTextField textFieldPassword;
-    private JTextField textFieldPrivilge;
     private JTextField textFieldPhoneNumber;
     private JTextField textFieldAddress;
     private JButton btnUpdate;
@@ -74,27 +76,27 @@ public class EditAthletePanel extends MyJPanel {
 	
 	
 	public void initArrays(){
-		allCoachArray = new ArrayList<User>();
-		getClient().sendMsgToServer(new MessageGetAllCoach());
-		MessageGetAllCoachReplay rep= (MessageGetAllCoachReplay) getClient().getMessageFromServer();
-		allCoachArray = rep.getArray();
+		allAthleteArray = new ArrayList<User>();
+		getClient().sendMsgToServer(new MessageGetAllAthleteByCoachId(getClient().getUser().getIdUser()));
+		MessageGetAllAthleteByCoachIdReplay rep= (MessageGetAllAthleteByCoachIdReplay) getClient().getMessageFromServer();
+		allAthleteArray = rep.getArray();
 	}
 	
 	
 	public void initComboBoxs()
 	{
-	    ChooseCoach =new JComboBox();
-		ChooseCoach.setBounds(119, 68, 109, 20);
-		add(ChooseCoach);
-		ChooseCoach.setEnabled(true);
+		ChooseAthlete =new JComboBox();
+		ChooseAthlete.setBounds(119, 68, 109, 20);
+		add(ChooseAthlete);
+		ChooseAthlete.setEnabled(true);
 	}
 	
 	
     public void initLabels(){
 		
-    lblChooseCoach = new JLabel("Choose Coach:");
-	lblChooseCoach.setBounds(23, 67, 109, 23);
-	add(lblChooseCoach);
+    lblChooseAthlete = new JLabel("Choose Athlete:");
+    lblChooseAthlete.setBounds(23, 67, 109, 23);
+	add(lblChooseAthlete);
 	
     lblNewLabel = new JLabel("First Name:");
 	lblNewLabel.setBounds(23, 120, 71, 14);
@@ -116,9 +118,7 @@ public class EditAthletePanel extends MyJPanel {
 	lblPassword.setBounds(23, 225, 71, 14);
 	add(lblPassword);
 	
-	lblPrivilige = new JLabel("Privilige:");
-	lblPrivilige.setBounds(23, 260, 92, 14);
-	add(lblPrivilige);
+	
 	
 	lblPhoneNumber = new JLabel("Phone Number:");
 	lblPhoneNumber.setBounds(23, 295, 92, 14);
@@ -159,10 +159,6 @@ public class EditAthletePanel extends MyJPanel {
     	add(textFieldPassword);
     	textFieldPassword.setColumns(10);
     	
-    	textFieldPrivilge = new JTextField();
-    	textFieldPrivilge.setBounds(120, 260, 200, 20);
-    	add(textFieldPrivilge);
-    	textFieldPrivilge.setColumns(10);
     	
     	textFieldPhoneNumber = new JTextField();
     	textFieldPhoneNumber.setBounds(120, 295, 200, 20);
@@ -182,17 +178,16 @@ public class EditAthletePanel extends MyJPanel {
 	   btnUpdate = new JButton("Update");
 	   btnUpdate.addActionListener(new ActionListener() {
 	   	public void actionPerformed(ActionEvent e) {
-	   		coach.setFirstName(textFieldFirstName.getText());
-	   		coach.setLastName(textFieldLastName.getText());
-	   		coach.setUserName(textFieldUserName.getText());
-	   		coach.setPassword(textFieldPassword.getText());
-	   		coach.setAddress(textFieldAddress.getText());
-	   		coach.setPrivilge(Integer.parseInt(textFieldPrivilge.getText()));
-	   		coach.setPhoneNumber(textFieldPhoneNumber.getText());
+	   		Athlete.setFirstName(textFieldFirstName.getText());
+	   		Athlete.setLastName(textFieldLastName.getText());
+	   		Athlete.setUserName(textFieldUserName.getText());
+	   		Athlete.setPassword(textFieldPassword.getText());
+	   		Athlete.setAddress(textFieldAddress.getText());
+	   		Athlete.setPhoneNumber(textFieldPhoneNumber.getText());
 	   		
 	   		
-	   		getClient().sendMsgToServer(new MessageUpdateCoach(coach));
-	   		MessageUpdateCoachReplay rep= (MessageUpdateCoachReplay) getClient().getMessageFromServer();
+	   		getClient().sendMsgToServer(new MessageUpdateAthlete(Athlete));
+	   		MessageUpdateAthleteReplay rep= (MessageUpdateAthleteReplay) getClient().getMessageFromServer();
 			
 	   		
 			if(rep.getBoolean()==true){
@@ -204,11 +199,8 @@ public class EditAthletePanel extends MyJPanel {
 				
 			}
 			
-			else lblNewLabelAnswer.setText("Update coach fail");
-					
-			
-			
 		
+	
 	   			   		
 	   	}
 	   });
@@ -224,25 +216,24 @@ public class EditAthletePanel extends MyJPanel {
 		  initTextField();
 		  initButton();
 		
-		for (int i=0; i<=allCoachArray.size(); i++)
+		for (int i=0; i<=allAthleteArray.size(); i++)
 		{
-			if (i==0) ChooseCoach.addItem("Choose..");
-			else ChooseCoach.addItem(allCoachArray.get(i-1));
+			if (i==0) ChooseAthlete.addItem("Choose..");
+			else ChooseAthlete.addItem(allAthleteArray.get(i-1));
 			}
-		ChooseCoach.addActionListener(new CoachListener());
+		ChooseAthlete.addActionListener(new AthleteListener());
     }
 
 	
-	private class CoachListener implements ActionListener{
+	private class AthleteListener implements ActionListener{
 		public void actionPerformed(ActionEvent event) {
-			coach=(User)ChooseCoach.getSelectedItem();
-			textFieldFirstName.setText(coach.getFirstName());
-			textFieldLastName.setText(coach.getLastName());
-			textFieldUserName.setText(coach.getUserName());
-			textFieldPassword.setText(coach.getPassword());
-			textFieldPrivilge.setText(Integer.toString(coach.getPrivilge()));
-			textFieldPhoneNumber.setText(coach.getPhoneNumber());
-			textFieldAddress.setText(coach.getAddress());
+			Athlete=(User)ChooseAthlete.getSelectedItem();
+			textFieldFirstName.setText(Athlete.getFirstName());
+			textFieldLastName.setText(Athlete.getLastName());
+			textFieldUserName.setText(Athlete.getUserName());
+			textFieldPassword.setText(Athlete.getPassword());
+			textFieldPhoneNumber.setText(Athlete.getPhoneNumber());
+			textFieldAddress.setText(Athlete.getAddress());
 			
 			
 		}
@@ -250,7 +241,7 @@ public class EditAthletePanel extends MyJPanel {
 	}
 	private void popUp(){
 		Object[] options = {"Ok"};
-		JOptionPane.showMessageDialog((Component) getClient(),"All Coach Details  Updates");
+		JOptionPane.showMessageDialog((Component) getClient(),"All Athlete Details  Updates");
 			
 		return ;
 	}
