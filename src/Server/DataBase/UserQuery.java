@@ -215,5 +215,19 @@ public class UserQuery extends Query{
 	}
 	return array;
 	}
+	
+	
+	public ArrayList<User> getAllUnTeamedAthlete() throws SQLException{
+		ArrayList<User> array = new ArrayList<User>();
+		
+		setQuery("SELECT users.* " + "FROM users " + "WHERE Privilge='2' AND UserId NOT IN (SELECT UserId  FROM athlete)");
+		ResultSet rs=execQuery();
+		while (rs.next()){
+			User user = new User(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4), 
+					rs.getString(5),rs.getInt(6), rs.getString(7),rs.getString(8),rs.getInt(9));
+			array.add(user);
+		}
+		return array;
+	}
 }
 
