@@ -15,6 +15,8 @@ import Server.Message.MessageCreateNewCoach;
 import Server.Message.MessageCreateNewCoachReplay;
 import Server.Message.MessageCreateNewTeam;
 import Server.Message.MessageCreateNewTeamReplay;
+import Server.Message.MessageGetAllAthleteByCoachId;
+import Server.Message.MessageGetAllAthleteByCoachIdReplay;
 import Server.Message.MessageGetAllCoachReplay;
 import Server.Message.MessageGetAllTeamByCoachId;
 import Server.Message.MessageGetAllTeamByCoachReplay;
@@ -24,6 +26,8 @@ import Server.Message.MessageGetUserByUserIdReplay;
 import Server.Message.MessageLogin;
 import Server.Message.MessageLoginReplay;
 import Server.Message.MessageLogout;
+import Server.Message.MessageUpdateAthlete;
+import Server.Message.MessageUpdateAthleteReplay;
 import Server.Message.MessageUpdateCoach;
 import Server.Message.MessageUpdateCoachReplay;
 import Server.Message.MessageUpdateTeam;
@@ -139,13 +143,21 @@ public class MsgHandeler {
 			client.sendToClient(msg);
 			teamquery.close();
 			break;
+		case MESSAGE_GET_ALL_ATHLETE_BY_COACH_ID:
+			UserQuery UserQueryByCoachId= new UserQuery();
+			MessageGetAllAthleteByCoachId MessageGetAllAthleteByCoachId1 = (MessageGetAllAthleteByCoachId) message ;
+			MessageGetAllAthleteByCoachIdReplay msgr3 = new MessageGetAllAthleteByCoachIdReplay(UserQueryByCoachId.getAllAthletByCoach(MessageGetAllAthleteByCoachId1.getCoachid()));
+			client.sendToClient(msgr3);
+			UserQueryByCoachId.close();
+			break;	
+		case MESSAGE_UPDATE_ATHLETE:
+			UserQuery UserQuery4 = new UserQuery();
+			MessageUpdateAthlete MessageUpdateAthlete = (MessageUpdateAthlete) message ;
+			MessageUpdateAthleteReplay mgsr5 = new MessageUpdateAthleteReplay(UserQuery4.UpdateUser(MessageUpdateAthlete.getathlete()));
+			client.sendToClient(mgsr5);
+			UserQuery4.close();
+			break;
 			
-			
-		
-			
-			
-			
-		
 		
 		
 		}
