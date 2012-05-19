@@ -203,7 +203,17 @@ public class UserQuery extends Query{
 		info.close();
 		return newIdUser;
 	}
-	
-
+	public ArrayList<User> getAllAthletByCoach(int coachid) throws SQLException{
+		ArrayList<User> array = new ArrayList<User>();
+		setQuery("SELECT users.* FROM users, athlete,team " +
+				"WHERE users.UserId=athlete.UserId"+" AND athlete.TeamId = team.TeamId" + " AND team.CoachId ='"+coachid+"'" );
+		ResultSet rs = execQuery();
+		while (rs.next()){
+		User user = new User(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4), 
+				rs.getString(5),rs.getInt(6), rs.getString(7),rs.getString(8),rs.getInt(9));
+		array.add(user);
+	}
+	return array;
+	}
 }
 
