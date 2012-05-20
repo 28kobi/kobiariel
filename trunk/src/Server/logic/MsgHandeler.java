@@ -6,7 +6,10 @@ import java.sql.SQLException;
 import Server.DataBase.TeamQuery;
 import Server.DataBase.User;
 import Server.DataBase.UserQuery;
+import Server.DataBase.activitytypeQuery;
 import Server.DataBase.athleteQuery;
+import Server.DataBase.plannedteamtrainingQuery;
+import Server.DataBase.trainingtypeQuery;
 import Server.Message.MessageAssignAthleteToTeam;
 import Server.Message.MessageAssignAthleteToTeamReplay;
 import Server.Message.MessageCreateNewAthlete;
@@ -15,12 +18,17 @@ import Server.Message.MessageCreateNewCoach;
 import Server.Message.MessageCreateNewCoachReplay;
 import Server.Message.MessageCreateNewTeam;
 import Server.Message.MessageCreateNewTeamReplay;
+import Server.Message.MessageCreateNewTeamTraining;
+import Server.Message.MessageCreateNewTeamTrainingReplay;
+import Server.Message.MessageGetAllAactivityTypeReplay;
 import Server.Message.MessageGetAllAthleteByCoachId;
 import Server.Message.MessageGetAllAthleteByCoachIdReplay;
 import Server.Message.MessageGetAllCoachReplay;
 import Server.Message.MessageGetAllTeamByCoachId;
 import Server.Message.MessageGetAllTeamByCoachReplay;
 import Server.Message.MessageGetAllTeamReplay;
+import Server.Message.MessageGetAllTrainingType;
+import Server.Message.MessageGetAllTrainingTypeReplay;
 import Server.Message.MessageGetAllUnTeamedAthleteReplay;
 import Server.Message.MessageGetUserByUserId;
 import Server.Message.MessageGetUserByUserIdReplay;
@@ -164,7 +172,26 @@ public class MsgHandeler {
 			client.sendToClient(mgsre);
 			UserQuery5.close();
 			break;
-		
+		case MESSAGE_GET_ALL_ACTIVITY_TYPE:
+			activitytypeQuery activityTypeQuery = new activitytypeQuery();
+			MessageGetAllAactivityTypeReplay mgsr6 = new MessageGetAllAactivityTypeReplay(activityTypeQuery.getAllActivity());
+			client.sendToClient(mgsr6);
+			activityTypeQuery.close();
+			break;
+		case MESSAGE_GET_ALL_TRAINING_TYPE:
+			trainingtypeQuery trainingTypeQuery = new trainingtypeQuery();
+			MessageGetAllTrainingType MessageGetAllTrainingType1 = (MessageGetAllTrainingType) message ;
+			MessageGetAllTrainingTypeReplay mgsr7 = new MessageGetAllTrainingTypeReplay(trainingTypeQuery.getAllTrainingTypeByActivityId(MessageGetAllTrainingType1.getActivityId()));
+			client.sendToClient(mgsr7);
+			trainingTypeQuery.close();
+			break;
+		case MESSAGE_CREATE_NEW_TEAM_TRAINING:
+			plannedteamtrainingQuery plannedTeamTrainingQuery = new plannedteamtrainingQuery();
+			MessageCreateNewTeamTraining MessagecreateNewteamTraining = (MessageCreateNewTeamTraining) message ;
+			MessageCreateNewTeamTrainingReplay msgr8 = new MessageCreateNewTeamTrainingReplay(plannedTeamTrainingQuery.addTeamTraining(MessagecreateNewteamTraining.getTraining()));
+			client.sendToClient(msgr8);
+			plannedTeamTrainingQuery.close();
+			break;
 		
 		}
 	}

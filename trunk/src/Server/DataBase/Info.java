@@ -53,5 +53,59 @@ public class Info extends Query{
 		update.executeUpdate();
 		update.close();
 	}
+	
+	public int getNewActivityId() throws SQLException{
+		setQuery("SELECT * FROM info " + "WHERE name = ?");
+		PreparedStatement query = getPS();
+		query.setString(1, "lastActivityType");
+		ResultSet rs = query.executeQuery();
+		if (rs.next()) return rs.getInt(3) + 1;
+		else return 0;
+	}
+	public void incActivityId() throws SQLException{
+		setQuery("UPDATE info "+"SET data = ? WHERE name = ? ");
+		PreparedStatement update = getPS();
+		update.setInt(1, getNewTeamId());
+		update.setString(2, "lastActivityType");
+		update.executeUpdate();
+		update.close();
+	}
+	
+
+	public int getNewTrainingTypeId() throws SQLException{
+		setQuery("SELECT * FROM info " + "WHERE name = ?");
+		PreparedStatement query = getPS();
+		query.setString(1, "lastTrainingType");
+		ResultSet rs = query.executeQuery();
+		if (rs.next()) return rs.getInt(3) + 1;
+		else return 0;
+	}
+	public void inctrainingTypeId() throws SQLException{
+		setQuery("UPDATE info "+"SET data = ? WHERE name = ? ");
+		PreparedStatement update = getPS();
+		update.setInt(1, getNewTeamId());
+		update.setString(2, "lastTrainingType");
+		update.executeUpdate();
+		update.close();
+	}
+	
+	
+	public int getNewPlannedTeamTrainingId() throws SQLException{
+		setQuery("SELECT * FROM info " + "WHERE name = ?");
+		PreparedStatement query = getPS();
+		query.setString(1, "LastPlannedTeamTraining");
+		ResultSet rs = query.executeQuery();
+		if (rs.next()) return rs.getInt(3) + 1;
+		else return 0;
+	}
+	public void incTeamPlannedTrainingtrainingTypeId() throws SQLException{
+		setQuery("UPDATE info "+"SET data = ? WHERE name = ? ");
+		PreparedStatement update = getPS();
+		update.setInt(1, getNewTeamId());
+		update.setString(2, "LastPlannedTeamTraining");
+		update.executeUpdate();
+		update.close();
+	}
+	
 }
 
