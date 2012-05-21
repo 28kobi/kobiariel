@@ -39,12 +39,8 @@ public abstract class MyJPanel extends JPanel {
 		EDIT_TRAINING_PANEL,
 		COACH_VIEW_PLLANED_TRAINING_PANEL,
 		COACH_VIEW_PERFORMED_TRAINING_PANEL,
-		
-		
-		
-		
-		
-		
+		ADD_ACTIVITY_TYPE_PANEL,
+		REMOVE_ACTIVITY_TYPE_PANEL,
 		
 		
 	}

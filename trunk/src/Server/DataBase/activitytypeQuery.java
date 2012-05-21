@@ -35,6 +35,14 @@ public class activitytypeQuery extends Query{
 		return 1;
 	}
 	
+	public int removeActivityType(activitytype activity) throws SQLException{
+		setQuery("DELETE FROM activitytype WHERE activityId ='"+activity.getActivityId()+"'");
+		PreparedStatement query2 = getPS();
+		query2.executeUpdate();
+		query2.close();
+		return 1;	
+	}
+	
 	
 	
 	public boolean isExist(String activitytype) throws SQLException{

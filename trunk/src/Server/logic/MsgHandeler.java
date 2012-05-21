@@ -13,6 +13,8 @@ import Server.DataBase.plannedteamtrainingQuery;
 import Server.DataBase.trainingtypeQuery;
 import Server.Message.MessageAssignAthleteToTeam;
 import Server.Message.MessageAssignAthleteToTeamReplay;
+import Server.Message.MessageCreateNewActivityType;
+import Server.Message.MessageCreateNewActivityTypeReplay;
 import Server.Message.MessageCreateNewAthlete;
 import Server.Message.MessageCreateNewAthleteReplay;
 import Server.Message.MessageCreateNewCoach;
@@ -38,6 +40,8 @@ import Server.Message.MessageGetUserByUserIdReplay;
 import Server.Message.MessageLogin;
 import Server.Message.MessageLoginReplay;
 import Server.Message.MessageLogout;
+import Server.Message.MessageRemoveAactivityType;
+import Server.Message.MessageRemoveAactivityTypeReplay;
 import Server.Message.MessageUpdateAthlete;
 import Server.Message.MessageUpdateAthleteReplay;
 import Server.Message.MessageUpdateCoach;
@@ -201,6 +205,20 @@ public class MsgHandeler {
 			MessageCreateNewPersonalTrainingReplay msgr9 = new MessageCreateNewPersonalTrainingReplay(plannedpersonalTrainingQuery.addPersonalTrainingByCoach(MessageCreateNewpersonaltraining.getTraining()));
 			client.sendToClient(msgr9);
 			plannedpersonalTrainingQuery.close();
+			break;
+		case MESSAGE_CREATE_NEW_ACTIVITY_TYPE:
+			activitytypeQuery activityTypeQuery1 = new activitytypeQuery();
+			MessageCreateNewActivityType MessagecreateNewactivityType = (MessageCreateNewActivityType) message ;
+			MessageCreateNewActivityTypeReplay mgsr10 = new MessageCreateNewActivityTypeReplay(activityTypeQuery1.addActivityType(MessagecreateNewactivityType.getActivity().getActivityName()));
+			client.sendToClient(mgsr10);
+			activityTypeQuery1.close();
+			break;
+		case MESSAGE_REMOVE_ACTIVITY_TYPE:
+			activitytypeQuery activityTypeQuery2 = new activitytypeQuery();
+			MessageRemoveAactivityType MessageRemoveaactivityType = (MessageRemoveAactivityType) message ;
+			MessageRemoveAactivityTypeReplay mgsr12 = new MessageRemoveAactivityTypeReplay(activityTypeQuery2.removeActivityType(MessageRemoveaactivityType.getActivityType()));
+			client.sendToClient(mgsr12);
+			activityTypeQuery2.close();
 			break;
 		
 		}
