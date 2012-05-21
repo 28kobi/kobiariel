@@ -98,10 +98,27 @@ public class Info extends Query{
 		if (rs.next()) return rs.getInt(3) + 1;
 		else return 0;
 	}
-	public void incTeamPlannedTrainingtrainingTypeId() throws SQLException{
+	public void incTeamPlannedTrainingId() throws SQLException{
 		setQuery("UPDATE info "+"SET data = ? WHERE name = ? ");
 		PreparedStatement update = getPS();
 		update.setInt(1, getNewTeamId());
+		update.setString(2, "LastPlannedTeamTraining");
+		update.executeUpdate();
+		update.close();
+	}
+	
+	public int getNewPlannedPersonalTrainingId() throws SQLException{
+		setQuery("SELECT * FROM info " + "WHERE name = ?");
+		PreparedStatement query = getPS();
+		query.setString(1, "LastPlannedTeamTraining");
+		ResultSet rs = query.executeQuery();
+		if (rs.next()) return rs.getInt(3) + 1;
+		else return 0;
+	}
+	public void incPersonalPlannedTrainingId() throws SQLException{
+		setQuery("UPDATE info "+"SET data = ? WHERE name = ? ");
+		PreparedStatement update = getPS();
+		update.setInt(1, getNewPlannedPersonalTrainingId());
 		update.setString(2, "LastPlannedTeamTraining");
 		update.executeUpdate();
 		update.close();

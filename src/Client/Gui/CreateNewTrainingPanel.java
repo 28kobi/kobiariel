@@ -17,6 +17,8 @@ import Server.DataBase.plannedteamtraining;
 import Server.DataBase.trainingtype;
 import Server.Message.MessageCreateNewCoach;
 import Server.Message.MessageCreateNewCoachReplay;
+import Server.Message.MessageCreateNewPersonalTraining;
+import Server.Message.MessageCreateNewPersonalTrainingReplay;
 import Server.Message.MessageCreateNewTeamTraining;
 import Server.Message.MessageCreateNewTeamTrainingReplay;
 import Server.Message.MessageGetAllAactivityType;
@@ -294,7 +296,7 @@ public class CreateNewTrainingPanel extends MyJPanel {
 					if(rdbtnPersonalTraining.isSelected()){
 						comboBoxAthlete.setEnabled(true);
 						comboBoxTeams.setEnabled(false);
-	    				if(rdbtnPersonalTraining.isSelected())
+	    				if(rdbtnTeamTraining.isSelected())
 	    					rdbtnTeamTraining.doClick();
 	    				comboBoxTeams.setEnabled(false);
 	    			}
@@ -360,28 +362,51 @@ public class CreateNewTrainingPanel extends MyJPanel {
 					}
 					if(rdbtnPersonalTraining.isSelected()){
 						if(!comboBoxAthlete.getSelectedItem().toString().equals("Choose..")){
-							
-							
-							
-							
-							
+							if((!comboBoxDay.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxMonth.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxYear.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxHour.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxMin.getSelectedItem().toString().equals("Choose.."))){
+								athlete=(User)comboBoxAthlete.getSelectedItem();
+								plannedPersonalTraining = new plannedpersonaltraining();
+								plannedPersonalTraining.setathleteId(athlete.getIdUser());
+								msg="'"+comboBoxDay.getSelectedItem().toString()+"'"+"'"+comboBoxMonth.getSelectedItem().toString()+"'"+"'"+comboBoxYear.getSelectedItem().toString()+"'";
+								plannedPersonalTraining.setDate(msg);
+								msg="'"+comboBoxHour.getSelectedItem().toString()+"'"+"'"+comboBoxMin.getSelectedItem().toString()+"'";
+								plannedPersonalTraining.setTime(msg);
+								activityType=(activitytype)comboBoxActivityType.getSelectedItem();
+								plannedPersonalTraining.setActivityid(activityType.getActivityId());
+								trainingType=(trainingtype)comboBoxTrainingType.getSelectedItem();
+								plannedPersonalTraining.setTrainingTypeId(trainingType.getTrainingId());
+								plannedPersonalTraining.setDistance(textFieldDistance.getText());
+								plannedPersonalTraining.setDetails(textFieldDetails.getText());
+								plannedPersonalTraining.setDuration(textFieldDuration.getText());
+								
+								getClient().sendMsgToServer(new MessageCreateNewPersonalTraining(plannedPersonalTraining));
+								MessageCreateNewPersonalTrainingReplay rep= (MessageCreateNewPersonalTrainingReplay)getClient().getMessageFromServer();
+								if(rep.getint()==1){
+									msg="training added";
+									popUp(msg);	
+									}
+								
+							}
+							else {
+								msg="fill all details";
+								popUp(msg);
+							}
 							
 						}	
 						else{
 							msg="choose athlete";
 							popUp(msg);
 						}
-	
 					}	
-					else {
+					if((!rdbtnPersonalTraining.isSelected())&&((!rdbtnTeamTraining.isSelected()))) {
 						
 						msg="choose if you like to create team training or athlete training";
 						popUp(msg);
 						
 				    	}
+					
 				}
 			});
-		 buttonCreatTraining.setBounds(209, 375, 69, 19);
+		 buttonCreatTraining.setBounds(195, 375, 125, 19);
 			add(buttonCreatTraining);
 		 
 		 
