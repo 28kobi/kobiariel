@@ -30,7 +30,11 @@ public class plannedpersonaltraining implements Serializable{
 	
 	
 	
-	
+	public plannedpersonaltraining() {
+		super();
+		
+		
+	}
 	
 	public plannedpersonaltraining(int trainingId,int athleteId,int activityid , int trainingTypeId,String time,String details,
 			String duration ,String distance,String date) {

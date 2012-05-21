@@ -8,6 +8,7 @@ import Server.DataBase.User;
 import Server.DataBase.UserQuery;
 import Server.DataBase.activitytypeQuery;
 import Server.DataBase.athleteQuery;
+import Server.DataBase.plannedpersonaltrainingQuery;
 import Server.DataBase.plannedteamtrainingQuery;
 import Server.DataBase.trainingtypeQuery;
 import Server.Message.MessageAssignAthleteToTeam;
@@ -16,6 +17,8 @@ import Server.Message.MessageCreateNewAthlete;
 import Server.Message.MessageCreateNewAthleteReplay;
 import Server.Message.MessageCreateNewCoach;
 import Server.Message.MessageCreateNewCoachReplay;
+import Server.Message.MessageCreateNewPersonalTraining;
+import Server.Message.MessageCreateNewPersonalTrainingReplay;
 import Server.Message.MessageCreateNewTeam;
 import Server.Message.MessageCreateNewTeamReplay;
 import Server.Message.MessageCreateNewTeamTraining;
@@ -191,6 +194,13 @@ public class MsgHandeler {
 			MessageCreateNewTeamTrainingReplay msgr8 = new MessageCreateNewTeamTrainingReplay(plannedTeamTrainingQuery.addTeamTraining(MessagecreateNewteamTraining.getTraining()));
 			client.sendToClient(msgr8);
 			plannedTeamTrainingQuery.close();
+			break;
+		case MESSAGE_CREATE_NEW_PERSONAL_TRAINING:
+			plannedpersonaltrainingQuery plannedpersonalTrainingQuery = new plannedpersonaltrainingQuery();
+			MessageCreateNewPersonalTraining MessageCreateNewpersonaltraining = (MessageCreateNewPersonalTraining) message ;
+			MessageCreateNewPersonalTrainingReplay msgr9 = new MessageCreateNewPersonalTrainingReplay(plannedpersonalTrainingQuery.addPersonalTrainingByCoach(MessageCreateNewpersonaltraining.getTraining()));
+			client.sendToClient(msgr9);
+			plannedpersonalTrainingQuery.close();
 			break;
 		
 		}
