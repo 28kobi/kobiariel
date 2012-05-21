@@ -23,6 +23,12 @@ public class activitytype implements Serializable{
 	
 	private String activityName;
 	
+	public activitytype() {
+		super();
+
+		
+	}
+	
 	
 	public activitytype(int activityId,String  activityName) {
 		super();

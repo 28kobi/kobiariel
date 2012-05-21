@@ -146,16 +146,6 @@ public class CreateNewCoachPanel extends MyJPanel {
     	add(textFieldAddress);
     	textFieldAddress.setColumns(10);
     	
-    			
-    	
-    	
-    			
-   
-    	
-    	
-    	
-    	
-    
     }
     
     

@@ -87,6 +87,18 @@ public class SideBar extends JPanel {
 				clientFrame.swap(new CreateNewTeamPanel(clientFrame));
 			}
 		});
+		JLinkButton AddActivityMethod = new JLinkButton("Add Activity Type");
+		AddActivityMethod.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				clientFrame.swap(new AddActivityMethodPanel(clientFrame));
+			}			
+		});
+		JLinkButton RemoveActivityMethod = new JLinkButton("Remove Activity Type");
+		RemoveActivityMethod.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent arg0) {
+		clientFrame.swap(new RemoveActivityMethodPanel(clientFrame));
+				}
+		});
 		JLinkButton AddTrainingMethod = new JLinkButton("Add Training Method");
 		AddTrainingMethod.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -103,6 +115,8 @@ public class SideBar extends JPanel {
 	this.add(CreateNewCoach);
 	this.add(EditTeam);
 	this.add(CreateNewTeam);
+	this.add(AddActivityMethod);
+	this.add(RemoveActivityMethod);
 	this.add(AddTrainingMethod);
 	this.add(RemoveTrainingMethod);
 	clientFrame.setVisible();
