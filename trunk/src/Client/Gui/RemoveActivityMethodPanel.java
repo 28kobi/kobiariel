@@ -92,6 +92,7 @@ public class RemoveActivityMethodPanel extends MyJPanel {
 	    				msg="activity has been removed";
 	 	   				popUp(msg);
 	 	   				pushPanel();
+	 	   				getClient().swapFromBack(pushPanel());
 	 	   				
 	 	   				
 	    				}
