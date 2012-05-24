@@ -34,6 +34,8 @@ import Server.Message.MessageGetAllCoachReplay;
 import Server.Message.MessageGetAllTeamByCoachId;
 import Server.Message.MessageGetAllTeamByCoachReplay;
 import Server.Message.MessageGetAllTeamReplay;
+import Server.Message.MessageGetAllTeamTrainingByCoachId;
+import Server.Message.MessageGetAllTeamTrainingByCoachIdReplay;
 import Server.Message.MessageGetAllTrainingType;
 import Server.Message.MessageGetAllTrainingTypeReplay;
 import Server.Message.MessageGetAllUnTeamedAthleteReplay;
@@ -229,7 +231,14 @@ public class MsgHandeler {
 			client.sendToClient(mgsr13);
 			trainingtypeQuery1.close();
 			break;
-		
+		case MESSAGE_GET_ALL_TEAM_TRAINING_BY_COACH_ID:
+			plannedteamtrainingQuery plannedteamtrainingQuery1 = new plannedteamtrainingQuery();
+			MessageGetAllTeamTrainingByCoachId MessageGetAllTeamTrainingByCoachId2 = (MessageGetAllTeamTrainingByCoachId) message ;
+			MessageGetAllTeamTrainingByCoachIdReplay mgsr14 = new MessageGetAllTeamTrainingByCoachIdReplay(plannedteamtrainingQuery1.getAllTeamTrainingByTeamArray(MessageGetAllTeamTrainingByCoachId2.getAllTeamArray()));
+			client.sendToClient(mgsr14);
+			plannedteamtrainingQuery1.close();
+			break;
+			
 		}
 	}
 	
@@ -261,7 +270,7 @@ public class MsgHandeler {
 					str = "Wrong user name, please try again.";
 				pass= false;
 			}
-		if (pass) userQuery.setOnline(user.getIdUser());
+		//if (pass) userQuery.setOnline(user.getIdUser());
 		userQuery.close();
 		client.sendToClient(new MessageLoginReplay(pass, user, str));
 	}
