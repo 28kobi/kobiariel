@@ -63,7 +63,7 @@ public class RemoveActivityMethodPanel extends MyJPanel {
  public void initLabels(){
 	 
 	    lblChooseActivity = new JLabel("Choose the Activity type you like to remove: ");
-		lblChooseActivity.setBounds(28, 134, 234, 21);
+		lblChooseActivity.setBounds(28, 134, 317, 21);
 		add(lblChooseActivity);
 							 
 	 }
@@ -72,7 +72,7 @@ public class RemoveActivityMethodPanel extends MyJPanel {
 	 
 
 		comboBoxActivityType = new JComboBox();
-		comboBoxActivityType.setBounds(215, 174, 130, 20);
+		comboBoxActivityType.setBounds(185, 174, 160, 20);
 		add(comboBoxActivityType);
 			
 }
@@ -105,7 +105,7 @@ public class RemoveActivityMethodPanel extends MyJPanel {
 	    		}
 	    	}
 	    });
-		btnRemove.setBounds(256, 292, 89, 23);
+		btnRemove.setBounds(220, 293, 89, 23);
 		add(btnRemove);
 	 
 	 

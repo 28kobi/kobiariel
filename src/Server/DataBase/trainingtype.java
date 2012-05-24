@@ -24,6 +24,18 @@ public class trainingtype implements Serializable{
 	
 	private int trainingId;
 	
+
+	
+	
+	public trainingtype() {
+		super();
+		
+		this.setActivityId(activityId);
+		this.setTrainingId(trainingId);
+		this.settrainingName(trainingName);
+		
+	}
+	
 	
 	public trainingtype(int trainingId,int activityId,String  trainingName) {
 		super();

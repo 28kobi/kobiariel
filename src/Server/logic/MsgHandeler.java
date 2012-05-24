@@ -25,6 +25,8 @@ import Server.Message.MessageCreateNewTeam;
 import Server.Message.MessageCreateNewTeamReplay;
 import Server.Message.MessageCreateNewTeamTraining;
 import Server.Message.MessageCreateNewTeamTrainingReplay;
+import Server.Message.MessageCreateNewTrainingType;
+import Server.Message.MessageCreateNewTrainingTypeReplay;
 import Server.Message.MessageGetAllAactivityTypeReplay;
 import Server.Message.MessageGetAllAthleteByCoachId;
 import Server.Message.MessageGetAllAthleteByCoachIdReplay;
@@ -219,6 +221,13 @@ public class MsgHandeler {
 			MessageRemoveAactivityTypeReplay mgsr12 = new MessageRemoveAactivityTypeReplay(activityTypeQuery2.removeActivityType(MessageRemoveaactivityType.getActivityType()));
 			client.sendToClient(mgsr12);
 			activityTypeQuery2.close();
+			break;
+		case MESSAGE_CREATE_NEW_TRAINING_TYPE:
+			trainingtypeQuery trainingtypeQuery1 = new trainingtypeQuery();
+			MessageCreateNewTrainingType MessageCreateNewTrainingType1 = (MessageCreateNewTrainingType) message ;
+			MessageCreateNewTrainingTypeReplay mgsr13 = new MessageCreateNewTrainingTypeReplay(trainingtypeQuery1.addtrainingtype(MessageCreateNewTrainingType1.getTrainingType()));
+			client.sendToClient(mgsr13);
+			trainingtypeQuery1.close();
 			break;
 		
 		}
