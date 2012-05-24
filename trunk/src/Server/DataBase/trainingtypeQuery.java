@@ -18,18 +18,18 @@ public class trainingtypeQuery extends Query{
 
 	
 	
-	public int addtrainingtype(int activityd,String trainingName) throws SQLException{
+	public int addtrainingtype(trainingtype trainingtypeob) throws SQLException{
 		Info info = new Info();
 		int newIdTraining= info.getNewTrainingTypeId();
-		if (isExist(trainingName)) return 1;
-		setQuery("INSERT INTO activitytype(trainingId,activityId, activityName) VALUES(?,?)");
+		if (isExist(trainingtypeob.gettrainingName())) return 0;
+		setQuery("INSERT INTO trainingtype(trainingId,activityId,trainingName) VALUES(?,?,?)");
 		PreparedStatement query2 = getPS();
 		query2.setInt(1, newIdTraining);
-		query2.setInt(2, activityd);
-		query2.setString(3, trainingName);
+		query2.setInt(2, trainingtypeob.getActivityId());
+		query2.setString(3, trainingtypeob.gettrainingName());
 		query2.executeUpdate();
 		query2.close();
-		info.incUserId();
+		info.inctrainingTypeId();
 		info.close();
 		return 1;
 	}

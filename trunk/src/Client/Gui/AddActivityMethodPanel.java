@@ -66,7 +66,7 @@ public class AddActivityMethodPanel extends MyJPanel {
 			
 		   
 		    lblActivityName = new JLabel("Activity Name:");
-		    lblActivityName.setBounds(23, 120, 92, 14);
+		    lblActivityName.setBounds(0, 120, 115, 14);
 			add(lblActivityName);
 		
 			}
@@ -74,7 +74,7 @@ public class AddActivityMethodPanel extends MyJPanel {
 	    public void initTextField(){
 	    	
 	    	textFieldActivityName = new JTextField();
-	    	textFieldActivityName.setBounds(120, 120, 200, 20);
+	    	textFieldActivityName.setBounds(96, 120, 224, 20);
 	    	add(textFieldActivityName);
 	    	textFieldActivityName.setColumns(10);
 	    	
@@ -123,7 +123,7 @@ public class AddActivityMethodPanel extends MyJPanel {
 	 	   			   		
 	 	   	
 	 	   	} });
-	 	   btnCreate.setBounds(119, 210, 201, 23);
+	 	   btnCreate.setBounds(96, 213, 224, 23);
 	 		add(btnCreate);
 	 		
 	    }
