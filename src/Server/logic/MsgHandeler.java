@@ -34,8 +34,8 @@ import Server.Message.MessageGetAllCoachReplay;
 import Server.Message.MessageGetAllTeamByCoachId;
 import Server.Message.MessageGetAllTeamByCoachReplay;
 import Server.Message.MessageGetAllTeamReplay;
-import Server.Message.MessageGetAllTeamTrainingByCoachId;
-import Server.Message.MessageGetAllTeamTrainingByCoachIdReplay;
+import Server.Message.MessageGetAllTeamTrainingByTeamId;
+import Server.Message.MessageGetAllTeamTrainingByTeamIdReplay;
 import Server.Message.MessageGetAllTrainingType;
 import Server.Message.MessageGetAllTrainingTypeReplay;
 import Server.Message.MessageGetAllUnTeamedAthleteReplay;
@@ -97,6 +97,13 @@ public class MsgHandeler {
 			MessageGetAllCoachReplay mgsr = new MessageGetAllCoachReplay(UserQuery.getAllCoach());
 			client.sendToClient(mgsr);
 			UserQuery.close();
+			break;
+		case MESSAGE_GET_ALL_TRAINING_BY_TEAM_ID:
+			plannedteamtrainingQuery plannedteamtrainingQuery10 = new plannedteamtrainingQuery();
+			MessageGetAllTeamTrainingByTeamId MessageGetAllTeamTrainingByteamId1 = (MessageGetAllTeamTrainingByTeamId) message ;
+			MessageGetAllTeamTrainingByTeamIdReplay mgsr14 = new MessageGetAllTeamTrainingByTeamIdReplay(plannedteamtrainingQuery10.getAllTeamTrainingByTeamId(MessageGetAllTeamTrainingByteamId1.getteamid()));
+			client.sendToClient(mgsr14);
+			plannedteamtrainingQuery10.close();
 			break;
 		case MESSAGE_UPDATE_COACH:
 			UserQuery UserQuery1 = new UserQuery();
@@ -231,13 +238,7 @@ public class MsgHandeler {
 			client.sendToClient(mgsr13);
 			trainingtypeQuery1.close();
 			break;
-		case MESSAGE_GET_ALL_TEAM_TRAINING_BY_COACH_ID:
-			plannedteamtrainingQuery plannedteamtrainingQuery1 = new plannedteamtrainingQuery();
-			MessageGetAllTeamTrainingByCoachId MessageGetAllTeamTrainingByCoachId2 = (MessageGetAllTeamTrainingByCoachId) message ;
-			MessageGetAllTeamTrainingByCoachIdReplay mgsr14 = new MessageGetAllTeamTrainingByCoachIdReplay(plannedteamtrainingQuery1.getAllTeamTrainingByTeamArray(MessageGetAllTeamTrainingByCoachId2.getAllTeamArray()));
-			client.sendToClient(mgsr14);
-			plannedteamtrainingQuery1.close();
-			break;
+		
 			
 		}
 	}
