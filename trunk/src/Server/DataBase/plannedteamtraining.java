@@ -191,7 +191,9 @@ public class plannedteamtraining implements Serializable{
 		this.date = date;
 	}
 	
-	
+	public String toString() {
+		return date+" "+details;
+	}
 	
 
 	

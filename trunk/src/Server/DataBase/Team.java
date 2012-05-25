@@ -25,7 +25,11 @@ public class Team implements Serializable{
 	private int CoachId;
 	
 	
-	
+	public Team() {
+		super();
+		
+		
+	}
 	
 	
 	/**
