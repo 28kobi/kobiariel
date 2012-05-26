@@ -8,6 +8,7 @@ import Server.DataBase.User;
 import Server.DataBase.UserQuery;
 import Server.DataBase.activitytypeQuery;
 import Server.DataBase.athleteQuery;
+import Server.DataBase.plannedpersonaltraining;
 import Server.DataBase.plannedpersonaltrainingQuery;
 import Server.DataBase.plannedteamtrainingQuery;
 import Server.DataBase.trainingtypeQuery;
@@ -31,6 +32,8 @@ import Server.Message.MessageGetAllAactivityTypeReplay;
 import Server.Message.MessageGetAllAthleteByCoachId;
 import Server.Message.MessageGetAllAthleteByCoachIdReplay;
 import Server.Message.MessageGetAllCoachReplay;
+import Server.Message.MessageGetAllPersonalTrainingByAtleteId;
+import Server.Message.MessageGetAllPersonalTrainingByAtleteIdReplay;
 import Server.Message.MessageGetAllTeamByCoachId;
 import Server.Message.MessageGetAllTeamByCoachReplay;
 import Server.Message.MessageGetAllTeamReplay;
@@ -237,6 +240,13 @@ public class MsgHandeler {
 			MessageCreateNewTrainingTypeReplay mgsr13 = new MessageCreateNewTrainingTypeReplay(trainingtypeQuery1.addtrainingtype(MessageCreateNewTrainingType1.getTrainingType()));
 			client.sendToClient(mgsr13);
 			trainingtypeQuery1.close();
+			break;
+		case MESSAGE_GET_ALL_TRAINING_BY_ATHLETE_ID:
+			plannedpersonaltrainingQuery plannedpersonaltraining1 = new plannedpersonaltrainingQuery();
+			MessageGetAllPersonalTrainingByAtleteId MessageGetAllPersonalTrainingByAtleteId1 = (MessageGetAllPersonalTrainingByAtleteId) message ;
+			MessageGetAllPersonalTrainingByAtleteIdReplay mgsr15 = new MessageGetAllPersonalTrainingByAtleteIdReplay(plannedpersonaltraining1.getAllPersonalTrainingByAthleteId(MessageGetAllPersonalTrainingByAtleteId1.getAthleteId()));
+			client.sendToClient(mgsr15);
+			plannedpersonaltraining1.close();
 			break;
 		
 			
