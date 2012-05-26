@@ -44,29 +44,28 @@ public class CreateNewTrainingPanel extends MyJPanel {
 	private static final long serialVersionUID = 1L;
 	private JComboBox comboBoxTeams;
 	private JComboBox comboBoxAthlete;
-	private JLabel lblTrainingDate;
-	private JLabel lblDay;
-	private JLabel lblMonth;
-	private String msg;
+	private JComboBox comboBoxMin;
+	private JComboBox comboBoxActivityType ;
+	private JComboBox comboBoxTrainingType;
+	private JComboBox comboBoxHour;
 	private JComboBox comboBoxDay;
 	private JComboBox comboBoxMonth;
 	private JComboBox comboBoxYear;
-	private JLabel lblTime ;
-	private JComboBox comboBoxHour;
+	private JLabel lblTrainingDate;
+	private JLabel lblDay;
+	private JLabel lblMonth;
 	private JLabel lblHour;
 	private JLabel lblMi; 
 	private JLabel lblYear;
 	private JLabel lblActivityType;
 	private JLabel lblTrainingType;
 	private JLabel lblDetails ;
-	private JTextField textFieldDetails;
 	private JLabel lblDuration;
-	private JTextField textFieldDuration;
 	private JLabel lblDistance;
+	private JLabel lblTime ;
+	private JTextField textFieldDetails;
+	private JTextField textFieldDuration;
 	private JTextField textFieldDistance ;
-	private JComboBox comboBoxMin;
-	private JComboBox comboBoxActivityType ;
-	private JComboBox comboBoxTrainingType;
 	private JRadioButton rdbtnTeamTraining;
 	private JRadioButton rdbtnPersonalTraining;
 	private ArrayList<Team> allTeamArray =null;
@@ -80,7 +79,7 @@ public class CreateNewTrainingPanel extends MyJPanel {
 	private Team  team;
 	private User athlete;
 	private Button buttonCreatTraining;
-	
+	private String msg;
 	private String[] month={"1","2","3","4","5","6","7","8","9","10","11","12"};
 	private String[] year={"2012","2013","2014","2015","2016"};
 	
@@ -219,7 +218,7 @@ public class CreateNewTrainingPanel extends MyJPanel {
 
 	 public void initLabels(){
 		 
-		 lblDetails = new JLabel("Details: ");
+		 	lblDetails = new JLabel("Details: ");
 			lblDetails.setBounds(6, 259, 109, 14);
 			add(lblDetails);
 					
