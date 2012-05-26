@@ -28,6 +28,12 @@ public class athlete implements Serializable{
 	}
 
 	
+	public athlete() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public int getTeamId() {
 		return TeamId;
 	}

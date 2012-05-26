@@ -1,8 +1,10 @@
 package Server.DataBase;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * 
@@ -42,7 +44,25 @@ public class plannedpersonaltrainingQuery extends Query{
 		return 1;
 	}
 	
-	
+public ArrayList<plannedpersonaltraining> getAllPersonalTrainingByAthleteId(int athleteId) throws SQLException{
+		
+		ArrayList<plannedpersonaltraining> array = new ArrayList<plannedpersonaltraining>();
+		
+		setQuery("SELECT * FROM plannedpersonaltraining " + "WHERE athleteId  = '"+athleteId+"'");
+			ResultSet rs = execQuery();
+			while (rs.next()){				
+				plannedpersonaltraining training = null;
+				try {
+						training = new plannedpersonaltraining(rs.getInt(1), rs.getInt(2), rs.getInt(3),rs.getInt(4), rs.getString(5), rs.getString(6),rs.getString(7), rs.getString(8), rs.getString(9));
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}		
+					array.add(training);
+				}
+		  
+		  return array;
+		  }
 	
 }
 
