@@ -87,7 +87,7 @@ public class ClientFrame extends JFrame implements ClientIF {
 	
 	public void init() throws IOException{
 		
-		this.setSize(1000, 600);
+		this.setSize(1300,700);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -96,7 +96,7 @@ public class ClientFrame extends JFrame implements ClientIF {
 		setTitle("Training - Client");
 		setResizable(false);
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-		setLocation(new Point(200, 100));
+		setLocation(new Point(40, 10));
 		initTopBar();
 		initSideBar();
 		setVisible(true);

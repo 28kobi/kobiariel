@@ -194,7 +194,9 @@ public class plannedpersonaltraining implements Serializable{
 	public void setDate(String date) {
 		this.date = date;
 	}
-	
+	public String toString() {
+		return date+" "+details;
+	}
 	
 	
 

@@ -42,7 +42,16 @@ public class activitytypeQuery extends Query{
 		query2.close();
 		return 1;	
 	}
-	
+	 
+		public activitytype getactivitytypeById(int activityId) throws SQLException{
+			setQuery("SELECT * FROM activitytype " + "WHERE activityId = '"+activityId+"'");
+			ResultSet rs = execQuery();
+			if (rs.next()){
+				activitytype activity = new activitytype(activityId,  rs.getString(3));
+				return activity;
+			}
+			return null;
+		}
 	
 	
 	public boolean isExist(String activitytype) throws SQLException{
