@@ -252,7 +252,7 @@ public class EditTrainingPanel extends MyJPanel {
 		
 		
 		lblDistance_1 = new JLabel("distance:");
-		lblDistance_1.setBounds(505, 125, 71, 20);
+		lblDistance_1.setBounds(522, 125, 71, 20);
 		add(lblDistance_1);
 		
 		lblHereYouCan = new JLabel("  training change :");
@@ -271,13 +271,13 @@ public void initTextPane(){
 	add(textPaneDuration);
 	
 	textPaneDistance = new JTextPane();
-	textPaneDistance.setBounds(580, 125, 71, 20);
+	textPaneDistance.setBounds(590, 125, 71, 20);
 	textPaneDistance.setFont(new Font("Tahoma", Font.BOLD, 14));
 	textPaneDistance.setBackground(Color.lightGray);
 	add(textPaneDistance);
 	
 	textPaneDate = new JTextPane();
-	textPaneDate.setBounds(420, 122, 71, 20);
+	textPaneDate.setBounds(420, 122, 97, 20);
 	textPaneDate.setFont(new Font("Tahoma", Font.BOLD, 14));
 	textPaneDate.setBackground(Color.lightGray);
 	add(textPaneDate);
