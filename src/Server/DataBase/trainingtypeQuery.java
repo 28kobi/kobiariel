@@ -49,7 +49,15 @@ public class trainingtypeQuery extends Query{
 			return false;
 		}
 	}
-	
+	public trainingtype getatrainingtypeById(int trainingid) throws SQLException{
+		setQuery("SELECT * FROM trainingtype " + "WHERE trainingId = '"+trainingid+"'");
+		ResultSet rs = execQuery();
+		if (rs.next()){
+			trainingtype trainingType = new trainingtype(trainingid, rs.getInt(2),  rs.getString(3));
+			return trainingType;
+		}
+		return null;
+	}
 	
 	public ArrayList<trainingtype> getAllTrainingTypeByActivityId(int activityId) throws SQLException{
 		ArrayList<trainingtype> array = new ArrayList<trainingtype>();

@@ -62,7 +62,22 @@ public class plannedteamtrainingQuery extends Query{
 		  
 		  return array;
 		  }
-		
+	public int upDateTeamTraining(plannedteamtraining training) throws SQLException{
+		setQuery("UPDATE plannedteamtraining set  teamId=?, activityid=?, trainingTypeId=?, time=?,details=?,duration=?,distance=?,date=? WHERE trainingId=?");
+		PreparedStatement query2 = getPS();
+		query2.setInt(1, training.getTeamId());
+		query2.setInt(2,training.getActivityid());
+		query2.setInt(3, training.getTrainingTypeId());
+		query2.setString(4,training.getTime());
+		query2.setString(5, training.getDetails());
+		query2.setString(6,training.getDuration());
+		query2.setString(7,training.getDistance());
+		query2.setString(8, training.getDate());
+		query2.setInt(9, training.getTrainingId());
+		query2.executeUpdate();
+		query2.close();
+	    return 1;
+	}	
 		
 	
 }

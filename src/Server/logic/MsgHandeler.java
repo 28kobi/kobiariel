@@ -51,10 +51,14 @@ import Server.Message.MessageRemoveAactivityType;
 import Server.Message.MessageRemoveAactivityTypeReplay;
 import Server.Message.MessageUpdateAthlete;
 import Server.Message.MessageUpdateAthleteReplay;
+import Server.Message.MessageUpdateAthleteTraining;
+import Server.Message.MessageUpdateAthleteTrainingReplay;
 import Server.Message.MessageUpdateCoach;
 import Server.Message.MessageUpdateCoachReplay;
 import Server.Message.MessageUpdateTeam;
 import Server.Message.MessageUpdateTeamReplay;
+import Server.Message.MessageUpdateTeamTraining;
+import Server.Message.MessageUpdateTeamTrainingReplay;
 import ocsf.server.ConnectionToClient;
 /**
  * 
@@ -114,6 +118,13 @@ public class MsgHandeler {
 			MessageUpdateCoachReplay mgsr1 = new MessageUpdateCoachReplay(UserQuery1.UpdateUser(Messageupdatecoach.getCoach()));
 			client.sendToClient(mgsr1);
 			UserQuery1.close();
+			break;
+		case MESSAGE_GET_ALL_TRAINING_BY_ATHLETE_ID:
+			plannedpersonaltrainingQuery plannedpersonaltraining1 = new plannedpersonaltrainingQuery();
+			MessageGetAllPersonalTrainingByAtleteId MessageGetAllPersonalTrainingByAtleteId1 = (MessageGetAllPersonalTrainingByAtleteId) message ;
+			MessageGetAllPersonalTrainingByAtleteIdReplay mgsr15 = new MessageGetAllPersonalTrainingByAtleteIdReplay(plannedpersonaltraining1.getAllPersonalTrainingByAthleteId(MessageGetAllPersonalTrainingByAtleteId1.getAthleteId()));
+			client.sendToClient(mgsr15);
+			plannedpersonaltraining1.close();
 			break;
 		case MESSAGE_CREATE_NEW_COACH:
 			UserQuery UserQuery2 = new UserQuery();
@@ -241,14 +252,20 @@ public class MsgHandeler {
 			client.sendToClient(mgsr13);
 			trainingtypeQuery1.close();
 			break;
-		case MESSAGE_GET_ALL_TRAINING_BY_ATHLETE_ID:
-			plannedpersonaltrainingQuery plannedpersonaltraining1 = new plannedpersonaltrainingQuery();
-			MessageGetAllPersonalTrainingByAtleteId MessageGetAllPersonalTrainingByAtleteId1 = (MessageGetAllPersonalTrainingByAtleteId) message ;
-			MessageGetAllPersonalTrainingByAtleteIdReplay mgsr15 = new MessageGetAllPersonalTrainingByAtleteIdReplay(plannedpersonaltraining1.getAllPersonalTrainingByAthleteId(MessageGetAllPersonalTrainingByAtleteId1.getAthleteId()));
-			client.sendToClient(mgsr15);
-			plannedpersonaltraining1.close();
+		case MESSAGE_UPDATE_TEAMTRAINING:
+			plannedteamtrainingQuery plannedteamtrainingQuery4 = new plannedteamtrainingQuery();
+			MessageUpdateTeamTraining MessageUpdateTeamTraining1 = (MessageUpdateTeamTraining) message ;
+			MessageUpdateTeamTrainingReplay mgsr16 = new MessageUpdateTeamTrainingReplay(plannedteamtrainingQuery4.upDateTeamTraining(MessageUpdateTeamTraining1.gettraining()));
+			client.sendToClient(mgsr16);
+			plannedteamtrainingQuery4.close();
 			break;
-		
+		case MESSAGE_UPDATE_ATHLETE_TRAINING:
+			plannedpersonaltrainingQuery plannedpersonaltrainingQuery1 = new plannedpersonaltrainingQuery();
+			MessageUpdateAthleteTraining MessageUpdateAthleteTraining1 = (MessageUpdateAthleteTraining) message ;
+			MessageUpdateAthleteTrainingReplay mgsr17 = new MessageUpdateAthleteTrainingReplay(plannedpersonaltrainingQuery1.upDatePersonalTraining(MessageUpdateAthleteTraining1.gettraining()));
+			client.sendToClient(mgsr17);
+			plannedpersonaltrainingQuery1.close();
+			break;
 			
 		}
 	}

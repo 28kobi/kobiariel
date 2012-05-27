@@ -23,6 +23,8 @@ import Server.Message.MessageCreateNewTeamTraining;
 import Server.Message.MessageCreateNewTeamTrainingReplay;
 import Server.Message.MessageGetAllAactivityType;
 import Server.Message.MessageGetAllAactivityTypeReplay;
+import Server.Message.MessageGetAllAthleteByCoachId;
+import Server.Message.MessageGetAllAthleteByCoachIdReplay;
 import Server.Message.MessageGetAllTeamByCoachId;
 import Server.Message.MessageGetAllTeamByCoachReplay;
 import Server.Message.MessageGetAllTrainingType;
@@ -119,8 +121,8 @@ public class CreateNewTrainingPanel extends MyJPanel {
 		allTeamArray = rep1.getArray();
 		
 		allAthleteArray = new ArrayList<User>();
-		getClient().sendMsgToServer(new MessageGetAllUnTeamedAthlete());
-		MessageGetAllUnTeamedAthleteReplay rep2= (MessageGetAllUnTeamedAthleteReplay)getClient().getMessageFromServer();
+		getClient().sendMsgToServer(new MessageGetAllAthleteByCoachId(getClient().getUser().getIdUser()));
+		MessageGetAllAthleteByCoachIdReplay rep2= (MessageGetAllAthleteByCoachIdReplay)getClient().getMessageFromServer();
 		allAthleteArray = rep2.getArray();
 	
 		allAactivityTypeArray = new ArrayList<activitytype>();
