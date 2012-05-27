@@ -296,12 +296,13 @@ public void initTextPane(){
 	
 	textPaneActivity = new JTextPane();
 	textPaneActivity.setFont(new Font("Tahoma", Font.BOLD, 14));
-	textPaneActivity.setBounds(110, 122, 71, 26);
+	textPaneActivity.setBounds(93, 122, 88, 26);
 	textPaneActivity.setBackground(Color.lightGray);
 	add(textPaneActivity);
 	
 	textPaneTraining = new JTextPane();
-	textPaneTraining.setBounds(292, 122, 71, 20);
+	textPaneTraining.setBounds(274, 122, 89, 20);
+	textPaneTraining.setFont(new Font("Tahoma", Font.BOLD, 14));
 	textPaneTraining.setBackground(Color.lightGray);
 	add(textPaneTraining);
 	
@@ -450,7 +451,7 @@ public void initTextField(){
 						}
 					
 					if(comboBoxDay.isEnabled()&&!comboBoxDay.getSelectedItem().toString().equals("choose..")&&!comboBoxMonth.getSelectedItem().toString().equals("choose..")&&!comboBoxYear.getSelectedItem().toString().equals("choose..")){
-						msg="'"+comboBoxDay.getSelectedItem().toString()+"'"+"'"+comboBoxMonth.getSelectedItem().toString()+"'"+"'"+comboBoxYear.getSelectedItem().toString()+"'";
+						msg=""+comboBoxDay.getSelectedItem().toString()+"/"+""+comboBoxMonth.getSelectedItem().toString()+""+"/"+comboBoxYear.getSelectedItem().toString()+"";
 						updatedTraining.setDate(msg);
 					}
 					else
@@ -459,7 +460,7 @@ public void initTextField(){
 				
 					
 					if(!comboBoxHour.getSelectedItem().toString().equals("choose..")&&!comboBoxMin.getSelectedItem().toString().equals("choose..")){
-						msg="'"+comboBoxHour.getSelectedItem().toString()+"'"+"'"+comboBoxMin.getSelectedItem().toString()+"'";
+						msg=""+comboBoxHour.getSelectedItem().toString()+""+":"+comboBoxMin.getSelectedItem().toString()+"";
 						updatedTraining.setTime(msg);
 					}
 					else
@@ -528,7 +529,7 @@ public void initTextField(){
 						}
 					
 					if(comboBoxDay.isEnabled()&&!comboBoxDay.getSelectedItem().toString().equals("choose..")&&!comboBoxMonth.getSelectedItem().toString().equals("choose..")&&!comboBoxYear.getSelectedItem().toString().equals("choose..")){
-						msg="'"+comboBoxDay.getSelectedItem().toString()+"'"+"'"+comboBoxMonth.getSelectedItem().toString()+"'"+"'"+comboBoxYear.getSelectedItem().toString()+"'";
+						msg=""+comboBoxDay.getSelectedItem().toString()+""+"/"+comboBoxMonth.getSelectedItem().toString()+""+"/"+comboBoxYear.getSelectedItem().toString()+"";
 						updatedTraining1.setDate(msg);
 					}
 					else
@@ -537,7 +538,7 @@ public void initTextField(){
 				
 					
 					if(!comboBoxHour.getSelectedItem().toString().equals("choose..")&&!comboBoxMin.getSelectedItem().toString().equals("choose..")){
-						msg="'"+comboBoxHour.getSelectedItem().toString()+"'"+"'"+comboBoxMin.getSelectedItem().toString()+"'";
+						msg=""+comboBoxHour.getSelectedItem().toString()+""+":"+comboBoxMin.getSelectedItem().toString()+"";
 						updatedTraining1.setTime(msg);
 					}
 					else
@@ -600,7 +601,7 @@ public void initTextField(){
 		    				
 		    	}
 		    });
-			rdbtnTeamTraining.setBounds(6, 7, 109, 23);
+			rdbtnTeamTraining.setBounds(6, 7, 138, 23);
 			add(rdbtnTeamTraining);
 			
 			rdbtnPersonalTraining = new JRadioButton("personal training");
@@ -626,7 +627,7 @@ public void initTextField(){
 			else 
 				comboBoxTeams.setEnabled(false);	
 
-			rdbtnPersonalTraining.setBounds(6, 34, 109, 23);
+			rdbtnPersonalTraining.setBounds(6, 34, 138, 23);
 			add(rdbtnPersonalTraining); 
 			
 			
@@ -694,12 +695,12 @@ public void initTextField(){
 			
 		    comboBoxTeams = new JComboBox();
 		    
-			comboBoxTeams.setBounds(160, 7, 117, 20);
+			comboBoxTeams.setBounds(175, 7, 117, 20);
 			add(comboBoxTeams);
 			comboBoxTeams.setEnabled(false);
 			
 			comboBoxAthlete = new JComboBox();
-			comboBoxAthlete.setBounds(160,38, 117, 20);
+			comboBoxAthlete.setBounds(175,38, 117, 20);
 			comboBoxAthlete.setEnabled(false);
 			add(comboBoxAthlete);
 			comboBoxAthlete.setEnabled(false);

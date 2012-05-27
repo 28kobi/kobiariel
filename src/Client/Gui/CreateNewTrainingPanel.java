@@ -329,9 +329,9 @@ public class CreateNewTrainingPanel extends MyJPanel {
 								team=(Team)comboBoxTeams.getSelectedItem();
 								plannedTeamTraining = new plannedteamtraining();
 								plannedTeamTraining.setTeamId(team.getTeamId());
-								msg="'"+comboBoxDay.getSelectedItem().toString()+"'"+"'"+comboBoxMonth.getSelectedItem().toString()+"'"+"'"+comboBoxYear.getSelectedItem().toString()+"'";
+								msg=""+comboBoxDay.getSelectedItem().toString()+"/"+""+comboBoxMonth.getSelectedItem().toString()+"/"+""+comboBoxYear.getSelectedItem().toString()+"";
 								plannedTeamTraining.setDate(msg);
-								msg="'"+comboBoxHour.getSelectedItem().toString()+"'"+"'"+comboBoxMin.getSelectedItem().toString()+"'";
+								msg=""+comboBoxHour.getSelectedItem().toString()+""+":"+comboBoxMin.getSelectedItem().toString()+"";
 								plannedTeamTraining.setTime(msg);
 								activityType=(activitytype)comboBoxActivityType.getSelectedItem();
 								plannedTeamTraining.setActivityid(activityType.getActivityId());
@@ -367,9 +367,9 @@ public class CreateNewTrainingPanel extends MyJPanel {
 								athlete=(User)comboBoxAthlete.getSelectedItem();
 								plannedPersonalTraining = new plannedpersonaltraining();
 								plannedPersonalTraining.setathleteId(athlete.getIdUser());
-								msg="'"+comboBoxDay.getSelectedItem().toString()+"'"+"'"+comboBoxMonth.getSelectedItem().toString()+"'"+"'"+comboBoxYear.getSelectedItem().toString()+"'";
+								msg="'"+comboBoxDay.getSelectedItem().toString()+"/"+""+comboBoxMonth.getSelectedItem().toString()+""+"/"+comboBoxYear.getSelectedItem().toString()+"";
 								plannedPersonalTraining.setDate(msg);
-								msg="'"+comboBoxHour.getSelectedItem().toString()+"'"+"'"+comboBoxMin.getSelectedItem().toString()+"'";
+								msg=""+comboBoxHour.getSelectedItem().toString()+""+":"+comboBoxMin.getSelectedItem().toString()+"";
 								plannedPersonalTraining.setTime(msg);
 								activityType=(activitytype)comboBoxActivityType.getSelectedItem();
 								plannedPersonalTraining.setActivityid(activityType.getActivityId());
