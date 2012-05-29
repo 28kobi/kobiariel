@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import Server.DataBase.PreformedPersonalTraining;
 import Server.DataBase.PreformedPersonalTrainingQuery;
+import Server.DataBase.PreformedTeamTrainingQuery;
 import Server.DataBase.TeamQuery;
 import Server.DataBase.User;
 import Server.DataBase.UserQuery;
@@ -24,6 +25,8 @@ import Server.Message.MessageCreateNewCoach;
 import Server.Message.MessageCreateNewCoachReplay;
 import Server.Message.MessageCreateNewPersonalTraining;
 import Server.Message.MessageCreateNewPersonalTrainingReplay;
+import Server.Message.MessageCreateNewPreformedTeamPlannedTraining;
+import Server.Message.MessageCreateNewPreformedTeamPlannedTrainingReplay;
 import Server.Message.MessageCreateNewTeam;
 import Server.Message.MessageCreateNewTeamReplay;
 import Server.Message.MessageCreateNewTeamTraining;
@@ -288,6 +291,14 @@ public class MsgHandeler {
 			client.sendToClient(mgsr17);
 			plannedpersonaltrainingQuery1.close();
 			break;
+		case MESSAGE_CREATE_NEW_PREFORMED_TEAM_PLANNED_TRAINING:
+			PreformedTeamTrainingQuery PreformedTeamTrainingQuery = new PreformedTeamTrainingQuery();
+			MessageCreateNewPreformedTeamPlannedTraining MessageCreateNewPreformedTeamPlannedTraining = (MessageCreateNewPreformedTeamPlannedTraining) message ;
+			MessageCreateNewPreformedTeamPlannedTrainingReplay msgr11 = new MessageCreateNewPreformedTeamPlannedTrainingReplay(PreformedTeamTrainingQuery.addPlannedPreformedTeamTrainingByAthlete(MessageCreateNewPreformedTeamPlannedTraining.getPreformedTeamTraining()));
+			client.sendToClient(msgr11);
+			PreformedTeamTrainingQuery.close();
+			break;
+
 
 			
 	
