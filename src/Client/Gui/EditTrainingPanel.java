@@ -191,9 +191,7 @@ public class EditTrainingPanel extends MyJPanel {
 		add(lblMonth);
 		
 		lblYear = new JLabel("year:");
-
 		lblYear.setBounds(392, 183, 26, 14);
-
 		lblYear.setBounds(350, 270, 46, 14);
 
 		add(lblYear);
@@ -203,11 +201,8 @@ public class EditTrainingPanel extends MyJPanel {
 		add(lblHour);
 		
 		lblMi = new JLabel("min:");
-
 		lblMi.setBounds(258, 213, 33, 14);
-
 		lblMi.setBounds(258, 300, 46, 14);
-
 		add(lblMi);
 		
 		lblTime = new JLabel("Time:");
@@ -225,7 +220,7 @@ public class EditTrainingPanel extends MyJPanel {
 		lblActivityName = new JLabel("activity name:");
 		lblActivityName.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		lblActivityName.setBackground(Color.WHITE);
-		lblActivityName.setBounds(6, 125, 109, 24);
+		lblActivityName.setBounds(6, 125, 82, 24);
 		add(lblActivityName);
 		
 		
@@ -264,7 +259,7 @@ public class EditTrainingPanel extends MyJPanel {
 		lblHereYouCan = new JLabel("  training change :");
 		lblHereYouCan.setBackground(Color.LIGHT_GRAY);
 		lblHereYouCan.setFont(new Font("Tekton Pro Ext", Font.BOLD, 24));
-		lblHereYouCan.setBounds(25, 200, 428, 43);
+		lblHereYouCan.setBounds(0, 216, 428, 43);
 		add(lblHereYouCan);
 		
 		
@@ -289,7 +284,7 @@ public void initTextPane(){
 	add(textPaneDate);
 	
 	textPaneDetails = new JTextPane();
-	textPaneDetails.setBounds(196, 162, 63, 20);
+	textPaneDetails.setBounds(214, 156, 63, 20);
 	textPaneDetails.setFont(new Font("Tahoma", Font.BOLD, 14));
 	textPaneDetails.setBackground(Color.lightGray);
 	add(textPaneDetails);
@@ -320,20 +315,14 @@ public void initTextPane(){
 public void initTextField(){
 		
 		textFieldDistance = new JTextField();
-
-		textFieldDistance.setBounds(150, 360, 311, 24);
-
+		textFieldDistance.setBounds(150, 450, 184, 24);
 		textFieldDistance.setBounds(150, 450, 153, 24);
-
 		add(textFieldDistance);
 		
 		
 		textFieldDuration = new JTextField();
-
-		textFieldDuration.setBounds(150, 330, 311, 23);
-
+		textFieldDuration.setBounds(150, 420, 311, 23);
 		textFieldDuration.setBounds(150, 420, 184, 23);
-
 		add(textFieldDuration);
 		
 		
