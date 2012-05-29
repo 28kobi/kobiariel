@@ -42,21 +42,14 @@ public class AddActivityMethodPanel extends MyJPanel {
 	
 	public AddActivityMethodPanel(ClientIF client) {
 		super(PanelType.ADD_ACTIVITY_TYPE_PANEL, client);
-		BufferedImage myPic;
-		try {
-			myPic = ImageIO.read(new File("image"+ File.separator+"home.jpg"));
 		
-			JLabel lblAddActivityMethod = new JLabel(new ImageIcon(myPic), JLabel.CENTER);
+			JLabel lblAddActivityMethod = new JLabel();
 			lblAddActivityMethod.setBounds(643, 13, -46, 10);
 			add(lblAddActivityMethod);
 			
 			str = getClient().getUser().toString();
 			
 		
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		setLayout(null);
 		
 		init();

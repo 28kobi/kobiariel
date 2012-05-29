@@ -60,18 +60,12 @@ public class AddAthleteToTeamPanel extends MyJPanel {
 	public AddAthleteToTeamPanel(ClientIF client) {
 		super(PanelType.ADD_ATHLETE_TO_TEAM_PANEL, client);
 		setLayout(null);
-		BufferedImage myPic;
-		try {
-			myPic = ImageIO.read(new File("image"+ File.separator+"home.jpg"));
 		
-			JLabel lblEditAthlete = new JLabel(new ImageIcon(myPic), JLabel.CENTER);
+			JLabel lblEditAthlete = new JLabel();
 			lblEditAthlete.setBounds(149, 11, 340, 46);
 			add(lblEditAthlete);
 			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 		
 	init();
 	 
