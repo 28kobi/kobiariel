@@ -3,6 +3,8 @@ package Server.logic;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import Server.DataBase.PreformedPersonalTraining;
+import Server.DataBase.PreformedPersonalTrainingQuery;
 import Server.DataBase.TeamQuery;
 import Server.DataBase.User;
 import Server.DataBase.UserQuery;
@@ -28,6 +30,8 @@ import Server.Message.MessageCreateNewTeamTraining;
 import Server.Message.MessageCreateNewTeamTrainingReplay;
 import Server.Message.MessageCreateNewTrainingType;
 import Server.Message.MessageCreateNewTrainingTypeReplay;
+import Server.Message.MessageCreateNewUnPlannedTraining;
+import Server.Message.MessageCreateNewUnPlannedTrainingReplay;
 import Server.Message.MessageGetAllAactivityTypeReplay;
 import Server.Message.MessageGetAllAthleteByCoachId;
 import Server.Message.MessageGetAllAthleteByCoachIdReplay;
@@ -42,6 +46,8 @@ import Server.Message.MessageGetAllTeamTrainingByTeamIdReplay;
 import Server.Message.MessageGetAllTrainingType;
 import Server.Message.MessageGetAllTrainingTypeReplay;
 import Server.Message.MessageGetAllUnTeamedAthleteReplay;
+import Server.Message.MessageGetAthleteByUserId;
+import Server.Message.MessageGetAthleteByUserIdReplay;
 import Server.Message.MessageGetUserByUserId;
 import Server.Message.MessageGetUserByUserIdReplay;
 import Server.Message.MessageLogin;
@@ -259,6 +265,22 @@ public class MsgHandeler {
 			client.sendToClient(mgsr16);
 			plannedteamtrainingQuery4.close();
 			break;
+
+		case MESSAGE_GET_ATHLETE_BY_USER_ID:
+			athleteQuery athleteQuery= new athleteQuery();
+			MessageGetAthleteByUserId MessageGetAthleteByUserId = (MessageGetAthleteByUserId) message ;
+			MessageGetAthleteByUserIdReplay mgabid  = new MessageGetAthleteByUserIdReplay(athleteQuery.getAthleteByUserId(MessageGetAthleteByUserId.getUserId()));
+			client.sendToClient(mgabid);
+			athleteQuery.close();
+			break;
+		case MESSAGE_CREATE_NEW_TEAM_UN_PLANNED_TRAINING:
+			PreformedPersonalTrainingQuery PreformedPersonalTrainingQuery = new PreformedPersonalTrainingQuery();
+			MessageCreateNewUnPlannedTraining MessageCreateNewUnPlannedTraining = (MessageCreateNewUnPlannedTraining) message ;
+			MessageCreateNewUnPlannedTrainingReplay msgr10 = new MessageCreateNewUnPlannedTrainingReplay(PreformedPersonalTrainingQuery.addUnPlannedTrainingByAthlete(MessageCreateNewUnPlannedTraining.getPreformedtraining()));
+			client.sendToClient(msgr10);
+			PreformedPersonalTrainingQuery.close();
+			break;
+
 		case MESSAGE_UPDATE_ATHLETE_TRAINING:
 			plannedpersonaltrainingQuery plannedpersonaltrainingQuery1 = new plannedpersonaltrainingQuery();
 			MessageUpdateAthleteTraining MessageUpdateAthleteTraining1 = (MessageUpdateAthleteTraining) message ;
@@ -266,6 +288,9 @@ public class MsgHandeler {
 			client.sendToClient(mgsr17);
 			plannedpersonaltrainingQuery1.close();
 			break;
+
+			
+	
 			
 		}
 	}

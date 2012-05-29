@@ -2,6 +2,7 @@
 package Server.DataBase;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -26,8 +27,15 @@ public class athleteQuery extends Query{
 		query2.close();
 		return 1;
 	}
-	
-	
+	public athlete getAthleteByUserId(int UserId) throws SQLException{
+		setQuery("SELECT * FROM athlete " + "WHERE UserId = '"+UserId+"'");
+		ResultSet rs = execQuery();
+		if (rs.next()){
+			athlete athlete = new athlete(UserId, rs.getInt(2));
+			return athlete;
+		}
+		return null;
+	}
 	
 
 }
