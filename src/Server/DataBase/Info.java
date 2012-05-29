@@ -123,6 +123,23 @@ public class Info extends Query{
 		update.executeUpdate();
 		update.close();
 	}
+	public int getNewUnPlannedPersonalpreformedId() throws SQLException{
+		setQuery("SELECT * FROM info " + "WHERE name = ?");
+		PreparedStatement query = getPS();
+		query.setString(1, "LastUnPlannedPersonalpreformedId");
+		ResultSet rs = query.executeQuery();
+		if (rs.next()) return rs.getInt(3) + 1;
+		else return 0;	
+	
+	}
+	public void incNewUnPlannedPersonalpreformedId() throws SQLException{
+		setQuery("UPDATE info "+"SET data = ? WHERE name = ? ");
+		PreparedStatement update = getPS();
+		update.setInt(1, getNewUnPlannedPersonalpreformedId());
+		update.setString(2, "LastUnPlannedPersonalpreformedId");
+		update.executeUpdate();
+		update.close();
+	}
 	
 }
 

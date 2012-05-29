@@ -159,7 +159,7 @@ public class EditTrainingPanel extends MyJPanel {
 		
 
 		lblChooseTraining = new JLabel("choose training:");
-		lblChooseTraining.setBounds(6, 85, 105, 14);
+		lblChooseTraining.setBounds(10, 85, 105, 14);
 		add(lblChooseTraining);
 		
 		lblDetails = new JLabel("Details: ");
@@ -183,11 +183,19 @@ public class EditTrainingPanel extends MyJPanel {
 		add(lblDay);
 		
 		lblMonth = new JLabel("month:");
+
+		lblMonth.setBounds(256, 183, 35, 14);
+
 		lblMonth.setBounds(222, 270, 46, 14);
+
 		add(lblMonth);
 		
 		lblYear = new JLabel("year:");
+
+		lblYear.setBounds(392, 183, 26, 14);
+
 		lblYear.setBounds(350, 270, 46, 14);
+
 		add(lblYear);
 		
 		lblHour = new JLabel("hour:");
@@ -195,7 +203,11 @@ public class EditTrainingPanel extends MyJPanel {
 		add(lblHour);
 		
 		lblMi = new JLabel("min:");
+
+		lblMi.setBounds(258, 213, 33, 14);
+
 		lblMi.setBounds(258, 300, 46, 14);
+
 		add(lblMi);
 		
 		lblTime = new JLabel("Time:");
@@ -308,12 +320,20 @@ public void initTextPane(){
 public void initTextField(){
 		
 		textFieldDistance = new JTextField();
+
+		textFieldDistance.setBounds(150, 360, 311, 24);
+
 		textFieldDistance.setBounds(150, 450, 153, 24);
+
 		add(textFieldDistance);
 		
 		
 		textFieldDuration = new JTextField();
+
+		textFieldDuration.setBounds(150, 330, 311, 23);
+
 		textFieldDuration.setBounds(150, 420, 184, 23);
+
 		add(textFieldDuration);
 		
 		
@@ -630,12 +650,20 @@ public void initTextField(){
 	 public void initComboBox(){
 		 
 		 	comboBoxDay = new JComboBox();
+
+			comboBoxDay.setBounds(151, 180, 97, 20);
+
 			comboBoxDay.setBounds(151, 270, 60, 20);
+
 			comboBoxDay.setEnabled(false);
 			add(comboBoxDay);
 			
 			comboBoxMonth = new JComboBox();
+
+			comboBoxMonth.setBounds(301, 180, 82, 20);			
+
 			comboBoxMonth.setBounds(274, 270, 61, 20);			
+
 			 for (int i=0; i<=month.length; i++)
 				{
 					if (i==0) comboBoxMonth.addItem("Choose..");
@@ -644,7 +672,11 @@ public void initTextField(){
 			add(comboBoxMonth);
 			
 			comboBoxYear = new JComboBox();
+
+			comboBoxYear.setBounds(425, 180, 87, 20);
+
 			comboBoxYear.setBounds(391, 270, 71, 20);
+
 			 for (int j=0; j<=year.length; j++)
 				{
 					if (j==0) comboBoxYear.addItem("Choose..");
@@ -653,7 +685,11 @@ public void initTextField(){
 			add(comboBoxYear);
 			
 			comboBoxHour = new JComboBox();
+
+			comboBoxHour.setBounds(151, 210, 97, 20);
+
 			comboBoxHour.setBounds(151, 300, 71, 20);
+
 			for(int hour=0;hour<25;hour++){
 				if(hour==0) comboBoxHour.addItem("choose..");
 				else comboBoxHour.addItem(Integer.toString(hour));
@@ -662,7 +698,11 @@ public void initTextField(){
 			add(comboBoxHour);
 						
 			comboBoxMin = new JComboBox();
+
+			comboBoxMin.setBounds(301, 210, 82, 20);
+
 			comboBoxMin.setBounds(300, 300, 71, 20);
+
 			for(int min=0;min<75;min=min+15){
 				if(min==0) comboBoxMin.addItem("choose..");
 				else comboBoxMin.addItem(Integer.toString(min));
@@ -671,8 +711,12 @@ public void initTextField(){
 			add(comboBoxMin);
 			
 			comboBoxActivityType = new JComboBox();		
+
+			comboBoxActivityType.setBounds(150, 240, 109, 20);
+
 			
 			comboBoxActivityType.setBounds(150, 330, 105, 20);
+
 			add(comboBoxActivityType);
 						
 			comboBoxTrainingType = new JComboBox();
@@ -757,29 +801,29 @@ public void initTextField(){
 					int month= Integer.parseInt((String) comboBoxMonth.getSelectedItem());
 					 switch (month) {
 					 		case 1:case 3:case 5:case 7:case 8: case 10: 
-					 			comboBoxDay.removeAllItems();
-			            		for(int i=0;i<32;i++){
+					 				comboBoxDay.removeAllItems();
+					 				for(int i=0;i<32;i++){
 			            			if (i==0) comboBoxDay.addItem("Choose..");
 			            			else comboBoxDay.addItem(i);
-			            		}
-			            		 comboBoxDay.setEnabled(true);
-			                     break;
-			           	case 2:
-			           		comboBoxDay.removeAllItems();
-					 			for(int i=0;i<29;i++){
+					 				}
+					 				comboBoxDay.setEnabled(true);
+					 				break;
+					 		case 2:
+					 				comboBoxDay.removeAllItems();
+					 				for(int i=0;i<29;i++){
 					 				if (i==0) comboBoxDay.addItem("Choose..");
 					 				else comboBoxDay.addItem(i);
 					 				}
-					 			comboBoxDay.setEnabled(true);
-			                    break;
-			            case 4:case 6:case 9:case 11:
-			            	comboBoxDay.removeAllItems();
-			            		for(int i=0;i<31;i++){
+					 				comboBoxDay.setEnabled(true);
+			                  	  break;
+					 		case 4:case 6:case 9:case 11:
+					 				comboBoxDay.removeAllItems();
+					 				for(int i=0;i<31;i++){
 			            			if (i==0) comboBoxDay.addItem("Choose..");
 			            			else comboBoxDay.addItem(i);
 	           	            		}
-			            		comboBoxDay.setEnabled(true);
-			            		break;
+					 				comboBoxDay.setEnabled(true);
+					 				break;
 					 }
 					 
 				}	 

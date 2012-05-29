@@ -1,4 +1,5 @@
 package Server.DataBase;
+
 import java.io.Serializable;
 /**
  * 
@@ -7,19 +8,18 @@ import java.io.Serializable;
  *
  */
 
-public class plannedpersonaltraining implements Serializable{
+public class PreformedPersonalTraining implements Serializable{
 
-	/**
-	 * Contains user info 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	
 	/**
 	 * user id number
 	 */
-	private int trainingId;
+	private int preformedId;
 	private int athleteId;
+	private String isplanned;
+	private int trainingId;
 	private int activityid;
 	private int trainingTypeId;
 	private String time;
@@ -29,18 +29,18 @@ public class plannedpersonaltraining implements Serializable{
 	private String date;
 	
 	
-	
-	public plannedpersonaltraining() {
-		super();
-		
+	public PreformedPersonalTraining(){
 		
 	}
 	
-	public plannedpersonaltraining(int trainingId,int athleteId,int activityid , int trainingTypeId,String time,String details,
+	
+	public PreformedPersonalTraining(int preformedId,int athleteId,String isplanned,int trainingId,int activityid , int trainingTypeId,String time,String details,
 			String duration ,String distance,String date) {
 		super();
-		this.trainingId=trainingId;
+		this.preformedId=preformedId;
 		this.athleteId=athleteId;
+		this.isplanned=isplanned;
+		this.trainingId=trainingId;
 		this.activityid=activityid;
 		this.trainingTypeId=trainingTypeId;
 		this.time=time;
@@ -51,6 +51,36 @@ public class plannedpersonaltraining implements Serializable{
 		
 	}
 
+
+	public int getPreformedId() {
+		return preformedId;
+	}
+
+
+	public void setPreformedId(int preformedId) {
+		this.preformedId = preformedId;
+	}
+
+
+	public int getAthleteId() {
+		return athleteId;
+	}
+
+
+	public void setAthleteId(int athleteId) {
+		this.athleteId = athleteId;
+	}
+
+
+	public String getIsplanned() {
+		return isplanned;
+	}
+
+
+	public void setIsplanned(String isplanned) {
+		this.isplanned = isplanned;
+	}
+	
 
 
 
@@ -66,24 +96,20 @@ public class plannedpersonaltraining implements Serializable{
 	public void setTrainingId(int trainingId) {
 		this.trainingId = trainingId;
 	}
-
-
-
-
-
-	public int getathleteId() {
-		return athleteId;
+	
+	
+	
+	public int getActivityid() {
+		return activityid;
 	}
 
 
 
 
 
-	public void setathleteId(int athleteId) {
-		this.athleteId = athleteId;
+	public void setActivityid(int activityid) {
+		this.activityid = activityid;
 	}
-
-
 
 
 
@@ -98,23 +124,6 @@ public class plannedpersonaltraining implements Serializable{
 	public void setTrainingTypeId(int trainingTypeId) {
 		this.trainingTypeId = trainingTypeId;
 	}
-
-
-
-
-
-	public int getActivityid() {
-		return activityid;
-	}
-
-
-
-
-
-	public void setActivityid(int activityid) {
-		this.activityid = activityid;
-	}
-
 
 
 
@@ -194,12 +203,13 @@ public class plannedpersonaltraining implements Serializable{
 	public void setDate(String date) {
 		this.date = date;
 	}
-
+	
+	
+	
 	public String toString() {
 		return date+" "+details;
-	}	
+	}
 
-	
 
 	
 }
