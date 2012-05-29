@@ -32,7 +32,7 @@ public class SideBar extends JPanel {
 		this.clientFrame = clientFrame;
 		this.user = user;
 		setBorder(new EmptyBorder(5, 10, 5, 30));
-		setBackground(Color.cyan);
+		setBackground(Color.lightGray);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		initLogin();
 	}

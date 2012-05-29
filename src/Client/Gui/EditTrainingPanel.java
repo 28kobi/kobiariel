@@ -123,19 +123,13 @@ public class EditTrainingPanel extends MyJPanel {
 	public EditTrainingPanel(ClientIF client) {
 		super(PanelType.EDIT_TRAINING_PANEL, client);
 		setLayout(null);
-		BufferedImage myPic;
-		try {
-			myPic = ImageIO.read(new File("image"+ File.separator+"home.jpg"));
-		
-			JLabel lblPerformedTraining = new JLabel(new ImageIcon(myPic), JLabel.CENTER);
+	
+	
+			JLabel lblPerformedTraining = new JLabel();
 			lblPerformedTraining.setBounds(477, 11, 12, 43);
 			add(lblPerformedTraining);
 			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+	
 	
 	   init();
 	}

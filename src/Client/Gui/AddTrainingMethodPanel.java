@@ -48,22 +48,15 @@ public class AddTrainingMethodPanel extends MyJPanel {
 	
 	public AddTrainingMethodPanel(ClientIF client) {
 		super(PanelType.ADD_TRAINING_METHOD_PANEL, client);
-		BufferedImage myPic;
-		try {
-			myPic = ImageIO.read(new File("image"+ File.separator+"home.jpg"));
 		
-			JLabel lblAddTrainingMethod = new JLabel(new ImageIcon(myPic), JLabel.CENTER);
+			JLabel lblAddTrainingMethod = new JLabel();
 			lblAddTrainingMethod.setBounds(100, 13, 497, 32);
 			add(lblAddTrainingMethod);
 			
 			str = getClient().getUser().toString();
 			
 			
-		
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	
 		setLayout(null);
 		init();
 	}
