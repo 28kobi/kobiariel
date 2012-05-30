@@ -31,8 +31,8 @@ public class PreformedPersonalTrainingQuery extends Query{
 		PreparedStatement query2 = getPS();
 		query2.setInt(1, NewUnPlannedPersonalpreformedId);
 		query2.setInt(2, Preformedtraining.getAthleteId());
-		query2.setString(3,"true");
-		query2.setInt(4, 0);
+		query2.setString(3,Preformedtraining.getIsplanned());
+		query2.setInt(4, Preformedtraining.getTrainingId());
 		query2.setInt(5, Preformedtraining.getActivityid());
 		query2.setInt(6, Preformedtraining.getTrainingTypeId());
 		query2.setString(7,Preformedtraining.getTime());
@@ -67,29 +67,7 @@ public ArrayList<PreformedPersonalTraining> getAllUnPlannedPreformedTrainingByAt
 		  return array;
 		  }
 
-public int addPlannedPreformedTrainingByAthlete(PreformedPersonalTraining Preformedtraining) throws SQLException{
-	Info info = new Info();
-	int NewUnPlannedPersonalpreformedId = info.getNewUnPlannedPersonalpreformedId();
-	
-	setQuery("INSERT INTO preformedpersonaltraining(preformedId,athleteId,isplanned,trainingId, activityid, trainingTypeId,time,details,duration,distance,date) VALUES(?,?,?,?,?,?,?,?,?,?,?)");
-	PreparedStatement query2 = getPS();
-	query2.setInt(1, NewUnPlannedPersonalpreformedId);
-	query2.setInt(2, Preformedtraining.getAthleteId());
-	query2.setString(3,"false");
-	query2.setInt(4, Preformedtraining.getTrainingId());
-	query2.setInt(5, Preformedtraining.getActivityid());
-	query2.setInt(6, Preformedtraining.getTrainingTypeId());
-	query2.setString(7,Preformedtraining.getTime());
-	query2.setString(8,Preformedtraining.getDetails());
-	query2.setString(9,Preformedtraining.getDuration());
-	query2.setString(10,Preformedtraining.getDistance());
-	query2.setString(11,Preformedtraining.getDate());
-	query2.executeUpdate();
-	query2.close();
-	info.incNewUnPlannedPersonalpreformedId();
-	info.close();
-	return 1;
-}
+
 
 public ArrayList<PreformedPersonalTraining> getAllPersonalPlannedPreformedTrainingByAthlete(int athleteId) throws SQLException{
 	
