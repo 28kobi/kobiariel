@@ -1,4 +1,5 @@
 
+
 package Client.Gui;
 import java.awt.Color;
 import java.awt.Component;
@@ -34,7 +35,7 @@ import Server.Message.MessageGetPlannedTrainingByTrainingId;
 import Server.Message.MessageGetPlannedTrainingByTrainingIdReplay;
 
 
-public class ViewPerformedTrainingPanel extends MyJPanel {
+public class ViewPerformedTeamTrainingPanel extends MyJPanel {
 	
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Team> allTeamArray =null;
@@ -92,8 +93,8 @@ public class ViewPerformedTrainingPanel extends MyJPanel {
 
 	
 	
-	public ViewPerformedTrainingPanel(ClientIF client) {
-		super(PanelType.COACH_VIEW_PERFORMED_TRAINING_PANEL, client);
+	public ViewPerformedTeamTrainingPanel(ClientIF client) {
+		super(PanelType.COACH_VIEW_PERFORMED_TEAM_TRAINING_PANEL, client);
 		setLayout(null);
 		
 		
@@ -568,7 +569,7 @@ public class ViewPerformedTrainingPanel extends MyJPanel {
 
 	@Override
 	public MyJPanel pushPanel() {
-		return new ViewPerformedTrainingPanel(getClient());
+		return new ViewPerformedTeamTrainingPanel(getClient());
 	}
 }
 

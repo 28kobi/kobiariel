@@ -173,10 +173,16 @@ public class SideBar extends JPanel {
 			clientFrame.swap(new ViewPlannedTrainingPanel(clientFrame));
 			}
 		});
-		JLinkButton ViewPerformedTraining = new JLinkButton("view performed training");
+		JLinkButton ViewPerformedTraining = new JLinkButton("view performed personal training");
 		ViewPerformedTraining.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				clientFrame.swap(new ViewPerformedTrainingPanel(clientFrame));			
+			}
+		});
+		JLinkButton ViewPerformedTeamTraining = new JLinkButton("view performed team training");
+		ViewPerformedTeamTraining.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				clientFrame.swap(new ViewPerformedTeamTrainingPanel(clientFrame));			
 			}
 		});
 		
@@ -189,6 +195,7 @@ public class SideBar extends JPanel {
 	this.add(EditTraingin);
 	this.add(CoachViewPlannedTraining);
 	this.add(ViewPerformedTraining);
+	this.add(ViewPerformedTeamTraining);
 	
 	
 	clientFrame.setVisible();
