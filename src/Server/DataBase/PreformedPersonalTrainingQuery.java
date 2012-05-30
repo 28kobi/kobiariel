@@ -110,5 +110,25 @@ public ArrayList<PreformedPersonalTraining> getAllPersonalPlannedPreformedTraini
 	  
 	  return array;
 	  }
+
+public ArrayList<PreformedPersonalTraining> getAllPersonalPreformedTrainingByAthlete(int athleteId) throws SQLException{
+	
+	ArrayList<PreformedPersonalTraining> array = new ArrayList<PreformedPersonalTraining>();
+	
+	setQuery("SELECT * FROM preformedpersonaltraining " + "WHERE athleteId  = '"+athleteId+"'");
+		ResultSet rs = execQuery();
+		while (rs.next()){				
+			PreformedPersonalTraining Preformedtraining = null;
+			try {
+				Preformedtraining = new PreformedPersonalTraining(rs.getInt(1), rs.getInt(2), rs.getString(3),rs.getInt(4), rs.getInt(5), rs.getInt(6),rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11));
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}		
+				array.add(Preformedtraining);
+			}
+	  
+	  return array;
+	  }
 }
 

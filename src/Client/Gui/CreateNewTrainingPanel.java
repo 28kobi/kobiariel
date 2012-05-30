@@ -32,7 +32,12 @@ import Server.Message.MessageGetAllTrainingTypeReplay;
 import Server.Message.MessageGetAllUnTeamedAthlete;
 import Server.Message.MessageGetAllUnTeamedAthleteReplay;
 import java.lang.Object;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Locale;
+
 import javax.swing.JRadioButton;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
@@ -84,8 +89,8 @@ public class CreateNewTrainingPanel extends MyJPanel {
 	private String msg;
 	private String[] month={"1","2","3","4","5","6","7","8","9","10","11","12"};
 	private String[] year={"2012","2013","2014","2015","2016"};
-	
-	 
+	private DateFormat df;
+	private Date date=null;
 	   
 	
 	
@@ -271,7 +276,7 @@ public class CreateNewTrainingPanel extends MyJPanel {
 	 }
 	 
 	 public void initJRadioButton(){
-		
+		   
 		    rdbtnTeamTraining = new JRadioButton("team training");
 		    rdbtnTeamTraining.addActionListener(new ActionListener() {
 		    	public void actionPerformed(ActionEvent e) {
@@ -319,7 +324,7 @@ public class CreateNewTrainingPanel extends MyJPanel {
 	 }
 	
 	 public void initbutton(){
-		 
+		
 		 buttonCreatTraining = new Button("Create training");
 		 buttonCreatTraining.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -328,8 +333,15 @@ public class CreateNewTrainingPanel extends MyJPanel {
 							if((!comboBoxDay.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxMonth.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxYear.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxHour.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxMin.getSelectedItem().toString().equals("Choose.."))){
 								team=(Team)comboBoxTeams.getSelectedItem();
 								plannedTeamTraining = new plannedteamtraining();
-								plannedTeamTraining.setTeamId(team.getTeamId());
+								plannedTeamTraining.setTeamId(team.getTeamId());	
 								msg=""+comboBoxDay.getSelectedItem().toString()+"/"+""+comboBoxMonth.getSelectedItem().toString()+"/"+""+comboBoxYear.getSelectedItem().toString()+"";
+								date =new Date();
+								try {
+									date=df.parse(msg);
+								} catch (ParseException e1) {
+									// TODO Auto-generated catch block
+									e1.printStackTrace();
+								}
 								plannedTeamTraining.setDate(msg);
 								msg=""+comboBoxHour.getSelectedItem().toString()+""+":"+comboBoxMin.getSelectedItem().toString()+"";
 								plannedTeamTraining.setTime(msg);
