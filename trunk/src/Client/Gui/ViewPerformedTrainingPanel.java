@@ -508,7 +508,7 @@ public class ViewPerformedTrainingPanel extends MyJPanel {
 		
 			  comboBoxAthlete.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-				       
+						
 						textPaneActivity.setText("");
 						textisPlanned.setText("");
 						textPaneTraining.setText("");
