@@ -21,7 +21,7 @@ public class MessageGetAllPreformedTeamTrainingByAtleteIdReplay extends Message 
  */
  	
     public MessageGetAllPreformedTeamTrainingByAtleteIdReplay(ArrayList<PreformedTeamTraining> array) {
-		super(MessageType.MESSAGE_GET_ALL_PEFORMED_TEAM_TRAINING_BY_ATHLETEG_REPLAY);
+		super(MessageType.MESSAGE_GET_ALL_PEFORMED_TEAM_TRAINING_BY_ATHLETE_REPLAY);
 		this.setPreformedTeamTraining1(array);
 	}
 public ArrayList<PreformedTeamTraining> getPreformedTeamTraining1() {
