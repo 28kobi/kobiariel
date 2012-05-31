@@ -27,6 +27,15 @@ public class athleteQuery extends Query{
 		query2.close();
 		return 1;
 	}
+	
+	
+	public int removeAthleteFromTeam(int userid) throws SQLException{
+		setQuery("DELETE FROM athlete WHERE UserId= '"+userid+"'");
+		PreparedStatement query2 = getPS();
+		query2.executeUpdate();
+		query2.close();
+		return 1;
+	}
 	public athlete getAthleteByUserId(int UserId) throws SQLException{
 		setQuery("SELECT * FROM athlete " + "WHERE UserId = '"+UserId+"'");
 		ResultSet rs = execQuery();

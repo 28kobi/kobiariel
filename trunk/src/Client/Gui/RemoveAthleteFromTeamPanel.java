@@ -13,11 +13,22 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import Client.Logic.ClientIF;
 import Server.DataBase.Info;
+import Server.DataBase.Team;
 import Server.DataBase.User;
+import Server.Message.MessageAssignAthleteToTeam;
+import Server.Message.MessageAssignAthleteToTeamReplay;
 import Server.Message.MessageCreateNewCoach;
 import Server.Message.MessageCreateNewCoachReplay;
+import Server.Message.MessageGetAllAthleteByCoachId;
+import Server.Message.MessageGetAllAthleteByCoachIdReplay;
 import Server.Message.MessageGetAllCoach;
 import Server.Message.MessageGetAllCoachReplay;
+import Server.Message.MessageGetAllTeamByCoachId;
+import Server.Message.MessageGetAllTeamByCoachReplay;
+import Server.Message.MessageGetAllUnTeamedAthlete;
+import Server.Message.MessageGetAllUnTeamedAthleteReplay;
+import Server.Message.MessageRemoveAthleteFromTeam;
+import Server.Message.MessageRemoveAthleteFromTeamReplay;
 import Server.Message.MessageUpdateCoach;
 import Server.Message.MessageUpdateCoachReplay;
 
@@ -35,7 +46,16 @@ public class RemoveAthleteFromTeamPanel extends MyJPanel {
 	
 	
 	private static final long serialVersionUID = 1L;
-	
+	private User athlete;
+	private Team team;
+    private JButton btnCreate;
+    private ArrayList<Team> allTeamArray =null;
+    private ArrayList<User> allAthleteArray =null;
+    private JComboBox ChooseTeamCombo;
+    private JComboBox ChooseAtleteCombo;
+    private JLabel lblChooseTeam;
+    private JLabel lblChooseAthlete;
+    private  JButton btnAddAthleteTo;
 	
     
     
@@ -57,23 +77,117 @@ public class RemoveAthleteFromTeamPanel extends MyJPanel {
 			e.printStackTrace();
 		}
 		
-	
-	 
-	}
-	
-	
-   
-    
-    
-    
-    
-  
+		init();
+		 
+		}
+		
+		
+	public void initArrays(){
 			
+			
+	       
+			allTeamArray = new ArrayList<Team>();
+			getClient().sendMsgToServer(new MessageGetAllTeamByCoachId(getClient().getUser().getIdUser()));
+			MessageGetAllTeamByCoachReplay rep1= (MessageGetAllTeamByCoachReplay)getClient().getMessageFromServer();
+			allTeamArray = rep1.getArray();
+			
+			allAthleteArray = new ArrayList<User>();
+			getClient().sendMsgToServer(new MessageGetAllAthleteByCoachId(getClient().getUser().getIdUser()));
+			MessageGetAllAthleteByCoachIdReplay rep2= (MessageGetAllAthleteByCoachIdReplay)getClient().getMessageFromServer();
+			allAthleteArray = rep2.getArray();
+			
+		}
+
+
+
+	public void initComboBoxs()
+	{
+		
+		ChooseTeamCombo = new JComboBox();
+		ChooseTeamCombo.setBounds(120, 85, 174, 20);
+		add(ChooseTeamCombo);
+		
+		ChooseAtleteCombo = new JComboBox();
+		ChooseAtleteCombo.setBounds(120, 149, 174, 20);
+		add(ChooseAtleteCombo);
+		
+	   
+	}
+
+
+	public void initbtn()
+	{
+		 btnAddAthleteTo = new JButton("Remove the athlete from my team");
+			btnAddAthleteTo.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					String msg;
+					if((!(ChooseTeamCombo.getSelectedIndex()==0))&&(!(ChooseAtleteCombo.getSelectedIndex()==0))){
+						team = (Team)ChooseTeamCombo.getSelectedItem();
+						athlete=(User)ChooseAtleteCombo.getSelectedItem();
+						
+						getClient().sendMsgToServer(new MessageRemoveAthleteFromTeam(athlete.getIdUser()));
+						MessageRemoveAthleteFromTeamReplay rep3= (MessageRemoveAthleteFromTeamReplay)getClient().getMessageFromServer();
+		   			
+		   				if(rep3.getsuccssed()==1){
+		   						msg="Athlete Has Beenremoved form the team";
+								popUp(msg);
+								getClient().swapFromBack(pushPanel());
+		   						}
+		   			}
+		   		   else { 
+		   				msg="Please choose team and athlete";
+		   				popUp(msg);
+		    	     }		
+				}
+			});
+			btnAddAthleteTo.setBounds(120, 246, 174, 20);
+			add(btnAddAthleteTo);
+			
+	}
+	public void initLabels(){
+		
+		lblChooseTeam = new JLabel("choose team:");
+		lblChooseTeam.setBounds(23, 85, 89, 14);
+		add(lblChooseTeam);
+			
+		lblChooseAthlete = new JLabel("choose Athlete:");
+		lblChooseAthlete.setBounds(23, 149, 89, 14);
+		add(lblChooseAthlete);
+		
+		}
+	    
+	   
+	    
+	  
+		   
+		  public void init()
+	    {
+			  initLabels();
+			  initbtn();
+			  initArrays();
+			  initComboBoxs();
+			  
+			  
+			  
+			  
+			  for (int i=0; i<=allTeamArray.size(); i++)
+				{
+					if (i==0) ChooseTeamCombo.addItem("Choose..");
+					else ChooseTeamCombo.addItem(allTeamArray.get(i-1));
+					}
+			  
+			  for (int i=0; i<=allAthleteArray.size(); i++)
+				{
+					if (i==0) ChooseAtleteCombo.addItem("Choose..");
+					else ChooseAtleteCombo.addItem(allAthleteArray.get(i-1));
+					}
+			
+	    }
+	
 		
 	
 	
 	private void popUp(String msg){
-		Object[] options = {"Ok"};
 		JOptionPane.showMessageDialog((Component) getClient(),msg);
 			
 		return ;

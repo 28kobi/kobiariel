@@ -185,6 +185,12 @@ public class SideBar extends JPanel {
 				clientFrame.swap(new ViewPerformedTeamTrainingPanel(clientFrame));			
 			}
 		});
+		JLinkButton ViewStatistic = new JLinkButton("view statistic");
+		ViewStatistic.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				clientFrame.swap(new coachViewStatisticPanel(clientFrame));			
+			}
+		});
 		
 		
 	this.add(createAthlete);
@@ -196,8 +202,8 @@ public class SideBar extends JPanel {
 	this.add(CoachViewPlannedTraining);
 	this.add(ViewPerformedTraining);
 	this.add(ViewPerformedTeamTraining);
-	
-	
+	this.add(ViewStatistic);
+	this.add(RemoveAthleteFromTeam);
 	clientFrame.setVisible();
 }
 	
