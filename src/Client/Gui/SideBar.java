@@ -13,6 +13,7 @@ import Client.Gui.JLinkButton;
 import Client.Logic.ClientIF;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.sql.SQLException;
 
 public class SideBar extends JPanel {
 	
@@ -226,6 +227,7 @@ public class SideBar extends JPanel {
 		viewPerformedTraining.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
 		clientFrame.swap(new AthleteViewPerformedTrainingPanel(clientFrame));
+		
 			}
 		});
 		JLinkButton ViewStatisticInfo = new JLinkButton("View statistic info");
