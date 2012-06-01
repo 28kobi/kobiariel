@@ -41,6 +41,10 @@ import Server.Message.MessageGetAllAthleteByCoachIdReplay;
 import Server.Message.MessageGetAllCoachReplay;
 import Server.Message.MessageGetAllPersonalTrainingByAtleteId;
 import Server.Message.MessageGetAllPersonalTrainingByAtleteIdReplay;
+import Server.Message.MessageGetAllPreformedTeamTrainingByAtleteId;
+import Server.Message.MessageGetAllPreformedTeamTrainingByAtleteIdReplay;
+import Server.Message.MessageGetAllPreformedTrainingByAtleteId;
+import Server.Message.MessageGetAllPreformedTrainingByAtleteIdReplay;
 import Server.Message.MessageGetAllTeamByCoachId;
 import Server.Message.MessageGetAllTeamByCoachReplay;
 import Server.Message.MessageGetAllTeamReplay;
@@ -298,6 +302,21 @@ public class MsgHandeler {
 			client.sendToClient(msgr11);
 			PreformedTeamTrainingQuery.close();
 			break;
+		case MESSAGE_GET_ALL_PEFORMED_TEAM_TRAINING_BY_ATHLETE:
+			PreformedTeamTrainingQuery PreformedTeamTrainingQuery1 = new PreformedTeamTrainingQuery();
+			MessageGetAllPreformedTeamTrainingByAtleteId MessageGetAllPreformedTeamTrainingByAtleteId = (MessageGetAllPreformedTeamTrainingByAtleteId) message ;
+			MessageGetAllPreformedTeamTrainingByAtleteIdReplay msgr12 = new MessageGetAllPreformedTeamTrainingByAtleteIdReplay(PreformedTeamTrainingQuery1.getAllPersonalPreformedTeamTrainingByAthlete(MessageGetAllPreformedTeamTrainingByAtleteId.getAthleteId()));
+			client.sendToClient(msgr12);
+			PreformedTeamTrainingQuery1.close();
+			break;
+		case MESSAGE_GET_ALL_PEFORMED_PERSONAL_TRAINING_BY_ATHLETE:
+			PreformedPersonalTrainingQuery PreformedPersonalTrainingQuery1 = new PreformedPersonalTrainingQuery();
+			MessageGetAllPreformedTrainingByAtleteId MessageGetAllPreformedTrainingByAtleteId = (MessageGetAllPreformedTrainingByAtleteId) message ;
+			MessageGetAllPreformedTrainingByAtleteIdReplay msgr13 = new MessageGetAllPreformedTrainingByAtleteIdReplay(PreformedPersonalTrainingQuery1.getAllPersonalPreformedTrainingByAthlete(MessageGetAllPreformedTrainingByAtleteId.getAthleteId()));
+			client.sendToClient(msgr13);
+			PreformedPersonalTrainingQuery1.close();
+			break;
+			
 
 
 			

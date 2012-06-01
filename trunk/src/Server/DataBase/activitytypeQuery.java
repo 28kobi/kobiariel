@@ -47,7 +47,7 @@ public class activitytypeQuery extends Query{
 			setQuery("SELECT * FROM activitytype " + "WHERE activityId = '"+activityId+"'");
 			ResultSet rs = execQuery();
 			if (rs.next()){
-				activitytype activity = new activitytype(activityId,  rs.getString(3));
+				activitytype activity = new activitytype(activityId,  rs.getString(2));
 				return activity;
 			}
 			return null;
