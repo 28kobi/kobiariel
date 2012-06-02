@@ -714,7 +714,6 @@ public void initTextField(){
 			comboBoxTrainingType.setEnabled(false);
 
 			comboBoxTraining = new JComboBox();
-			
 			comboBoxTraining.setBounds(160,82, 117, 20);
 			comboBoxTraining.setEnabled(false);
 			add(comboBoxTraining);

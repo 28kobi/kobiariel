@@ -129,7 +129,7 @@ public class RemoveAthleteFromTeamPanel extends MyJPanel {
 						MessageRemoveAthleteFromTeamReplay rep3= (MessageRemoveAthleteFromTeamReplay)getClient().getMessageFromServer();
 		   			
 		   				if(rep3.getsuccssed()==1){
-		   						msg="Athlete Has Beenremoved form the team";
+		   						msg="Athlete Has Been removed form the team";
 								popUp(msg);
 								getClient().swapFromBack(pushPanel());
 		   						}
