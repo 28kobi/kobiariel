@@ -4,6 +4,7 @@ package Server.DataBase;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * 
@@ -45,7 +46,23 @@ public class athleteQuery extends Query{
 		}
 		return null;
 	}
-	
+	public ArrayList<athlete> getAllAthleteByTeamId(int teamId) throws SQLException{
+		ArrayList<athlete> array = new ArrayList<athlete>();
+		setQuery("SELECT * FROM athlete " + "WHERE TeamId = '"+teamId+"'");
+		ResultSet rs = execQuery();
+		
+		while (rs.next()){				
+			athlete athlete1 = null;
+			try {
+				athlete1 = new athlete(rs.getInt(1), teamId);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}		
+				array.add(athlete1);
+		}
+		return array;
+	}
 
 }
 
