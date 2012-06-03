@@ -24,6 +24,7 @@ import Server.DataBase.athleteQuery;
 import Server.DataBase.plannedpersonaltraining;
 import Server.DataBase.plannedteamtraining;
 import Server.DataBase.trainingtype;
+import Server.GUI.MyJTable;
 import Server.Message.MessageCreateNewPreformedTeamPlannedTraining;
 import Server.Message.MessageCreateNewPreformedTeamPlannedTrainingReplay;
 import Server.Message.MessageCreateNewUnPlannedTraining;
@@ -34,8 +35,12 @@ import Server.Message.MessageGetAllPersonalTrainingByAtleteId;
 import Server.Message.MessageGetAllPersonalTrainingByAtleteIdReplay;
 import Server.Message.MessageGetAllTeamTrainingByTeamId;
 import Server.Message.MessageGetAllTeamTrainingByTeamIdReplay;
+import Server.Message.MessageGetAllTeamUnPreformedTrainingByTeamIdReplay;
 import Server.Message.MessageGetAllTrainingType;
 import Server.Message.MessageGetAllTrainingTypeReplay;
+import Server.Message.MessageGetAllUnPreformedPersonalTrainingByAtleteId;
+import Server.Message.MessageGetAllUnPreformedPersonalTrainingByAtleteIdReplay;
+import Server.Message.MessageGetAllUnPreformedTeamTrainingByTeamId;
 import Server.Message.MessageGetAthleteByUserId;
 import Server.Message.MessageGetAthleteByUserIdReplay;
 
@@ -45,6 +50,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
+import javax.swing.border.LineBorder;
 
 
 public class AthleteReportTrainingPanel extends MyJPanel {
@@ -66,13 +72,19 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 	private athlete Athlete;
 	private activitytype activityType;
 	private trainingtype trainingType;
-	private plannedteamtraining teamTraining;
+	private ArrayList<plannedteamtraining> ChoosenTeamTrainingArray =null;
+	private ArrayList<plannedpersonaltraining> ChoosenPersonalTrainingArray =null;
+	private plannedteamtraining teamTraining =null;
+	private plannedpersonaltraining personalTraining =null;
+	
 	private plannedpersonaltraining AthletTraining;
 	
 	private ArrayList<activitytype> allAactivityTypeArray =null;
 	private ArrayList<trainingtype> alltrainingTypeArray =null;
-	private ArrayList<plannedpersonaltraining> allPersonalTrainingArray =null;
-	private ArrayList<plannedteamtraining> allTeamTrainingArray =null;
+	
+	private ArrayList<plannedpersonaltraining> allUnPreformedPersonalTrainingArray =null;
+	private ArrayList<plannedteamtraining> allUnPreformedTeamTrainingArray =null;
+	
 	private JComboBox comboBoxTeam ;
 	private JComboBox comboBoxPersonal;
 	
@@ -102,28 +114,17 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 	private JLabel lblDuration;
 	private JLabel lblDistance;
 	private JLabel lblTime ;
-	private JLabel lblDate;
-	private JLabel lblTime_1;
-	private JLabel lblDetails_1;
-	private JLabel lblDuration_1;
-	private JLabel lblDistance_1;
-	private JLabel lblActivityName;
-	private JLabel lblTraining;
 	private JLabel lblHereYouCan;
-	private JTextPane textPaneDuration;
-	private JTextPane textPaneDistance;
-	private JTextPane textPaneDate;
-	private JTextPane textPaneDetails;
-	private JTextPane textPaneTime;
-	private JTextPane textPaneActivity;
-	private JTextPane textPaneTraining;
 	private JTextField textFieldDetails;
 	private JTextField textFieldDuration;
 	private JTextField textFieldDistance ;
 	private String[] month={"1","2","3","4","5","6","7","8","9","10","11","12"};
 	private String[] year={"2012","2013","2014","2015","2016"};
-	private JTable table;
 	
+	private AthelteViewPlannedTeamTrainingTableModel stm;
+	private AthelteViewPlannedPersonalTrainingTableModel stm2;
+	private MyJTable table;
+	private MyJTable table2;
 
 	
    
@@ -165,37 +166,21 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 			 rdbtnReportUnPlannedTraining.addActionListener(new ActionListener() {
 			 	public void actionPerformed(ActionEvent e) {
 					if(rdbtnReportUnPlannedTraining.isSelected()){
+						if(rdbtnReportPlannedTraining.isSelected())
+							rdbtnReportPlannedTraining.doClick();
 						
-						comboBoxTeam.setEnabled(false);
-						comboBoxPersonal.setEnabled(false);						
-						rdbtnReportPlannedTraining.setEnabled(false);
-						textPaneDuration.setEnabled(false);
-						textPaneDistance.setEnabled(false);
-						textPaneDate.setEnabled(false);												
-						textPaneDetails.setEnabled(false);											
-						textPaneTime.setEnabled(false);										
-						textPaneActivity.setEnabled(false);						
-						textPaneTraining.setEnabled(false);
-						
-				///	if(rdbtnReportPlannedTraining.isSelected())
-					
-				////		rdbtnReportPlannedTraining.doClick();
-						
+						comboBoxTeam.setVisible(false);
+						comboBoxPersonal.setVisible(false);						
+						table.setVisible(false);
+						table2.setVisible(false);
+				
 					}
 					else{
 			 	
-						comboBoxTeam.setEnabled(true);
-						comboBoxPersonal.setEnabled(true);
-						rdbtnReportPlannedTraining.setEnabled(true);
-						textPaneDuration.setEnabled(true);
-						textPaneDistance.setEnabled(true);
-						textPaneDate.setEnabled(true);												
-						textPaneDetails.setEnabled(true);											
-						textPaneTime.setEnabled(true);										
-						textPaneActivity.setEnabled(true);						
-						textPaneTraining.setEnabled(true);
-						
-						
+						comboBoxTeam.setVisible(true);
+						comboBoxPersonal.setVisible(true);						
+						table.setVisible(true);
+						table2.setVisible(true);
 						
 						
 					}
@@ -212,32 +197,27 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 				rdbtnReportPlannedTraining.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						if(rdbtnReportPlannedTraining.isSelected()){
+							if(rdbtnReportUnPlannedTraining.isSelected())
+							rdbtnReportUnPlannedTraining.doClick();
 							
-							rdbtnReportUnPlannedTraining.setEnabled(false);
 
+							comboBoxTeam.setVisible(true);
 							comboBoxTeam.setEnabled(true);
-							comboBoxPersonal.setEnabled(true);						
-							textPaneDuration.setEnabled(true);
-							textPaneDistance.setEnabled(true);
-							textPaneDate.setEnabled(true);												
-							textPaneDetails.setEnabled(true);											
-							textPaneTime.setEnabled(true);										
-							textPaneActivity.setEnabled(true);						
-							textPaneTraining.setEnabled(true);
+							comboBoxPersonal.setEnabled(true);
+							comboBoxPersonal.setVisible(true);						
+							table.setVisible(true);
+							table2.setVisible(true);
 						
 							}
 						else{
-							rdbtnReportUnPlannedTraining.setEnabled(true);
+										
+							comboBoxTeam.setVisible(false);
+							comboBoxPersonal.setVisible(false);						
+							table.setVisible(false);
+							table2.setVisible(false);
 							comboBoxTeam.setEnabled(false);
-							comboBoxPersonal.setEnabled(false);						
-							textPaneDuration.setEnabled(false);
-							textPaneDistance.setEnabled(false);
-							textPaneDate.setEnabled(false);												
-							textPaneDetails.setEnabled(false);											
-							textPaneTime.setEnabled(false);										
-							textPaneActivity.setEnabled(false);						
-							textPaneTraining.setEnabled(false);
-							
+							comboBoxPersonal.setEnabled(false);
+						
 						}
 					}
 				});
@@ -255,27 +235,35 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 			
 				
 				
-				allTeamTrainingArray = new ArrayList<plannedteamtraining>();
-				getClient().sendMsgToServer(new MessageGetAllTeamTrainingByTeamId(Athlete.getTeamId()));
-				MessageGetAllTeamTrainingByTeamIdReplay rep5= (MessageGetAllTeamTrainingByTeamIdReplay)getClient().getMessageFromServer();
-				allTeamTrainingArray = rep5.getArray();
+				allUnPreformedTeamTrainingArray = new ArrayList<plannedteamtraining>();
+				getClient().sendMsgToServer(new MessageGetAllUnPreformedTeamTrainingByTeamId(Athlete.getTeamId()));
+				MessageGetAllTeamUnPreformedTrainingByTeamIdReplay rep5= (MessageGetAllTeamUnPreformedTrainingByTeamIdReplay)getClient().getMessageFromServer();
+				allUnPreformedTeamTrainingArray = rep5.getArray();
 				
-				allPersonalTrainingArray= new ArrayList<plannedpersonaltraining>();
-				getClient().sendMsgToServer(new MessageGetAllPersonalTrainingByAtleteId(Athlete.getUserid()));
-			  	MessageGetAllPersonalTrainingByAtleteIdReplay rep6= (MessageGetAllPersonalTrainingByAtleteIdReplay)getClient().getMessageFromServer();
-			  	allPersonalTrainingArray = rep6.getPersonalTrainingArray();
+				allUnPreformedPersonalTrainingArray= new ArrayList<plannedpersonaltraining>();
+				getClient().sendMsgToServer(new MessageGetAllUnPreformedPersonalTrainingByAtleteId(Athlete.getUserid()));
+			  	MessageGetAllUnPreformedPersonalTrainingByAtleteIdReplay rep6= (MessageGetAllUnPreformedPersonalTrainingByAtleteIdReplay)getClient().getMessageFromServer();
+			  	allUnPreformedPersonalTrainingArray = rep6.getPersonalTrainingArray();
 			
 			}
 		
 		 public void initComboBox(){
 			  	comboBoxTeam = new JComboBox();
+			  	
 			  	comboBoxTeam.addActionListener(new ActionListener() {
 			  		public void actionPerformed(ActionEvent e) {
-			  			comboBoxTeam.setEnabled(true);
+			  			comboBoxTeam.setEnabled(false);
 			  			if(!comboBoxTeam.getSelectedItem().toString().equals("Choose..")){
 			  				comboBoxPersonal.setEnabled(false);
-			  			
-							teamTraining=(plannedteamtraining)comboBoxTeam.getSelectedItem();
+			  				table2.setVisible(false);
+			  				
+			  				
+			  				ChoosenTeamTrainingArray=new ArrayList<plannedteamtraining>();
+			  				teamTraining=(plannedteamtraining)comboBoxTeam.getSelectedItem();
+			  				ChoosenTeamTrainingArray.add(teamTraining);
+							stm.setArray(ChoosenTeamTrainingArray);
+							
+						
 							String activityName=null,trainingName=null,time,duration,distance,details;
 							String date;
 							for (int i=0; i<allAactivityTypeArray.size(); i++)
@@ -294,33 +282,32 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 									trainingName=alltrainingTypeArray.get(j).gettrainingName();
 								
 								}
-							date=teamTraining.getDate();
-							time=teamTraining.getTime();
-							duration=teamTraining.getDuration();
-							distance=teamTraining.getDistance();
-							details=teamTraining.getDetails();
-							textPaneActivity.setText(activityName);
-							textPaneTraining.setText(trainingName);
-							textPaneDuration.setText(duration);
-							textPaneDistance.setText(distance);
-							textPaneDate.setText(date);
-							textPaneDetails.setText(details);
-							textPaneTime.setText(time);
+							
+						
 						
 							}
+			  			
 			  			
 			  		}
 			  	});
 			  	comboBoxTeam.setBounds(98, 113, 126, 20);
 			   add(comboBoxTeam);
+			   
 				
 				comboBoxPersonal = new JComboBox();
 				comboBoxPersonal.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						comboBoxPersonal.setEnabled(true);
+						comboBoxPersonal.setEnabled(false);
 						
 						if(!comboBoxPersonal.getSelectedItem().toString().equals("Choose..")){
 							comboBoxTeam.setEnabled(false);
+							table.setVisible(false);
+							
+							ChoosenPersonalTrainingArray=new ArrayList<plannedpersonaltraining>();
+			  				personalTraining=(plannedpersonaltraining)comboBoxPersonal.getSelectedItem();
+			  				ChoosenPersonalTrainingArray.add(personalTraining);
+							stm2.setArray(ChoosenPersonalTrainingArray);
+							
 							AthletTraining=(plannedpersonaltraining)comboBoxPersonal.getSelectedItem();
 							String activityName=null,trainingName=null,time,duration,distance,details;
 							String date;
@@ -345,13 +332,6 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 							duration=AthletTraining.getDuration();
 							distance=AthletTraining.getDistance();
 							details=AthletTraining.getDetails();
-							textPaneActivity.setText(activityName);
-							textPaneTraining.setText(trainingName);
-							textPaneDuration.setText(duration);
-							textPaneDistance.setText(distance);
-							textPaneDate.setText(date);
-							textPaneDetails.setText(details);
-							textPaneTime.setText(time);
 						
 							}
 						
@@ -378,7 +358,7 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 				add(comboBoxMonth);
 				
 				comboBoxYear = new JComboBox();
-				comboBoxYear.setBounds(435, 258, 87, 20);
+				comboBoxYear.setBounds(449, 258, 87, 20);
 				 for (int j=0; j<=year.length; j++)
 					{
 						if (j==0) comboBoxYear.addItem("Choose..");
@@ -390,7 +370,7 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 				comboBoxHour.setMaximumRowCount(25);
 				comboBoxHour.setBounds(151, 289, 97, 20);
 				for(int hour=0;hour<25;hour++){
-					if(hour==0) comboBoxHour.addItem("choose..");
+					if(hour==0) comboBoxHour.addItem("Choose..");
 					else comboBoxHour.addItem(Integer.toString(hour));
 							
 				}
@@ -399,7 +379,7 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 				comboBoxMin = new JComboBox();
 				comboBoxMin.setBounds(301, 289, 82, 20);
 				for(int min=0;min<75;min=min+15){
-					if(min==0) comboBoxMin.addItem("choose..");
+					if(min==0) comboBoxMin.addItem("Choose..");
 					else comboBoxMin.addItem(Integer.toString(min));
 					
 				}
@@ -418,16 +398,17 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 		
 			  
 			
-		};	
+		};
+		
 		
 		public void initLabel(){
 			
 
-			 lblTeamTraining = new JLabel("Team Training :");
+			lblTeamTraining = new JLabel("Team Training :");
 			lblTeamTraining.setBounds(6, 116, 82, 14);
 			add(lblTeamTraining);
 			
-			 lblPersonalTraining = new JLabel("Personal Training :");
+			lblPersonalTraining = new JLabel("Personal Training :");
 			lblPersonalTraining.setBounds(266, 116, 114, 14);
 			add(lblPersonalTraining);
 			
@@ -485,44 +466,6 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 			lblActivityType.setBounds(6, 323, 105, 14);
 			add(lblActivityType);
 			
-
-			lblDate = new JLabel("date:");
-			lblDate.setBounds(372, 160, 78, 24);
-			add(lblDate);
-			
-			
-			
-			lblTime_1 = new JLabel("time:");
-			lblTime_1.setBounds(10, 185, 37, 25);
-			add(lblTime_1);
-			
-			
-			
-			lblDetails_1 = new JLabel("details:");
-			lblDetails_1.setBounds(190, 190, 80, 14);
-			add(lblDetails_1);
-			
-			lblDuration_1 = new JLabel("duration:");
-			lblDuration_1.setBounds(372, 186, 53, 23);
-			add(lblDuration_1);
-			
-			
-			lblDistance_1 = new JLabel("distance:");
-			lblDistance_1.setBounds(532, 162, 71, 20);
-			add(lblDistance_1);
-			
-			
-			lblActivityName = new JLabel("activity name:");
-			lblActivityName.setFont(new Font("Tahoma", Font.PLAIN, 11));
-			lblActivityName.setBackground(Color.WHITE);
-			lblActivityName.setBounds(6, 160, 82, 24);
-			add(lblActivityName);
-			
-
-			lblTraining = new JLabel("training name:");
-			lblTraining.setBounds(190, 159, 90, 20);
-			add(lblTraining);
-			
 			lblHereYouCan = new JLabel(" Training Report Form :");
 			lblHereYouCan.setBackground(Color.LIGHT_GRAY);
 			lblHereYouCan.setFont(new Font("Dialog", Font.BOLD, 24));
@@ -531,49 +474,6 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 			
 		}
 		public void initTextPane(){
-			
-			
-			textPaneDuration = new JTextPane();
-			textPaneDuration.setBounds(436, 190, 86, 20);
-			textPaneDuration.setFont(new Font("Tahoma", Font.BOLD, 14));
-			textPaneDuration.setBackground(Color.lightGray);
-			add(textPaneDuration);
-			
-			textPaneDistance = new JTextPane();
-			textPaneDistance.setBounds(584, 162, 71, 20);
-			textPaneDistance.setFont(new Font("Tahoma", Font.BOLD, 14));
-			textPaneDistance.setBackground(Color.lightGray);
-			add(textPaneDistance);
-			
-			textPaneDate = new JTextPane();
-			textPaneDate.setBounds(435, 164, 87, 20);
-			textPaneDate.setFont(new Font("Tahoma", Font.BOLD, 14));
-			textPaneDate.setBackground(Color.lightGray);
-			add(textPaneDate);
-			
-			textPaneDetails = new JTextPane();
-			textPaneDetails.setBounds(266, 190, 79, 20);
-			textPaneDetails.setFont(new Font("Tahoma", Font.BOLD, 14));
-			textPaneDetails.setBackground(Color.lightGray);
-			add(textPaneDetails);
-			
-			textPaneTime = new JTextPane();
-			textPaneTime.setBounds(83, 190, 85, 20);
-			textPaneTime.setFont(new Font("Tahoma", Font.BOLD, 14));
-			textPaneTime.setBackground(Color.lightGray);
-			add(textPaneTime);
-			
-			textPaneActivity = new JTextPane();
-			textPaneActivity.setFont(new Font("Tahoma", Font.BOLD, 14));
-			textPaneActivity.setBounds(83, 159, 88, 20);
-			textPaneActivity.setBackground(Color.lightGray);
-			add(textPaneActivity);
-			
-			textPaneTraining = new JTextPane();
-			textPaneTraining.setBounds(268, 161, 78, 20);
-			textPaneTraining.setFont(new Font("Tahoma", Font.BOLD, 14));
-			textPaneTraining.setBackground(Color.lightGray);
-			add(textPaneTraining);
 			
 			JButton btnResetTrainingDetail = new JButton("Reset Training Detail");
 			btnResetTrainingDetail.addActionListener(new ActionListener() {
@@ -641,8 +541,8 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 									
 										
 								
-										
-									}
+									}	
+								
 									else {
 										msg="fill all details";
 										popUp(msg);
@@ -685,10 +585,7 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 									}
 									
 								}	
-								else{
-									msg="Choose Team";
-									popUp(msg);
-								}
+								
 						
 
 						if(rdbtnReportPlannedTraining.isSelected()){
@@ -698,7 +595,7 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 							//check if activity type change
 							 comboBoxTrainingType.addItem("Choose..");
 								
-							if((comboBoxActivityType.getSelectedItem().toString().equals("choose.."))){
+							if((comboBoxActivityType.getSelectedItem().toString().equals("Choose.."))){
 								activitytype activy=(activitytype)comboBoxActivityType.getSelectedItem();
 								if(teamTraining.getActivityid()==activy.getActivityId())
 									PreformedTeamTraining.setActivityid(teamTraining.getActivityid());
@@ -710,7 +607,7 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 								}
 							
 							//check if training type change
-							if((comboBoxTrainingType.getSelectedItem().toString().equals("choose.."))){
+							if((comboBoxTrainingType.getSelectedItem().toString().equals("Choose.."))){
 								trainingtype trainingt=(trainingtype)comboBoxTrainingType.getSelectedItem();
 								if(teamTraining.getActivityid()==trainingt.getTrainingId())
 									PreformedTeamTraining.setTrainingTypeId(teamTraining.getTrainingTypeId());
@@ -721,7 +618,7 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 								PreformedTeamTraining.setTrainingTypeId(teamTraining.getTrainingTypeId());
 								}
 							
-							if(comboBoxDay.isEnabled()&&!comboBoxDay.getSelectedItem().toString().equals("choose..")&&!comboBoxMonth.getSelectedItem().toString().equals("choose..")&&!comboBoxYear.getSelectedItem().toString().equals("choose..")){
+							if(comboBoxDay.isEnabled()&&!comboBoxDay.getSelectedItem().toString().equals("Choose..")&&!comboBoxMonth.getSelectedItem().toString().equals("Choose..")&&!comboBoxYear.getSelectedItem().toString().equals("Choose..")){
 								msg=""+comboBoxDay.getSelectedItem().toString()+"/"+""+comboBoxMonth.getSelectedItem().toString()+""+"/"+comboBoxYear.getSelectedItem().toString()+"";
 								PreformedTeamTraining.setDate(msg);
 							}
@@ -730,7 +627,7 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 								
 						
 							
-							if(!comboBoxHour.getSelectedItem().toString().equals("choose..")&&!comboBoxMin.getSelectedItem().toString().equals("choose..")){
+							if(!comboBoxHour.getSelectedItem().toString().equals("Choose..")&&!comboBoxMin.getSelectedItem().toString().equals("Choose..")){
 								msg=""+comboBoxHour.getSelectedItem().toString()+""+":"+comboBoxMin.getSelectedItem().toString()+"";
 								PreformedTeamTraining.setTime(msg);
 							}
@@ -769,7 +666,7 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 							}
 							
 						}
-						else {
+						if(!rdbtnReportUnPlannedTraining.isSelected()){
 							msg="Fill All Field Include Combox Option Please";
 							popUp(msg);
 							
@@ -863,6 +760,22 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 					add(btnReportTrainingDetail);	 
 		 
 		}
+		private void initTable() {
+		stm = new AthelteViewPlannedTeamTrainingTableModel();		
+		table = new MyJTable(stm);
+		table.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+		table.setBounds(6, 153, 772, 65);
+		add(table);
+		table.setVisible(false);
+		
+		stm2 = new AthelteViewPlannedPersonalTrainingTableModel();		
+		table2 = new MyJTable(stm2);
+		table2.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+		table2.setBounds(6, 153, 772, 65);
+		add(table2);
+		table2.setVisible(false);
+		
+		}
 		public void init()
 		{
 			initTextField();
@@ -872,11 +785,20 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 			initBtn();
 			initLabel();
 			initTextPane();
+			initTable();
+			comboBoxMin.addItem("Choose..");;
+			comboBoxActivityType.addItem("Choose.."); ;
+			comboBoxTrainingType.addItem("Choose..");;
+			comboBoxHour.addItem("Choose..");;
+			comboBoxDay.addItem("Choose..");;
+			comboBoxMonth.addItem("Choose..");;
+			comboBoxYear.addItem("Choose..");;
 			
-			 for (int i=0; i<=allPersonalTrainingArray.size(); i++)
+		
+			 for (int i=0; i<=allUnPreformedPersonalTrainingArray.size(); i++)
 				{
 					if (i==0) comboBoxPersonal.addItem("Choose..");
-					else comboBoxPersonal.addItem(allPersonalTrainingArray.get(i-1));
+					else comboBoxPersonal.addItem(allUnPreformedPersonalTrainingArray.get(i-1));
 				}
 			
 			 for (int i=0; i<=allAactivityTypeArray.size(); i++)
@@ -886,9 +808,9 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 				}
 			 
 			 
-			 for (int i=0; i<=allTeamTrainingArray.size(); i++)
+			 for (int i=0; i<=allUnPreformedTeamTrainingArray.size(); i++)
 			    	if (i==0) comboBoxTeam.addItem("Choose..");
-				else comboBoxTeam.addItem(allTeamTrainingArray.get(i-1));
+				else comboBoxTeam.addItem(allUnPreformedTeamTrainingArray.get(i-1));
 			 
 			 comboBoxActivityType.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {

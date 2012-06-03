@@ -87,7 +87,33 @@ public class plannedteamtrainingQuery extends Query{
 		return training;
 	}
 	return null;
-}	
+}
+
+
+
+
+	public ArrayList<plannedteamtraining> getAllUnPreformedTeamTrainingByTeamId(int getteamid) throws SQLException {
+		
+		ArrayList<plannedteamtraining> array = new ArrayList<plannedteamtraining>();
+		
+		setQuery("SELECT DISTINCT plannedteamtraining.* FROM plannedteamtraining,preformedteamtraining " + "WHERE plannedteamtraining.teamId = '"+getteamid+"' AND  plannedteamtraining.trainingId NOT IN (SELECT trainingId FROM preformedteamtraining)");
+			ResultSet rs7 = execQuery();
+			while (rs7.next()){				
+				plannedteamtraining training = null;
+				try {
+						training = new plannedteamtraining(rs7.getInt(1), rs7.getInt(2), rs7.getInt(3),rs7.getInt(4), rs7.getString(5), rs7.getString(6),rs7.getString(7), rs7.getString(8), rs7.getString(9));
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}		
+					array.add(training);
+				}
+		  
+		  return array;
+		
+	
+		
+	}	
 	
 }
 

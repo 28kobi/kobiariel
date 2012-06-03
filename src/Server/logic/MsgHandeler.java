@@ -50,11 +50,19 @@ import Server.Message.MessageGetAllTeamByCoachReplay;
 import Server.Message.MessageGetAllTeamReplay;
 import Server.Message.MessageGetAllTeamTrainingByTeamId;
 import Server.Message.MessageGetAllTeamTrainingByTeamIdReplay;
+import Server.Message.MessageGetAllTeamUnPreformedTrainingByTeamIdReplay;
 import Server.Message.MessageGetAllTrainingType;
 import Server.Message.MessageGetAllTrainingTypeReplay;
+import Server.Message.MessageGetAllUnPreformedPersonalTrainingByAtleteId;
+import Server.Message.MessageGetAllUnPreformedPersonalTrainingByAtleteIdReplay;
+import Server.Message.MessageGetAllUnPreformedTeamTrainingByTeamId;
 import Server.Message.MessageGetAllUnTeamedAthleteReplay;
 import Server.Message.MessageGetAthleteByUserId;
 import Server.Message.MessageGetAthleteByUserIdReplay;
+import Server.Message.MessageGetPlannedTeamTrainingByTrainingId;
+import Server.Message.MessageGetPlannedTeamTrainingByTrainingIdReplay;
+import Server.Message.MessageGetPlannedTrainingByTrainingId;
+import Server.Message.MessageGetPlannedTrainingByTrainingIdReplay;
 import Server.Message.MessageGetUserByUserId;
 import Server.Message.MessageGetUserByUserIdReplay;
 import Server.Message.MessageLogin;
@@ -62,6 +70,8 @@ import Server.Message.MessageLoginReplay;
 import Server.Message.MessageLogout;
 import Server.Message.MessageRemoveAactivityType;
 import Server.Message.MessageRemoveAactivityTypeReplay;
+import Server.Message.MessageRemoveAthleteFromTeam;
+import Server.Message.MessageRemoveAthleteFromTeamReplay;
 import Server.Message.MessageUpdateAthlete;
 import Server.Message.MessageUpdateAthleteReplay;
 import Server.Message.MessageUpdateAthleteTraining;
@@ -316,7 +326,44 @@ public class MsgHandeler {
 			client.sendToClient(msgr13);
 			PreformedPersonalTrainingQuery1.close();
 			break;
+		 case MESSAGE_GET_TEAM_TRAINING_BY_TRAINING_ID:
+			   plannedteamtrainingQuery plannedteamtrainingQuery6= new plannedteamtrainingQuery();
+			   MessageGetPlannedTeamTrainingByTrainingId MessageGetPlannedTeamTrainingByTrainingId12 = (MessageGetPlannedTeamTrainingByTrainingId) message ;
+			   MessageGetPlannedTeamTrainingByTrainingIdReplay mgab20  = new MessageGetPlannedTeamTrainingByTrainingIdReplay(plannedteamtrainingQuery6.getTeamTrainingByTrainingId(MessageGetPlannedTeamTrainingByTrainingId12.getTrainingId()));
+			   client.sendToClient(mgab20);
+			   plannedteamtrainingQuery6.close();
+			   break;
+		 case MESSAGE_REMOVE_ATHLETE_FROM_TEAM:
+			   athleteQuery athleteQuery3= new athleteQuery();
+			   MessageRemoveAthleteFromTeam MessageRemoveAthleteFromTeam1 = (MessageRemoveAthleteFromTeam) message ;
+			   MessageRemoveAthleteFromTeamReplay msgr21 = new MessageRemoveAthleteFromTeamReplay(athleteQuery3.removeAthleteFromTeam(MessageRemoveAthleteFromTeam1.getUserid()));
+			   client.sendToClient(msgr21);
+			   athleteQuery3.close();
+			   break;
+
+		 case MESSAGE_GET_TRAINING_BY_TRAINING_ID:
+			   plannedpersonaltrainingQuery plannedpersonaltrainingQuery3= new plannedpersonaltrainingQuery();
+			   MessageGetPlannedTrainingByTrainingId MessageGetPlannedTrainingByTrainingId1 = (MessageGetPlannedTrainingByTrainingId) message ;
+			   MessageGetPlannedTrainingByTrainingIdReplay mgab19  = new MessageGetPlannedTrainingByTrainingIdReplay(plannedpersonaltrainingQuery3.getPersonalTrainingByTrainingId(MessageGetPlannedTrainingByTrainingId1.getTrainingId()));
+			   client.sendToClient(mgab19);
+			   plannedpersonaltrainingQuery3.close();
+			   break;
+		
+		 case MESSAGE_GET_ALL_UN_PREFORMED_TEAM_TRAINING_BY_TEAM_ID:
+				plannedteamtrainingQuery plannedteamtrainingQuery11 = new plannedteamtrainingQuery();
+				MessageGetAllUnPreformedTeamTrainingByTeamId MessageGetAllUnPreformedTeamTrainingByTeamId = (MessageGetAllUnPreformedTeamTrainingByTeamId) message ;
+				MessageGetAllTeamUnPreformedTrainingByTeamIdReplay mgsr27 = new MessageGetAllTeamUnPreformedTrainingByTeamIdReplay(plannedteamtrainingQuery11.getAllUnPreformedTeamTrainingByTeamId(MessageGetAllUnPreformedTeamTrainingByTeamId.getteamid()));
+				client.sendToClient(mgsr27);
+				plannedteamtrainingQuery11.close();
+				break;
 			
+		 case MESSAGE_GET_ALL_UN_PREFORMED_PERSONAL_TRAINING_BY_ATHLETE_ID:
+				plannedpersonaltrainingQuery plannedpersonaltraining = new plannedpersonaltrainingQuery();
+				MessageGetAllUnPreformedPersonalTrainingByAtleteId MessageGetAllUnPreformedPersonalTrainingByAtleteId = (MessageGetAllUnPreformedPersonalTrainingByAtleteId) message ;
+				MessageGetAllUnPreformedPersonalTrainingByAtleteIdReplay mgsr111 = new MessageGetAllUnPreformedPersonalTrainingByAtleteIdReplay(plannedpersonaltraining.getAllUnPreformedPersonalTrainingByAthleteId(MessageGetAllUnPreformedPersonalTrainingByAtleteId.getAthleteId()));
+				client.sendToClient(mgsr111);
+				plannedpersonaltraining.close();
+				break;	
 
 
 			
