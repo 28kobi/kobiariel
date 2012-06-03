@@ -25,6 +25,8 @@ import Server.Message.MessageGetAllTeam;
 import Server.Message.MessageGetAllTeamByCoachId;
 import Server.Message.MessageGetAllTeamByCoachReplay;
 import Server.Message.MessageGetAllTeamReplay;
+import Server.Message.MessageGetAllusers;
+import Server.Message.MessageGetAllusersReplay;
 
 
 import javax.swing.JComboBox;
@@ -57,7 +59,7 @@ public class CreateNewAthletePanel extends MyJPanel {
     private JComboBox ChooseTeamCombo;
     private JLabel lblChooseTeam;
     
-	
+    private ArrayList<User> userarray =null;
 	
 	public CreateNewAthletePanel(ClientIF client) {
 		super(PanelType.CREATE_NEW_ATHLETE_PANEL, client);
@@ -89,10 +91,29 @@ public void initArrays(){
 		MessageGetAllTeamByCoachReplay rep1= (MessageGetAllTeamByCoachReplay)getClient().getMessageFromServer();
 		allTeamArray = rep1.getArray();
 		
+		userarray = new ArrayList<User>();
+		getClient().sendMsgToServer(new MessageGetAllusers());
+		MessageGetAllusersReplay rep= (MessageGetAllusersReplay)getClient().getMessageFromServer();
+		userarray = rep.getUserArray();
 	}
 
 
-
+public  int checkvalid(int x){
+	int i=0;
+	int flag=1;
+	while(i<userarray.size()){
+		if(userarray.get(i).getUserName().equals(textFieldUserName.getText())){
+			popUp("Name already exists");
+			flag=0;
+			break;
+			}	 
+		i++;
+	}
+	if(flag==1&&x==0)
+		popUp("The name is good");
+	
+	return flag;
+}
 public void initComboBoxs()
 {
 	
@@ -184,43 +205,48 @@ public void initLabels(){
 	   btnCreate.addActionListener(new ActionListener() {
 	   	public void actionPerformed(ActionEvent e) {
 	   		String msg;
-	   	if(!(ChooseTeamCombo.getSelectedIndex()==0)){
-	   		team = (Team)ChooseTeamCombo.getSelectedItem();
-	   		String selected="Choose..";
-	   		int i=1 , privilge=2 ,online=0;
-	   		
-	   		if((!textFieldFirstName.getText().isEmpty()&&!textFieldLastName.getText().isEmpty()&&!textFieldUserName.getText().isEmpty()&&!textFieldPassword.getText().isEmpty()&&!textFieldPhoneNumber.getText().isEmpty()&&!textFieldAddress.getText().isEmpty())){
-	   			
-	   				athlete=new User (i,textFieldFirstName.getText(),textFieldLastName.getText(),textFieldUserName.getText(),textFieldPassword.getText(),privilge,textFieldPhoneNumber.getText(),textFieldAddress.getText(),online);
-	   			
-	   			
-	   				getClient().sendMsgToServer(new MessageCreateNewAthlete(athlete));
-	   				MessageCreateNewAthleteReplay rep= (MessageCreateNewAthleteReplay)getClient().getMessageFromServer();
-	   			 
-	   				getClient().sendMsgToServer(new MessageAssignAthleteToTeam(rep.getAthelteId(),team.getTeamId()));
-	   				MessageAssignAthleteToTeamReplay rep3= (MessageAssignAthleteToTeamReplay)getClient().getMessageFromServer();
-	   			
-	   				if(rep.getAthelteId()!=0&&rep3.getsuccssed()==1){
-	   					msg="Athlete Has Been Created and assign to your team";
-				
-	   					popUp(msg);
-				
-	   					getClient().swapFromBack(pushPanel());
-				
+	   		int fromCreate=1;
+	   		int nameisgood;
+	   		nameisgood=checkvalid(fromCreate);
+	   		if(nameisgood==1){
+	   			if(!(ChooseTeamCombo.getSelectedIndex()==0)){
+	   				team = (Team)ChooseTeamCombo.getSelectedItem();
+	   				String selected="Choose..";
+	   				int i=1 , privilge=2 ,online=0;
+	   				
+	   				if((!textFieldFirstName.getText().isEmpty()&&!textFieldLastName.getText().isEmpty()&&!textFieldUserName.getText().isEmpty()&&!textFieldPassword.getText().isEmpty()&&!textFieldPhoneNumber.getText().isEmpty()&&!textFieldAddress.getText().isEmpty())){
+	   					
+	   					athlete=new User (i,textFieldFirstName.getText(),textFieldLastName.getText(),textFieldUserName.getText(),textFieldPassword.getText(),privilge,textFieldPhoneNumber.getText(),textFieldAddress.getText(),online);
+	   					
+	   					
+	   					getClient().sendMsgToServer(new MessageCreateNewAthlete(athlete));
+	   					MessageCreateNewAthleteReplay rep= (MessageCreateNewAthleteReplay)getClient().getMessageFromServer();
+	   					
+	   					getClient().sendMsgToServer(new MessageAssignAthleteToTeam(rep.getAthelteId(),team.getTeamId()));
+	   					MessageAssignAthleteToTeamReplay rep3= (MessageAssignAthleteToTeamReplay)getClient().getMessageFromServer();
+	   					
+	   					if(rep.getAthelteId()!=0&&rep3.getsuccssed()==1){
+	   						msg="Athlete Has Been Created and assign to your team";
+	   						
+	   						popUp(msg);
+	   						
+	   						getClient().swapFromBack(pushPanel());
+	   						
+	   					}
 	   				}
+	   				else { 
+	   					msg="Please Fill All Field";
+	   					popUp(msg);
+	   				}
+	   				
 	   			}
-	   		else { 
-	   			msg="Please Fill All Field";
-	   			popUp(msg);
-	    	    }
-	   		
-	   	}
-	   	else { 
-	   		msg="Please choose team";
-	   		popUp(msg);
-	    	}
-	   	
-	   	} });
+	   			else { 
+	   				msg="Please choose team";
+	   				popUp(msg);
+	   			}
+	   		}	
+	   			
+	   		} });
 	   btnCreate.setBounds(119, 390, 201, 23);
 		add(btnCreate);
 		

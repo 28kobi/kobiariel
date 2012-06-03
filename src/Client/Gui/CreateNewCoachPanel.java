@@ -18,6 +18,8 @@ import Server.Message.MessageCreateNewCoach;
 import Server.Message.MessageCreateNewCoachReplay;
 import Server.Message.MessageGetAllCoach;
 import Server.Message.MessageGetAllCoachReplay;
+import Server.Message.MessageGetAllusers;
+import Server.Message.MessageGetAllusersReplay;
 import Server.Message.MessageUpdateCoach;
 import Server.Message.MessageUpdateCoachReplay;
 
@@ -37,7 +39,7 @@ public class CreateNewCoachPanel extends MyJPanel {
 	private static final long serialVersionUID = 1L;
 	private User coach;
 	private boolean UpdateAnswer;
-	
+	private ArrayList<User> userarray =null;
     private	JLabel lblChooseCoach;
     private	JLabel lblNewLabel;
     private	JLabel lblLastName;
@@ -54,7 +56,7 @@ public class CreateNewCoachPanel extends MyJPanel {
     private JTextField textFieldPhoneNumber;
     private JTextField textFieldAddress;
    
-    
+    private  JButton btnCheckExiting;
 	
 	
 	public CreateNewCoachPanel(ClientIF client) {
@@ -148,41 +150,71 @@ public class CreateNewCoachPanel extends MyJPanel {
     	
     }
     
-    
-    
+    public  int checkvalid(int x){
+    	int i=0;
+    	int flag=1;
+    	while(i<userarray.size()){
+    		if(userarray.get(i).getUserName().equals(textFieldUserName.getText())){
+    			popUp("Name already exists");
+    			flag=0;
+    			break;
+    			}	 
+    		i++;
+    	}
+    	if(flag==1&&x==0)
+    		popUp("The name is good");
+    	
+    	return flag;
+    }
+  public void initArray(){
+    	
+	  	userarray = new ArrayList<User>();
+		getClient().sendMsgToServer(new MessageGetAllusers());
+		MessageGetAllusersReplay rep= (MessageGetAllusersReplay)getClient().getMessageFromServer();
+		userarray = rep.getUserArray();
+		
+    	
+    	
+    	
+    }
    public void initButton(){
 	   btnCreate = new JButton("CREATE NEW COACH");
 	   btnCreate.addActionListener(new ActionListener() {
 	   	public void actionPerformed(ActionEvent e) {
 	   		String msg;
 	   		int i=1 , privilge=0 ,online=0;
-	   		if(!textFieldFirstName.getText().isEmpty()&&!textFieldLastName.getText().isEmpty()&&!textFieldUserName.getText().isEmpty()&&!textFieldPassword.getText().isEmpty()&&!textFieldPhoneNumber.getText().isEmpty()&&!textFieldAddress.getText().isEmpty()){
+	   		int fromCreate=1;
+	   		int nameisgood;
+	   		nameisgood=checkvalid(fromCreate);
+	   		if(nameisgood==1){
+	   			if(!textFieldFirstName.getText().isEmpty()&&!textFieldLastName.getText().isEmpty()&&!textFieldUserName.getText().isEmpty()&&!textFieldPassword.getText().isEmpty()&&!textFieldPhoneNumber.getText().isEmpty()&&!textFieldAddress.getText().isEmpty()){
 		
-	   			coach=new User (i,textFieldFirstName.getText(),textFieldLastName.getText(),textFieldUserName.getText(),textFieldPassword.getText(),privilge,textFieldPhoneNumber.getText(),textFieldAddress.getText(),online);
+	   				coach=new User (i,textFieldFirstName.getText(),textFieldLastName.getText(),textFieldUserName.getText(),textFieldPassword.getText(),privilge,textFieldPhoneNumber.getText(),textFieldAddress.getText(),online);
 	   		
-	   			getClient().sendMsgToServer(new MessageCreateNewCoach(coach));
-	   			MessageCreateNewCoachReplay rep= (MessageCreateNewCoachReplay)getClient().getMessageFromServer();
+	   				getClient().sendMsgToServer(new MessageCreateNewCoach(coach));
+	   				MessageCreateNewCoachReplay rep= (MessageCreateNewCoachReplay)getClient().getMessageFromServer();
 			
 	   		
-	   			if(rep.getBoolean()==1){
-	   				msg="Coach Has Been Created";
+	   				if(rep.getBoolean()==1){
+	   					msg="Coach Has Been Created";
 				
-	   				popUp(msg);
+	   					popUp(msg);
 				
-	   				getClient().swapFromBack(pushPanel());
+	   					getClient().swapFromBack(pushPanel());
+	   				
 				
-				
-	   			}
+	   				}
 			
-	   			else lblNewLabelAnswer.setText("Update coach fail");
-	   		}	
-	   		else { 
+	   				else lblNewLabelAnswer.setText("Update coach fail");
+	   			}	
+	   			else { 
 	   			msg="Please Fill All Field.";
 	   			popUp(msg);
-	   		}
+	   			}
 			
-		
-	   			   		
+	   		}
+	   		
+	   		
 	   	
 	   	} });
 	   btnCreate.setBounds(119, 390, 201, 23);
@@ -191,10 +223,23 @@ public class CreateNewCoachPanel extends MyJPanel {
 		JLabel lblPleaseFill = new JLabel("(*) Please Fill All Field.");
 		lblPleaseFill.setBounds(23, 354, 119, 14);
 		add(lblPleaseFill);
+		
+		btnCheckExiting = new JButton("Check availability");
+		btnCheckExiting.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int fromValid=0;
+			    checkvalid(fromValid);
+				 
+			}
+		});
+		btnCheckExiting.setBounds(341, 186, 130, 23);
+		add(btnCheckExiting);
    }
     
 	  public void init()
     {
+		  initArray();
 		  initLabels();
 		  initTextField();
 		  initButton();

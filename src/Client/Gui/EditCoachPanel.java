@@ -183,13 +183,14 @@ public class EditCoachPanel extends MyJPanel {
 	   btnUpdate = new JButton("Update");
 	   btnUpdate.addActionListener(new ActionListener() {
 	   	public void actionPerformed(ActionEvent e) {
-	   		coach.setFirstName(textFieldFirstName.getText());
-	   		coach.setLastName(textFieldLastName.getText());
-	   		coach.setUserName(textFieldUserName.getText());
-	   		coach.setPassword(textFieldPassword.getText());
-	   		coach.setAddress(textFieldAddress.getText());
-	   		coach.setPrivilge(Integer.parseInt(textFieldPrivilge.getText()));
-	   		coach.setPhoneNumber(textFieldPhoneNumber.getText());
+	   		
+	   			coach.setFirstName(textFieldFirstName.getText());
+	   			coach.setLastName(textFieldLastName.getText());
+	   			coach.setUserName(textFieldUserName.getText());
+	   			coach.setPassword(textFieldPassword.getText());
+	   			coach.setAddress(textFieldAddress.getText());
+	   			coach.setPrivilge(Integer.parseInt(textFieldPrivilge.getText()));
+	   			coach.setPhoneNumber(textFieldPhoneNumber.getText());
 	   		
 	   		
 	   		getClient().sendMsgToServer(new MessageUpdateCoach(coach));
@@ -215,6 +216,7 @@ public class EditCoachPanel extends MyJPanel {
 	   });
 		btnUpdate.setBounds(119, 390, 89, 23);
 		add(btnUpdate);
+		btnUpdate.setEnabled(false);
    }
     
 	  public void init()
@@ -236,15 +238,17 @@ public class EditCoachPanel extends MyJPanel {
 	
 	private class CoachListener implements ActionListener{
 		public void actionPerformed(ActionEvent event) {
-			coach=(User)ChooseCoach.getSelectedItem();
-			textFieldFirstName.setText(coach.getFirstName());
-			textFieldLastName.setText(coach.getLastName());
-			textFieldUserName.setText(coach.getUserName());
-			textFieldPassword.setText(coach.getPassword());
-			textFieldPrivilge.setText(Integer.toString(coach.getPrivilge()));
-			textFieldPhoneNumber.setText(coach.getPhoneNumber());
-			textFieldAddress.setText(coach.getAddress());
-			
+			if(!ChooseCoach.getSelectedItem().equals("choose..")){
+				coach=(User)ChooseCoach.getSelectedItem();
+				textFieldFirstName.setText(coach.getFirstName());
+				textFieldLastName.setText(coach.getLastName());
+				textFieldUserName.setText(coach.getUserName());
+				textFieldPassword.setText(coach.getPassword());
+				textFieldPrivilge.setText(Integer.toString(coach.getPrivilge()));
+				textFieldPhoneNumber.setText(coach.getPhoneNumber());
+				textFieldAddress.setText(coach.getAddress());
+				btnUpdate.setEnabled(true);
+			}
 			
 		}
 	
