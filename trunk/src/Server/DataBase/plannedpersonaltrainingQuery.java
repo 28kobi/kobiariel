@@ -91,6 +91,32 @@ public plannedpersonaltraining getPersonalTrainingByTrainingId(int trainingId) t
 		}
 		return null;
 	}
+
+
+
+public ArrayList<plannedpersonaltraining> getAllUnPreformedPersonalTrainingByAthleteId(int athleteId) throws SQLException {
+	
+	ArrayList<plannedpersonaltraining> array = new ArrayList<plannedpersonaltraining>();
+	
+	setQuery("SELECT DISTINCT plannedpersonaltraining.* FROM plannedpersonaltraining,preformedpersonaltraining " + "WHERE plannedpersonaltraining.athleteId = '"+athleteId+"' AND  plannedpersonaltraining.trainingId NOT IN (SELECT trainingId FROM preformedpersonaltraining)");
+		ResultSet rs = execQuery();
+		while (rs.next()){				
+			plannedpersonaltraining training = null;
+			try {
+					training = new plannedpersonaltraining(rs.getInt(1), rs.getInt(2), rs.getInt(3),rs.getInt(4), rs.getString(5), rs.getString(6),rs.getString(7), rs.getString(8), rs.getString(9));
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}		
+				array.add(training);
+			}
+	  
+	  return array;
+	  
+	
+	
+	
+}
 		
 			
 	  

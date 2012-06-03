@@ -62,12 +62,12 @@ public class AthleteViewPerformedTrainingPanel extends MyJPanel {
 		
 	}	
 	public void initLables(){
-	 lblListOfAll = new JLabel("TEAM TRAINING:");
+	 lblListOfAll = new JLabel("PREFORMED TEAM TRAINING:");
 		lblListOfAll.setBounds(10, 115, 315, 14);
 		add(lblListOfAll);
 		
-		 lblPersonalTraining = new JLabel("PERSONAL TRAINING:");
-		lblPersonalTraining.setBounds(10, 288, 172, 14);
+		 lblPersonalTraining = new JLabel("PREFORMED PERSONAL TRAINING:");
+		lblPersonalTraining.setBounds(10, 288, 285, 14);
 		add(lblPersonalTraining);
 	}
 		public void initArrays(){

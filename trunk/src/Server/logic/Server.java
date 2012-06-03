@@ -2,8 +2,7 @@ package Server.logic;
 
 import Server.logic.ServerFrame;
 /**********************************************
- * (BDT)Baglama Developer Team software
- * @author 
+ * kobi & ariel
  **** 
  ******          
  ********
