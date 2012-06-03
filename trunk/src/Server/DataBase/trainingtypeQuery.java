@@ -21,7 +21,6 @@ public class trainingtypeQuery extends Query{
 	public int addtrainingtype(trainingtype trainingtypeob) throws SQLException{
 		Info info = new Info();
 		int newIdTraining= info.getNewTrainingTypeId();
-		if (isExist(trainingtypeob.gettrainingName())) return 0;
 		setQuery("INSERT INTO trainingtype(trainingId,activityId,trainingName) VALUES(?,?,?)");
 		PreparedStatement query2 = getPS();
 		query2.setInt(1, newIdTraining);

@@ -229,5 +229,7 @@ public class UserQuery extends Query{
 		}
 		return array;
 	}
+	
+	
 }
 

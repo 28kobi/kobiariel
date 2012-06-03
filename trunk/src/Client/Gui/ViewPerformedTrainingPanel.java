@@ -417,8 +417,10 @@ public class ViewPerformedTrainingPanel extends MyJPanel {
 			btnW = new JButton("observe details");
 			btnW.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					
+					String msg;
 						
+					if(!comboBoxAthlete.getSelectedItem().toString().equals("Choose..")){
+					
 							if(!comboBoxTraining.getSelectedItem().toString().equals("Choose..")){
 													
 								AthletTraining=(PreformedPersonalTraining)comboBoxTraining.getSelectedItem();
@@ -460,8 +462,16 @@ public class ViewPerformedTrainingPanel extends MyJPanel {
 							    	rdbtnWacthTheOriginal.setEnabled(true);
 							    	}
 								}
-						
-						
+							else{
+								msg="choose training";
+								popUp(msg);
+								
+							}
+						}
+					else{
+						msg="choose athlete";
+						popUp(msg);
+					}
 					}
 				});
 			
@@ -498,7 +508,7 @@ public class ViewPerformedTrainingPanel extends MyJPanel {
 			initLabel();
 		    initTextPane();
 		    initradioBtn();
-			
+		    comboBoxTraining.addItem("Choose..");
 			  for (int j=0; j<=allAthleteArray.size(); j++)
 				{
 					if (j==0) comboBoxAthlete.addItem("Choose..");
@@ -541,6 +551,7 @@ public class ViewPerformedTrainingPanel extends MyJPanel {
 						  	MessageGetAllPreformedTrainingByAtleteIdReplay rep6= (MessageGetAllPreformedTrainingByAtleteIdReplay)getClient().getMessageFromServer();
 						  	allPrefoemedTrainingArray = rep6.getPreformedPersonalArray();
 						  	comboBoxTraining.removeAllItems();
+						  	comboBoxTraining.validate();
 			    			 for (int i=0; i<=allPrefoemedTrainingArray.size(); i++)
 			    				{
 			    					if (i==0) comboBoxTraining.addItem("Choose..");

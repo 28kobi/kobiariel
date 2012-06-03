@@ -130,7 +130,7 @@ public class ViewPlannedTrainingPanel extends MyJPanel {
 			add(lblChooseTraining);
 			
 			lblActivityName = new JLabel("activity name:");
-			lblActivityName.setFont(new Font("Tahoma", Font.PLAIN, 11));
+			
 			lblActivityName.setBackground(Color.WHITE);
 			lblActivityName.setBounds(6, 222, 109, 24);
 			add(lblActivityName);
@@ -224,7 +224,7 @@ public class ViewPlannedTrainingPanel extends MyJPanel {
 			btnW = new JButton("observe details");
 			btnW.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					
+					String msg;
 						if(rdbtnPersonalTraining.isSelected()){
 							if(!comboBoxTraining.getSelectedItem().toString().equals("Choose..")){
 								
@@ -261,9 +261,15 @@ public class ViewPlannedTrainingPanel extends MyJPanel {
 								textPaneTime.setText(time);
 							
 								}
+							else{
+								msg="choose athlete";
+								popUp(msg);
+							}
+							
 						}	
+						
 						if(rdbtnTeamTraining.isSelected()){
-							if(!comboBoxTraining.getSelectedItem().toString().equals("Choose..")){
+							if(!(comboBoxTraining.getSelectedItem().toString().equals("Choose.."))){
 								
 								teamTraining=(plannedteamtraining)comboBoxTraining.getSelectedItem();
 								String activityName=null,trainingName=null,time,duration,distance,details;
@@ -298,8 +304,15 @@ public class ViewPlannedTrainingPanel extends MyJPanel {
 								textPaneTime.setText(time);
 							
 								}
+							else{
+								msg="choose team";
+								popUp(msg);
+							}
 							}	
-						
+						if(!rdbtnTeamTraining.isSelected()&&!rdbtnPersonalTraining.isSelected()){
+							msg="choose - team or athlete";
+							popUp(msg);
+						}
 					}
 				});
 			
@@ -313,6 +326,9 @@ public class ViewPlannedTrainingPanel extends MyJPanel {
 			    rdbtnTeamTraining.addActionListener(new ActionListener() {
 			    	public void actionPerformed(ActionEvent e) {
 			    			if(rdbtnTeamTraining.isSelected()){
+			    				comboBoxTraining.removeAllItems();
+								comboBoxTraining.validate();
+								comboBoxTraining.addItem("Choose..");
 			    				comboBoxTeams.setEnabled(true);
 			    				comboBoxAthlete.setEnabled(false);
 			    				if(rdbtnPersonalTraining.isSelected()){
@@ -334,6 +350,9 @@ public class ViewPlannedTrainingPanel extends MyJPanel {
 				rdbtnPersonalTraining.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						if(rdbtnPersonalTraining.isSelected()){
+							comboBoxTraining.removeAllItems();
+							comboBoxTraining.validate();
+							comboBoxTraining.addItem("Choose..");
 							comboBoxAthlete.setEnabled(true);
 							comboBoxTeams.setEnabled(false);
 		    				if(rdbtnTeamTraining.isSelected()){
@@ -391,7 +410,7 @@ public class ViewPlannedTrainingPanel extends MyJPanel {
 			initBtn();
 			initLabel();
 		    initTextPane();
-			
+			comboBoxTraining.addItem("Choose..");
 			 for (int i=0; i<=allTeamArray.size(); i++)
 				{
 					if (i==0) comboBoxTeams.addItem("Choose..");
@@ -419,8 +438,11 @@ public class ViewPlannedTrainingPanel extends MyJPanel {
 						  	comboBoxTraining.removeAllItems();
 			    			 for (int i=0; i<=allPersonalTrainingArray.size(); i++)
 			    				{
-			    					if (i==0) comboBoxTraining.addItem("Choose..");
-			    					else comboBoxTraining.addItem(allPersonalTrainingArray.get(i-1));
+			    				 if(i==0) 
+			    						comboBoxTraining.addItem("Choose..");
+			    				 else{
+			    					 comboBoxTraining.addItem(allPersonalTrainingArray.get(i-1));
+			    				 }
 			    					}
 			    			 comboBoxTraining.setEnabled(true);
 			    		}
@@ -438,12 +460,17 @@ public class ViewPlannedTrainingPanel extends MyJPanel {
 						  	MessageGetAllTeamTrainingByTeamIdReplay rep5= (MessageGetAllTeamTrainingByTeamIdReplay)getClient().getMessageFromServer();
 							allTeamTrainingArray = rep5.getArray();
 							comboBoxTraining.removeAllItems();
-			    			
+							
+						
+							
+						}
 			    			 for (int i=0; i<=allTeamTrainingArray.size(); i++)
 			    				{
-			    					if (i==0) comboBoxTraining.addItem("Choose..");
-			    					else comboBoxTraining.addItem(allTeamTrainingArray.get(i-1));
-			    					}
+			    					if(i==0) 
+			    						comboBoxTraining.addItem("Choose..");
+			    					else{			    					
+			    				 comboBoxTraining.addItem(allTeamTrainingArray.get(i-1));
+			    				}
 			    			 comboBoxTraining.setEnabled(true);
 			    		}
 			    		

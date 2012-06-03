@@ -19,6 +19,7 @@ import Client.Logic.ClientIF;
 import Server.DataBase.Info;
 import Server.DataBase.Team;
 import Server.DataBase.User;
+import Server.DataBase.plannedpersonaltraining;
 import Server.DataBase.plannedteamtraining;
 import Server.DataBase.statistic;
 import Server.DataBase.statisticQuery;
@@ -60,6 +61,7 @@ public class coachViewStatisticPanel extends MyJPanel {
 	private ArrayList<Team> allTeamArray =null;
 	private ArrayList<User> allAthleteArray =null;
 	private ArrayList<plannedteamtraining> allTeamTrainingArray =null;
+	private ArrayList<plannedpersonaltraining> allPersonalTrainingArray =null;
 	private plannedteamtraining plannedteamtraining;
 	private User Athlete;
 	private Team team1;
@@ -74,7 +76,7 @@ public class coachViewStatisticPanel extends MyJPanel {
 	private ArrayList <String> colu;
 	private statistic statisticQ=null;
 	private JComboBox comboBoxTraining;
-	
+	private JLabel lblChooseTraining ;
 	
 	public coachViewStatisticPanel(ClientIF client) {
 		super(PanelType.COACH_VIEW_STATISTIC_PANEL, client);
@@ -109,7 +111,10 @@ public class coachViewStatisticPanel extends MyJPanel {
 		}
 	
 		public void initLabel(){
-			
+			lblChooseTraining = new JLabel("choose training:");
+			lblChooseTraining.setBounds(6, 85, 138, 17);
+			add(lblChooseTraining);
+			lblChooseTraining.setVisible(false);
 
 			
 		}
@@ -121,6 +126,8 @@ public class coachViewStatisticPanel extends MyJPanel {
 			    rdbtnTeamTraining.addActionListener(new ActionListener() {
 			    	public void actionPerformed(ActionEvent e) {
 			    			if(rdbtnTeamTraining.isSelected()){
+			    				comboBoxTraining.setVisible(true);
+			    				lblChooseTraining.setVisible(true);
 			    				comboBoxTeams.setEnabled(true);
 			    				comboBoxAthlete.setEnabled(false);
 			    				if(rdbtnPersonalTraining.isSelected()){
@@ -142,6 +149,7 @@ public class coachViewStatisticPanel extends MyJPanel {
 				rdbtnPersonalTraining.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						if(rdbtnPersonalTraining.isSelected()){
+							comboBoxTraining.setVisible(false);
 							comboBoxAthlete.setEnabled(true);
 							comboBoxTeams.setEnabled(false);
 		    				if(rdbtnTeamTraining.isSelected()){
@@ -173,17 +181,19 @@ public class coachViewStatisticPanel extends MyJPanel {
 					public void actionPerformed(ActionEvent arg0) {
 						String msg;
 						if(rdbtnPersonalTraining.isSelected()){
-							if(!comboBoxAthlete.toString().equals("choose..")){
-								Athlete=(User)comboBoxAthlete.getSelectedItem();
-								statisticQ = new statistic();
-								getClient().sendMsgToServer(new MessageGetStatisticByAthleteId(Athlete.getIdUser()));
-								MessageGetStatisticByAthleteIdReplay rep5= (MessageGetStatisticByAthleteIdReplay)getClient().getMessageFromServer();
-								statisticQ = rep5.getStatisticQ();
-								bar= new BarChart("statistic",statisticQ);
-								bar.pack();
-						        RefineryUtilities.centerFrameOnScreen(bar);
-						        bar.setVisible(true);	
-								 
+						
+							if(!comboBoxAthlete.getSelectedItem().toString().equals("Choose..")){
+							
+									Athlete=(User)comboBoxAthlete.getSelectedItem();
+									statisticQ = new statistic();
+									getClient().sendMsgToServer(new MessageGetStatisticByAthleteId(Athlete.getIdUser()));
+									MessageGetStatisticByAthleteIdReplay rep5= (MessageGetStatisticByAthleteIdReplay)getClient().getMessageFromServer();
+									statisticQ = rep5.getStatisticQ();
+									bar= new BarChart("statistic",statisticQ);
+									bar.pack();
+									RefineryUtilities.centerFrameOnScreen(bar);
+									bar.setVisible(true);
+							
 								
 								
 							}
@@ -194,8 +204,9 @@ public class coachViewStatisticPanel extends MyJPanel {
 							
 						}
 					    if(rdbtnTeamTraining.isSelected()){
-							if(!comboBoxTeams.toString().equals("choose..")){
-								if(!comboBoxTraining.toString().equals("choose..")){
+					    	
+							if(!comboBoxTeams.getSelectedItem().toString().equals("Choose..")){
+								if(!comboBoxTraining.getSelectedItem().toString().equals("Choose..")){
 									team1 = (Team)comboBoxTeams.getSelectedItem();
 									plannedteamtraining=(plannedteamtraining)comboBoxTraining.getSelectedItem();
 									statisticQ = new statistic();
@@ -220,15 +231,17 @@ public class coachViewStatisticPanel extends MyJPanel {
 							}
 							
 						} 
-						
+					    if(!rdbtnTeamTraining.isSelected()&&!rdbtnPersonalTraining.isSelected()){
+					    	msg="choose what you want to see";
+							popUp(msg);
+					    	
+					    	
+					    }
 					}
 				});
 				btnViewStatistic.setBounds(308, 21, 155, 23);
 				add(btnViewStatistic);
 				
-				JLabel lblChooseTraining = new JLabel("choose training:");
-				lblChooseTraining.setBounds(6, 85, 138, 17);
-				add(lblChooseTraining);
 				
 			 
 		 }
@@ -241,6 +254,7 @@ public class coachViewStatisticPanel extends MyJPanel {
 		comboBoxTeams.setEnabled(false);
 		
 		comboBoxAthlete = new JComboBox();
+		
 		comboBoxAthlete.setBounds(175,38, 117, 20);
 		comboBoxAthlete.setEnabled(false);
 		add(comboBoxAthlete);
@@ -251,7 +265,7 @@ public class coachViewStatisticPanel extends MyJPanel {
 		comboBoxTraining.setEnabled(false);
 		add(comboBoxTraining);
 		comboBoxTraining.setEnabled(false);
-		
+		comboBoxTraining.setVisible(false);
 		
  }
 		
@@ -262,8 +276,8 @@ public class coachViewStatisticPanel extends MyJPanel {
 		initComboBox();
 		initJRadioButton();
 		initBtn();
-		
-
+	
+		comboBoxTraining.addItem("Choose..");
 		 for (int i=0; i<=allTeamArray.size(); i++)
 			{
 				if (i==0) comboBoxTeams.addItem("Choose..");
@@ -297,6 +311,9 @@ public class coachViewStatisticPanel extends MyJPanel {
 		    	}
 		    });
 		 
+					
+		
+		  
 		}
 	
 	

@@ -16,6 +16,8 @@ import Server.Message.MessageGetAllAthleteByCoachId;
 import Server.Message.MessageGetAllAthleteByCoachIdReplay;
 import Server.Message.MessageGetAllCoach;
 import Server.Message.MessageGetAllCoachReplay;
+import Server.Message.MessageGetAllusers;
+import Server.Message.MessageGetAllusersReplay;
 import Server.Message.MessageUpdateAthlete;
 import Server.Message.MessageUpdateAthleteReplay;
 import Server.Message.MessageUpdateCoach;
@@ -49,7 +51,7 @@ public class EditAthletePanel extends MyJPanel {
     private JTextField textFieldPhoneNumber;
     private JTextField textFieldAddress;
     private JButton btnUpdate;
-   
+    private ArrayList<User> userarray =null;
     
 	
 	
@@ -80,8 +82,28 @@ public class EditAthletePanel extends MyJPanel {
 		getClient().sendMsgToServer(new MessageGetAllAthleteByCoachId(getClient().getUser().getIdUser()));
 		MessageGetAllAthleteByCoachIdReplay rep= (MessageGetAllAthleteByCoachIdReplay) getClient().getMessageFromServer();
 		allAthleteArray = rep.getArray();
+		
+		userarray = new ArrayList<User>();
+		getClient().sendMsgToServer(new MessageGetAllusers());
+		MessageGetAllusersReplay rep3= (MessageGetAllusersReplay)getClient().getMessageFromServer();
+		userarray = rep3.getUserArray();
 	}
-	
+	public  int checkvalid(int x){
+		int i=0;
+		int flag=1;
+		while(i<userarray.size()){
+			if(userarray.get(i).getUserName().equals(textFieldUserName.getText())){
+				popUp("Name already exists");
+				flag=0;
+				break;
+				}	 
+			i++;
+		}
+		if(flag==1&&x==0)
+			popUp("The name is good");
+		
+		return flag;
+	}
 	
 	public void initComboBoxs()
 	{
@@ -178,32 +200,46 @@ public class EditAthletePanel extends MyJPanel {
 	   btnUpdate = new JButton("Update");
 	   btnUpdate.addActionListener(new ActionListener() {
 	   	public void actionPerformed(ActionEvent e) {
-	   		Athlete.setFirstName(textFieldFirstName.getText());
-	   		Athlete.setLastName(textFieldLastName.getText());
-	   		Athlete.setUserName(textFieldUserName.getText());
-	   		Athlete.setPassword(textFieldPassword.getText());
-	   		Athlete.setAddress(textFieldAddress.getText());
-	   		Athlete.setPhoneNumber(textFieldPhoneNumber.getText());
-	   		
-	   		
-	   		getClient().sendMsgToServer(new MessageUpdateAthlete(Athlete));
-	   		MessageUpdateAthleteReplay rep= (MessageUpdateAthleteReplay) getClient().getMessageFromServer();
-			
-	   		
-			if(rep.getBoolean()==true){
-				
-				popUp();
-				
-				getClient().swapFromBack(pushPanel());
-				
-				
-			}
-			
-		
-	
-	   			   		
-	   	}
-	   });
+	   		String msg;
+	   		int fromCreate=1;
+	   		int nameisgood;
+	   		nameisgood=checkvalid(fromCreate);
+	   		if(nameisgood==1){
+	   			if(ChooseAthlete.getSelectedItem().equals("choose..")){
+	   				
+	   			
+	   				Athlete.setFirstName(textFieldFirstName.getText());
+	   				Athlete.setLastName(textFieldLastName.getText());
+	   				Athlete.setUserName(textFieldUserName.getText());
+	   				Athlete.setPassword(textFieldPassword.getText());
+	   				Athlete.setAddress(textFieldAddress.getText());
+	   				Athlete.setPhoneNumber(textFieldPhoneNumber.getText());
+	   				
+	   				
+	   				getClient().sendMsgToServer(new MessageUpdateAthlete(Athlete));
+	   				MessageUpdateAthleteReplay rep= (MessageUpdateAthleteReplay) getClient().getMessageFromServer();
+	   				
+	   				
+	   				if(rep.getBoolean()==true){
+	   					msg="athlete updated";
+	   					popUp(msg);
+	   					
+	   					getClient().swapFromBack(pushPanel());
+	   					
+	   					
+	   				}
+	   			}
+	   			else{
+	   				
+	   				msg="choose athlete";
+   					popUp(msg);
+	   			}
+   			}	
+	   			
+	   			
+	   			   			
+	   		}
+	   	});
 		btnUpdate.setBounds(119, 390, 89, 23);
 		add(btnUpdate);
    }
@@ -239,12 +275,14 @@ public class EditAthletePanel extends MyJPanel {
 		}
 	
 	}
-	private void popUp(){
+
+	private void popUp(String msg){
 		Object[] options = {"Ok"};
-		JOptionPane.showMessageDialog((Component) getClient(),"All Athlete Details  Updates");
+		JOptionPane.showMessageDialog((Component) getClient(),msg);
 			
 		return ;
 	}
+	
 	
 
 	@Override

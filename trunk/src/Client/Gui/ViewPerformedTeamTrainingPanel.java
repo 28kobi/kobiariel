@@ -316,7 +316,8 @@ public class ViewPerformedTeamTrainingPanel extends MyJPanel {
 			btnW.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					
-						
+						String msg;
+						if(!comboBoxAthlete.getSelectedItem().toString().equals("Choose..")){
 							if(!comboBoxTraining.getSelectedItem().toString().equals("Choose..")){
 													
 								AthletTraining=(PreformedTeamTraining)comboBoxTraining.getSelectedItem();
@@ -357,7 +358,18 @@ public class ViewPerformedTeamTrainingPanel extends MyJPanel {
 							  
 							    btnNewButton.setEnabled(true);
 								}
-						
+							else{
+								msg="choose training ";
+								popUp(msg);	
+									
+								}
+							
+						}
+						else{
+							msg="choose athlete ";
+							popUp(msg);	
+								
+							}
 						
 					}
 				});
@@ -401,7 +413,7 @@ public class ViewPerformedTeamTrainingPanel extends MyJPanel {
 			initBtn();
 			initLabel();
 		    initTextPane();
-	
+		    comboBoxTraining.addItem("Choose..");
 			
 			  for (int j=0; j<=allAthleteArray.size(); j++)
 				{
@@ -435,6 +447,9 @@ public class ViewPerformedTeamTrainingPanel extends MyJPanel {
 						lblDate1.setVisible(false);
 						lblDistance_11.setVisible(false);
 						lblDuration_11.setVisible(false);
+						
+						
+						
 						if(!comboBoxAthlete.getSelectedItem().toString().equals("Choose..")){			
 							allPrefoemedTrainingArray = new ArrayList<PreformedTeamTraining>();
 				
@@ -510,43 +525,7 @@ public class ViewPerformedTeamTrainingPanel extends MyJPanel {
 							lblDate1.setVisible(true);
 							lblDistance_11.setVisible(true);
 							lblDuration_11.setVisible(true);
-							
-							
-							
-							
-							
-						
-							
-							
-						
-						
-					
-						
-						/*	textPaneTraining1.setVisible(false);
-							textPaneActivity1.setVisible(false);
-							textPaneDate1.setVisible(false);
-							textPaneTime1.setVisible(false);
-							textPaneDetails1.setVisible(false);
-							textPaneDuration1.setVisible(false);
-							textPaneDistance1.setVisible(false);
-							lblActivityName1.setVisible(false);
-							lblTime_11.setVisible(false);
-							lblTraining1.setVisible(false);
-							lblDetails_11.setVisible(false);
-							lblDate1.setVisible(false);
-							lblDistance_11.setVisible(false);
-							lblDuration_11.setVisible(false);
-							
-							*/
-							
-						
-						
-						
-						
-						
-						
-						
-					
+											
 					}
 				});
 			

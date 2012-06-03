@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -22,6 +24,8 @@ import Server.Message.MessageCreateNewActivityType;
 import Server.Message.MessageCreateNewActivityTypeReplay;
 import Server.Message.MessageCreateNewCoach;
 import Server.Message.MessageCreateNewCoachReplay;
+import Server.Message.MessageGetAllAactivityType;
+import Server.Message.MessageGetAllAactivityTypeReplay;
 import Client.Gui.MyJPanel.PanelType;
 import Client.Logic.ClientIF;
 
@@ -37,6 +41,7 @@ public class AddActivityMethodPanel extends MyJPanel {
     private	JLabel lblActivityName;
     private JButton btnCreate;
     private JTextField textFieldActivityName;
+    private ArrayList<activitytype> activitytype =null;
     
 	
 	
@@ -73,48 +78,76 @@ public class AddActivityMethodPanel extends MyJPanel {
 	    	
 	    }
 
+	    public void initArray(){
+	    	
+	    	activitytype = new ArrayList<activitytype>();
+			getClient().sendMsgToServer(new MessageGetAllAactivityType());
+			MessageGetAllAactivityTypeReplay rep= (MessageGetAllAactivityTypeReplay)getClient().getMessageFromServer();
+			activitytype = rep.getArray();
+			
+	    }
+	    public  int checkvalid(int x){
+	    	int i=0;
+	    	int flag=1;
+	    	while(i<activitytype.size()){
+	    		if(activitytype.get(i).getActivityName().equals(textFieldActivityName.getText())){
+	    			popUp("Name already exists");
+	    			flag=0;
+	    			break;
+	    			}	 
+	    		i++;
+	    	}
+	    	if(flag==1&&x==0)
+	    		popUp("The name is good");
+	    	
+	    	return flag;
+	    }
+	    
+	    
 	    public void initButton(){
 	 	   btnCreate = new JButton("CREATE NEW ACTIVITY TYPE ");
 	 	   btnCreate.addActionListener(new ActionListener() {
 	 	   	public void actionPerformed(ActionEvent e) {
 	 	   		String msg;
-	 	   		if(!textFieldActivityName.getText().isEmpty()){
+	 	   		int fromCreate=1;
+	 	   		int nameisgood;
+	 	   		nameisgood=checkvalid(fromCreate);
+	 	   		if(nameisgood==1){
+	 	   			if(!textFieldActivityName.getText().isEmpty()){
 	 		
-	 	   		activity=new activitytype ();
-	 	   		activity.setActivityName(textFieldActivityName.getText());
-	 	        activity.setActivityId(1);
-	 	   		getClient().sendMsgToServer(new MessageCreateNewActivityType(activity));
-	 	   		MessageCreateNewActivityTypeReplay rep= (MessageCreateNewActivityTypeReplay)getClient().getMessageFromServer();
-	 			
-	 	   		
-	 	   			if(rep.getint()==1){
-	 	   				msg="New Activity type Has Been Created";
-	 				
-	 	   				popUp(msg);
-	 				
-	 	   				getClient().swapFromBack(pushPanel());
-	 				
-	 				
-	 	   			}
-	 	   			else {
+	 	   				activity=new activitytype ();
+	 	   				activity.setActivityName(textFieldActivityName.getText());
+	 	   				activity.setActivityId(1);
+	 	   				getClient().sendMsgToServer(new MessageCreateNewActivityType(activity));
+	 	   				MessageCreateNewActivityTypeReplay rep= (MessageCreateNewActivityTypeReplay)getClient().getMessageFromServer();
 	 	   				
-	 	   			msg="there was a problem adding activity type , try again";
-	 				
- 	   				popUp(msg);
+	 	   				
+	 	   				if(rep.getint()==1){
+	 	   					msg="New Activity type Has Been Created";
+	 	   					
+	 	   					popUp(msg);
+	 	   					
+	 	   					getClient().swapFromBack(pushPanel());
+	 	   					
+	 	   					
+	 	   				}
+	 	   				else {
+	 	   					
+	 	   					msg="there was a problem adding activity type , try again";
+	 	   					
+	 	   					popUp(msg);
  				
- 	   				getClient().swapFromBack(pushPanel());
+	 	   					getClient().swapFromBack(pushPanel());
+	 	   					
+	 	   				}
 	 	   				
+	 	   			}	
+	 	   			else { 
+	 	   				msg="Please Fill the activity name";
+	 	   				popUp(msg);
 	 	   			}
-	 	   			
-	 	   		}	
-	 	   		else { 
-	 	   			msg="Please Fill the activity name";
-	 	   			popUp(msg);
-	 	   		}
 	 			
-	 		
-	 	   			   		
-	 	   	
+	 	   		}	 		
 	 	   	} });
 	 	   btnCreate.setBounds(96, 213, 224, 23);
 	 		add(btnCreate);
@@ -126,6 +159,7 @@ public class AddActivityMethodPanel extends MyJPanel {
 		   initTextField();
 		   initLabels();
 		   initButton();
+		   initArray();
 		   
 	   }
 	   
