@@ -71,7 +71,7 @@ public class AthelteViewPlannedPersonalTrainingTableModel extends AbstractTableM
 	}	  
 	  record[1] =activitytype.getActivityName();
 	  try {
-		trainingtype=trainingtypeQuery.getatrainingtypeById(((plannedpersonaltraining.getTrainingId())));
+		trainingtype=trainingtypeQuery.getatrainingtypeById(((plannedpersonaltraining.getTrainingTypeId())));
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

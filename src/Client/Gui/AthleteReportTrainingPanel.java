@@ -65,6 +65,7 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 	private JRadioButton rdbtnReportUnPlannedTraining;
 	private JRadioButton rdbtnReportPlannedTraining;
 	private JButton btnReportTrainingDetail;
+	private JButton btnResetTrainingDetail;
 
 	private PreformedPersonalTraining PreformedPersonalTraining;
 	private PreformedTeamTraining PreformedTeamTraining;
@@ -168,23 +169,17 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 					if(rdbtnReportUnPlannedTraining.isSelected()){
 						if(rdbtnReportPlannedTraining.isSelected())
 							rdbtnReportPlannedTraining.doClick();
-						
+					
 						comboBoxTeam.setVisible(false);
-						comboBoxPersonal.setVisible(false);						
+						comboBoxPersonal.setVisible(false);
 						table.setVisible(false);
 						table2.setVisible(false);
-				
+						lblChooseTraining.setVisible(false);
+						lblTeamTraining.setVisible(false);
+						lblPersonalTraining.setVisible(false);
+						btnResetTrainingDetail.setVisible(false);
 					}
-					else{
-			 	
-						comboBoxTeam.setVisible(true);
-						comboBoxPersonal.setVisible(true);						
-						table.setVisible(true);
-						table2.setVisible(true);
-						
-						
-					}
-			 		
+					
 			 	}
 			 });
 			 rdbtnReportUnPlannedTraining.setBounds(6, 23, 173, 23);
@@ -207,6 +202,10 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 							comboBoxPersonal.setVisible(true);						
 							table.setVisible(true);
 							table2.setVisible(true);
+							lblChooseTraining.setVisible(true);
+							lblTeamTraining.setVisible(true);
+							lblPersonalTraining.setVisible(true);
+							btnResetTrainingDetail.setVisible(true);
 						
 							}
 						else{
@@ -217,6 +216,10 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 							table2.setVisible(false);
 							comboBoxTeam.setEnabled(false);
 							comboBoxPersonal.setEnabled(false);
+							lblChooseTraining.setVisible(false);
+							lblTeamTraining.setVisible(false);
+							lblPersonalTraining.setVisible(false);
+							btnResetTrainingDetail.setVisible(false);
 						
 						}
 					}
@@ -249,10 +252,12 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 		
 		 public void initComboBox(){
 			  	comboBoxTeam = new JComboBox();
+			  	comboBoxTeam.setVisible(false);
 			  	
 			  	comboBoxTeam.addActionListener(new ActionListener() {
 			  		public void actionPerformed(ActionEvent e) {
-			  			comboBoxTeam.setEnabled(false);
+			  			
+			  			
 			  			if(!comboBoxTeam.getSelectedItem().toString().equals("Choose..")){
 			  				comboBoxPersonal.setEnabled(false);
 			  				table2.setVisible(false);
@@ -294,10 +299,13 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 			   add(comboBoxTeam);
 			   
 				
-				comboBoxPersonal = new JComboBox();
+				comboBoxPersonal = new JComboBox();				
+				comboBoxPersonal.setVisible(false);
 				comboBoxPersonal.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						comboBoxPersonal.setEnabled(false);
+						
+						
+						
 						
 						if(!comboBoxPersonal.getSelectedItem().toString().equals("Choose..")){
 							comboBoxTeam.setEnabled(false);
@@ -407,16 +415,19 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 			lblTeamTraining = new JLabel("Team Training :");
 			lblTeamTraining.setBounds(6, 116, 82, 14);
 			add(lblTeamTraining);
+			lblTeamTraining.setVisible(false);
 			
 			lblPersonalTraining = new JLabel("Personal Training :");
 			lblPersonalTraining.setBounds(266, 116, 114, 14);
 			add(lblPersonalTraining);
+			lblPersonalTraining.setVisible(false);
 			
 
 			lblChooseTraining = new JLabel("Choose Training:");
 			lblChooseTraining.setFont(new Font("Dialog", Font.BOLD, 24));
 			lblChooseTraining.setBounds(6, 79, 218, 23);
 			add(lblChooseTraining);
+			lblChooseTraining.setVisible(false);
 			
 			lblDetails = new JLabel("Details: ");
 			lblDetails.setBounds(6, 387, 68, 14);
@@ -473,21 +484,7 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 			add(lblHereYouCan);	
 			
 		}
-		public void initTextPane(){
-			
-			JButton btnResetTrainingDetail = new JButton("Reset Training Detail");
-			btnResetTrainingDetail.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					getClient().swapFromBack(pushPanel());
-				}
-			});
-			btnResetTrainingDetail.setBounds(507, 112, 165, 23);
-			add(btnResetTrainingDetail);
-			
-			
-			
-			
-		}
+		
 		public void initTextField(){
 			
 			textFieldDistance = new JTextField();
@@ -508,9 +505,29 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 
 		
 		private void initBtn() {
+			
+			 btnResetTrainingDetail = new JButton("Reset Training Detail");
+			btnResetTrainingDetail.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					getClient().swapFromBack(pushPanel());
+				}
+			});
+			btnResetTrainingDetail.setBounds(507, 112, 165, 23);
+			add(btnResetTrainingDetail);
+			btnResetTrainingDetail.setVisible(false);
+			
+			
+			
+			
 			btnReportTrainingDetail = new JButton("Report Training Detail");
 			btnReportTrainingDetail.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					if(!rdbtnReportUnPlannedTraining.isSelected()&&!rdbtnReportPlannedTraining.isSelected()){
+						msg="Please Select Planned Or Unplanned Radio Button";
+						popUp(msg);
+						return ;
+						
+					}
 								if(rdbtnReportUnPlannedTraining.isSelected()){
 									if((!comboBoxDay.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxMonth.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxYear.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxHour.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxMin.getSelectedItem().toString().equals("Choose.."))){
 										
@@ -575,6 +592,7 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 											msg="Training Report Success";
 											popUp(msg);	
 											getClient().swapFromBack(pushPanel());
+											return ;
 											}
 								
 										
@@ -582,6 +600,7 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 									else {
 										msg="fill all details";
 										popUp(msg);
+										return ;
 									}
 									
 								}	
@@ -658,6 +677,7 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 								msg="Report Team Training Success.";
 								popUp(msg);	
 								getClient().swapFromBack(pushPanel());
+								return ;
 							}
 							else {
 								msg="Report Team Training Failed.. try again..";
@@ -672,86 +692,7 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 							
 						}
 						
-/************						
-						if(rdbtnPersonalTraining.isSelected()){
-					
-							updatedTraining1=new plannedpersonaltraining();
-									
-							//check if activity type change
-							 comboBoxTrainingType.addItem("Choose..");
-								
-							if((comboBoxActivityType.getSelectedItem().toString().equals("choose.."))){
-								activitytype activy=(activitytype)comboBoxActivityType.getSelectedItem();
-								if(AthletTraining.getActivityid()==activy.getActivityId())
-									updatedTraining1.setActivityid(AthletTraining.getActivityid());
-								else
-									updatedTraining1.setActivityid(activy.getActivityId());
-								}
-							else {
-								updatedTraining1.setActivityid(AthletTraining.getActivityid());
-								}
-							
-							//check if training type change
-							if((comboBoxTrainingType.getSelectedItem().toString().equals("choose.."))){
-								trainingtype trainingt=(trainingtype)comboBoxTrainingType.getSelectedItem();
-								if(AthletTraining.getActivityid()==trainingt.getTrainingId())
-									updatedTraining1.setTrainingTypeId(AthletTraining.getTrainingTypeId());
-								else
-									updatedTraining1.setTrainingTypeId(trainingt.getTrainingId());
-								}
-							else {
-								updatedTraining1.setTrainingTypeId(AthletTraining.getTrainingTypeId());
-								}
-							
-							if(comboBoxDay.isEnabled()&&!comboBoxDay.getSelectedItem().toString().equals("choose..")&&!comboBoxMonth.getSelectedItem().toString().equals("choose..")&&!comboBoxYear.getSelectedItem().toString().equals("choose..")){
-								msg=""+comboBoxDay.getSelectedItem().toString()+""+"/"+comboBoxMonth.getSelectedItem().toString()+""+"/"+comboBoxYear.getSelectedItem().toString()+"";
-								updatedTraining1.setDate(msg);
-							}
-							else
-								updatedTraining1.setDate(AthletTraining.getDate());
-								
-						
-							
-							if(!comboBoxHour.getSelectedItem().toString().equals("choose..")&&!comboBoxMin.getSelectedItem().toString().equals("choose..")){
-								msg=""+comboBoxHour.getSelectedItem().toString()+""+":"+comboBoxMin.getSelectedItem().toString()+"";
-								updatedTraining1.setTime(msg);
-							}
-							else
-									updatedTraining1.setTime(AthletTraining.getTime());
-							
-							
-							if(textFieldDetails.getText().equals(""))
-								updatedTraining1.setDetails(AthletTraining.getDetails());
-							else
-								updatedTraining1.setDetails(textFieldDetails.getText());
-							
-							if(textFieldDuration.getText().equals(""))
-								updatedTraining1.setDuration(AthletTraining.getDuration());
-							else
-								updatedTraining1.setDuration(textFieldDuration.getText());
-							
-							if(textFieldDistance.getText().equals(""))
-								updatedTraining1.setDistance(AthletTraining.getDistance());
-							else
-								updatedTraining1.setDistance(textFieldDistance.getText());
-							updatedTraining1.setathleteId(AthletTraining.getathleteId());
-							updatedTraining1.setTrainingId(AthletTraining.getTrainingId());
-							
-							getClient().sendMsgToServer(new MessageUpdateAthleteTraining(updatedTraining1));
-							MessageUpdateAthleteTrainingReplay replay= (MessageUpdateAthleteTrainingReplay) getClient().getMessageFromServer();
-							if(replay.getint()==1){
-								msg="training has been upDated..";
-								popUp(msg);	
-								getClient().swapFromBack(pushPanel());
-							}
-							else {
-								msg="problem while up dating.. try again..";
-								popUp(msg);
-								
-							}
-							
-						}
-************/						
+
 					}
 			
 		
@@ -784,7 +725,7 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 			initJRadioButton();
 			initBtn();
 			initLabel();
-			initTextPane();
+		
 			initTable();
 			comboBoxMin.addItem("Choose..");;
 			comboBoxActivityType.addItem("Choose.."); ;
