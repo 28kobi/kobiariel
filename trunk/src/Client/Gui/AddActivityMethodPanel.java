@@ -39,6 +39,7 @@ public class AddActivityMethodPanel extends MyJPanel {
 	private activitytype activity;
 	private int UpdateAnswer;
     private	JLabel lblActivityName;
+    private	JLabel  lblInsertActivityName;
     private JButton btnCreate;
     private JTextField textFieldActivityName;
     private ArrayList<activitytype> activitytype =null;
@@ -152,6 +153,10 @@ public class AddActivityMethodPanel extends MyJPanel {
 	 	   btnCreate.setBounds(96, 213, 224, 23);
 	 		add(btnCreate);
 	 		
+	 		 lblInsertActivityName = new JLabel("Insert Activity Name You Like To Add:");
+	 		lblInsertActivityName.setBounds(0, 53, 230, 14);
+	 		add(lblInsertActivityName);
+	 		
 	    }
 		    
 	   public void init(){
@@ -174,7 +179,6 @@ public class AddActivityMethodPanel extends MyJPanel {
 	public MyJPanel pushPanel() {
 		return new AddActivityMethodPanel(getClient());
 	}
-	
 }
 
 

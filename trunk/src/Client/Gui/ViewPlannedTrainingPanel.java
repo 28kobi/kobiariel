@@ -43,6 +43,7 @@ import Server.Message.MessageUpdateTeamTraining;
 import Server.Message.MessageUpdateTeamTrainingReplay;
 
 import Client.Logic.ClientIF;
+import java.awt.SystemColor;
 
 
 public class ViewPlannedTrainingPanel extends MyJPanel {
@@ -125,90 +126,90 @@ public class ViewPlannedTrainingPanel extends MyJPanel {
 		public void initLabel(){
 			
 
-			lblChooseTraining = new JLabel("choose training by dates:");
+			lblChooseTraining = new JLabel("Choose Training By Dates:");
 			lblChooseTraining.setBounds(6, 85, 153, 14);
 			add(lblChooseTraining);
 			
-			lblActivityName = new JLabel("activity name:");
+			lblActivityName = new JLabel("Activity Name:");
 			
 			lblActivityName.setBackground(Color.WHITE);
-			lblActivityName.setBounds(6, 222, 109, 24);
+			lblActivityName.setBounds(6, 167, 78, 20);
 			add(lblActivityName);
 			
 			
 			
-			lblTraining = new JLabel("training name:");
-			lblTraining.setBounds(190, 222, 90, 20);
+			lblTraining = new JLabel("Training Name:");
+			lblTraining.setBounds(6, 198, 90, 20);
 			add(lblTraining);
 			
 			
 			
-			lblDate = new JLabel("date:");
-			lblDate.setBounds(383, 222, 78, 24);
+			lblDate = new JLabel("Date:");
+			lblDate.setBounds(6, 229, 78, 24);
 			add(lblDate);
 			
 			
 			
-			lblTime_1 = new JLabel("time:");
-			lblTime_1.setBounds(6, 263, 37, 25);
+			lblTime_1 = new JLabel("Time:");
+			lblTime_1.setBounds(6, 341, 37, 25);
 			add(lblTime_1);
 			
 			
 			
-			lblDetails_1 = new JLabel("details:");
-			lblDetails_1.setBounds(150, 263, 46, 14);
+			lblDetails_1 = new JLabel("Details:");
+			lblDetails_1.setBounds(6, 390, 46, 14);
 			add(lblDetails_1);
 			
-			lblDuration_1 = new JLabel("duration:");
-			lblDuration_1.setBounds(314, 263, 53, 23);
+			lblDuration_1 = new JLabel("Duration:");
+			lblDuration_1.setBounds(6, 307, 53, 23);
 			add(lblDuration_1);
 			
 			
-			lblDistance_1 = new JLabel("distance:");
-			lblDistance_1.setBounds(522, 222, 71, 20);
+			lblDistance_1 = new JLabel("Distance:");
+			lblDistance_1.setBounds(6, 264, 71, 20);
 			add(lblDistance_1);
 			
 			
 		}
 	public void initTextPane(){
 		textPaneDuration = new JTextPane();
-		textPaneDuration.setBounds(391, 261, 87, 20);
+		textPaneDuration.setBounds(94, 307, 102, 20);
 		textPaneDuration.setFont(new Font("Tahoma", Font.BOLD, 14));
 		textPaneDuration.setBackground(Color.lightGray);
 		add(textPaneDuration);
 		
 		textPaneDistance = new JTextPane();
-		textPaneDistance.setBounds(590, 219, 71, 20);
+		textPaneDistance.setBounds(94, 260, 102, 20);
 		textPaneDistance.setFont(new Font("Tahoma", Font.BOLD, 14));
 		textPaneDistance.setBackground(Color.lightGray);
 		add(textPaneDistance);
 		
 		textPaneDate = new JTextPane();
-		textPaneDate.setBounds(420, 219, 97, 20);
+		textPaneDate.setBounds(94, 229, 102, 20);
 		textPaneDate.setFont(new Font("Tahoma", Font.BOLD, 14));
 		textPaneDate.setBackground(Color.lightGray);
 		add(textPaneDate);
 		
 		textPaneDetails = new JTextPane();
-		textPaneDetails.setBounds(196, 261, 63, 20);
+		textPaneDetails.setBounds(94, 390, 102, 20);
 		textPaneDetails.setFont(new Font("Tahoma", Font.BOLD, 14));
 		textPaneDetails.setBackground(Color.lightGray);
 		add(textPaneDetails);
 		
 		textPaneTime = new JTextPane();
-		textPaneTime.setBounds(53, 261, 53, 24);
+		textPaneTime.setBounds(94, 348, 102, 20);
 		textPaneTime.setFont(new Font("Tahoma", Font.BOLD, 14));
 		textPaneTime.setBackground(Color.lightGray);
 		add(textPaneTime);
 		
 		textPaneActivity = new JTextPane();
 		textPaneActivity.setFont(new Font("Tahoma", Font.BOLD, 14));
-		textPaneActivity.setBounds(93, 219, 88, 26);
-		textPaneActivity.setBackground(Color.lightGray);
+		textPaneActivity.setBounds(94, 169, 102, 20);
+		textPaneActivity.setBackground(Color.LIGHT_GRAY);
 		add(textPaneActivity);
 		
 		textPaneTraining = new JTextPane();
-		textPaneTraining.setBounds(274, 219, 89, 20);
+		textPaneTraining.setBounds(94, 198, 102, 20);
 		textPaneTraining.setFont(new Font("Tahoma", Font.BOLD, 14));
 		textPaneTraining.setBackground(Color.lightGray);
 		add(textPaneTraining);
@@ -221,7 +222,7 @@ public class ViewPlannedTrainingPanel extends MyJPanel {
 	
 		public void initBtn(){
 			
-			btnW = new JButton("observe details");
+			btnW = new JButton("Observe Details");
 			btnW.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					String msg;
@@ -317,12 +318,12 @@ public class ViewPlannedTrainingPanel extends MyJPanel {
 				});
 			
 			
-			btnW.setBounds(383, 81, 153, 23);
+			btnW.setBounds(352, 81, 153, 23);
 			add(btnW);
 		}
 		 public void initJRadioButton(){
 				
-			    rdbtnTeamTraining = new JRadioButton("team training");
+			    rdbtnTeamTraining = new JRadioButton("Team Training");
 			    rdbtnTeamTraining.addActionListener(new ActionListener() {
 			    	public void actionPerformed(ActionEvent e) {
 			    			if(rdbtnTeamTraining.isSelected()){
@@ -346,7 +347,7 @@ public class ViewPlannedTrainingPanel extends MyJPanel {
 				rdbtnTeamTraining.setBounds(6, 7, 138, 23);
 				add(rdbtnTeamTraining);
 				
-				rdbtnPersonalTraining = new JRadioButton("personal training");
+				rdbtnPersonalTraining = new JRadioButton("Personal Training");
 				rdbtnPersonalTraining.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						if(rdbtnPersonalTraining.isSelected()){
@@ -381,7 +382,7 @@ public class ViewPlannedTrainingPanel extends MyJPanel {
 		 public void initComboBox(){
 		
 				comboBoxTraining = new JComboBox();
-				comboBoxTraining.setBounds(246,82, 117, 20);
+				comboBoxTraining.setBounds(175,82, 117, 20);
 				comboBoxTraining.setEnabled(false);
 				add(comboBoxTraining);
 				comboBoxTraining.setEnabled(false);

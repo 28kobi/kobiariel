@@ -350,13 +350,11 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 				add(comboBoxPersonal);
 			
 				comboBoxDay = new JComboBox();
-				comboBoxDay.setMaximumRowCount(32);
 				comboBoxDay.setBounds(151, 258, 97, 20);
 				comboBoxDay.setEnabled(false);
 				add(comboBoxDay);
 				
 				comboBoxMonth = new JComboBox();
-				comboBoxMonth.setMaximumRowCount(13);
 				comboBoxMonth.setBounds(301, 258, 82, 20);			
 				 for (int i=0; i<=month.length; i++)
 					{
@@ -375,7 +373,6 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 				add(comboBoxYear);
 				
 				comboBoxHour = new JComboBox();
-				comboBoxHour.setMaximumRowCount(25);
 				comboBoxHour.setBounds(151, 289, 97, 20);
 				for(int hour=0;hour<25;hour++){
 					if(hour==0) comboBoxHour.addItem("Choose..");
@@ -529,6 +526,7 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 						
 					}
 								if(rdbtnReportUnPlannedTraining.isSelected()){
+									
 									if((!comboBoxDay.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxMonth.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxYear.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxHour.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxMin.getSelectedItem().toString().equals("Choose.."))){
 										
 										PreformedPersonalTraining = new PreformedPersonalTraining();
@@ -727,13 +725,8 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 			initLabel();
 		
 			initTable();
-			comboBoxMin.addItem("Choose..");;
-			comboBoxActivityType.addItem("Choose.."); ;
-			comboBoxTrainingType.addItem("Choose..");;
-			comboBoxHour.addItem("Choose..");;
-			comboBoxDay.addItem("Choose..");;
-			comboBoxMonth.addItem("Choose..");;
-			comboBoxYear.addItem("Choose..");;
+			
+		
 			
 		
 			 for (int i=0; i<=allUnPreformedPersonalTrainingArray.size(); i++)
