@@ -1,6 +1,13 @@
 package Client.Gui;
 
 import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Client.Logic.ClientIF;
@@ -49,6 +56,19 @@ public abstract class MyJPanel extends JPanel {
 
 	public MyJPanel(PanelType type, ClientIF client){
 		super();
+		BufferedImage myPic;
+		try {
+			myPic = ImageIO.read(new File("image"+ File.separator+"bg.jpg"));
+		
+			//JLabel lblbg = new JLabel(new ImageIcon(myPic), JLabel.CENTER);
+		//	lblbg.setBounds(149, 11, 340, 46);
+			//add(lblbg);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		setBackground(Color.WHITE);
 		this.type = type;
 		this.client = client;
