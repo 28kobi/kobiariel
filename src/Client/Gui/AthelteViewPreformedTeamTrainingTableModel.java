@@ -70,7 +70,7 @@ public class AthelteViewPreformedTeamTrainingTableModel extends AbstractTableMod
 	}	  
 	  record[1] =activitytype.getActivityName();
 	  try {
-		trainingtype=trainingtypeQuery.getatrainingtypeById(((PreformedTeamTraining.getTrainingId())));
+		trainingtype=trainingtypeQuery.getatrainingtypeById(((PreformedTeamTraining.getTrainingTypeId())));
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

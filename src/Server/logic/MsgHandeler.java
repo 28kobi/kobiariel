@@ -14,6 +14,7 @@ import Server.DataBase.athleteQuery;
 import Server.DataBase.plannedpersonaltraining;
 import Server.DataBase.plannedpersonaltrainingQuery;
 import Server.DataBase.plannedteamtrainingQuery;
+import Server.DataBase.statisticQuery;
 import Server.DataBase.trainingtypeQuery;
 import Server.Message.MessageAssignAthleteToTeam;
 import Server.Message.MessageAssignAthleteToTeamReplay;
@@ -57,12 +58,17 @@ import Server.Message.MessageGetAllUnPreformedPersonalTrainingByAtleteId;
 import Server.Message.MessageGetAllUnPreformedPersonalTrainingByAtleteIdReplay;
 import Server.Message.MessageGetAllUnPreformedTeamTrainingByTeamId;
 import Server.Message.MessageGetAllUnTeamedAthleteReplay;
+import Server.Message.MessageGetAllusersReplay;
 import Server.Message.MessageGetAthleteByUserId;
 import Server.Message.MessageGetAthleteByUserIdReplay;
 import Server.Message.MessageGetPlannedTeamTrainingByTrainingId;
 import Server.Message.MessageGetPlannedTeamTrainingByTrainingIdReplay;
 import Server.Message.MessageGetPlannedTrainingByTrainingId;
 import Server.Message.MessageGetPlannedTrainingByTrainingIdReplay;
+import Server.Message.MessageGetStatisticByAthleteId;
+import Server.Message.MessageGetStatisticByAthleteIdReplay;
+import Server.Message.MessageGetStatisticBytrainingId;
+import Server.Message.MessageGetStatisticBytrainingIdReplay;
 import Server.Message.MessageGetUserByUserId;
 import Server.Message.MessageGetUserByUserIdReplay;
 import Server.Message.MessageLogin;
@@ -364,6 +370,26 @@ public class MsgHandeler {
 				client.sendToClient(mgsr111);
 				plannedpersonaltraining.close();
 				break;	
+		 case MESSAGE_GET_STATISTIC_BY_ATHLETE_ID:
+				statisticQuery statisticQueryq= new statisticQuery();
+				MessageGetStatisticByAthleteId MessageGetStatisticByAthleteId1 = (MessageGetStatisticByAthleteId) message ;
+				MessageGetStatisticByAthleteIdReplay msgr25  = new MessageGetStatisticByAthleteIdReplay(statisticQueryq.getAthleteStatistic(MessageGetStatisticByAthleteId1.getAthleteId()));
+				client.sendToClient(msgr25);
+				statisticQueryq.close();
+				break;
+			case MESSAGE_GET_TRAINING_STATISTIC_BY_TRAINING_ID:
+				statisticQuery statisticQueryq1= new statisticQuery();
+				MessageGetStatisticBytrainingId MessageGetStatisticBytrainingId1 = (MessageGetStatisticBytrainingId) message ;
+				MessageGetStatisticBytrainingIdReplay msgr26  = new MessageGetStatisticBytrainingIdReplay(statisticQueryq1.gettrainingStatisticByTrainingId(MessageGetStatisticBytrainingId1.getTrainingId(),MessageGetStatisticBytrainingId1.getTeamId()));
+				client.sendToClient(msgr26);
+				statisticQueryq1.close();
+				break;
+			case MESSAGE_GET_ALL_USER:
+				UserQuery UserQuery22 = new UserQuery();
+				MessageGetAllusersReplay mgsr270 = new MessageGetAllusersReplay(UserQuery22.getAllUsers());
+				client.sendToClient(mgsr270);
+				UserQuery22.close();
+				break;
 
 
 			
