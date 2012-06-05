@@ -3,8 +3,11 @@ package Client.Gui;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
@@ -54,7 +57,7 @@ public class ClientFrame extends JFrame implements ClientIF {
 		Object[] options = {"Continue", "Cancel"};
 		int n = JOptionPane.showOptionDialog(this,
 				"Are you sure you want to exit? ",
-						"Why so soon?",
+						"come back :)?",
 						JOptionPane.YES_NO_OPTION,
 						JOptionPane.WARNING_MESSAGE,
 						null,
@@ -86,8 +89,10 @@ public class ClientFrame extends JFrame implements ClientIF {
 	}
 	
 	public void init() throws IOException{
-		
-		this.setSize(1300,700);
+		Toolkit tk = Toolkit.getDefaultToolkit();  
+		int xSize = ((int) tk.getScreenSize().getWidth());  
+		int ySize = ((int) tk.getScreenSize().getHeight());  
+		this.setSize(xSize-2,ySize-45);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -96,7 +101,7 @@ public class ClientFrame extends JFrame implements ClientIF {
 		setTitle("Training - Client");
 		setResizable(false);
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-		setLocation(new Point(40, 10));
+		setLocation(new Point(0, 0));
 		initTopBar();
 		initSideBar();
 		setVisible(true);
