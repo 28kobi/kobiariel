@@ -105,12 +105,12 @@ public void initComboBoxs()
 	add(ChooseTeamCombo);
 	
 	ChooseAtleteCombo = new JComboBox();
-	ChooseAtleteCombo.setFont(new Font("Arial", Font.PLAIN, 11));
+	ChooseAtleteCombo.setFont(new Font("Arial", Font.PLAIN, 15));
 	ChooseAtleteCombo.setBackground(Color.WHITE);
-	ChooseAtleteCombo.setBounds(148, 146, 174, 24);
+	ChooseAtleteCombo.setBounds(148, 146, 174, 25);
 	add(ChooseAtleteCombo);
 	
-	lblAddAthleteTo = new JLabel("ADD ATHLETE TO TEAM:  ");
+	lblAddAthleteTo = new JLabel("Add Athlete To Team:");
 	lblAddAthleteTo.setForeground(Color.BLACK);
 	lblAddAthleteTo.setFont(new Font("Arial", Font.PLAIN, 20));
 	lblAddAthleteTo.setBounds(23, 27, 286, 30);
@@ -123,6 +123,7 @@ public void initComboBoxs()
 public void initbtn()
 {
 	 btnAddAthleteTo = new JButton("Add Athlete To Team");
+	 btnAddAthleteTo.setToolTipText("");
 	 btnAddAthleteTo.setForeground(Color.BLUE);
 	 btnAddAthleteTo.setBackground(Color.LIGHT_GRAY);
 	 btnAddAthleteTo.setFont(new Font("Arial", Font.PLAIN, 15));

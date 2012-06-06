@@ -470,27 +470,27 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 			lblTrainingDate.setBounds(6, 261, 97, 25);
 			add(lblTrainingDate);
 			
-			lblDay = new JLabel("day:");
+			lblDay = new JLabel("Day:");
 			lblDay.setFont(new Font("Arial", Font.PLAIN, 15));
 			lblDay.setBounds(188, 258, 46, 25);
 			add(lblDay);
 			
-			lblMonth = new JLabel("month:");
+			lblMonth = new JLabel("Month:");
 			lblMonth.setFont(new Font("Arial", Font.PLAIN, 15));
 			lblMonth.setBounds(370, 258, 68, 25);
 			add(lblMonth);
 			
-			lblYear = new JLabel("year:");
+			lblYear = new JLabel("Year:");
 			lblYear.setFont(new Font("Arial", Font.PLAIN, 15));
 			lblYear.setBounds(571, 258, 46, 25);
 			add(lblYear);
 			
-			lblHour = new JLabel("hour:");
+			lblHour = new JLabel("Hour:");
 			lblHour.setFont(new Font("Arial", Font.PLAIN, 15));
 			lblHour.setBounds(188, 294, 53, 25);
 			add(lblHour);
 			
-			lblMi = new JLabel("min:");
+			lblMi = new JLabel("Min:");
 			lblMi.setFont(new Font("Arial", Font.PLAIN, 15));
 			lblMi.setBounds(380, 294, 33, 25);
 			add(lblMi);

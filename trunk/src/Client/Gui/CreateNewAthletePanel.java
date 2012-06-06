@@ -116,12 +116,14 @@ public void initComboBoxs()
 {
 	
 	ChooseTeamCombo = new JComboBox();
-	ChooseTeamCombo.setBounds(120, 85, 174, 20);
+	ChooseTeamCombo.setFont(new Font("Arial", Font.PLAIN, 15));
+	ChooseTeamCombo.setBackground(Color.WHITE);
+	ChooseTeamCombo.setBounds(155, 83, 174, 25);
 	add(ChooseTeamCombo);
 	
-	lblNewLabel_1 = new JLabel("CREATE NEW ATHLETE :");
+	lblNewLabel_1 = new JLabel("Create New Athlete:");
 	lblNewLabel_1.setFont(new Font("Arial", Font.PLAIN, 20));
-	lblNewLabel_1.setBounds(25, 35, 235, 30);
+	lblNewLabel_1.setBounds(25, 35, 202, 30);
 	add(lblNewLabel_1);
 	
 	
@@ -130,35 +132,42 @@ public void initLabels(){
 		
    
     lblNewLabel = new JLabel("First Name(*):");
-	lblNewLabel.setBounds(23, 120, 92, 14);
+    lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 15));
+	lblNewLabel.setBounds(23, 120, 92, 25);
 	add(lblNewLabel);
 	
 	
     lblLastName = new JLabel("Last Name(*):");
-	lblLastName.setBounds(23, 155, 92, 14);
+    lblLastName.setFont(new Font("Arial", Font.PLAIN, 15));
+	lblLastName.setBounds(23, 155, 204, 25);
 	add(lblLastName);
 	
 	
     lblUserName = new JLabel("User Name(*):");
-	lblUserName.setBounds(23, 190, 92, 14);
+    lblUserName.setFont(new Font("Arial", Font.PLAIN, 15));
+	lblUserName.setBounds(23, 190, 204, 25);
 	add(lblUserName);
 	
 	
 	
 	lblPassword = new JLabel("Password(*):");
-	lblPassword.setBounds(23, 225, 92, 14);
+	lblPassword.setFont(new Font("Arial", Font.PLAIN, 15));
+	lblPassword.setBounds(23, 225, 92, 25);
 	add(lblPassword);
 	
 	lblPhoneNumber = new JLabel("Phone Number(*):");
-	lblPhoneNumber.setBounds(23,260, 92, 14);
+	lblPhoneNumber.setFont(new Font("Arial", Font.PLAIN, 15));
+	lblPhoneNumber.setBounds(23,260, 204, 25);
 	add(lblPhoneNumber);
 	
 	lblAddress = new JLabel("Address(*):");
-	lblAddress.setBounds(23, 295, 92, 14);
+	lblAddress.setFont(new Font("Arial", Font.PLAIN, 15));
+	lblAddress.setBounds(23, 295, 92, 25);
 	add(lblAddress);
 	
-	lblChooseTeam = new JLabel("choose team:");
-	lblChooseTeam.setBounds(23, 85, 89, 14);
+	lblChooseTeam = new JLabel("Choose Team:");
+	lblChooseTeam.setFont(new Font("Arial", Font.PLAIN, 15));
+	lblChooseTeam.setBounds(23, 85, 104, 25);
 	add(lblChooseTeam);
 		
 	}
@@ -167,33 +176,39 @@ public void initLabels(){
     public void initTextField(){
     	
     	textFieldFirstName = new JTextField();
-    	textFieldFirstName.setBounds(120, 120, 200, 20);
+    	textFieldFirstName.setFont(new Font("Arial", Font.PLAIN, 15));
+    	textFieldFirstName.setBounds(155, 118, 174, 25);
     	add(textFieldFirstName);
     	textFieldFirstName.setColumns(10);
     	
 
     	textFieldLastName = new JTextField();
-    	textFieldLastName.setBounds(120, 155, 200, 20);
+    	textFieldLastName.setFont(new Font("Arial", Font.PLAIN, 15));
+    	textFieldLastName.setBounds(155, 155, 174, 25);
     	add(textFieldLastName);
     	textFieldLastName.setColumns(10);
     	
     	textFieldUserName = new JTextField();
-    	textFieldUserName.setBounds(120, 190, 200, 20);
+    	textFieldUserName.setFont(new Font("Arial", Font.PLAIN, 15));
+    	textFieldUserName.setBounds(155, 190, 174, 25);
     	add(textFieldUserName);
     	textFieldUserName.setColumns(10);
     	
     	textFieldPassword = new JTextField();
-    	textFieldPassword.setBounds(120, 225, 200, 20);
+    	textFieldPassword.setFont(new Font("Arial", Font.PLAIN, 15));
+    	textFieldPassword.setBounds(155, 225, 174, 25);
     	add(textFieldPassword);
     	textFieldPassword.setColumns(10);
     	
     	textFieldPhoneNumber = new JTextField();
-    	textFieldPhoneNumber.setBounds(120, 260, 200, 20);
+    	textFieldPhoneNumber.setFont(new Font("Arial", Font.PLAIN, 15));
+    	textFieldPhoneNumber.setBounds(155, 260, 174, 25);
     	add(textFieldPhoneNumber);
     	textFieldPhoneNumber.setColumns(10);
     	
     	textFieldAddress = new JTextField();
-    	textFieldAddress.setBounds(120, 295, 200, 20);
+    	textFieldAddress.setFont(new Font("Arial", Font.PLAIN, 15));
+    	textFieldAddress.setBounds(155, 295, 174, 25);
     	add(textFieldAddress);
     	textFieldAddress.setColumns(10);
     
@@ -204,7 +219,9 @@ public void initLabels(){
     
     
    public void initButton(){
-	   btnCreate = new JButton("CREATE NEW ATHLETE");
+	   btnCreate = new JButton("Create New Athlete");
+	   btnCreate.setForeground(Color.BLUE);
+	   btnCreate.setFont(new Font("Arial", Font.PLAIN, 15));
 	   btnCreate.addActionListener(new ActionListener() {
 	   	public void actionPerformed(ActionEvent e) {
 	   		String msg;
@@ -250,11 +267,12 @@ public void initLabels(){
 	   		}	
 	   			
 	   		} });
-	   btnCreate.setBounds(119, 390, 201, 23);
+	   btnCreate.setBounds(119, 390, 201, 30);
 		add(btnCreate);
 		
 		JLabel lblPleaseFill = new JLabel("(*) Please Fill All Field.");
-		lblPleaseFill.setBounds(23, 354, 119, 14);
+		lblPleaseFill.setFont(new Font("Arial", Font.PLAIN, 15));
+		lblPleaseFill.setBounds(23, 354, 204, 25);
 		add(lblPleaseFill);
    }
     

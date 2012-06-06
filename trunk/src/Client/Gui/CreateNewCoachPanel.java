@@ -31,6 +31,7 @@ import java.awt.event.InputMethodListener;
 import java.awt.event.InputMethodEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.Font;
 
 
 public class CreateNewCoachPanel extends MyJPanel {
@@ -57,6 +58,8 @@ public class CreateNewCoachPanel extends MyJPanel {
     private JTextField textFieldAddress;
    
     private  JButton btnCheckExiting;
+    private JLabel lblNewLabel_1;
+    private JLabel lblPleaseFill;
 	
 	
 	public CreateNewCoachPanel(ClientIF client) {
@@ -65,10 +68,6 @@ public class CreateNewCoachPanel extends MyJPanel {
 		BufferedImage myPic;
 		try {
 			myPic = ImageIO.read(new File("image"+ File.separator+"home.jpg"));
-		
-			JLabel lblEditCoach = new JLabel(new ImageIcon(myPic), JLabel.CENTER);
-			lblEditCoach.setBounds(149, 11, 340, 46);
-			add(lblEditCoach);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -85,30 +84,36 @@ public class CreateNewCoachPanel extends MyJPanel {
 		
    
     lblNewLabel = new JLabel("First Name(*):");
+    lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 15));
 	lblNewLabel.setBounds(23, 120, 92, 14);
 	add(lblNewLabel);
 	
 	
     lblLastName = new JLabel("Last Name(*):");
+    lblLastName.setFont(new Font("Arial", Font.PLAIN, 15));
 	lblLastName.setBounds(23, 155, 92, 14);
 	add(lblLastName);
 	
 	
     lblUserName = new JLabel("User Name(*):");
-	lblUserName.setBounds(23, 190, 92, 14);
+    lblUserName.setFont(new Font("Arial", Font.PLAIN, 15));
+	lblUserName.setBounds(23, 190, 99, 14);
 	add(lblUserName);
 	
 	
 	
 	lblPassword = new JLabel("Password(*):");
+	lblPassword.setFont(new Font("Arial", Font.PLAIN, 15));
 	lblPassword.setBounds(23, 225, 92, 14);
 	add(lblPassword);
 	
 	lblPhoneNumber = new JLabel("Phone Number(*):");
-	lblPhoneNumber.setBounds(23,260, 92, 14);
+	lblPhoneNumber.setFont(new Font("Arial", Font.PLAIN, 15));
+	lblPhoneNumber.setBounds(23,260, 119, 14);
 	add(lblPhoneNumber);
 	
 	lblAddress = new JLabel("Address(*):");
+	lblAddress.setFont(new Font("Arial", Font.PLAIN, 15));
 	lblAddress.setBounds(23, 295, 92, 14);
 	add(lblAddress);
 		
@@ -118,33 +123,39 @@ public class CreateNewCoachPanel extends MyJPanel {
     public void initTextField(){
     	
     	textFieldFirstName = new JTextField();
-    	textFieldFirstName.setBounds(120, 120, 200, 20);
+    	textFieldFirstName.setFont(new Font("Arial", Font.PLAIN, 15));
+    	textFieldFirstName.setBounds(144, 115, 200, 25);
     	add(textFieldFirstName);
     	textFieldFirstName.setColumns(10);
     	
 
     	textFieldLastName = new JTextField();
-    	textFieldLastName.setBounds(120, 155, 200, 20);
+    	textFieldLastName.setFont(new Font("Arial", Font.PLAIN, 15));
+    	textFieldLastName.setBounds(144, 150, 200, 25);
     	add(textFieldLastName);
     	textFieldLastName.setColumns(10);
     	
     	textFieldUserName = new JTextField();
-    	textFieldUserName.setBounds(120, 190, 200, 20);
+    	textFieldUserName.setFont(new Font("Arial", Font.PLAIN, 15));
+    	textFieldUserName.setBounds(144, 185, 200, 25);
     	add(textFieldUserName);
     	textFieldUserName.setColumns(10);
     	
     	textFieldPassword = new JTextField();
-    	textFieldPassword.setBounds(120, 225, 200, 20);
+    	textFieldPassword.setFont(new Font("Arial", Font.PLAIN, 15));
+    	textFieldPassword.setBounds(144, 220, 200, 25);
     	add(textFieldPassword);
     	textFieldPassword.setColumns(10);
     	
     	textFieldPhoneNumber = new JTextField();
-    	textFieldPhoneNumber.setBounds(120, 260, 200, 20);
+    	textFieldPhoneNumber.setFont(new Font("Arial", Font.PLAIN, 15));
+    	textFieldPhoneNumber.setBounds(144, 255, 200, 25);
     	add(textFieldPhoneNumber);
     	textFieldPhoneNumber.setColumns(10);
     	
     	textFieldAddress = new JTextField();
-    	textFieldAddress.setBounds(120, 295, 200, 20);
+    	textFieldAddress.setFont(new Font("Arial", Font.PLAIN, 15));
+    	textFieldAddress.setBounds(144, 290, 200, 25);
     	add(textFieldAddress);
     	textFieldAddress.setColumns(10);
     	
@@ -185,7 +196,9 @@ public class CreateNewCoachPanel extends MyJPanel {
     	
     }
    public void initButton(){
-	   btnCreate = new JButton("CREATE NEW COACH");
+	   btnCreate = new JButton("Create New Coach");
+	   btnCreate.setFont(new Font("Arial", Font.PLAIN, 15));
+	   btnCreate.setForeground(Color.BLUE);
 	   btnCreate.addActionListener(new ActionListener() {
 	   	public void actionPerformed(ActionEvent e) {
 	   		String msg;
@@ -227,14 +240,17 @@ public class CreateNewCoachPanel extends MyJPanel {
 	   		
 	   	
 	   	} });
-	   btnCreate.setBounds(119, 390, 201, 23);
+	   btnCreate.setBounds(119, 390, 201, 30);
 		add(btnCreate);
 		
-		JLabel lblPleaseFill = new JLabel("(*) Please Fill All Field.");
-		lblPleaseFill.setBounds(23, 354, 119, 14);
+		lblPleaseFill = new JLabel("(*) Please Fill All Field.");
+		lblPleaseFill.setFont(new Font("Arial", Font.PLAIN, 15));
+		lblPleaseFill.setBounds(23, 354, 152, 25);
 		add(lblPleaseFill);
 		
-		btnCheckExiting = new JButton("Check availability");
+		btnCheckExiting = new JButton("Check Availability");
+		btnCheckExiting.setForeground(Color.BLUE);
+		btnCheckExiting.setFont(new Font("Arial", Font.PLAIN, 15));
 		btnCheckExiting.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -243,8 +259,13 @@ public class CreateNewCoachPanel extends MyJPanel {
 				 
 			}
 		});
-		btnCheckExiting.setBounds(341, 186, 130, 23);
+		btnCheckExiting.setBounds(368, 187, 152, 30);
 		add(btnCheckExiting);
+		
+		lblNewLabel_1 = new JLabel("Create New Coach:");
+		lblNewLabel_1.setFont(new Font("Arial", Font.PLAIN, 20));
+		lblNewLabel_1.setBounds(23, 60, 243, 30);
+		add(lblNewLabel_1);
    }
     
 	  public void init()

@@ -34,6 +34,7 @@ public class AthleteViewPerformedTrainingPanel extends MyJPanel {
 	private int id;
 	private JLabel lblListOfAll;
 	private JLabel lblPersonalTraining;
+	private JLabel label;
    
     
 	
@@ -64,15 +65,19 @@ public class AthleteViewPerformedTrainingPanel extends MyJPanel {
 		
 	}	
 	public void initLables(){
-	 lblListOfAll = new JLabel("PREFORMED TEAM TRAINING:");
+	 lblListOfAll = new JLabel("Preformed Team Training:");
 	 lblListOfAll.setFont(new Font("Arial", Font.PLAIN, 20));
-		lblListOfAll.setBounds(10, 103, 315, 25);
+		lblListOfAll.setBounds(10, 103, 315, 30);
 		add(lblListOfAll);
 		
-		 lblPersonalTraining = new JLabel("PREFORMED PERSONAL TRAINING:");
+		 lblPersonalTraining = new JLabel("Preformed Personal Training");
 		 lblPersonalTraining.setFont(new Font("Arial", Font.PLAIN, 20));
-		lblPersonalTraining.setBounds(10, 288, 360, 25);
+		lblPersonalTraining.setBounds(10, 288, 360, 30);
 		add(lblPersonalTraining);
+		
+		label = new JLabel("");
+		label.setBounds(22, 55, 46, 14);
+		add(label);
 	}
 		public void initArrays(){
 			

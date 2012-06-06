@@ -89,12 +89,12 @@ public class AddTrainingMethodPanel extends MyJPanel {
 
 		lblTrainingName = new JLabel("Type name for training type:");
 		lblTrainingName.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblTrainingName.setBounds(10, 121, 205, 20);
+		lblTrainingName.setBounds(10, 121, 205, 25);
 		add(lblTrainingName);
 
 	    lblChooseActivityConection = new JLabel("Choose activity conection:");
 	    lblChooseActivityConection.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblChooseActivityConection.setBounds(10, 152, 191, 24);
+		lblChooseActivityConection.setBounds(10, 152, 191, 25);
 		add(lblChooseActivityConection);
 	}
 	
@@ -104,7 +104,7 @@ public class AddTrainingMethodPanel extends MyJPanel {
 			comboBoxActivityType = new JComboBox();		
 			comboBoxActivityType.setFont(new Font("Arial", Font.PLAIN, 15));
 			comboBoxActivityType.setBackground(Color.WHITE);
-			comboBoxActivityType.setBounds(225, 154, 177, 24);
+			comboBoxActivityType.setBounds(225, 154, 177, 25);
 			add(comboBoxActivityType);
 			
 			
@@ -116,7 +116,7 @@ public class AddTrainingMethodPanel extends MyJPanel {
 		 
 		 	textField = new JTextField();
 		 	textField.setFont(new Font("Arial", Font.PLAIN, 15));
-			textField.setBounds(225, 119, 177, 24);
+			textField.setBounds(225, 119, 177, 25);
 			add(textField);
 			textField.setColumns(10);
 		 
@@ -180,7 +180,7 @@ public class AddTrainingMethodPanel extends MyJPanel {
 			btnCreate.setBounds(195, 263, 177, 30);
 			add(btnCreate);
 			{
-				lblAddTrainingMethod_1 = new JLabel("ADD TRAINING METHOD PANEL:");
+				lblAddTrainingMethod_1 = new JLabel("Add Training Method Panel:");
 				lblAddTrainingMethod_1.setFont(new Font("Arial", Font.PLAIN, 20));
 				lblAddTrainingMethod_1.setBounds(10, 52, 362, 24);
 				add(lblAddTrainingMethod_1);
