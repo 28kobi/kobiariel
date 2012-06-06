@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class MyJTable extends JPanel {
 	/**
-	 * 
+	 * the tables default
 	 */
 	private static final long serialVersionUID = 1L;
 	private AbstractTableModel model;

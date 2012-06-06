@@ -68,7 +68,8 @@ import org.jfree.ui.ApplicationFrame;
 import Server.DataBase.statistic;
 import Server.DataBase.statisticQuery;
 /**
- * A simple demonstration application showing how to create a bar chart.
+ * A team statistic display of how many team training has been planned and 
+ * in precent , how many preformed the train...
  *
  */
 public class TeamBarChart extends ApplicationFrame {

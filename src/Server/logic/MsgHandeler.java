@@ -92,7 +92,8 @@ import ocsf.server.ConnectionToClient;
 /**
  * 
  * class handle all the massage that the client communicate with server
- *  
+ *  by the massege type of message, every one of the messages deal with other 
+ *  sql query.
  *
  */
 public class MsgHandeler {

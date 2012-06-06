@@ -17,6 +17,7 @@ import javax.swing.plaf.metal.MetalButtonUI;
 
 public class JLinkButton extends JButton {
   /**
+	 * default setting for the buttons on bars...
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;

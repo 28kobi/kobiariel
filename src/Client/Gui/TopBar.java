@@ -19,6 +19,8 @@ import java.awt.Font;
 public class TopBar extends MyJPanel  {
 	
 	/**
+	 * top bar menu  display the name of the user in the system 
+	 * and give him the option to go back and next ...
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;

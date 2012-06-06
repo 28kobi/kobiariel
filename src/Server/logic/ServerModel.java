@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import Server.logic.ServerPanel;
 import ocsf.server.*;
 /**********************************************
- * (BDT)Baglama Developer Team software
+ * 
  * @author 
  **** 
  ******          
