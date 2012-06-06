@@ -18,6 +18,7 @@ import Server.Message.MessageGetAllPreformedTeamTrainingByAtleteIdReplay;
 import Server.Message.MessageGetAllPreformedTrainingByAtleteId;
 import Server.Message.MessageGetAllPreformedTrainingByAtleteIdReplay;
 import Client.Logic.ClientIF;
+import java.awt.Font;
 
 
 public class AthleteViewPerformedTrainingPanel extends MyJPanel {
@@ -45,6 +46,7 @@ public class AthleteViewPerformedTrainingPanel extends MyJPanel {
 			myPic = ImageIO.read(new File("image"+ File.separator+"home.jpg"));
 		
 			JLabel lblPerformedTraining = new JLabel(new ImageIcon(myPic), JLabel.CENTER);
+			lblPerformedTraining.setFont(new Font("Arial", Font.PLAIN, 15));
 			lblPerformedTraining.setBounds(149, 11, 340, 46);
 			add(lblPerformedTraining);
 			
@@ -63,11 +65,13 @@ public class AthleteViewPerformedTrainingPanel extends MyJPanel {
 	}	
 	public void initLables(){
 	 lblListOfAll = new JLabel("PREFORMED TEAM TRAINING:");
-		lblListOfAll.setBounds(10, 115, 315, 14);
+	 lblListOfAll.setFont(new Font("Arial", Font.PLAIN, 20));
+		lblListOfAll.setBounds(10, 103, 315, 25);
 		add(lblListOfAll);
 		
 		 lblPersonalTraining = new JLabel("PREFORMED PERSONAL TRAINING:");
-		lblPersonalTraining.setBounds(10, 288, 285, 14);
+		 lblPersonalTraining.setFont(new Font("Arial", Font.PLAIN, 20));
+		lblPersonalTraining.setBounds(10, 288, 360, 25);
 		add(lblPersonalTraining);
 	}
 		public void initArrays(){

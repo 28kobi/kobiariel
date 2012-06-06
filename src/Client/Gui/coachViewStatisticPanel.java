@@ -52,6 +52,7 @@ import java.awt.event.InputMethodListener;
 import java.awt.event.InputMethodEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.Font;
 
 
 public class coachViewStatisticPanel extends MyJPanel {
@@ -77,7 +78,8 @@ public class coachViewStatisticPanel extends MyJPanel {
 	private statistic statisticQ=null;
 	private JComboBox comboBoxTraining;
 	private JLabel lblChooseTraining ;
-	
+	private JLabel lblViewStatisticFor;
+	private JLabel lblStatistic;
 	public coachViewStatisticPanel(ClientIF client) {
 		super(PanelType.COACH_VIEW_STATISTIC_PANEL, client);
 		setLayout(null);
@@ -85,7 +87,8 @@ public class coachViewStatisticPanel extends MyJPanel {
 		try {
 			myPic = ImageIO.read(new File("image"+ File.separator+"home.jpg"));
 		
-			JLabel lblStatistic = new JLabel(new ImageIcon(myPic), JLabel.CENTER);
+			 lblStatistic = new JLabel(new ImageIcon(myPic), JLabel.CENTER);
+			lblStatistic.setFont(new Font("Arial", Font.PLAIN, 15));
 			lblStatistic.setBounds(511, 7, 49, 47);
 			add(lblStatistic);
 			
@@ -111,8 +114,9 @@ public class coachViewStatisticPanel extends MyJPanel {
 		}
 	
 		public void initLabel(){
-			lblChooseTraining = new JLabel("choose training:");
-			lblChooseTraining.setBounds(6, 85, 138, 17);
+			lblChooseTraining = new JLabel("choose Training:");
+			lblChooseTraining.setFont(new Font("Arial", Font.PLAIN, 15));
+			lblChooseTraining.setBounds(6, 196, 138, 25);
 			add(lblChooseTraining);
 			lblChooseTraining.setVisible(false);
 
@@ -122,7 +126,8 @@ public class coachViewStatisticPanel extends MyJPanel {
 	
 		 public void initJRadioButton(){
 				
-			    rdbtnTeamTraining = new JRadioButton("team statistic");
+			    rdbtnTeamTraining = new JRadioButton("Team Statistic");
+			    rdbtnTeamTraining.setFont(new Font("Arial", Font.PLAIN, 15));
 			    rdbtnTeamTraining.addActionListener(new ActionListener() {
 			    	public void actionPerformed(ActionEvent e) {
 			    			if(rdbtnTeamTraining.isSelected()){
@@ -142,10 +147,11 @@ public class coachViewStatisticPanel extends MyJPanel {
 			    				
 			    	}
 			    });
-				rdbtnTeamTraining.setBounds(6, 7, 138, 23);
+				rdbtnTeamTraining.setBounds(6, 99, 138, 23);
 				add(rdbtnTeamTraining);
 				
-				rdbtnPersonalTraining = new JRadioButton("athlete statistic");
+				rdbtnPersonalTraining = new JRadioButton("Athlete Statistic");
+				rdbtnPersonalTraining.setFont(new Font("Arial", Font.PLAIN, 15));
 				rdbtnPersonalTraining.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						if(rdbtnPersonalTraining.isSelected()){
@@ -169,7 +175,7 @@ public class coachViewStatisticPanel extends MyJPanel {
 				else 
 					comboBoxTeams.setEnabled(false);	
 
-				rdbtnPersonalTraining.setBounds(6, 34, 138, 23);
+				rdbtnPersonalTraining.setBounds(6, 141, 138, 23);
 				add(rdbtnPersonalTraining); 
 				
 				
@@ -177,6 +183,8 @@ public class coachViewStatisticPanel extends MyJPanel {
 		 }
 		 public void  initBtn(){
 		 btnViewStatistic = new JButton("view statistic");
+		 btnViewStatistic.setForeground(Color.BLUE);
+		 btnViewStatistic.setFont(new Font("Arial", Font.PLAIN, 15));
 				btnViewStatistic.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						String msg;
@@ -239,7 +247,7 @@ public class coachViewStatisticPanel extends MyJPanel {
 					    }
 					}
 				});
-				btnViewStatistic.setBounds(308, 21, 155, 23);
+				btnViewStatistic.setBounds(163, 259, 155, 30);
 				add(btnViewStatistic);
 				
 				
@@ -248,20 +256,23 @@ public class coachViewStatisticPanel extends MyJPanel {
 	public void  initComboBox(){
 		
 	    comboBoxTeams = new JComboBox();
+	    comboBoxTeams.setFont(new Font("Agency FB", Font.PLAIN, 15));
 	    
-		comboBoxTeams.setBounds(175, 7, 117, 20);
+		comboBoxTeams.setBounds(175, 97, 117, 25);
 		add(comboBoxTeams);
 		comboBoxTeams.setEnabled(false);
 		
 		comboBoxAthlete = new JComboBox();
+		comboBoxAthlete.setFont(new Font("Agency FB", Font.PLAIN, 15));
 		
-		comboBoxAthlete.setBounds(175,38, 117, 20);
+		comboBoxAthlete.setBounds(175,139, 117, 25);
 		comboBoxAthlete.setEnabled(false);
 		add(comboBoxAthlete);
 		comboBoxAthlete.setEnabled(false);
 		
 		comboBoxTraining = new JComboBox();
-		comboBoxTraining.setBounds(175,82, 117, 20);
+		comboBoxTraining.setFont(new Font("Agency FB", Font.PLAIN, 15));
+		comboBoxTraining.setBounds(175,195, 117, 25);
 		comboBoxTraining.setEnabled(false);
 		add(comboBoxTraining);
 		comboBoxTraining.setEnabled(false);
@@ -278,6 +289,11 @@ public class coachViewStatisticPanel extends MyJPanel {
 		initBtn();
 	
 		comboBoxTraining.addItem("Choose..");
+		
+		lblViewStatisticFor = new JLabel("VIEW STATISTIC  FOR TEAM OR ATHLETE:");
+		lblViewStatisticFor.setFont(new Font("Arial", Font.PLAIN, 20));
+		lblViewStatisticFor.setBounds(10, 40, 455, 25);
+		add(lblViewStatisticFor);
 		 for (int i=0; i<=allTeamArray.size(); i++)
 			{
 				if (i==0) comboBoxTeams.addItem("Choose..");
