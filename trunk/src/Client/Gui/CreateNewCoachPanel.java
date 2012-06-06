@@ -153,6 +153,13 @@ public class CreateNewCoachPanel extends MyJPanel {
     public  int checkvalid(int x){
     	int i=0;
     	int flag=1;
+    	String msg;
+    	if(textFieldUserName.getText().equals("")){
+    		popUp("user name field is empty");
+				flag=2;
+				return flag;
+    	}
+    		
     	while(i<userarray.size()){
     		if(userarray.get(i).getUserName().equals(textFieldUserName.getText())){
     			popUp("Name already exists");
@@ -184,7 +191,7 @@ public class CreateNewCoachPanel extends MyJPanel {
 	   		String msg;
 	   		int i=1 , privilge=0 ,online=0;
 	   		int fromCreate=1;
-	   		int nameisgood;
+	   		int nameisgood=0;
 	   		nameisgood=checkvalid(fromCreate);
 	   		if(nameisgood==1){
 	   			if(!textFieldFirstName.getText().isEmpty()&&!textFieldLastName.getText().isEmpty()&&!textFieldUserName.getText().isEmpty()&&!textFieldPassword.getText().isEmpty()&&!textFieldPhoneNumber.getText().isEmpty()&&!textFieldAddress.getText().isEmpty()){
@@ -207,7 +214,10 @@ public class CreateNewCoachPanel extends MyJPanel {
 			
 	   				else lblNewLabelAnswer.setText("Update coach fail");
 	   			}	
-	   			else { 
+	   			
+	   			
+	   			
+	   			else{
 	   			msg="Please Fill All Field.";
 	   			popUp(msg);
 	   			}
