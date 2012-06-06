@@ -39,19 +39,18 @@ public class EditAthletePanel extends MyJPanel {
     private	JLabel lblChooseAthlete;
     private	JLabel lblNewLabel;
     private	JLabel lblLastName;
-    private	JLabel lblUserName;
-    private	JLabel lblPassword;
+  
     private	JLabel lblPhoneNumber;
     private	JLabel lblAddress;
     private JLabel lblNewLabelAnswer;
     private JTextField textFieldFirstName;
     private JTextField textFieldLastName;
-    private JTextField textFieldUserName;
-    private JTextField textFieldPassword;
+  
     private JTextField textFieldPhoneNumber;
     private JTextField textFieldAddress;
     private JButton btnUpdate;
     private ArrayList<User> userarray =null;
+    private String Usernam;
     
 	
 	
@@ -88,22 +87,7 @@ public class EditAthletePanel extends MyJPanel {
 		MessageGetAllusersReplay rep3= (MessageGetAllusersReplay)getClient().getMessageFromServer();
 		userarray = rep3.getUserArray();
 	}
-	public  int checkvalid(int x){
-		int i=0;
-		int flag=1;
-		while(i<userarray.size()){
-			if(userarray.get(i).getUserName().equals(textFieldUserName.getText())){
-				popUp("Name already exists");
-				flag=0;
-				break;
-				}	 
-			i++;
-		}
-		if(flag==1&&x==0)
-			popUp("The name is good");
-		
-		return flag;
-	}
+	
 	
 	public void initComboBoxs()
 	{
@@ -129,18 +113,7 @@ public class EditAthletePanel extends MyJPanel {
 	lblLastName.setBounds(23, 155, 64, 14);
 	add(lblLastName);
 	
-	
-    lblUserName = new JLabel("User Name:");
-	lblUserName.setBounds(23, 190, 71, 14);
-	add(lblUserName);
-	
-	
-	
-	lblPassword = new JLabel("Password:");
-	lblPassword.setBounds(23, 225, 71, 14);
-	add(lblPassword);
-	
-	
+
 	
 	lblPhoneNumber = new JLabel("Phone Number:");
 	lblPhoneNumber.setBounds(23, 295, 92, 14);
@@ -171,15 +144,6 @@ public class EditAthletePanel extends MyJPanel {
     	add(textFieldLastName);
     	textFieldLastName.setColumns(10);
     	
-    	textFieldUserName = new JTextField();
-    	textFieldUserName.setBounds(120, 190, 200, 20);
-    	add(textFieldUserName);
-    	textFieldUserName.setColumns(10);
-    	
-    	textFieldPassword = new JTextField();
-    	textFieldPassword.setBounds(120, 225, 200, 20);
-    	add(textFieldPassword);
-    	textFieldPassword.setColumns(10);
     	
     	
     	textFieldPhoneNumber = new JTextField();
@@ -201,17 +165,12 @@ public class EditAthletePanel extends MyJPanel {
 	   btnUpdate.addActionListener(new ActionListener() {
 	   	public void actionPerformed(ActionEvent e) {
 	   		String msg;
-	   		int fromCreate=1;
-	   		int nameisgood;
-	   		nameisgood=checkvalid(fromCreate);
-	   		if(nameisgood==1){
-	   			if(ChooseAthlete.getSelectedItem().equals("choose..")){
-	   				
-	   			
+	   		
+	  	   			if(!ChooseAthlete.getSelectedItem().equals("Choose..")){
+	   	   			
 	   				Athlete.setFirstName(textFieldFirstName.getText());
 	   				Athlete.setLastName(textFieldLastName.getText());
-	   				Athlete.setUserName(textFieldUserName.getText());
-	   				Athlete.setPassword(textFieldPassword.getText());
+	   				
 	   				Athlete.setAddress(textFieldAddress.getText());
 	   				Athlete.setPhoneNumber(textFieldPhoneNumber.getText());
 	   				
@@ -234,8 +193,8 @@ public class EditAthletePanel extends MyJPanel {
 	   				msg="choose athlete";
    					popUp(msg);
 	   			}
-   			}	
-	   			
+   				
+	   	
 	   			
 	   			   			
 	   		}
@@ -266,8 +225,9 @@ public class EditAthletePanel extends MyJPanel {
 			Athlete=(User)ChooseAthlete.getSelectedItem();
 			textFieldFirstName.setText(Athlete.getFirstName());
 			textFieldLastName.setText(Athlete.getLastName());
-			textFieldUserName.setText(Athlete.getUserName());
-			textFieldPassword.setText(Athlete.getPassword());
+		
+			Usernam=Athlete.getUserName();
+		
 			textFieldPhoneNumber.setText(Athlete.getPhoneNumber());
 			textFieldAddress.setText(Athlete.getAddress());
 			
