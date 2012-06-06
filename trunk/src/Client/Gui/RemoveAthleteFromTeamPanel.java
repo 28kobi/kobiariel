@@ -40,6 +40,7 @@ import java.awt.event.InputMethodListener;
 import java.awt.event.InputMethodEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.Font;
 
 
 public class RemoveAthleteFromTeamPanel extends MyJPanel {
@@ -69,6 +70,7 @@ public class RemoveAthleteFromTeamPanel extends MyJPanel {
 			myPic = ImageIO.read(new File("image"+ File.separator+"home.jpg"));
 		
 			JLabel lblRemoveAthlete = new JLabel(new ImageIcon(myPic), JLabel.CENTER);
+			lblRemoveAthlete.setFont(new Font("Arial", Font.PLAIN, 15));
 			lblRemoveAthlete.setBounds(149, 11, 340, 46);
 			add(lblRemoveAthlete);
 			
@@ -104,12 +106,21 @@ public class RemoveAthleteFromTeamPanel extends MyJPanel {
 	{
 		
 		ChooseTeamCombo = new JComboBox();
-		ChooseTeamCombo.setBounds(120, 85, 174, 20);
+		ChooseTeamCombo.setBackground(Color.WHITE);
+		ChooseTeamCombo.setFont(new Font("Arial", Font.PLAIN, 15));
+		ChooseTeamCombo.setBounds(142, 113, 174, 25);
 		add(ChooseTeamCombo);
 		
 		ChooseAtleteCombo = new JComboBox();
-		ChooseAtleteCombo.setBounds(120, 149, 174, 20);
+		ChooseAtleteCombo.setBackground(Color.WHITE);
+		ChooseAtleteCombo.setFont(new Font("Arial", Font.PLAIN, 15));
+		ChooseAtleteCombo.setBounds(142, 149, 174, 25);
 		add(ChooseAtleteCombo);
+		
+		JLabel lblNewLabel = new JLabel("Remove Athlete From Team:");
+		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+		lblNewLabel.setBounds(25, 41, 262, 30);
+		add(lblNewLabel);
 		
 	   
 	}
@@ -117,7 +128,9 @@ public class RemoveAthleteFromTeamPanel extends MyJPanel {
 
 	public void initbtn()
 	{
-		 btnAddAthleteTo = new JButton("Remove the athlete from my team");
+		 btnAddAthleteTo = new JButton("Remove Athlete");
+		 btnAddAthleteTo.setForeground(Color.BLUE);
+		 btnAddAthleteTo.setFont(new Font("Arial", Font.PLAIN, 15));
 			btnAddAthleteTo.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					String msg;
@@ -140,18 +153,20 @@ public class RemoveAthleteFromTeamPanel extends MyJPanel {
 		    	     }		
 				}
 			});
-			btnAddAthleteTo.setBounds(120, 246, 174, 20);
+			btnAddAthleteTo.setBounds(142, 244, 145, 45);
 			add(btnAddAthleteTo);
 			
 	}
 	public void initLabels(){
 		
-		lblChooseTeam = new JLabel("choose team:");
-		lblChooseTeam.setBounds(23, 85, 89, 14);
+		lblChooseTeam = new JLabel("Choose Team:");
+		lblChooseTeam.setFont(new Font("Arial", Font.PLAIN, 15));
+		lblChooseTeam.setBounds(23, 113, 109, 25);
 		add(lblChooseTeam);
 			
-		lblChooseAthlete = new JLabel("choose Athlete:");
-		lblChooseAthlete.setBounds(23, 149, 89, 14);
+		lblChooseAthlete = new JLabel("Choose Athlete:");
+		lblChooseAthlete.setFont(new Font("Arial", Font.PLAIN, 15));
+		lblChooseAthlete.setBounds(23, 149, 109, 25);
 		add(lblChooseAthlete);
 		
 		}
