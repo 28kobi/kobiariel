@@ -62,8 +62,7 @@ public class AddActivityMethodPanel extends MyJPanel {
 	}
 	
 	  public void initLabels(){
-			
-		   
+	
 		    lblActivityName = new JLabel("Activity Name:");
 		    lblActivityName.setBounds(0, 120, 115, 14);
 			add(lblActivityName);
