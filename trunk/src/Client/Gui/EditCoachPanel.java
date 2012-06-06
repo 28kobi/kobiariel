@@ -34,16 +34,12 @@ public class EditCoachPanel extends MyJPanel {
     private	JLabel lblChooseCoach;
     private	JLabel lblNewLabel;
     private	JLabel lblLastName;
-    private	JLabel lblUserName;
-    private	JLabel lblPassword;
     private	JLabel lblPrivilige;
     private	JLabel lblPhoneNumber;
     private	JLabel lblAddress;
     private JLabel lblNewLabelAnswer;
     private JTextField textFieldFirstName;
     private JTextField textFieldLastName;
-    private JTextField textFieldUserName;
-    private JTextField textFieldPassword;
     private JTextField textFieldPrivilge;
     private JTextField textFieldPhoneNumber;
     private JTextField textFieldAddress;
@@ -107,16 +103,6 @@ public class EditCoachPanel extends MyJPanel {
 	add(lblLastName);
 	
 	
-    lblUserName = new JLabel("User Name:");
-	lblUserName.setBounds(23, 190, 71, 14);
-	add(lblUserName);
-	
-	
-	
-	lblPassword = new JLabel("Password:");
-	lblPassword.setBounds(23, 225, 71, 14);
-	add(lblPassword);
-	
 	lblPrivilige = new JLabel("Privilige:");
 	lblPrivilige.setBounds(23, 260, 92, 14);
 	add(lblPrivilige);
@@ -150,15 +136,7 @@ public class EditCoachPanel extends MyJPanel {
     	add(textFieldLastName);
     	textFieldLastName.setColumns(10);
     	
-    	textFieldUserName = new JTextField();
-    	textFieldUserName.setBounds(120, 190, 200, 20);
-    	add(textFieldUserName);
-    	textFieldUserName.setColumns(10);
-    	
-    	textFieldPassword = new JTextField();
-    	textFieldPassword.setBounds(120, 225, 200, 20);
-    	add(textFieldPassword);
-    	textFieldPassword.setColumns(10);
+    
     	
     	textFieldPrivilge = new JTextField();
     	textFieldPrivilge.setBounds(120, 260, 200, 20);
@@ -186,8 +164,7 @@ public class EditCoachPanel extends MyJPanel {
 	   		
 	   			coach.setFirstName(textFieldFirstName.getText());
 	   			coach.setLastName(textFieldLastName.getText());
-	   			coach.setUserName(textFieldUserName.getText());
-	   			coach.setPassword(textFieldPassword.getText());
+	   			
 	   			coach.setAddress(textFieldAddress.getText());
 	   			coach.setPrivilge(Integer.parseInt(textFieldPrivilge.getText()));
 	   			coach.setPhoneNumber(textFieldPhoneNumber.getText());
@@ -242,8 +219,6 @@ public class EditCoachPanel extends MyJPanel {
 				coach=(User)ChooseCoach.getSelectedItem();
 				textFieldFirstName.setText(coach.getFirstName());
 				textFieldLastName.setText(coach.getLastName());
-				textFieldUserName.setText(coach.getUserName());
-				textFieldPassword.setText(coach.getPassword());
 				textFieldPrivilge.setText(Integer.toString(coach.getPrivilge()));
 				textFieldPhoneNumber.setText(coach.getPhoneNumber());
 				textFieldAddress.setText(coach.getAddress());
