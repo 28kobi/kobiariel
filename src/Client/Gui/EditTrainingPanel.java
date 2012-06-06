@@ -744,7 +744,8 @@ public void initTextField(){
 		initBtn();
 		initLabel();
 	    initTextPane();
-		
+	    comboBoxTrainingType.addItem("Choose..");
+	    comboBoxDay.addItem("Choose..");
 		 for (int i=0; i<=allTeamArray.size(); i++)
 			{
 				if (i==0) comboBoxTeams.addItem("Choose..");
@@ -773,6 +774,7 @@ public void initTextField(){
 					alltrainingTypeArray = rep4.getArray();
 					comboBoxTrainingType.setEnabled(false);
 					comboBoxTrainingType.removeAllItems();
+					comboBoxTrainingType.validate();
 				    for (int i=0; i<=alltrainingTypeArray.size(); i++)
 							{
 							if (i==0) comboBoxTrainingType.addItem("Choose..");
@@ -787,9 +789,11 @@ public void initTextField(){
 				public void actionPerformed(ActionEvent e) {
 					
 					int month= Integer.parseInt((String) comboBoxMonth.getSelectedItem());
+					comboBoxDay.removeAllItems();
+					comboBoxDay.validate();
 					 switch (month) {
 					 		case 1:case 3:case 5:case 7:case 8: case 10: 
-					 				comboBoxDay.removeAllItems();
+					 				
 					 				for(int i=0;i<32;i++){
 			            			if (i==0) comboBoxDay.addItem("Choose..");
 			            			else comboBoxDay.addItem(i);
@@ -797,7 +801,7 @@ public void initTextField(){
 					 				comboBoxDay.setEnabled(true);
 					 				break;
 					 		case 2:
-					 				comboBoxDay.removeAllItems();
+					 				
 					 				for(int i=0;i<29;i++){
 					 				if (i==0) comboBoxDay.addItem("Choose..");
 					 				else comboBoxDay.addItem(i);
@@ -805,7 +809,7 @@ public void initTextField(){
 					 				comboBoxDay.setEnabled(true);
 			                  	  break;
 					 		case 4:case 6:case 9:case 11:
-					 				comboBoxDay.removeAllItems();
+					 				
 					 				for(int i=0;i<31;i++){
 			            			if (i==0) comboBoxDay.addItem("Choose..");
 			            			else comboBoxDay.addItem(i);
