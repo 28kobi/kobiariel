@@ -89,9 +89,8 @@ public class CreateNewTrainingPanel extends MyJPanel {
 	private String msg;
 	private String[] month={"1","2","3","4","5","6","7","8","9","10","11","12"};
 	private String[] year={"2012","2013","2014","2015","2016"};
-	private DateFormat df;
-	private Date date=null;
-	   
+
+	
 	
 	
 	
@@ -335,13 +334,6 @@ public class CreateNewTrainingPanel extends MyJPanel {
 								plannedTeamTraining = new plannedteamtraining();
 								plannedTeamTraining.setTeamId(team.getTeamId());	
 								msg=""+comboBoxDay.getSelectedItem().toString()+"/"+""+comboBoxMonth.getSelectedItem().toString()+"/"+""+comboBoxYear.getSelectedItem().toString()+"";
-								date =new Date();
-								try {
-									date=df.parse(msg);
-								} catch (ParseException e1) {
-									// TODO Auto-generated catch block
-									e1.printStackTrace();
-								}
 								plannedTeamTraining.setDate(msg);
 								msg=""+comboBoxHour.getSelectedItem().toString()+""+":"+comboBoxMin.getSelectedItem().toString()+"";
 								plannedTeamTraining.setTime(msg);
@@ -434,6 +426,8 @@ public class CreateNewTrainingPanel extends MyJPanel {
 		 initArrays();
 		 initbutton();
 		 
+		 comboBoxDay.addItem("Choose..");
+		 comboBoxTrainingType.addItem("Choose..");
 		 
 		 for (int i=0; i<=allTeamArray.size(); i++)
 			{
@@ -463,7 +457,8 @@ public class CreateNewTrainingPanel extends MyJPanel {
 					alltrainingTypeArray = rep4.getArray();
 					comboBoxTrainingType.setEnabled(false);
 					comboBoxTrainingType.removeAllItems();
-				    for (int i=0; i<=alltrainingTypeArray.size(); i++)
+					comboBoxTrainingType.validate();
+					for (int i=0; i<=alltrainingTypeArray.size(); i++)
 							{
 							if (i==0) comboBoxTrainingType.addItem("Choose..");
 							else comboBoxTrainingType.addItem(alltrainingTypeArray.get(i-1));
@@ -477,6 +472,8 @@ public class CreateNewTrainingPanel extends MyJPanel {
 				public void actionPerformed(ActionEvent e) {
 					
 					int month= Integer.parseInt((String) comboBoxMonth.getSelectedItem());
+					comboBoxDay.removeAll();
+					comboBoxDay.validate();
 					 switch (month) {
 					 		case 1:case 3:case 5:case 7:case 8: case 10: 
 					 			comboBoxDay.removeAllItems();
