@@ -138,7 +138,7 @@ public class AddTrainingMethodPanel extends MyJPanel {
 						int fromCreate=1;
 			 	   		int nameisgood;
 			 	   		nameisgood=checkvalid(fromCreate);
-			 	   		if(nameisgood==1&&(!textField.getText().equals(""))){
+			 	   		if(nameisgood==1){
 						
 			 	   			if(!textField.getText().equals("")){
 			 	   					trainingType = new trainingtype();
@@ -159,6 +159,7 @@ public class AddTrainingMethodPanel extends MyJPanel {
 			 	   						// 	TODO Auto-generated catch block
 			 	   						e.printStackTrace();
 			 	   					 }
+			 	   					
 			 	   				getClient().swapFromBack(pushPanel());
 			 	   				
 			 	   			}
