@@ -55,6 +55,7 @@ public class CreateNewTeamPanel extends MyJPanel {
 	private JRadioButton rdbtnChangeCoach;
 	private JButton btnCreate;
 	private JButton verifyavailabilty;
+	private JLabel lblNewLabel;
 	
 	
 	
@@ -67,6 +68,7 @@ public class CreateNewTeamPanel extends MyJPanel {
         myPic = ImageIO.read(new File("image"+ File.separator+"home.jpg"));
         
         JLabel lblAddClass = new JLabel(new ImageIcon(myPic), JLabel.CENTER);
+        lblAddClass.setFont(new Font("Arial", Font.PLAIN, 15));
         lblAddClass.setBounds(478, 13, 259, 99);
         add(lblAddClass);
         
@@ -99,7 +101,9 @@ public void initArrays(){
 public void initComboBoxs()
 {
 	ChooseCoachCombo = new JComboBox();
-	ChooseCoachCombo.setBounds(176, 174, 174, 20);
+	ChooseCoachCombo.setBackground(Color.WHITE);
+	ChooseCoachCombo.setFont(new Font("Arial", Font.PLAIN, 15));
+	ChooseCoachCombo.setBounds(176, 174, 174, 25);
 	add(ChooseCoachCombo);
 	
 	
@@ -110,11 +114,13 @@ public void initComboBoxs()
 public void initLabels(){
 	
 	lblTeamName = new JLabel("Team Name:");
-	lblTeamName.setBounds(53, 133, 94, 14);
+	lblTeamName.setFont(new Font("Arial", Font.PLAIN, 15));
+	lblTeamName.setBounds(53, 133, 94, 25);
 	add(lblTeamName);
 	
 	lblCoachName = new JLabel("Choose Coach:");
-	lblCoachName.setBounds(53, 177, 114, 14);
+	lblCoachName.setFont(new Font("Arial", Font.PLAIN, 15));
+	lblCoachName.setBounds(53, 177, 114, 25);
 	add(lblCoachName);
 
 }
@@ -123,7 +129,8 @@ public void initTextField(){
 	 
 
 	TeamName = new JTextField();
-	TeamName.setBounds(176, 130, 175, 20);
+	TeamName.setFont(new Font("Arial", Font.PLAIN, 15));
+	TeamName.setBounds(176, 130, 175, 25);
 	add(TeamName);
 	TeamName.setColumns(10);
 	
@@ -149,6 +156,8 @@ public  int checkvalid(int x){
 
 public void initButton(){
 		btnCreate = new JButton("Create");
+		btnCreate.setForeground(Color.BLUE);
+		btnCreate.setFont(new Font("Arial", Font.PLAIN, 15));
 		btnCreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int nameisgood;
@@ -175,10 +184,12 @@ public void initButton(){
 				
 			}
 		});
-		btnCreate.setBounds(176, 313, 89, 23);
+		btnCreate.setBounds(176, 323, 89, 30);
 		add(btnCreate);
 		
-	    verifyavailabilty = new JButton("verify Availability");
+	    verifyavailabilty = new JButton("Verify Availability");
+	    verifyavailabilty.setForeground(Color.BLUE);
+	    verifyavailabilty.setFont(new Font("Arial", Font.PLAIN, 15));
 	    verifyavailabilty.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    		if(!TeamName.getText().equals("")){
@@ -191,8 +202,13 @@ public void initButton(){
 	    			}
 	    	}
 	    });
-		verifyavailabilty.setBounds(402, 129,150, 23);
+		verifyavailabilty.setBounds(402, 129,150, 30);
 		add(verifyavailabilty);
+		
+		lblNewLabel = new JLabel("Create New Team:");
+		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+		lblNewLabel.setBounds(54, 59, 189, 30);
+		add(lblNewLabel);
 	 
 }
 

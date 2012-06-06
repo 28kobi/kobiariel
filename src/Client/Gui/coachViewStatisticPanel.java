@@ -182,7 +182,7 @@ public class coachViewStatisticPanel extends MyJPanel {
 				
 		 }
 		 public void  initBtn(){
-		 btnViewStatistic = new JButton("view statistic");
+		 btnViewStatistic = new JButton("View Statistic");
 		 btnViewStatistic.setForeground(Color.BLUE);
 		 btnViewStatistic.setFont(new Font("Arial", Font.PLAIN, 15));
 				btnViewStatistic.addActionListener(new ActionListener() {
@@ -290,9 +290,9 @@ public class coachViewStatisticPanel extends MyJPanel {
 	
 		comboBoxTraining.addItem("Choose..");
 		
-		lblViewStatisticFor = new JLabel("VIEW STATISTIC  FOR TEAM OR ATHLETE:");
+		lblViewStatisticFor = new JLabel("View Statistic For Team Or Athlete:");
 		lblViewStatisticFor.setFont(new Font("Arial", Font.PLAIN, 20));
-		lblViewStatisticFor.setBounds(10, 40, 455, 25);
+		lblViewStatisticFor.setBounds(10, 40, 368, 25);
 		add(lblViewStatisticFor);
 		 for (int i=0; i<=allTeamArray.size(); i++)
 			{

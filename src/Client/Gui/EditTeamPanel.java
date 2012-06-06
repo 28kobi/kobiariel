@@ -28,6 +28,8 @@ import javax.swing.JRadioButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
+import java.awt.Font;
+import java.awt.Color;
 
 
 public class EditTeamPanel extends MyJPanel {
@@ -58,6 +60,7 @@ public class EditTeamPanel extends MyJPanel {
 	private JLabel lblCoachName;
 	private JRadioButton rdbtnChangeCoach;
 	private JButton btnUpdate;
+	private JLabel lblTeamDetail;
 	
 	
 	
@@ -71,6 +74,7 @@ public class EditTeamPanel extends MyJPanel {
                  myPic = ImageIO.read(new File("image"+ File.separator+"home.jpg"));
          
                  JLabel lblAddClass = new JLabel(new ImageIcon(myPic), JLabel.CENTER);
+                 lblAddClass.setFont(new Font("Arial", Font.PLAIN, 15));
                  lblAddClass.setBounds(478, 13, 259, 99);
                  add(lblAddClass);
                  
@@ -104,11 +108,15 @@ public class EditTeamPanel extends MyJPanel {
 	public void initComboBoxs()
 	{
 		ChooseCoachCombo = new JComboBox();
-		ChooseCoachCombo.setBounds(191, 230, 174, 20);
+		ChooseCoachCombo.setBackground(Color.WHITE);
+		ChooseCoachCombo.setFont(new Font("Arial", Font.PLAIN, 15));
+		ChooseCoachCombo.setBounds(207, 229, 174, 25);
 		add(ChooseCoachCombo);
 		
 		ChooseTeamCombo = new JComboBox();
-		ChooseTeamCombo.setBounds(191, 65, 174, 20);
+		ChooseTeamCombo.setBackground(Color.WHITE);
+		ChooseTeamCombo.setFont(new Font("Arial", Font.PLAIN, 15));
+		ChooseTeamCombo.setBounds(207, 105, 174, 25);
 		add(ChooseTeamCombo);
 	}
 	
@@ -116,15 +124,18 @@ public class EditTeamPanel extends MyJPanel {
 	 public void initLabels(){
 		 
 		lblChooseTeam = new JLabel("Choose Team : ");
-		lblChooseTeam.setBounds(53, 68, 128, 14);
+		lblChooseTeam.setFont(new Font("Arial", Font.PLAIN, 15));
+		lblChooseTeam.setBounds(53, 105, 128, 25);
 		add(lblChooseTeam);
 		
 		lblTeamName = new JLabel("Team Name:");
-		lblTeamName.setBounds(53, 133, 128, 14);
+		lblTeamName.setFont(new Font("Arial", Font.PLAIN, 15));
+		lblTeamName.setBounds(53, 141, 128, 25);
 		add(lblTeamName);
 		
 		lblCoachName = new JLabel("Coach Name:");
-		lblCoachName.setBounds(53, 177, 128, 14);
+		lblCoachName.setFont(new Font("Arial", Font.PLAIN, 15));
+		lblCoachName.setBounds(53, 177, 128, 25);
 		add(lblCoachName);
 	 
 	 }
@@ -132,12 +143,14 @@ public class EditTeamPanel extends MyJPanel {
 		 
 
 			TeamName = new JTextField();
-			TeamName.setBounds(190, 130, 175, 20);
+			TeamName.setFont(new Font("Arial", Font.PLAIN, 15));
+			TeamName.setBounds(206, 141, 175, 25);
 			add(TeamName);
 			TeamName.setColumns(10);
 			
 			CoachName = new JTextField();
-			CoachName.setBounds(191, 174, 174, 20);
+			CoachName.setFont(new Font("Arial", Font.PLAIN, 15));
+			CoachName.setBounds(207, 177, 174, 25);
 			add(CoachName);
 			CoachName.setColumns(10);
 		 
@@ -148,6 +161,7 @@ public class EditTeamPanel extends MyJPanel {
 	 public void initRadio(){
 		 
 		 rdbtnChangeCoach = new JRadioButton("Change Coach To:");
+		 rdbtnChangeCoach.setFont(new Font("Arial", Font.PLAIN, 15));
 		 rdbtnChangeCoach.addActionListener(new ActionListener() {
 		 	public void actionPerformed(ActionEvent e) {
 		 		if(rdbtnChangeCoach.isSelected()){
@@ -183,13 +197,15 @@ public class EditTeamPanel extends MyJPanel {
 		 			
 		 	 	}
 		 });
-		 rdbtnChangeCoach.setBounds(38, 229, 128, 23);
+		 rdbtnChangeCoach.setBounds(38, 229, 163, 25);
 		 add(rdbtnChangeCoach);
 		 
 		 
 	 }
 	 public void initButton(){
 			   btnUpdate = new JButton("Update");
+			   btnUpdate.setForeground(Color.BLUE);
+			   btnUpdate.setFont(new Font("Arial", Font.PLAIN, 15));
 			   btnUpdate.addActionListener(new ActionListener() {
 			   	public void actionPerformed(ActionEvent e) {
 			   		
@@ -229,7 +245,7 @@ public class EditTeamPanel extends MyJPanel {
 		    		}		   			
 		    	}
 			   });
-			   btnUpdate.setBounds(191, 397, 89, 23);
+			   btnUpdate.setBounds(191, 397, 89, 25);
 				  add(btnUpdate);
 				  btnUpdate.setEnabled(false);
 		   }
@@ -254,6 +270,11 @@ public class EditTeamPanel extends MyJPanel {
 					else ChooseCoachCombo.addItem(allCoachArray.get(i-1));
 					}
 			  ChooseCoachCombo.setEnabled(false);
+			  
+			  lblTeamDetail = new JLabel("Team Detail:");
+			  lblTeamDetail.setFont(new Font("Arial", Font.PLAIN, 20));
+			  lblTeamDetail.setBounds(71, 56, 121, 30);
+			  add(lblTeamDetail);
 			  
 			 
 			  
