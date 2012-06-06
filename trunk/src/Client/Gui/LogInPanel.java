@@ -18,6 +18,7 @@ import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.awt.Font;
 
 public class LogInPanel extends MyJPanel{
 	/**
@@ -28,7 +29,6 @@ public class LogInPanel extends MyJPanel{
 	JPasswordField password;
 	JButton btnSubmit;
 	JLabel lblNewLabel;
-	private JLabel lblLogo;
 	
 	
 	public LogInPanel( ClientIF client) {
@@ -36,12 +36,13 @@ public class LogInPanel extends MyJPanel{
 		setLayout(null);
 		
 		userName = new JTextField();
-		userName.setBounds(187, 140, 134, 20);
+		userName.setFont(new Font("Arial", Font.PLAIN, 15));
+		userName.setBounds(187, 140, 134, 25);
 		add(userName);
 		userName.setColumns(10);
 		
 		password = new JPasswordField();
-		password.setBounds(187, 186, 134, 20);
+		password.setBounds(187, 186, 134, 25);
 		add(password);
 		password.setColumns(10);
 		
@@ -49,27 +50,24 @@ public class LogInPanel extends MyJPanel{
 		try {
 			myPic = ImageIO.read(new File("image"+ File.separator+"login.jpg"));
 		
-			JLabel lblLogin = new JLabel(new ImageIcon(myPic), JLabel.CENTER);
-			lblLogin.setBounds(29, 0, 306, 127);
-			add(lblLogin);
-		
 			BufferedImage myPic2 = ImageIO.read(new File("image"+ File.separator+"logo_isoa.gif"));
-			lblLogo = new JLabel(new ImageIcon(myPic2), JLabel.CENTER);
-			lblLogo.setBounds(450, 100, 400, 400);
-			add(lblLogo);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
 		JLabel lblUserName = new JLabel("User Name:");
-		lblUserName.setBounds(50, 143, 82, 14);
+		lblUserName.setFont(new Font("Arial", Font.PLAIN, 15));
+		lblUserName.setBounds(50, 143, 82, 25);
 		add(lblUserName);
 		
 		JLabel lblPassword = new JLabel("Password:");
+		lblPassword.setFont(new Font("Arial", Font.PLAIN, 15));
 		lblPassword.setBounds(50, 189, 82, 14);
 		add(lblPassword);
 		
 		btnSubmit = new JButton("Submit");
+		btnSubmit.setForeground(Color.BLUE);
+		btnSubmit.setFont(new Font("Arial", Font.PLAIN, 15));
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try{
@@ -91,12 +89,13 @@ public class LogInPanel extends MyJPanel{
 				}
 			}
 		});
-		btnSubmit.setBounds(232, 241, 89, 23);
+		btnSubmit.setBounds(212, 242, 89, 30);
 		add(btnSubmit);
 		
 		lblNewLabel = new JLabel("");
+		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 15));
 		lblNewLabel.setForeground(Color.RED);
-		lblNewLabel.setBounds(50, 274, 668, 104);
+		lblNewLabel.setBounds(50, 275, 668, 104);
 		add(lblNewLabel);
 		
 		
