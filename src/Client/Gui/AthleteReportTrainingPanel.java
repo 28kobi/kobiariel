@@ -566,6 +566,7 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 								}
 								
 								if(rdbtnReportPlannedTraining.isSelected()){
+									if(comboBoxPersonal.isEnabled()){
 									if((!comboBoxPersonal.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxDay.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxMonth.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxYear.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxHour.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxMin.getSelectedItem().toString().equals("Choose.."))){
 										
 										PreformedPersonalTraining = new PreformedPersonalTraining();
@@ -598,9 +599,9 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 									else {
 										msg="fill all details";
 										popUp(msg);
-										return ;
+										
 									}
-									
+									}
 								}	
 								
 						
@@ -696,7 +697,8 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 		
 					});
 					btnReportTrainingDetail.setBounds(237, 474, 157, 23);
-					add(btnReportTrainingDetail);	 
+					add(btnReportTrainingDetail);	
+					
 		 
 		}
 		private void initTable() {
@@ -727,8 +729,10 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 			initTable();
 			
 		
+			comboBoxTrainingType.addItem("Choose..");
+			comboBoxDay.addItem("Choose..");
 			
-		
+			
 			 for (int i=0; i<=allUnPreformedPersonalTrainingArray.size(); i++)
 				{
 					if (i==0) comboBoxPersonal.addItem("Choose..");
@@ -757,6 +761,7 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 						alltrainingTypeArray = rep4.getArray();
 						comboBoxTrainingType.setEnabled(false);
 						comboBoxTrainingType.removeAllItems();
+						comboBoxTrainingType.validate();
 					    for (int i=0; i<=alltrainingTypeArray.size(); i++)
 								{
 								if (i==0) comboBoxTrainingType.addItem("Choose..");
@@ -770,9 +775,10 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 							public void actionPerformed(ActionEvent e) {
 								
 								int month= Integer.parseInt((String) comboBoxMonth.getSelectedItem());
+								comboBoxDay.removeAllItems();
+				 				comboBoxDay.validate();
 								 switch (month) {
 								 		case 1:case 3:case 5:case 7:case 8: case 10: 
-								 				comboBoxDay.removeAllItems();
 								 				for(int i=0;i<32;i++){
 						            			if (i==0) comboBoxDay.addItem("Choose..");
 						            			else comboBoxDay.addItem(i);
@@ -780,7 +786,6 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 								 				comboBoxDay.setEnabled(true);
 								 				break;
 								 		case 2:
-								 				comboBoxDay.removeAllItems();
 								 				for(int i=0;i<29;i++){
 								 				if (i==0) comboBoxDay.addItem("Choose..");
 								 				else comboBoxDay.addItem(i);
@@ -788,7 +793,6 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 								 				comboBoxDay.setEnabled(true);
 						                  	  break;
 								 		case 4:case 6:case 9:case 11:
-								 				comboBoxDay.removeAllItems();
 								 				for(int i=0;i<31;i++){
 						            			if (i==0) comboBoxDay.addItem("Choose..");
 						            			else comboBoxDay.addItem(i);
