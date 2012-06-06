@@ -14,6 +14,7 @@ import Client.Logic.ClientIF;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
+import java.awt.Font;
 
 public class SideBar extends JPanel {
 	
@@ -41,6 +42,8 @@ public class SideBar extends JPanel {
 	
 	public void initLogin(){
 		JLinkButton login = new JLinkButton("Login");
+		login.setLinkColor(Color.BLUE);
+		login.setFont(new Font("Arial", Font.PLAIN, 15));
 		login.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				clientFrame.swap(new LogInPanel(clientFrame));
@@ -48,6 +51,8 @@ public class SideBar extends JPanel {
 		});
 		this.add(login);
 		JLinkButton loginSettings = new JLinkButton("Settings");
+		loginSettings.setText("Setting");
+		loginSettings.setFont(new Font("Arial", Font.PLAIN, 15));
 		loginSettings.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				clientFrame.swap(new LoginSettingsPanel(clientFrame));
@@ -134,61 +139,61 @@ public class SideBar extends JPanel {
 			}
 		});
 		this.add(home);
-		JLinkButton createAthlete = new JLinkButton("Create new athlete");
+		JLinkButton createAthlete = new JLinkButton("Create New Athlete");
 		createAthlete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				clientFrame.swap(new CreateNewAthletePanel(clientFrame));
 			}
 		});
-		JLinkButton addAthleteToTeam = new JLinkButton("Add athlete to team");
+		JLinkButton addAthleteToTeam = new JLinkButton("Add Athlete To Team");
 		addAthleteToTeam.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				clientFrame.swap(new AddAthleteToTeamPanel(clientFrame));
 			}
 		});
-		JLinkButton EditAthleteInfo = new JLinkButton("Edit athlete info");
+		JLinkButton EditAthleteInfo = new JLinkButton("Edit Athlete Info");
 		EditAthleteInfo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				clientFrame.swap(new EditAthletePanel(clientFrame));
 			}
 		});
-		JLinkButton RemoveAthleteFromTeam = new JLinkButton("Remove athlete from team");
+		JLinkButton RemoveAthleteFromTeam = new JLinkButton("Remove Athlete From Team");
 		RemoveAthleteFromTeam.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				clientFrame.swap(new RemoveAthleteFromTeamPanel(clientFrame));
 			}
 		});
-		JLinkButton createNewTraining = new JLinkButton("Creat new training");
+		JLinkButton createNewTraining = new JLinkButton("Creat New Training");
 		createNewTraining.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				clientFrame.swap(new CreateNewTrainingPanel(clientFrame));
 			}
 		});
-		JLinkButton EditTraingin = new JLinkButton("Edit training");
+		JLinkButton EditTraingin = new JLinkButton("Edit Training");
 		EditTraingin.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
 				clientFrame.swap(new EditTrainingPanel(clientFrame));			
 			}
 		});
-		JLinkButton CoachViewPlannedTraining = new JLinkButton("view planned training");
+		JLinkButton CoachViewPlannedTraining = new JLinkButton("View Planned Training");
 		CoachViewPlannedTraining.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
 			clientFrame.swap(new ViewPlannedTrainingPanel(clientFrame));
 			}
 		});
-		JLinkButton ViewPerformedTraining = new JLinkButton("view performed personal training");
+		JLinkButton ViewPerformedTraining = new JLinkButton("View Preformed Personal Training");
 		ViewPerformedTraining.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				clientFrame.swap(new ViewPerformedTrainingPanel(clientFrame));			
 			}
 		});
-		JLinkButton ViewPerformedTeamTraining = new JLinkButton("view performed team training");
+		JLinkButton ViewPerformedTeamTraining = new JLinkButton("View Preformed Team Training");
 		ViewPerformedTeamTraining.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				clientFrame.swap(new ViewPerformedTeamTrainingPanel(clientFrame));			
 			}
 		});
-		JLinkButton ViewStatistic = new JLinkButton("view statistic");
+		JLinkButton ViewStatistic = new JLinkButton("View Statistic");
 		ViewStatistic.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				clientFrame.swap(new coachViewStatisticPanel(clientFrame));			
@@ -219,26 +224,26 @@ public class SideBar extends JPanel {
 			}
 		});
 		this.add(home);
-		JLinkButton viewPlannedTraining = new JLinkButton("view planned training");
+		JLinkButton viewPlannedTraining = new JLinkButton("View Planned Training");
 		viewPlannedTraining.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
 		clientFrame.swap(new AthleteViewPlannedTrainingPanel(clientFrame));
 			}
 		});
-		JLinkButton viewPerformedTraining = new JLinkButton("view performed training");
+		JLinkButton viewPerformedTraining = new JLinkButton("View Preformed Training");
 		viewPerformedTraining.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
 		clientFrame.swap(new AthleteViewPerformedTrainingPanel(clientFrame));
 		
 			}
 		});
-		JLinkButton ViewStatisticInfo = new JLinkButton("View statistic info");
+		JLinkButton ViewStatisticInfo = new JLinkButton("View Statistic Info");
 		ViewStatisticInfo.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
 		clientFrame.swap(new AthleteViewStatisticInfoPanel(clientFrame));
 			}
 		});
-		JLinkButton ReportTraining = new JLinkButton("Report training");
+		JLinkButton ReportTraining = new JLinkButton("Report Training");
 		ReportTraining.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			clientFrame.swap(new AthleteReportTrainingPanel(clientFrame));

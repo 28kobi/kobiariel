@@ -62,7 +62,8 @@ public class RemoveActivityMethodPanel extends MyJPanel {
 
  public void initLabels(){
 	 
-	    lblChooseActivity = new JLabel("Choose the Activity type you like to remove: ");
+	    lblChooseActivity = new JLabel("Remove Activity Method:");
+	    lblChooseActivity.setFont(new Font("Arial", Font.PLAIN, 20));
 		lblChooseActivity.setBounds(28, 134, 317, 21);
 		add(lblChooseActivity);
 							 
@@ -72,13 +73,17 @@ public class RemoveActivityMethodPanel extends MyJPanel {
 	 
 
 		comboBoxActivityType = new JComboBox();
-		comboBoxActivityType.setBounds(185, 174, 160, 20);
+		comboBoxActivityType.setBackground(Color.WHITE);
+		comboBoxActivityType.setFont(new Font("Arial", Font.PLAIN, 15));
+		comboBoxActivityType.setBounds(70, 184, 160, 25);
 		add(comboBoxActivityType);
 			
 }
  public void initbutton(){
 		
-	    btnRemove = new JButton("Remove");
+	    btnRemove = new JButton("Remove Activity ");
+	    btnRemove.setFont(new Font("Arial", Font.PLAIN, 15));
+	    btnRemove.setForeground(Color.BLUE);
 	    btnRemove.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent arg0) {
 	    		String msg;
@@ -105,7 +110,7 @@ public class RemoveActivityMethodPanel extends MyJPanel {
 	    		}
 	    	}
 	    });
-		btnRemove.setBounds(220, 293, 89, 23);
+		btnRemove.setBounds(70, 288, 141, 46);
 		add(btnRemove);
 	 
 	 

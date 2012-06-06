@@ -40,10 +40,10 @@ public class TopBar extends MyJPanel  {
 		backStack = new Stack<MyJPanel>();
 		nextStack = new Stack<MyJPanel>();
 		setForeground(Color.WHITE);
-		this.setBackground(Color.BLACK);
+		this.setBackground(Color.DARK_GRAY);
 		setBorder(new EmptyBorder(20, 5, 5, 5));
 		
-		btnBack = new JButton("back");
+		btnBack = new JButton("Back");
 		btnBack.setEnabled(false);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -58,7 +58,7 @@ public class TopBar extends MyJPanel  {
 		btnBack.setBorder(UIManager.getBorder("DesktopIcon.border"));
 		add(btnBack);
 		
-		btnNext = new JButton("next");
+		btnNext = new JButton("Next");
 		btnNext.setEnabled(false);
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -72,12 +72,15 @@ public class TopBar extends MyJPanel  {
 		add(btnNext);
 		
 		lblNewLabel = new JLabel("");
+		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 15));
 		add(lblNewLabel);
 		
 		lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setBackground(Color.DARK_GRAY);
 		add(lblNewLabel_1);
 		
 		lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setForeground(Color.BLACK);
 		add(lblNewLabel_2);
 		
 		lblNewLabel_3 = new JLabel("");

@@ -35,8 +35,8 @@ public class RemoveTrainingMethodPanel extends MyJPanel {
 			str = getClient().getUser().toString();
 			JTextPane txtpnHello = new JTextPane();
 			txtpnHello.setForeground(Color.GRAY);
-			txtpnHello.setFont(new Font("High Tower Text", Font.PLAIN, 50));
-			txtpnHello.setText("Hello "+str+"\r\n     welcome to\r\nTraining System.\r\n\r\n     Secratery User");
+			txtpnHello.setFont(new Font("Arial", Font.PLAIN, 20));
+			txtpnHello.setText("Hello "+str+"\r\n     welcome to\r\nTraining System.\r\n\r\n     Manager ");
 			txtpnHello.setBounds(119, 78, 448, 349);
 			add(txtpnHello);
 		

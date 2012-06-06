@@ -32,6 +32,7 @@ import Server.Message.MessageGetAllTrainingType;
 import Server.Message.MessageGetAllTrainingTypeReplay;
 import Server.Message.MessageGetPlannedTrainingByTrainingId;
 import Server.Message.MessageGetPlannedTrainingByTrainingIdReplay;
+import javax.swing.UIManager;
 
 
 public class ViewPerformedTrainingPanel extends MyJPanel {
@@ -98,6 +99,7 @@ public class ViewPerformedTrainingPanel extends MyJPanel {
 		
 		
 			JLabel lblPlannedTraining = new JLabel();
+			lblPlannedTraining.setFont(new Font("Arial", Font.PLAIN, 15));
 			lblPlannedTraining.setBounds(417, 7, 138, 56);
 			add(lblPlannedTraining);
 			
@@ -127,78 +129,93 @@ public class ViewPerformedTrainingPanel extends MyJPanel {
 		public void initLabel(){
 			
 
-			lblChooseTraining = new JLabel("choose training by dates:");
-			lblChooseTraining.setBounds(6, 85, 153, 14);
+			lblChooseTraining = new JLabel("Choose Training By Dates:");
+			lblChooseTraining.setFont(new Font("Arial", Font.PLAIN, 15));
+			lblChooseTraining.setBounds(12, 97, 178, 25);
 			add(lblChooseTraining);
 			
-			lblActivityName = new JLabel("activity name:");
-			lblActivityName.setFont(new Font("Tahoma", Font.PLAIN, 11));
+			lblActivityName = new JLabel("Activity Name:");
+			lblActivityName.setFont(new Font("Arial", Font.PLAIN, 15));
 			lblActivityName.setBackground(Color.WHITE);
-			lblActivityName.setBounds(6, 222, 109, 24);
+			lblActivityName.setBounds(6, 222, 109, 25);
 			add(lblActivityName);
 			
-			lblTraining = new JLabel("training name:");
-			lblTraining.setBounds(191, 222, 90, 20);
+			lblTraining = new JLabel("Training Name:");
+			lblTraining.setFont(new Font("Arial", Font.PLAIN, 15));
+			lblTraining.setBounds(191, 222, 90, 25);
 			add(lblTraining);
 			
-			lblisPlanned = new JLabel("is this planned training:");
-			lblisPlanned.setBounds(6, 320, 153, 20);
+			lblisPlanned = new JLabel("Is This Planned Training:");
+			lblisPlanned.setFont(new Font("Arial", Font.PLAIN, 15));
+			lblisPlanned.setBounds(6, 320, 199, 25);
 			add(lblisPlanned);
 			
-			chooseAthlete = new JLabel("choose athlete:");
-			chooseAthlete.setBounds(6,38, 117, 20);
+			chooseAthlete = new JLabel("Choose Athlete:");
+			chooseAthlete.setFont(new Font("Arial", Font.PLAIN, 15));
+			chooseAthlete.setBounds(12,64, 117, 25);
 			add(chooseAthlete);
 			
-			lblDate = new JLabel("date:");
-			lblDate.setBounds(383, 222, 88, 26);
+			lblDate = new JLabel("Date:");
+			lblDate.setFont(new Font("Arial", Font.PLAIN, 15));
+			lblDate.setBounds(383, 222, 88, 25);
 			add(lblDate);
 			
 			
 			
-			lblTime_1 = new JLabel("time:");
+			lblTime_1 = new JLabel("Time:");
+			lblTime_1.setFont(new Font("Arial", Font.PLAIN, 15));
 			lblTime_1.setBounds(6, 263, 37, 25);
 			add(lblTime_1);
 						
-			lblDetails_1 = new JLabel("details:");
-			lblDetails_1.setBounds(159, 268, 46, 14);
+			lblDetails_1 = new JLabel("Details:");
+			lblDetails_1.setFont(new Font("Arial", Font.PLAIN, 15));
+			lblDetails_1.setBounds(159, 268, 46, 25);
 			add(lblDetails_1);
 			
-			lblDuration_1 = new JLabel("duration:");
-			lblDuration_1.setBounds(451, 259, 53, 23);
+			lblDuration_1 = new JLabel("Duration:");
+			lblDuration_1.setFont(new Font("Arial", Font.PLAIN, 15));
+			lblDuration_1.setBounds(451, 259, 53, 25);
 			add(lblDuration_1);
 			
-			lblDistance_1 = new JLabel("distance:");
-			lblDistance_1.setBounds(522, 222, 71, 20);
+			lblDistance_1 = new JLabel("Distance:");
+			lblDistance_1.setFont(new Font("Arial", Font.PLAIN, 15));
+			lblDistance_1.setBounds(522, 222, 71, 25);
 			add(lblDistance_1);
 			
-			lblActivityName1 = new JLabel("activity name:");
-		    lblActivityName1.setFont(new Font("Tahoma", Font.PLAIN, 11));
+			lblActivityName1 = new JLabel("Activity Name:");
+		    lblActivityName1.setFont(new Font("Arial", Font.PLAIN, 15));
 			lblActivityName1.setBackground(Color.WHITE);
-			lblActivityName1.setBounds(6,422, 109, 24);
+			lblActivityName1.setBounds(6,422, 109, 25);
 			add( lblActivityName1);
 			
-			lblTime_11 = new JLabel("time:");
+			lblTime_11 = new JLabel("Time:");
+			lblTime_11.setFont(new Font("Arial", Font.PLAIN, 15));
 			lblTime_11.setBounds(6, 463, 37, 25);
 			add(lblTime_11);
 			
-			lblTraining1 = new JLabel("training name:");
-			lblTraining1.setBounds(191, 422, 90, 20);
+			lblTraining1 = new JLabel("Training Name:");
+			lblTraining1.setFont(new Font("Arial", Font.PLAIN, 15));
+			lblTraining1.setBounds(191, 422, 90, 25);
 			add(lblTraining1);
 			
-			lblDetails_11 = new JLabel("details:");
-			lblDetails_11.setBounds(159, 468, 46, 14);
+			lblDetails_11 = new JLabel("Details:");
+			lblDetails_11.setFont(new Font("Arial", Font.PLAIN, 15));
+			lblDetails_11.setBounds(159, 468, 46, 25);
 			add(lblDetails_11);
 			
-			lblDate1 = new JLabel("date:");
-			lblDate1.setBounds(383, 422, 88, 26);
+			lblDate1 = new JLabel("Date:");
+			lblDate1.setFont(new Font("Arial", Font.PLAIN, 15));
+			lblDate1.setBounds(383, 422, 88, 25);
 			add(lblDate1);
 			
-			lblDistance_11 = new JLabel("distance:");
-			lblDistance_11.setBounds(522, 422, 71, 20);
+			lblDistance_11 = new JLabel("Distance:");
+			lblDistance_11.setFont(new Font("Arial", Font.PLAIN, 15));
+			lblDistance_11.setBounds(522, 422, 71, 25);
 			add(lblDistance_11);
 			
-			lblDuration_11 = new JLabel("duration:");
-			lblDuration_11.setBounds(451, 459, 53, 23);
+			lblDuration_11 = new JLabel("Duration:");
+			lblDuration_11.setFont(new Font("Arial", Font.PLAIN, 15));
+			lblDuration_11.setBounds(451, 459, 53, 25);
 			add(lblDuration_11);
 								
 			lblActivityName1.setVisible(false);
@@ -212,95 +229,95 @@ public class ViewPerformedTrainingPanel extends MyJPanel {
 		}
 	public void initTextPane(){
 		textPaneDuration = new JTextPane();
-		textPaneDuration.setBounds(532, 263, 88, 26);
-		textPaneDuration.setFont(new Font("Tahoma", Font.BOLD, 14));
-		textPaneDuration.setBackground(Color.lightGray);
+		textPaneDuration.setBounds(532, 263, 88, 25);
+		textPaneDuration.setFont(new Font("ariel", Font.PLAIN, 15));
+		textPaneDuration.setBackground(UIManager.getColor("Button.background"));
 		add(textPaneDuration);
 		
 		textPaneDistance = new JTextPane();
-		textPaneDistance.setBounds(590, 219, 71, 20);
-		textPaneDistance.setFont(new Font("Tahoma", Font.BOLD, 14));
-		textPaneDistance.setBackground(Color.lightGray);
+		textPaneDistance.setBounds(590, 219, 71, 25);
+		textPaneDistance.setFont(new Font("ariel", Font.PLAIN, 15));
+		textPaneDistance.setBackground(UIManager.getColor("Button.background"));
 		add(textPaneDistance);
 		
 		textPaneDate = new JTextPane();
-		textPaneDate.setBounds(420, 219, 97, 20);
-		textPaneDate.setFont(new Font("Tahoma", Font.BOLD, 14));
-		textPaneDate.setBackground(Color.lightGray);
+		textPaneDate.setBounds(420, 219, 97, 25);
+		textPaneDate.setFont(new Font("ariel", Font.PLAIN, 15));
+		textPaneDate.setBackground(UIManager.getColor("Button.background"));
 		add(textPaneDate);
 		
 		textPaneDetails = new JTextPane();
-		textPaneDetails.setBounds(215, 261, 226, 26);
-		textPaneDetails.setFont(new Font("Tahoma", Font.BOLD, 14));
-		textPaneDetails.setBackground(Color.lightGray);
+		textPaneDetails.setBounds(215, 261, 226, 25);
+		textPaneDetails.setFont(new Font("ariel", Font.PLAIN, 15));
+		textPaneDetails.setBackground(UIManager.getColor("Button.background"));
 		add(textPaneDetails);
 		
 		textPaneTime = new JTextPane();
-		textPaneTime.setBounds(53, 261, 88, 26);
-		textPaneTime.setFont(new Font("Tahoma", Font.BOLD, 14));
-		textPaneTime.setBackground(Color.lightGray);
+		textPaneTime.setBounds(53, 261, 88, 25);
+		textPaneTime.setFont(new Font("ariel", Font.PLAIN, 15));
+		textPaneTime.setBackground(UIManager.getColor("Button.background"));
 		add(textPaneTime);
 		
 		textPaneActivity = new JTextPane();
-		textPaneActivity.setFont(new Font("Tahoma", Font.BOLD, 14));
-		textPaneActivity.setBounds(93, 219, 88, 26);
-		textPaneActivity.setBackground(Color.lightGray);
+		textPaneActivity.setFont(new Font("ariel", Font.PLAIN, 15));
+		textPaneActivity.setBounds(93, 219, 88, 25);
+		textPaneActivity.setBackground(UIManager.getColor("Button.background"));
 		add(textPaneActivity);
 		
 		textPaneTraining = new JTextPane();
-		textPaneTraining.setBounds(274, 219, 88, 26);
-		textPaneTraining.setFont(new Font("Tahoma", Font.BOLD, 14));
-		textPaneTraining.setBackground(Color.lightGray);
+		textPaneTraining.setBounds(274, 219, 88, 25);
+		textPaneTraining.setFont(new Font("ariel", Font.PLAIN, 15));
+		textPaneTraining.setBackground(UIManager.getColor("Button.background"));
 		add(textPaneTraining);
 		
 		textisPlanned = new JTextPane();
-		textisPlanned.setBounds(170, 320, 89, 20);
-		textisPlanned.setFont(new Font("Tahoma", Font.BOLD, 14));
-		textisPlanned.setBackground(Color.lightGray);
+		textisPlanned.setBounds(215, 320, 126, 25);
+		textisPlanned.setFont(new Font("ariel", Font.PLAIN, 15));
+		textisPlanned.setBackground(UIManager.getColor("Button.background"));
 		add(textisPlanned);
 		
 		textPaneTraining1 = new JTextPane();
-		textPaneTraining1.setBounds(274, 419, 88, 26);
-		textPaneTraining1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		textPaneTraining1.setBackground(Color.lightGray);
+		textPaneTraining1.setBounds(274, 419, 88, 25);
+		textPaneTraining1.setFont(new Font("ariel", Font.PLAIN, 15));
+		textPaneTraining1.setBackground(UIManager.getColor("Button.background"));
 		add(textPaneTraining1);
 		
 		textPaneActivity1 = new JTextPane();
-		textPaneActivity1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		textPaneActivity1.setBounds(93, 419, 88, 26);
-		textPaneActivity1.setBackground(Color.lightGray);
+		textPaneActivity1.setFont(new Font("ariel", Font.PLAIN, 15));
+		textPaneActivity1.setBounds(93, 419, 88, 25);
+		textPaneActivity1.setBackground(UIManager.getColor("Button.background"));
 		add(textPaneActivity1);
 		
 		textPaneDate1 = new JTextPane();
-		textPaneDate1.setBounds(420, 419, 97, 20);
-		textPaneDate1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		textPaneDate1.setBackground(Color.lightGray);
+		textPaneDate1.setBounds(420, 419, 97, 25);
+		textPaneDate1.setFont(new Font("ariel", Font.PLAIN, 15));
+		textPaneDate1.setBackground(UIManager.getColor("Button.background"));
 		add(textPaneDate1);
 		
 		
 		
 		textPaneTime1 = new JTextPane();
-		textPaneTime1.setBounds(53, 461, 88, 26);
-		textPaneTime1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		textPaneTime1.setBackground(Color.lightGray);
+		textPaneTime1.setBounds(53, 461, 88, 25);
+		textPaneTime1.setFont(new Font("ariel", Font.PLAIN, 15));
+		textPaneTime1.setBackground(UIManager.getColor("Button.background"));
 		add(textPaneTime1);
 		
 		textPaneDetails1 = new JTextPane();
-		textPaneDetails1.setBounds(215, 461, 226, 26);
-		textPaneDetails1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		textPaneDetails1.setBackground(Color.lightGray);
+		textPaneDetails1.setBounds(215, 461, 226, 25);
+		textPaneDetails1.setFont(new Font("ariel", Font.PLAIN, 15));
+		textPaneDetails1.setBackground(UIManager.getColor("Button.background"));
 		add(textPaneDetails1);
 		
 		textPaneDuration1 = new JTextPane();
-		textPaneDuration1.setBounds(532, 463, 88, 26);
-		textPaneDuration1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		textPaneDuration1.setBackground(Color.lightGray);
+		textPaneDuration1.setBounds(532, 463, 88, 25);
+		textPaneDuration1.setFont(new Font("ariel", Font.PLAIN, 15));
+		textPaneDuration1.setBackground(UIManager.getColor("Button.background"));
 		add(textPaneDuration1);
 		
 		textPaneDistance1 = new JTextPane();
-		textPaneDistance1.setBounds(590, 419, 71, 20);
-		textPaneDistance1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		textPaneDistance1.setBackground(Color.lightGray);
+		textPaneDistance1.setBounds(590, 419, 71, 25);
+		textPaneDistance1.setFont(new Font("ariel", Font.PLAIN, 15));
+		textPaneDistance1.setBackground(UIManager.getColor("Button.background"));
 		add(textPaneDistance1);
 		
 		
@@ -315,7 +332,8 @@ public class ViewPerformedTrainingPanel extends MyJPanel {
 		
 	}
 	public void initradioBtn(){
-		rdbtnWacthTheOriginal = new JRadioButton("watch the original planned training:");
+		rdbtnWacthTheOriginal = new JRadioButton("Watch The Original Planned Training:");
+		rdbtnWacthTheOriginal.setFont(new Font("Arial", Font.PLAIN, 15));
 		rdbtnWacthTheOriginal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -404,7 +422,7 @@ public class ViewPerformedTrainingPanel extends MyJPanel {
 				
 			}
 		});
-		rdbtnWacthTheOriginal.setBounds(378, 319, 219, 23);
+		rdbtnWacthTheOriginal.setBounds(378, 319, 283, 25);
 		add(rdbtnWacthTheOriginal);
 		rdbtnWacthTheOriginal.setEnabled(false);
 		
@@ -416,7 +434,9 @@ public class ViewPerformedTrainingPanel extends MyJPanel {
 	
 		public void initBtn(){
 			
-			btnW = new JButton("observe details");
+			btnW = new JButton("View Details");
+			btnW.setForeground(Color.BLUE);
+			btnW.setFont(new Font("Arial", Font.PLAIN, 15));
 			btnW.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					if(rdbtnWacthTheOriginal.isSelected())
@@ -497,7 +517,7 @@ public class ViewPerformedTrainingPanel extends MyJPanel {
 				});
 			
 			
-			btnW.setBounds(302, 81, 153, 23);
+			btnW.setBounds(351, 64, 153, 58);
 			add(btnW);
 		}
 		
@@ -505,13 +525,17 @@ public class ViewPerformedTrainingPanel extends MyJPanel {
 		 public void initComboBox(){
 		
 				comboBoxTraining = new JComboBox();
-				comboBoxTraining.setBounds(175,82, 117, 20);
+				comboBoxTraining.setBackground(Color.WHITE);
+				comboBoxTraining.setFont(new Font("Arial", Font.PLAIN, 15));
+				comboBoxTraining.setBounds(200,97, 141, 25);
 				comboBoxTraining.setEnabled(false);
 				add(comboBoxTraining);
 				comboBoxTraining.setEnabled(false);
 				
 				comboBoxAthlete = new JComboBox();
-				comboBoxAthlete.setBounds(175,38, 117, 20);
+				comboBoxAthlete.setBackground(Color.WHITE);
+				comboBoxAthlete.setFont(new Font("Arial", Font.PLAIN, 15));
+				comboBoxAthlete.setBounds(200,64, 141, 25);
 				comboBoxAthlete.setEnabled(false);
 				add(comboBoxAthlete);
 				comboBoxAthlete.setEnabled(true);
