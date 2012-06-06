@@ -9,8 +9,7 @@ import javax.swing.border.EmptyBorder;
 //  import Server.DataBase.UserQuery;
 import Server.logic.ServerModel;
 /**********************************************
- * (BDT)Baglama Developer Team software
- * @author 
+ * 
  **** 
  ******          
  ********

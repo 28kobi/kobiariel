@@ -15,6 +15,7 @@ import Client.Logic.ClientIF;
 public abstract class MyJPanel extends JPanel {
 	
 	/**
+	 * myJPanel contain all panel type in the training system 
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;

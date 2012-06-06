@@ -25,6 +25,7 @@ import Client.Logic.ClientIF;
 public class ClientFrame extends JFrame implements ClientIF {
 
 	/**
+	 * this is the frame contain side bar , top bar and all of the panel , one at the time
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;

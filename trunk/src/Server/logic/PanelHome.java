@@ -7,10 +7,10 @@ import javax.swing.BoxLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 /**********************************************
- * (BDT)Baglama Developer Team software
- * @author 
+ * 
+ * 
  **** 
- ******          
+ ******          home panel..
  ********
  *********/
 public class PanelHome extends ServerPanel{

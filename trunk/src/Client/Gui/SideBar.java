@@ -18,7 +18,8 @@ import java.sql.SQLException;
 public class SideBar extends JPanel {
 	
 	/**
-	 * 
+	 * containg all different buttons for all different user type , by clicking the buttons,
+	 * the panel the user assked for will be set on screen.
 	 */
 	private static final long serialVersionUID = 1L;
 	ClientIF clientFrame;

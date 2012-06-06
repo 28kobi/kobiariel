@@ -70,7 +70,9 @@ import org.jfree.ui.ApplicationFrame;
 import Server.DataBase.statistic;
 import Server.DataBase.statisticQuery;
 	/**
-	 * A simple demonstration application showing how to create a bar chart.
+	 * A  athlete statistic display of how many team training has been planned and 
+	 *  how many preformed ,how many was planned by the coach 
+	 *  and how mant were planned by user....	
 	 *
 	 */
 	public class BarChart extends ApplicationFrame {
