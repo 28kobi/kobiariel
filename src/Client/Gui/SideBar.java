@@ -112,14 +112,15 @@ public class SideBar extends JPanel {
 				clientFrame.swap(new RemoveTrainingMethodPanel(clientFrame));
 			}
 		});
-	this.add(EditCoach);
+	
 	this.add(CreateNewCoach);
+	this.add(EditCoach);
 	this.add(EditTeam);
 	this.add(CreateNewTeam);
 	this.add(AddActivityMethod);
-	this.add(RemoveActivityMethod);
+	//this.add(RemoveActivityMethod);
 	this.add(AddTrainingMethod);
-	this.add(RemoveTrainingMethod);
+	//this.add(RemoveTrainingMethod);
 	clientFrame.setVisible();
 }
 	

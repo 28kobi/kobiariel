@@ -93,7 +93,7 @@ public class AddActivityMethodPanel extends MyJPanel {
 	    	int i=0;
 	    	int flag=1;
 	    	while(i<activitytype.size()){
-	    		if(activitytype.get(i).getActivityName().equals(textFieldActivityName.getText())){
+	    		if(activitytype.get(i).getActivityName().equalsIgnoreCase(textFieldActivityName.getText())){
 	    			popUp("Name already exists");
 	    			flag=0;
 	    			break;
@@ -118,7 +118,7 @@ public class AddActivityMethodPanel extends MyJPanel {
 	 	   		int nameisgood;
 	 	   		nameisgood=checkvalid(fromCreate);
 	 	   		if(nameisgood==1){
-	 	   			if(!textFieldActivityName.getText().isEmpty()){
+	 	   			if(!textFieldActivityName.getText().toString().equals("")){
 	 		
 	 	   				activity=new activitytype ();
 	 	   				activity.setActivityName(textFieldActivityName.getText());
@@ -129,9 +129,7 @@ public class AddActivityMethodPanel extends MyJPanel {
 	 	   				
 	 	   				if(rep.getint()==1){
 	 	   					msg="New Activity type Has Been Created";
-	 	   					
 	 	   					popUp(msg);
-	 	   					
 	 	   					getClient().swapFromBack(pushPanel());
 	 	   					
 	 	   					
