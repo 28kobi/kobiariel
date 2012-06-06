@@ -181,8 +181,14 @@ public void initButton(){
 	    verifyavailabilty = new JButton("verify Availability");
 	    verifyavailabilty.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
+	    		if(!TeamName.getText().equals("")){
+	    		
 	    		int fromValid=0;
 	    		checkvalid(fromValid);
+	    		}
+	    		else {
+	    			popUp("fill name field first");
+	    			}
 	    	}
 	    });
 		verifyavailabilty.setBounds(402, 129,150, 23);
