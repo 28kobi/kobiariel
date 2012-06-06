@@ -40,6 +40,8 @@ public class activitytypeQuery extends Query{
 		PreparedStatement query2 = getPS();
 		query2.executeUpdate();
 		query2.close();
+		PreparedStatement query3 = getPS();
+		setQuery("DELETE * trainingtype WHERE trainingtype ='"+activity.getActivityId()+"'");
 		return 1;	
 	}
 	 
