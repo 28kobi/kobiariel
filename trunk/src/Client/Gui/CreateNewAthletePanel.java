@@ -33,6 +33,7 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.Font;
 
 
 
@@ -60,6 +61,7 @@ public class CreateNewAthletePanel extends MyJPanel {
     private JLabel lblChooseTeam;
     
     private ArrayList<User> userarray =null;
+    private JLabel lblNewLabel_1;
 	
 	public CreateNewAthletePanel(ClientIF client) {
 		super(PanelType.CREATE_NEW_ATHLETE_PANEL, client);
@@ -67,10 +69,6 @@ public class CreateNewAthletePanel extends MyJPanel {
 		BufferedImage myPic;
 		try {
 			myPic = ImageIO.read(new File("image"+ File.separator+"home.jpg"));
-		
-			JLabel lblCreateNewAthlete = new JLabel(new ImageIcon(myPic), JLabel.CENTER);
-			lblCreateNewAthlete.setBounds(149, 11, 340, 46);
-			add(lblCreateNewAthlete);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -120,6 +118,11 @@ public void initComboBoxs()
 	ChooseTeamCombo = new JComboBox();
 	ChooseTeamCombo.setBounds(120, 85, 174, 20);
 	add(ChooseTeamCombo);
+	
+	lblNewLabel_1 = new JLabel("CREATE NEW ATHLETE :");
+	lblNewLabel_1.setFont(new Font("Arial", Font.PLAIN, 20));
+	lblNewLabel_1.setBounds(25, 35, 235, 30);
+	add(lblNewLabel_1);
 	
 	
 }

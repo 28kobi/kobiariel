@@ -40,6 +40,7 @@ public class AddActivityMethodPanel extends MyJPanel {
 	private int UpdateAnswer;
     private	JLabel lblActivityName;
     private	JLabel  lblInsertActivityName;
+    private	JLabel  lblAddActivityMethod;
     private JButton btnCreate;
     private JTextField textFieldActivityName;
     private ArrayList<activitytype> activitytype =null;
@@ -49,7 +50,7 @@ public class AddActivityMethodPanel extends MyJPanel {
 	public AddActivityMethodPanel(ClientIF client) {
 		super(PanelType.ADD_ACTIVITY_TYPE_PANEL, client);
 		
-			JLabel lblAddActivityMethod = new JLabel();
+			lblAddActivityMethod = new JLabel();
 			lblAddActivityMethod.setBounds(643, 13, -46, 10);
 			add(lblAddActivityMethod);
 			
@@ -64,7 +65,8 @@ public class AddActivityMethodPanel extends MyJPanel {
 	  public void initLabels(){
 	
 		    lblActivityName = new JLabel("Activity Name:");
-		    lblActivityName.setBounds(0, 120, 115, 14);
+		    lblActivityName.setFont(new Font("Arial", Font.PLAIN, 15));
+		    lblActivityName.setBounds(0, 165, 115, 25);
 			add(lblActivityName);
 		
 			}
@@ -72,7 +74,8 @@ public class AddActivityMethodPanel extends MyJPanel {
 	    public void initTextField(){
 	    	
 	    	textFieldActivityName = new JTextField();
-	    	textFieldActivityName.setBounds(96, 120, 224, 20);
+	    	textFieldActivityName.setFont(new Font("Arial", Font.PLAIN, 15));
+	    	textFieldActivityName.setBounds(113, 165, 243, 25);
 	    	add(textFieldActivityName);
 	    	textFieldActivityName.setColumns(10);
 	    	
@@ -105,7 +108,9 @@ public class AddActivityMethodPanel extends MyJPanel {
 	    
 	    
 	    public void initButton(){
-	 	   btnCreate = new JButton("CREATE NEW ACTIVITY TYPE ");
+	 	   btnCreate = new JButton("Create New Activity Type");
+	 	   btnCreate.setForeground(Color.BLUE);
+	 	   btnCreate.setFont(new Font("Arial", Font.PLAIN, 15));
 	 	   btnCreate.addActionListener(new ActionListener() {
 	 	   	public void actionPerformed(ActionEvent e) {
 	 	   		String msg;
@@ -149,11 +154,12 @@ public class AddActivityMethodPanel extends MyJPanel {
 	 			
 	 	   		}	 		
 	 	   	} });
-	 	   btnCreate.setBounds(96, 213, 224, 23);
+	 	   btnCreate.setBounds(113, 208, 243, 30);
 	 		add(btnCreate);
 	 		
-	 		 lblInsertActivityName = new JLabel("Insert Activity Name You Like To Add:");
-	 		lblInsertActivityName.setBounds(0, 53, 230, 14);
+	 		 lblInsertActivityName = new JLabel("ADD ACTIVITY METHOD :");
+	 		 lblInsertActivityName.setFont(new Font("Arial", Font.PLAIN, 20));
+	 		lblInsertActivityName.setBounds(0, 68, 252, 30);
 	 		add(lblInsertActivityName);
 	 		
 	    }
