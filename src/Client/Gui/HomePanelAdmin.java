@@ -26,23 +26,10 @@ public class HomePanelAdmin extends MyJPanel {
 		try {
 			myPic = ImageIO.read(new File("image"+ File.separator+"home.jpg"));
 		
-			JLabel lblAddClass = new JLabel(new ImageIcon(myPic), JLabel.CENTER);
-			lblAddClass.setBounds(12, 13, 585, 99);
-			add(lblAddClass);
-			
-			str = getClient().getUser().toString();
-			JTextPane txtpnHello = new JTextPane();
-			txtpnHello.setForeground(Color.GRAY);
-			txtpnHello.setFont(new Font("High Tower Text", Font.PLAIN, 50));
-			txtpnHello.setText("Hello "+str+"\r\n     welcome to\r\nTraining System.\r\n\r\n     Secratery User");
-			txtpnHello.setBounds(123, 133, 448, 349);
-			add(txtpnHello);
-		
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		setLayout(null);
 	}
 
 	@Override

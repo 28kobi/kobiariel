@@ -71,6 +71,7 @@ public class EditTrainingPanel extends MyJPanel {
 	private JRadioButton rdbtnTeamTraining;
 	private JRadioButton rdbtnPersonalTraining;
 	private JLabel lblChooseTraining;
+	private JLabel lblChooseTraining_1;
 	private User Athlete;
 	private Team team1;
 	private activitytype activityType;
@@ -163,10 +164,11 @@ public class EditTrainingPanel extends MyJPanel {
 		lblChooseTraining.setFont(new Font("Arial", Font.PLAIN, 15));
 		lblChooseTraining.setBounds(10, 85, 105, 25);
 
-		lblChooseTraining = new JLabel("Choose training:");
-		lblChooseTraining.setBounds(10, 85, 105, 14);
+		lblChooseTraining_1 = new JLabel("Choose Taining:");
+		lblChooseTraining_1.setFont(new Font("Arial", Font.PLAIN, 15));
+		lblChooseTraining_1.setBounds(10, 85, 105, 25);
 
-		add(lblChooseTraining);
+		add(lblChooseTraining_1);
 		
 		lblDetails = new JLabel("Details: ");
 		lblDetails.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -185,7 +187,7 @@ public class EditTrainingPanel extends MyJPanel {
 		
 		lblTrainingDate = new JLabel("Training Date:");
 		lblTrainingDate.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblTrainingDate.setBounds(6, 270, 87, 25);
+		lblTrainingDate.setBounds(6, 270, 82, 25);
 		add(lblTrainingDate);
 		
 		lblDay = new JLabel("Day:");
@@ -232,7 +234,7 @@ public class EditTrainingPanel extends MyJPanel {
 		
 		lblActivityType = new JLabel("Activity Type:");
 		lblActivityType.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblActivityType.setBounds(6, 330, 105, 25);
+		lblActivityType.setBounds(6, 328, 105, 25);
 		add(lblActivityType);
 		
 		lblActivityName = new JLabel("Activity Name:");
@@ -351,7 +353,7 @@ public void initTextField(){
 		
 		
 		textFieldDetails = new JTextField();
-		textFieldDetails.setBounds(150, 390, 163, 25);
+		textFieldDetails.setBounds(150, 390, 184, 25);
 		add(textFieldDetails);
 		
 	}
@@ -442,7 +444,7 @@ public void initTextField(){
 			});
 		
 		
-		btnW.setBounds(300, 81, 178, 30);
+		btnW.setBounds(311, 81, 178, 30);
 		add(btnW);
 		
 		
@@ -635,7 +637,7 @@ public void initTextField(){
 		    				
 		    	}
 		    });
-			rdbtnTeamTraining.setBounds(6, 7, 138, 25);
+			rdbtnTeamTraining.setBounds(6, 29, 138, 25);
 			add(rdbtnTeamTraining);
 			
 			rdbtnPersonalTraining = new JRadioButton("Personal Training");
@@ -662,7 +664,7 @@ public void initTextField(){
 			else 
 				comboBoxTeams.setEnabled(false);	
 
-			rdbtnPersonalTraining.setBounds(6, 34, 138, 25);
+			rdbtnPersonalTraining.setBounds(6, 53, 138, 25);
 			add(rdbtnPersonalTraining); 
 			
 			
@@ -674,7 +676,7 @@ public void initTextField(){
 		 	comboBoxDay.setFont(new Font("Arial", Font.PLAIN, 15));
 		 	comboBoxDay.setBackground(Color.WHITE);
 
-			comboBoxDay.setBounds(151, 180, 60, 25);
+			comboBoxDay.setBounds(162, 267, 60, 25);
 
 			comboBoxDay.setBounds(151, 270, 60, 20);
 
@@ -685,7 +687,7 @@ public void initTextField(){
 			comboBoxMonth.setFont(new Font("Arial", Font.PLAIN, 15));
 			comboBoxMonth.setBackground(Color.WHITE);
 
-			comboBoxMonth.setBounds(301, 180, 61, 25);			
+			comboBoxMonth.setBounds(310, 236, 61, 25);			
 
 			comboBoxMonth.setBounds(274, 270, 61, 20);			
 
@@ -700,7 +702,7 @@ public void initTextField(){
 			comboBoxYear.setFont(new Font("Arial", Font.PLAIN, 15));
 			comboBoxYear.setBackground(Color.WHITE);
 
-			comboBoxYear.setBounds(478, 270, 71, 25);
+			comboBoxYear.setBounds(522, 270, 117, 20);
 
 			comboBoxYear.setBounds(391, 270, 71, 20);
 
@@ -715,7 +717,7 @@ public void initTextField(){
 			comboBoxHour.setFont(new Font("Arial", Font.PLAIN, 15));
 			comboBoxHour.setBackground(Color.WHITE);
 
-			comboBoxHour.setBounds(151, 210, 71, 25);
+			comboBoxHour.setBounds(151, 300, 104, 20);
 
 			comboBoxHour.setBounds(151, 300, 71, 20);
 
@@ -730,7 +732,7 @@ public void initTextField(){
 			comboBoxMin.setFont(new Font("Arial", Font.PLAIN, 15));
 			comboBoxMin.setBackground(Color.WHITE);
 
-			comboBoxMin.setBounds(301, 210, 71, 25);
+			comboBoxMin.setBounds(296, 330, 71, 25);
 
 			comboBoxMin.setBounds(300, 300, 71, 20);
 
@@ -745,7 +747,7 @@ public void initTextField(){
 			comboBoxActivityType.setFont(new Font("Arial", Font.PLAIN, 15));
 			comboBoxActivityType.setBackground(Color.WHITE);
 
-			comboBoxActivityType.setBounds(150, 240, 105, 25);
+			comboBoxActivityType.setBounds(150, 330, 71, 20);
 
 			
 			comboBoxActivityType.setBounds(150, 330, 105, 20);
@@ -755,14 +757,14 @@ public void initTextField(){
 			comboBoxTrainingType = new JComboBox();
 			comboBoxTrainingType.setFont(new Font("Arial", Font.PLAIN, 15));
 			comboBoxTrainingType.setBackground(Color.WHITE);
-			comboBoxTrainingType.setBounds(150, 360, 109, 25);
+			comboBoxTrainingType.setBounds(146, 360, 109, 25);
 			add(comboBoxTrainingType);
 			comboBoxTrainingType.setEnabled(false);
 
 			comboBoxTraining = new JComboBox();
 			comboBoxTraining.setFont(new Font("Arial", Font.PLAIN, 15));
 			comboBoxTraining.setBackground(Color.WHITE);
-			comboBoxTraining.setBounds(160,82, 117, 25);
+			comboBoxTraining.setBounds(175,84, 117, 25);
 			comboBoxTraining.setEnabled(false);
 			add(comboBoxTraining);
 			comboBoxTraining.setEnabled(false);
@@ -771,14 +773,14 @@ public void initTextField(){
 		    comboBoxTeams.setFont(new Font("Arial", Font.PLAIN, 15));
 		    comboBoxTeams.setBackground(Color.WHITE);
 		    
-			comboBoxTeams.setBounds(175, 7, 117, 25);
+			comboBoxTeams.setBounds(175, 29, 117, 25);
 			add(comboBoxTeams);
 			comboBoxTeams.setEnabled(false);
 			
 			comboBoxAthlete = new JComboBox();
 			comboBoxAthlete.setFont(new Font("Arial", Font.PLAIN, 15));
 			comboBoxAthlete.setBackground(Color.WHITE);
-			comboBoxAthlete.setBounds(175,38, 117, 25);
+			comboBoxAthlete.setBounds(175,48, 117, 25);
 			comboBoxAthlete.setEnabled(false);
 			add(comboBoxAthlete);
 			comboBoxAthlete.setEnabled(false);

@@ -36,7 +36,7 @@ public class HomePanelCoach extends MyJPanel {
 			txtpnHello.setForeground(Color.GRAY);
 			txtpnHello.setFont(new Font("High Tower Text", Font.PLAIN, 50));
 			txtpnHello.setText("Hello "+str+"\r\n     welcome to\r\nTraining System.\r\n\r\n    ");
-			txtpnHello.setBounds(123, 133, 448, 349);
+			txtpnHello.setBounds(33, 37, 538, 445);
 			add(txtpnHello);
 		
 		} catch (IOException e) {
