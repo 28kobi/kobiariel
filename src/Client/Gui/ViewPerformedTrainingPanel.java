@@ -318,6 +318,7 @@ public class ViewPerformedTrainingPanel extends MyJPanel {
 		rdbtnWacthTheOriginal = new JRadioButton("watch the original planned training:");
 		rdbtnWacthTheOriginal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 				if(rdbtnWacthTheOriginal.isSelected()){
 					String acticity=null;
 					String trainingtype=null;
@@ -405,6 +406,7 @@ public class ViewPerformedTrainingPanel extends MyJPanel {
 		});
 		rdbtnWacthTheOriginal.setBounds(378, 319, 219, 23);
 		add(rdbtnWacthTheOriginal);
+		rdbtnWacthTheOriginal.setEnabled(false);
 		
 		
 		
@@ -417,8 +419,25 @@ public class ViewPerformedTrainingPanel extends MyJPanel {
 			btnW = new JButton("observe details");
 			btnW.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
+					if(rdbtnWacthTheOriginal.isSelected())
+						rdbtnWacthTheOriginal.doClick();
+					textPaneTraining1.setVisible(false);
+					textPaneActivity1.setVisible(false);
+					textPaneDate1.setVisible(false);
+					textPaneTime1.setVisible(false);
+					textPaneDetails1.setVisible(false);
+					textPaneDuration1.setVisible(false);
+					textPaneDistance1.setVisible(false);
+					lblActivityName1.setVisible(false);
+					lblTime_11.setVisible(false);
+					lblTraining1.setVisible(false);
+					lblDetails_11.setVisible(false);
+					lblDate1.setVisible(false);
+					lblDistance_11.setVisible(false);
+					lblDuration_11.setVisible(false);
+					
 					String msg;
-						
+					rdbtnWacthTheOriginal.setEnabled(false);
 					if(!comboBoxAthlete.getSelectedItem().toString().equals("Choose..")){
 					
 							if(!comboBoxTraining.getSelectedItem().toString().equals("Choose..")){
@@ -427,6 +446,7 @@ public class ViewPerformedTrainingPanel extends MyJPanel {
 								String activityName=null,trainingName=null,time,duration,distance,details;
 								String date;
 								String isplaned;
+								
 								for (int i=0; i<allAactivityTypeArray.size(); i++)
 								{
 									if  (allAactivityTypeArray.get(i).getActivityId()==AthletTraining.getActivityid())
@@ -449,7 +469,10 @@ public class ViewPerformedTrainingPanel extends MyJPanel {
 								duration=AthletTraining.getDuration();
 								distance=AthletTraining.getDistance();
 								details=AthletTraining.getDetails();
-								textisPlanned.setText(isplaned);
+								if(isplaned.equals("true")){
+									textisPlanned.setText("Yes");
+									rdbtnWacthTheOriginal.setEnabled(true);
+									}
 								textPaneActivity.setText(activityName);
 								textPaneTraining.setText(trainingName);
 								textPaneDuration.setText(duration);
@@ -458,9 +481,7 @@ public class ViewPerformedTrainingPanel extends MyJPanel {
 								textPaneDetails.setText(details);
 								textPaneTime.setText(time);
 								
-							    if(AthletTraining.getIsplanned().equals("true")){
-							    	rdbtnWacthTheOriginal.setEnabled(true);
-							    	}
+							   
 								}
 							else{
 								msg="choose training";
