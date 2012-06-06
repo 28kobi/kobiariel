@@ -425,6 +425,7 @@ public class ViewPerformedTeamTrainingPanel extends MyJPanel {
 			  comboBoxAthlete.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						
+						btnNewButton.setEnabled(false);
 						textPaneActivity.setText("");
 						textPaneTraining.setText("");
 						textPaneDate.setText("");
