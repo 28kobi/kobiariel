@@ -22,6 +22,7 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.Font;
 
 
 public class EditCoachPanel extends MyJPanel {
@@ -37,13 +38,14 @@ public class EditCoachPanel extends MyJPanel {
     private	JLabel lblPrivilige;
     private	JLabel lblPhoneNumber;
     private	JLabel lblAddress;
-    private JLabel lblNewLabelAnswer;
+    private	JLabel lblNewLabelAnswer;
     private JTextField textFieldFirstName;
     private JTextField textFieldLastName;
     private JTextField textFieldPrivilge;
     private JTextField textFieldPhoneNumber;
     private JTextField textFieldAddress;
     private JButton btnUpdate;
+    private JLabel lblNewLabel_1;
    
     
 	
@@ -54,10 +56,6 @@ public class EditCoachPanel extends MyJPanel {
 		BufferedImage myPic;
 		try {
 			myPic = ImageIO.read(new File("image"+ File.separator+"home.jpg"));
-		
-			JLabel lblEditCoach = new JLabel(new ImageIcon(myPic), JLabel.CENTER);
-			lblEditCoach.setBounds(149, 11, 340, 46);
-			add(lblEditCoach);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -81,7 +79,9 @@ public class EditCoachPanel extends MyJPanel {
 	public void initComboBoxs()
 	{
 	    ChooseCoach =new JComboBox();
-		ChooseCoach.setBounds(119, 68, 109, 20);
+	    ChooseCoach.setBackground(Color.WHITE);
+	    ChooseCoach.setFont(new Font("Arial", Font.PLAIN, 15));
+		ChooseCoach.setBounds(154, 69, 132, 25);
 		add(ChooseCoach);
 		ChooseCoach.setEnabled(true);
 	}
@@ -90,35 +90,38 @@ public class EditCoachPanel extends MyJPanel {
     public void initLabels(){
 		
     lblChooseCoach = new JLabel("Choose Coach:");
-	lblChooseCoach.setBounds(23, 67, 109, 23);
+    lblChooseCoach.setFont(new Font("Arial", Font.PLAIN, 15));
+	lblChooseCoach.setBounds(23, 67, 109, 25);
 	add(lblChooseCoach);
 	
     lblNewLabel = new JLabel("First Name:");
-	lblNewLabel.setBounds(23, 120, 71, 14);
+    lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 15));
+	lblNewLabel.setBounds(23, 120, 92, 25);
 	add(lblNewLabel);
 	
 	
     lblLastName = new JLabel("Last Name:");
-	lblLastName.setBounds(23, 155, 64, 14);
+    lblLastName.setFont(new Font("Arial", Font.PLAIN, 15));
+	lblLastName.setBounds(23, 155, 92, 25);
 	add(lblLastName);
 	
-	
+
+
+
 	lblPrivilige = new JLabel("Privilige:");
-	lblPrivilige.setBounds(23, 260, 92, 14);
+	lblPrivilige.setFont(new Font("Arial", Font.PLAIN, 15));
+	lblPrivilige.setBounds(23, 260, 92, 25);
 	add(lblPrivilige);
 	
 	lblPhoneNumber = new JLabel("Phone Number:");
-	lblPhoneNumber.setBounds(23, 295, 92, 14);
+	lblPhoneNumber.setFont(new Font("Arial", Font.PLAIN, 15));
+	lblPhoneNumber.setBounds(23, 295, 109, 25);
 	add(lblPhoneNumber);
 	
 	lblAddress = new JLabel("Address:");
-	lblAddress.setBounds(23, 330, 64, 14);
+	lblAddress.setFont(new Font("Arial", Font.PLAIN, 15));
+	lblAddress.setBounds(23, 330, 64, 25);
 	add(lblAddress);
-	
-	lblNewLabelAnswer = new JLabel("");
-	lblNewLabelAnswer.setForeground(Color.blue);
-	lblNewLabelAnswer.setBounds(300, 390,350, 23);
-	add(lblNewLabelAnswer);
 		
 	}
     
@@ -126,30 +129,38 @@ public class EditCoachPanel extends MyJPanel {
     public void initTextField(){
     	
     	textFieldFirstName = new JTextField();
-    	textFieldFirstName.setBounds(120, 120, 200, 20);
+    	textFieldFirstName.setFont(new Font("Arial", Font.PLAIN, 15));
+    	textFieldFirstName.setBounds(141, 115, 200, 25);
     	add(textFieldFirstName);
     	textFieldFirstName.setColumns(10);
     	
 
     	textFieldLastName = new JTextField();
-    	textFieldLastName.setBounds(120, 155, 200, 20);
+    	textFieldLastName.setFont(new Font("Arial", Font.PLAIN, 15));
+    	textFieldLastName.setBounds(141, 150, 200, 25);
     	add(textFieldLastName);
     	textFieldLastName.setColumns(10);
     	
-    
+
     	
+    	
+
+
     	textFieldPrivilge = new JTextField();
-    	textFieldPrivilge.setBounds(120, 260, 200, 20);
+    	textFieldPrivilge.setFont(new Font("Arial", Font.PLAIN, 15));
+    	textFieldPrivilge.setBounds(141, 255, 200, 25);
     	add(textFieldPrivilge);
     	textFieldPrivilge.setColumns(10);
     	
     	textFieldPhoneNumber = new JTextField();
-    	textFieldPhoneNumber.setBounds(120, 295, 200, 20);
+    	textFieldPhoneNumber.setFont(new Font("Arial", Font.PLAIN, 15));
+    	textFieldPhoneNumber.setBounds(141, 290, 200, 25);
     	add(textFieldPhoneNumber);
     	textFieldPhoneNumber.setColumns(10);
     	
     	textFieldAddress = new JTextField();
-    	textFieldAddress.setBounds(120, 330, 200, 20);
+    	textFieldAddress.setFont(new Font("Arial", Font.PLAIN, 15));
+    	textFieldAddress.setBounds(141, 330, 200, 74);
     	add(textFieldAddress);
     	textFieldAddress.setColumns(10);
     	
@@ -159,6 +170,8 @@ public class EditCoachPanel extends MyJPanel {
     
    public void initButton(){
 	   btnUpdate = new JButton("Update");
+	   btnUpdate.setForeground(Color.BLUE);
+	   btnUpdate.setFont(new Font("Arial", Font.PLAIN, 15));
 	   btnUpdate.addActionListener(new ActionListener() {
 	   	public void actionPerformed(ActionEvent e) {
 	   		
@@ -191,9 +204,14 @@ public class EditCoachPanel extends MyJPanel {
 	   			   		
 	   	}
 	   });
-		btnUpdate.setBounds(119, 390, 89, 23);
+		btnUpdate.setBounds(170, 432, 89, 30);
 		add(btnUpdate);
 		btnUpdate.setEnabled(false);
+		
+		lblNewLabel_1 = new JLabel("Edit Coach Panel:");
+		lblNewLabel_1.setFont(new Font("Arial", Font.PLAIN, 20));
+		lblNewLabel_1.setBounds(50, 11, 188, 30);
+		add(lblNewLabel_1);
    }
     
 	  public void init()

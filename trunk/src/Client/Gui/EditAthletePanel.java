@@ -27,6 +27,7 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.Font;
 
 
 public class EditAthletePanel extends MyJPanel {
@@ -42,7 +43,6 @@ public class EditAthletePanel extends MyJPanel {
   
     private	JLabel lblPhoneNumber;
     private	JLabel lblAddress;
-    private JLabel lblNewLabelAnswer;
     private JTextField textFieldFirstName;
     private JTextField textFieldLastName;
   
@@ -50,7 +50,11 @@ public class EditAthletePanel extends MyJPanel {
     private JTextField textFieldAddress;
     private JButton btnUpdate;
     private ArrayList<User> userarray =null;
+
+    private JLabel lblNewLabel_1;
+
     private String Usernam;
+
     
 	
 	
@@ -60,10 +64,6 @@ public class EditAthletePanel extends MyJPanel {
 		BufferedImage myPic;
 		try {
 			myPic = ImageIO.read(new File("image"+ File.separator+"home.jpg"));
-		
-			JLabel lblEditAthlete = new JLabel(new ImageIcon(myPic), JLabel.CENTER);
-			lblEditAthlete.setBounds(149, 11, 340, 46);
-			add(lblEditAthlete);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -92,7 +92,9 @@ public class EditAthletePanel extends MyJPanel {
 	public void initComboBoxs()
 	{
 		ChooseAthlete =new JComboBox();
-		ChooseAthlete.setBounds(119, 68, 109, 20);
+		ChooseAthlete.setBackground(Color.WHITE);
+		ChooseAthlete.setFont(new Font("Arial", Font.PLAIN, 15));
+		ChooseAthlete.setBounds(142, 85, 200, 25);
 		add(ChooseAthlete);
 		ChooseAthlete.setEnabled(true);
 	}
@@ -101,32 +103,38 @@ public class EditAthletePanel extends MyJPanel {
     public void initLabels(){
 		
     lblChooseAthlete = new JLabel("Choose Athlete:");
-    lblChooseAthlete.setBounds(23, 67, 109, 23);
+    lblChooseAthlete.setFont(new Font("Arial", Font.PLAIN, 15));
+    lblChooseAthlete.setBounds(23, 86, 109, 25);
 	add(lblChooseAthlete);
 	
     lblNewLabel = new JLabel("First Name:");
-	lblNewLabel.setBounds(23, 120, 71, 14);
+    lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 15));
+	lblNewLabel.setBounds(23, 120, 92, 25);
 	add(lblNewLabel);
 	
 	
     lblLastName = new JLabel("Last Name:");
-	lblLastName.setBounds(23, 155, 64, 14);
+    lblLastName.setFont(new Font("Arial", Font.PLAIN, 15));
+	lblLastName.setBounds(23, 155, 92, 25);
 	add(lblLastName);
 	
 
 	
+
+  
+	
+	
+
+
 	lblPhoneNumber = new JLabel("Phone Number:");
-	lblPhoneNumber.setBounds(23, 295, 92, 14);
+	lblPhoneNumber.setFont(new Font("Arial", Font.PLAIN, 15));
+	lblPhoneNumber.setBounds(23, 261, 109, 25);
 	add(lblPhoneNumber);
 	
 	lblAddress = new JLabel("Address:");
-	lblAddress.setBounds(23, 330, 64, 14);
+	lblAddress.setFont(new Font("Arial", Font.PLAIN, 15));
+	lblAddress.setBounds(23, 297, 75, 25);
 	add(lblAddress);
-	
-	lblNewLabelAnswer = new JLabel("");
-	lblNewLabelAnswer.setForeground(Color.blue);
-	lblNewLabelAnswer.setBounds(300, 390,350, 23);
-	add(lblNewLabelAnswer);
 		
 	}
     
@@ -134,25 +142,32 @@ public class EditAthletePanel extends MyJPanel {
     public void initTextField(){
     	
     	textFieldFirstName = new JTextField();
-    	textFieldFirstName.setBounds(120, 120, 200, 20);
+    	textFieldFirstName.setFont(new Font("Arial", Font.PLAIN, 15));
+    	textFieldFirstName.setBounds(142, 120, 200, 25);
     	add(textFieldFirstName);
     	textFieldFirstName.setColumns(10);
     	
 
     	textFieldLastName = new JTextField();
-    	textFieldLastName.setBounds(120, 155, 200, 20);
+    	textFieldLastName.setFont(new Font("Arial", Font.PLAIN, 15));
+    	textFieldLastName.setBounds(142, 155, 200, 25);
     	add(textFieldLastName);
     	textFieldLastName.setColumns(10);
     	
-    	
+
+    
+
+
     	
     	textFieldPhoneNumber = new JTextField();
-    	textFieldPhoneNumber.setBounds(120, 295, 200, 20);
+    	textFieldPhoneNumber.setFont(new Font("Arial", Font.PLAIN, 15));
+    	textFieldPhoneNumber.setBounds(142, 261, 200, 25);
     	add(textFieldPhoneNumber);
     	textFieldPhoneNumber.setColumns(10);
     	
     	textFieldAddress = new JTextField();
-    	textFieldAddress.setBounds(120, 330, 200, 20);
+    	textFieldAddress.setFont(new Font("Arial", Font.PLAIN, 15));
+    	textFieldAddress.setBounds(142, 297, 200, 82);
     	add(textFieldAddress);
     	textFieldAddress.setColumns(10);
     	
@@ -162,6 +177,8 @@ public class EditAthletePanel extends MyJPanel {
     
    public void initButton(){
 	   btnUpdate = new JButton("Update");
+	   btnUpdate.setForeground(Color.BLUE);
+	   btnUpdate.setFont(new Font("Arial", Font.PLAIN, 15));
 	   btnUpdate.addActionListener(new ActionListener() {
 	   	public void actionPerformed(ActionEvent e) {
 	   		String msg;
@@ -199,8 +216,13 @@ public class EditAthletePanel extends MyJPanel {
 	   			   			
 	   		}
 	   	});
-		btnUpdate.setBounds(119, 390, 89, 23);
+		btnUpdate.setBounds(197, 446, 89, 30);
 		add(btnUpdate);
+		
+		lblNewLabel_1 = new JLabel("Edit Athlete Details:");
+		lblNewLabel_1.setFont(new Font("Arial", Font.PLAIN, 20));
+		lblNewLabel_1.setBounds(34, 32, 205, 30);
+		add(lblNewLabel_1);
    }
     
 	  public void init()
