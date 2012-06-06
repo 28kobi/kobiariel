@@ -160,22 +160,24 @@ public class EditTeamPanel extends MyJPanel {
 		 			ChooseCoachCombo.setEnabled(false);
 		 			
 		 			
+		 			if(!ChooseTeamCombo.getSelectedItem().toString().equals("Choose..")){
+		 				
 		 			
-		 			 selectedteam = (String)ChooseTeamCombo.getSelectedItem();
-					 int i=0;
-						while(!allTeamArray.get(i).getTeamName().equals(selectedteam))i++;
-						TeamNameStr= allTeamArray.get(i).getTeamName();
-						TeamName.setText(TeamNameStr);
-						SelectedCoachId= allTeamArray.get(i).getCoachId();
-						
-						
-						getClient().sendMsgToServer(new MessageGetUserByUserId(SelectedCoachId));
-						MessageGetUserByUserIdReplay rep = (MessageGetUserByUserIdReplay) getClient().getMessageFromServer();
-						CoachNameStr=rep.getCoach().getFirstName()+" "+rep.getCoach().getLastName();
-						CoachName.setText(CoachNameStr);
-						
-	
-		 			
+		 				selectedteam = (String)ChooseTeamCombo.getSelectedItem();
+		 				int i=0;
+		 					while(!allTeamArray.get(i).getTeamName().equals(selectedteam))i++;
+		 					TeamNameStr= allTeamArray.get(i).getTeamName();
+		 					TeamName.setText(TeamNameStr);
+		 					SelectedCoachId= allTeamArray.get(i).getCoachId();
+		 					
+		 					
+		 					getClient().sendMsgToServer(new MessageGetUserByUserId(SelectedCoachId));
+		 					MessageGetUserByUserIdReplay rep = (MessageGetUserByUserIdReplay) getClient().getMessageFromServer();
+		 					CoachNameStr=rep.getCoach().getFirstName()+" "+rep.getCoach().getLastName();
+		 					CoachName.setText(CoachNameStr);
+		 				}	
+		 					
+		 					
 		 			}
 		 		
 		 			
@@ -190,6 +192,7 @@ public class EditTeamPanel extends MyJPanel {
 			   btnUpdate = new JButton("Update");
 			   btnUpdate.addActionListener(new ActionListener() {
 			   	public void actionPerformed(ActionEvent e) {
+			   		
 			   		int i=0;
 		    		int flag=0;
 		    		while(i<allTeamArray.size()){
@@ -203,33 +206,32 @@ public class EditTeamPanel extends MyJPanel {
 		    		if(flag==0){
 		    		
 			   		
-			   		
-			   		team.setTeamName(TeamName.getText());
-			   		if(rdbtnChangeCoach.isSelected())
-			   		team.setCoachId(coach.getIdUser());
-			   		
-			   		getClient().sendMsgToServer(new MessageUpdateTeam(team));
-			   		MessageUpdateTeamReplay rep= (MessageUpdateTeamReplay) getClient().getMessageFromServer();
-					
-			   		
-					if(rep.getBoolean()==true){
-						
-						popUp("Update Team Success");
-						
-						getClient().swapFromBack(pushPanel());
-						
-						
-					}
-					
-					else popUp("Update Team fail");
-							
-		    		}
+		    		if(!ChooseTeamCombo.getSelectedItem().toString().equals("Choose..")){
+		    			
+		    			if(rdbtnChangeCoach.isSelected()){
+		    				if(!ChooseCoachCombo.getSelectedItem().toString().equals("Choose..")){
+		    					team.setCoachId(coach.getIdUser());
+		    					team.setTeamName(TeamName.getText());
+		    				}
+		    			}
+		    				getClient().sendMsgToServer(new MessageUpdateTeam(team));
+		    				MessageUpdateTeamReplay rep= (MessageUpdateTeamReplay) getClient().getMessageFromServer();
+		    				
+		    				
+		    				if(rep.getBoolean()==true){
+		    					popUp("Update Team Success");
+		    					getClient().swapFromBack(pushPanel()); 					
+		    					}
+		    				else popUp("Update Team fail");
+		    			}    			
 		    		
-			   			   		
-			   	}
+		    		else popUp("choose team...");
+		    		}		   			
+		    	}
 			   });
 			   btnUpdate.setBounds(191, 397, 89, 23);
 				  add(btnUpdate);
+				  btnUpdate.setEnabled(false);
 		   }
 		 
 	
@@ -265,30 +267,40 @@ public class EditTeamPanel extends MyJPanel {
 	    }
 	 private class TeamListener implements ActionListener{
 			public void actionPerformed(ActionEvent event) {
-				 team=(Team)ChooseTeamCombo.getSelectedItem();
-					TeamName.setText(team.getTeamName());
-					SelectedCoachId= team.getCoachId();
-					
-					
-					
-					getClient().sendMsgToServer(new MessageGetUserByUserId(SelectedCoachId));
-					MessageGetUserByUserIdReplay rep = (MessageGetUserByUserIdReplay) getClient().getMessageFromServer();
-					CoachNameStr=rep.getCoach().getFirstName()+" "+rep.getCoach().getLastName();
-					CoachName.setText(CoachNameStr);
-					
-					
+				if(!ChooseTeamCombo.getSelectedItem().toString().equals("Choose..")){
+						team=(Team)ChooseTeamCombo.getSelectedItem();
+						TeamName.setText(team.getTeamName());
+						SelectedCoachId= team.getCoachId();
 						
+						
+						
+						getClient().sendMsgToServer(new MessageGetUserByUserId(SelectedCoachId));
+						MessageGetUserByUserIdReplay rep = (MessageGetUserByUserIdReplay) getClient().getMessageFromServer();
+						CoachNameStr=rep.getCoach().getFirstName()+" "+rep.getCoach().getLastName();
+						CoachName.setText(CoachNameStr);
+						 btnUpdate.setEnabled(true);
+						
+					}
+				else{
+					popUp("choose team...");
 					
 				}
-			
-				
+						
+							
+					
+				}
 			
 			}
 	 private class CoachListener implements ActionListener{
 			public void actionPerformed(ActionEvent event) {
+				if(!ChooseCoachCombo.getSelectedItem().toString().equals("Choose..")){
+					
+				
 				coach=(User)ChooseCoachCombo.getSelectedItem();
 				CoachNameStr2=coach.getFirstName()+" "+coach.getLastName();
 				CoachName.setText(CoachNameStr2);
+				}
+				
 				
 			}
 				
