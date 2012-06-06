@@ -158,7 +158,7 @@ public class EditTrainingPanel extends MyJPanel {
 	public void initLabel(){
 		
 
-		lblChooseTraining = new JLabel("choose training:");
+		lblChooseTraining = new JLabel("Choose training:");
 		lblChooseTraining.setBounds(10, 85, 105, 14);
 		add(lblChooseTraining);
 		
@@ -428,9 +428,11 @@ public void initTextField(){
 					updatedTraining=new plannedteamtraining();
 					
 					//check if activity type change
+					 comboBoxTrainingType.removeAll();
+					 comboBoxTrainingType.validate();
 					 comboBoxTrainingType.addItem("Choose..");
 						
-					if((comboBoxActivityType.getSelectedItem().toString().equals("choose.."))){
+					if(!(comboBoxActivityType.getSelectedItem().toString().equals("Choose.."))){
 						activitytype activy=(activitytype)comboBoxActivityType.getSelectedItem();
 						if(teamTraining.getActivityid()==activy.getActivityId())
 							updatedTraining.setActivityid(teamTraining.getActivityid());
@@ -442,7 +444,7 @@ public void initTextField(){
 						}
 					
 					//check if training type change
-					if((comboBoxTrainingType.getSelectedItem().toString().equals("choose.."))){
+					if(!(comboBoxTrainingType.getSelectedItem().toString().equals("Choose.."))){
 						trainingtype trainingt=(trainingtype)comboBoxTrainingType.getSelectedItem();
 						if(teamTraining.getActivityid()==trainingt.getTrainingId())
 							updatedTraining.setTrainingTypeId(teamTraining.getTrainingTypeId());
@@ -453,7 +455,7 @@ public void initTextField(){
 						updatedTraining.setTrainingTypeId(teamTraining.getTrainingTypeId());
 						}
 					
-					if(comboBoxDay.isEnabled()&&!comboBoxDay.getSelectedItem().toString().equals("choose..")&&!comboBoxMonth.getSelectedItem().toString().equals("choose..")&&!comboBoxYear.getSelectedItem().toString().equals("choose..")){
+					if(comboBoxDay.isEnabled()&&!comboBoxDay.getSelectedItem().toString().equals("Choose..")&&!comboBoxMonth.getSelectedItem().toString().equals("Choose..")&&!comboBoxYear.getSelectedItem().toString().equals("Choose..")){
 						msg=""+comboBoxDay.getSelectedItem().toString()+"/"+""+comboBoxMonth.getSelectedItem().toString()+""+"/"+comboBoxYear.getSelectedItem().toString()+"";
 						updatedTraining.setDate(msg);
 					}
@@ -462,7 +464,7 @@ public void initTextField(){
 						
 				
 					
-					if(!comboBoxHour.getSelectedItem().toString().equals("choose..")&&!comboBoxMin.getSelectedItem().toString().equals("choose..")){
+					if(!comboBoxHour.getSelectedItem().toString().equals("Choose..")&&!comboBoxMin.getSelectedItem().toString().equals("Choose..")){
 						msg=""+comboBoxHour.getSelectedItem().toString()+""+":"+comboBoxMin.getSelectedItem().toString()+"";
 						updatedTraining.setTime(msg);
 					}
@@ -508,7 +510,7 @@ public void initTextField(){
 					//check if activity type change
 					 comboBoxTrainingType.addItem("Choose..");
 						
-					if((comboBoxActivityType.getSelectedItem().toString().equals("choose.."))){
+					if(!(comboBoxActivityType.getSelectedItem().toString().equals("Choose.."))){
 						activitytype activy=(activitytype)comboBoxActivityType.getSelectedItem();
 						if(AthletTraining.getActivityid()==activy.getActivityId())
 							updatedTraining1.setActivityid(AthletTraining.getActivityid());
@@ -520,7 +522,7 @@ public void initTextField(){
 						}
 					
 					//check if training type change
-					if((comboBoxTrainingType.getSelectedItem().toString().equals("choose.."))){
+					if(!(comboBoxTrainingType.getSelectedItem().toString().equals("Choose.."))){
 						trainingtype trainingt=(trainingtype)comboBoxTrainingType.getSelectedItem();
 						if(AthletTraining.getActivityid()==trainingt.getTrainingId())
 							updatedTraining1.setTrainingTypeId(AthletTraining.getTrainingTypeId());
@@ -531,7 +533,7 @@ public void initTextField(){
 						updatedTraining1.setTrainingTypeId(AthletTraining.getTrainingTypeId());
 						}
 					
-					if(comboBoxDay.isEnabled()&&!comboBoxDay.getSelectedItem().toString().equals("choose..")&&!comboBoxMonth.getSelectedItem().toString().equals("choose..")&&!comboBoxYear.getSelectedItem().toString().equals("choose..")){
+					if(comboBoxDay.isEnabled()&&!comboBoxDay.getSelectedItem().toString().equals("Choose..")&&!comboBoxMonth.getSelectedItem().toString().equals("Choose..")&&!comboBoxYear.getSelectedItem().toString().equals("Choose..")){
 						msg=""+comboBoxDay.getSelectedItem().toString()+""+"/"+comboBoxMonth.getSelectedItem().toString()+""+"/"+comboBoxYear.getSelectedItem().toString()+"";
 						updatedTraining1.setDate(msg);
 					}
@@ -540,7 +542,7 @@ public void initTextField(){
 						
 				
 					
-					if(!comboBoxHour.getSelectedItem().toString().equals("choose..")&&!comboBoxMin.getSelectedItem().toString().equals("choose..")){
+					if(!comboBoxHour.getSelectedItem().toString().equals("Choose..")&&!comboBoxMin.getSelectedItem().toString().equals("Choose..")){
 						msg=""+comboBoxHour.getSelectedItem().toString()+""+":"+comboBoxMin.getSelectedItem().toString()+"";
 						updatedTraining1.setTime(msg);
 					}
@@ -680,7 +682,7 @@ public void initTextField(){
 			comboBoxHour.setBounds(151, 300, 71, 20);
 
 			for(int hour=0;hour<25;hour++){
-				if(hour==0) comboBoxHour.addItem("choose..");
+				if(hour==0) comboBoxHour.addItem("Choose..");
 				else comboBoxHour.addItem(Integer.toString(hour));
 				
 			}
@@ -693,7 +695,7 @@ public void initTextField(){
 			comboBoxMin.setBounds(300, 300, 71, 20);
 
 			for(int min=0;min<75;min=min+15){
-				if(min==0) comboBoxMin.addItem("choose..");
+				if(min==0) comboBoxMin.addItem("Choose..");
 				else comboBoxMin.addItem(Integer.toString(min));
 				
 			}
@@ -746,6 +748,7 @@ public void initTextField(){
 	    initTextPane();
 	    comboBoxTrainingType.addItem("Choose..");
 	    comboBoxDay.addItem("Choose..");
+	    comboBoxTraining.addItem("Choose..");
 		 for (int i=0; i<=allTeamArray.size(); i++)
 			{
 				if (i==0) comboBoxTeams.addItem("Choose..");
@@ -833,6 +836,7 @@ public void initTextField(){
 					  	MessageGetAllPersonalTrainingByAtleteIdReplay rep6= (MessageGetAllPersonalTrainingByAtleteIdReplay)getClient().getMessageFromServer();
 					  	allPersonalTrainingArray = rep6.getPersonalTrainingArray();
 					  	comboBoxTraining.removeAllItems();
+					  	comboBoxTraining.validate();
 		    			 for (int i=0; i<=allPersonalTrainingArray.size(); i++)
 		    				{
 		    					if (i==0) comboBoxTraining.addItem("Choose..");
