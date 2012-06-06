@@ -550,15 +550,13 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 			btnResetTrainingDetail.setBounds(554, 115, 175, 30);
 			add(btnResetTrainingDetail);
 			btnResetTrainingDetail.setVisible(false);
-			
-			
-			
-			
 			btnReportTrainingDetail = new JButton("Report Training Detail");
 			btnReportTrainingDetail.setFont(new Font("Arial", Font.PLAIN, 15));
 			btnReportTrainingDetail.setForeground(Color.BLUE);
 			btnReportTrainingDetail.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					int flag1=1;
+					
 					if(!rdbtnReportUnPlannedTraining.isSelected()&&!rdbtnReportPlannedTraining.isSelected()){
 						msg="Please Select Planned Or Unplanned Radio Button";
 						popUp(msg);
@@ -567,7 +565,7 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 					}
 								if(rdbtnReportUnPlannedTraining.isSelected()){
 									
-									if((!comboBoxDay.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxMonth.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxYear.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxHour.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxMin.getSelectedItem().toString().equals("Choose.."))){
+									if((!comboBoxTrainingType.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxActivityType.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxDay.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxMonth.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxYear.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxHour.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxMin.getSelectedItem().toString().equals("Choose.."))){
 										
 										PreformedPersonalTraining = new PreformedPersonalTraining();
 										PreformedPersonalTraining.setAthleteId(Athlete.getUserid());
@@ -606,6 +604,39 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 								}
 								
 								if(rdbtnReportPlannedTraining.isSelected()){
+									if(!comboBoxPersonal.getSelectedItem().toString().equalsIgnoreCase("Choose..")){
+										if((comboBoxDay.getSelectedItem().toString().equalsIgnoreCase("Choose.."))&&
+												(comboBoxMonth.getSelectedItem().toString().equalsIgnoreCase("Choose.."))&&
+												(comboBoxYear.getSelectedItem().toString().equalsIgnoreCase("Choose.."))&&
+												(comboBoxHour.getSelectedItem().toString().equalsIgnoreCase("Choose.."))&&
+												(comboBoxMin.getSelectedItem().toString().equalsIgnoreCase("Choose.."))&&
+												(textFieldDistance.getText().toString().equalsIgnoreCase(""))&&
+												(textFieldDetails.getText().toString().equalsIgnoreCase(""))&&
+												(textFieldDuration.getText().toString().equalsIgnoreCase(""))){
+													PreformedPersonalTraining = new PreformedPersonalTraining();
+													PreformedPersonalTraining.setAthleteId(Athlete.getUserid());
+													PreformedPersonalTraining.setIsplanned("true");
+													PreformedPersonalTraining.setTrainingId(AthletTraining.getTrainingId());
+													PreformedPersonalTraining.setDate(AthletTraining.getDate());
+													PreformedPersonalTraining.setTime(AthletTraining.getTime());
+													PreformedPersonalTraining.setActivityid(AthletTraining.getActivityid());
+													PreformedPersonalTraining.setTrainingTypeId(AthletTraining.getTrainingTypeId());
+													PreformedPersonalTraining.setDistance(AthletTraining.getDistance());
+													PreformedPersonalTraining.setDetails(AthletTraining.getDetails());
+													PreformedPersonalTraining.setDuration(AthletTraining.getDuration());
+											
+														getClient().sendMsgToServer(new MessageCreateNewUnPlannedTraining(PreformedPersonalTraining));
+															MessageCreateNewUnPlannedTrainingReplay rep= (MessageCreateNewUnPlannedTrainingReplay)getClient().getMessageFromServer();
+															if(rep.getint()==1){
+																msg="Training Report Success";
+																popUp(msg);	
+																getClient().swapFromBack(pushPanel());
+																return ;
+															}
+										
+											}
+										
+									}
 									if(comboBoxPersonal.isEnabled()){
 									if((!comboBoxPersonal.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxDay.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxMonth.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxYear.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxHour.getSelectedItem().toString().equals("Choose.."))&&(!comboBoxMin.getSelectedItem().toString().equals("Choose.."))){
 										
@@ -647,50 +678,89 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 						
 
 						if(rdbtnReportPlannedTraining.isSelected()){
+													
+							if(!comboBoxTeam.getSelectedItem().toString().equalsIgnoreCase("Choose..")){
+								if((comboBoxDay.getSelectedItem().toString().equalsIgnoreCase("Choose.."))&&
+										(comboBoxMonth.getSelectedItem().toString().equalsIgnoreCase("Choose.."))&&
+										(comboBoxYear.getSelectedItem().toString().equalsIgnoreCase("Choose.."))&&
+										(comboBoxHour.getSelectedItem().toString().equalsIgnoreCase("Choose.."))&&
+										(comboBoxMin.getSelectedItem().toString().equalsIgnoreCase("Choose.."))&&
+										(textFieldDistance.getText().toString().equalsIgnoreCase(""))&&
+										(textFieldDetails.getText().toString().equalsIgnoreCase(""))&&
+										(textFieldDuration.getText().toString().equalsIgnoreCase(""))){
+											PreformedTeamTraining=new PreformedTeamTraining();
+											PreformedTeamTraining.setAthleteId(Athlete.getUserid());
+											PreformedTeamTraining.setTrainingId(teamTraining.getTrainingId());
+											PreformedTeamTraining.setDate(teamTraining.getDate());
+											PreformedTeamTraining.setTime(teamTraining.getTime());
+											PreformedTeamTraining.setActivityid(teamTraining.getActivityid());
+											PreformedTeamTraining.setTrainingTypeId(teamTraining.getTrainingTypeId());
+											PreformedTeamTraining.setDistance(teamTraining.getDistance());
+											PreformedTeamTraining.setDetails(teamTraining.getDetails());
+											PreformedTeamTraining.setDuration(teamTraining.getDuration());
+											flag1=0;
+											
+												getClient().sendMsgToServer(new MessageCreateNewPreformedTeamPlannedTraining(PreformedTeamTraining));
+												MessageCreateNewPreformedTeamPlannedTrainingReplay rep45= (MessageCreateNewPreformedTeamPlannedTrainingReplay)getClient().getMessageFromServer();
+													if(rep45.getint()==1){
+														msg="Training Report Success";
+														popUp(msg);	
+														getClient().swapFromBack(pushPanel());
+														return ;
+													}
+								
+									}
+								
+							}
+						if(!comboBoxTeam.getSelectedItem().toString().equalsIgnoreCase("Choose..")&&flag1==1){
+							
+							
+							
 							String msg ;
 							PreformedTeamTraining=new PreformedTeamTraining();
 							
 							//check if activity type change
 							 comboBoxTrainingType.addItem("Choose..");
 								
-							if((comboBoxActivityType.getSelectedItem().toString().equals("Choose.."))){
+							if((!comboBoxActivityType.getSelectedItem().toString().equalsIgnoreCase("Choose.."))){
 								activitytype activy=(activitytype)comboBoxActivityType.getSelectedItem();
-								if(teamTraining.getActivityid()==activy.getActivityId())
-									PreformedTeamTraining.setActivityid(teamTraining.getActivityid());
-								else
+							
 									PreformedTeamTraining.setActivityid(activy.getActivityId());
-								}
-							else {
-								PreformedTeamTraining.setActivityid(teamTraining.getActivityid());
-								}
+							}
+							else{
+								popUp("fill all the details please..");
+								return;
+							}
 							
 							//check if training type change
-							if((comboBoxTrainingType.getSelectedItem().toString().equals("Choose.."))){
+							if(!(comboBoxTrainingType.getSelectedItem().toString().equalsIgnoreCase("Choose.."))){
 								trainingtype trainingt=(trainingtype)comboBoxTrainingType.getSelectedItem();
-								if(teamTraining.getActivityid()==trainingt.getTrainingId())
-									PreformedTeamTraining.setTrainingTypeId(teamTraining.getTrainingTypeId());
-								else
+								
 									PreformedTeamTraining.setTrainingTypeId(trainingt.getTrainingId());
-								}
-							else {
-								PreformedTeamTraining.setTrainingTypeId(teamTraining.getTrainingTypeId());
-								}
+							}
+							else{
+								popUp("fill all the details please..");
+								return;
+							}
 							
-							if(comboBoxDay.isEnabled()&&!comboBoxDay.getSelectedItem().toString().equals("Choose..")&&!comboBoxMonth.getSelectedItem().toString().equals("Choose..")&&!comboBoxYear.getSelectedItem().toString().equals("Choose..")){
+							if(!comboBoxDay.getSelectedItem().toString().equalsIgnoreCase("Choose..")&&!comboBoxDay.getSelectedItem().toString().equalsIgnoreCase("Choose..")&&!comboBoxMonth.getSelectedItem().toString().equalsIgnoreCase("Choose..")&&!comboBoxYear.getSelectedItem().toString().equalsIgnoreCase("Choose..")){
 								msg=""+comboBoxDay.getSelectedItem().toString()+"/"+""+comboBoxMonth.getSelectedItem().toString()+""+"/"+comboBoxYear.getSelectedItem().toString()+"";
 								PreformedTeamTraining.setDate(msg);
 							}
-							else
-								PreformedTeamTraining.setDate(teamTraining.getDate());
-								
+							else{
+								popUp("fill all the details please..");
+								return;
+							}
 						
 							
 							if(!comboBoxHour.getSelectedItem().toString().equals("Choose..")&&!comboBoxMin.getSelectedItem().toString().equals("Choose..")){
 								msg=""+comboBoxHour.getSelectedItem().toString()+""+":"+comboBoxMin.getSelectedItem().toString()+"";
 								PreformedTeamTraining.setTime(msg);
 							}
-							else
-								PreformedTeamTraining.setTime(teamTraining.getTime());
+							else{
+								popUp("fill all the details please..");
+								return;
+							}
 							
 							
 							if(textFieldDetails.getText().equals(""))
@@ -713,8 +783,8 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 							getClient().sendMsgToServer(new MessageCreateNewPreformedTeamPlannedTraining(PreformedTeamTraining));
 							MessageCreateNewPreformedTeamPlannedTrainingReplay rep7= (MessageCreateNewPreformedTeamPlannedTrainingReplay) getClient().getMessageFromServer();
 							if(rep7.getint()==1){
-								msg="Report Team Training Success.";
-								popUp(msg);	
+							
+								popUp("Report Team Training Success.");	
 								getClient().swapFromBack(pushPanel());
 								return ;
 							}
@@ -725,8 +795,10 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 							}
 							
 						}
+						
+					}
 						if(!rdbtnReportUnPlannedTraining.isSelected()){
-							msg="Fill All Field Include Combox Option Please";
+							msg="Fill All Field Include  Options Please";
 							popUp(msg);
 							
 						}
