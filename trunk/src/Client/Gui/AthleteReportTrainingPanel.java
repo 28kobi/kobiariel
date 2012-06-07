@@ -138,11 +138,6 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 		BufferedImage myPic;
 		try {
 			myPic = ImageIO.read(new File("image"+ File.separator+"home.jpg"));
-		
-			JLabel lblPlannedTrainging = new JLabel(new ImageIcon(myPic), JLabel.CENTER);
-			lblPlannedTrainging.setFont(new Font("Arial", Font.PLAIN, 15));
-			lblPlannedTrainging.setBounds(315, 0, 340, 46);
-			add(lblPlannedTrainging);
 			
 
 			Athlete=new athlete();
