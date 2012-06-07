@@ -52,11 +52,6 @@ public class AthleteViewPlannedTrainingPanel extends MyJPanel {
 		BufferedImage myPic;
 		try {
 			myPic = ImageIO.read(new File("image"+ File.separator+"home.jpg"));
-		
-			JLabel lblPlannedTrainging = new JLabel(new ImageIcon(myPic), JLabel.CENTER);
-			lblPlannedTrainging.setFont(new Font("Arial", Font.PLAIN, 20));
-			lblPlannedTrainging.setBounds(149, 11, 340, 46);
-			add(lblPlannedTrainging);
 			
 			Athlete=new athlete();
 			getClient().sendMsgToServer(new MessageGetAthleteByUserId(getClient().getUser().getIdUser()));
