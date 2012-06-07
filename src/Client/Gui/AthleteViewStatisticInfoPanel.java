@@ -60,10 +60,6 @@ public class AthleteViewStatisticInfoPanel extends MyJPanel {
 		BufferedImage myPic;
 		try {
 			myPic = ImageIO.read(new File("image"+ File.separator+"home.jpg"));
-		
-			JLabel lblathletestatistic = new JLabel(new ImageIcon(myPic), JLabel.CENTER);
-			lblathletestatistic.setBounds(149, 11, 340, 46);
-			add(lblathletestatistic);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
