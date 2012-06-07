@@ -28,7 +28,7 @@ public class LoginSettingsPanel extends MyJPanel {
 		
 		BufferedImage myPic;
 		try {
-			myPic = ImageIO.read(new File("images"+ File.separator+"login setting.jpg"));
+			myPic = ImageIO.read(new File("images"+ File.separator+""));
 		
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
