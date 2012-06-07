@@ -571,9 +571,9 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 										PreformedPersonalTraining.setAthleteId(Athlete.getUserid());
 										PreformedPersonalTraining.setIsplanned("false");
 										PreformedPersonalTraining.setTrainingId(0);
-										msg="'"+comboBoxDay.getSelectedItem().toString()+"'"+"'"+comboBoxMonth.getSelectedItem().toString()+"'"+"'"+comboBoxYear.getSelectedItem().toString()+"'";
+										msg=""+comboBoxDay.getSelectedItem().toString()+"/"+""+comboBoxMonth.getSelectedItem().toString()+"/"+""+comboBoxYear.getSelectedItem().toString()+"";
 										PreformedPersonalTraining.setDate(msg);
-										msg="'"+comboBoxHour.getSelectedItem().toString()+"'"+"'"+comboBoxMin.getSelectedItem().toString()+"'";
+										msg=""+comboBoxHour.getSelectedItem().toString()+":"+""+comboBoxMin.getSelectedItem().toString()+"";
 										PreformedPersonalTraining.setTime(msg);
 										activityType=(activitytype)comboBoxActivityType.getSelectedItem();
 										PreformedPersonalTraining.setActivityid(activityType.getActivityId());
@@ -644,9 +644,9 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 										PreformedPersonalTraining.setAthleteId(Athlete.getUserid());
 										PreformedPersonalTraining.setIsplanned("true");
 										PreformedPersonalTraining.setTrainingId(AthletTraining.getTrainingId());
-										msg="'"+comboBoxDay.getSelectedItem().toString()+"'"+"'"+comboBoxMonth.getSelectedItem().toString()+"'"+"'"+comboBoxYear.getSelectedItem().toString()+"'";
+										msg=""+comboBoxDay.getSelectedItem().toString()+""+"/"+comboBoxMonth.getSelectedItem().toString()+"/"+""+comboBoxYear.getSelectedItem().toString()+"";
 										PreformedPersonalTraining.setDate(msg);
-										msg="'"+comboBoxHour.getSelectedItem().toString()+"'"+"'"+comboBoxMin.getSelectedItem().toString()+"'";
+										msg=""+comboBoxHour.getSelectedItem().toString()+""+":"+comboBoxMin.getSelectedItem().toString()+"";
 										PreformedPersonalTraining.setTime(msg);
 										activityType=(activitytype)comboBoxActivityType.getSelectedItem();
 										PreformedPersonalTraining.setActivityid(activityType.getActivityId());
