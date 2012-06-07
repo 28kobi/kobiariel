@@ -65,7 +65,7 @@ public class LogInPanel extends MyJPanel{
 		lblPassword.setBounds(50, 189, 82, 14);
 		add(lblPassword);
 		
-		btnSubmit = new JButton("Submit");
+		btnSubmit = new JButton("Login");
 		btnSubmit.setForeground(Color.BLUE);
 		btnSubmit.setFont(new Font("Arial", Font.PLAIN, 15));
 		btnSubmit.addActionListener(new ActionListener() {
