@@ -493,6 +493,10 @@ public class ViewPerformedTrainingPanel extends MyJPanel {
 									textisPlanned.setText("Yes");
 									rdbtnWacthTheOriginal.setEnabled(true);
 									}
+								if(isplaned.equals("flase")){
+									textisPlanned.setText("no");
+									rdbtnWacthTheOriginal.setEnabled(false);
+									}
 								textPaneActivity.setText(activityName);
 								textPaneTraining.setText(trainingName);
 								textPaneDuration.setText(duration);
