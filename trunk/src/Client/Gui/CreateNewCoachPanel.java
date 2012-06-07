@@ -240,7 +240,7 @@ public class CreateNewCoachPanel extends MyJPanel {
 	   		
 	   	
 	   	} });
-	   btnCreate.setBounds(119, 390, 201, 30);
+	   btnCreate.setBounds(144, 391, 201, 40);
 		add(btnCreate);
 		
 		lblPleaseFill = new JLabel("(*) Please Fill All Field.");

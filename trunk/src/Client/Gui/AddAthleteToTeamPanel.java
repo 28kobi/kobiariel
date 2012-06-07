@@ -56,7 +56,6 @@ public class AddAthleteToTeamPanel extends MyJPanel {
     private JComboBox ChooseAtleteCombo;
     private JLabel lblChooseTeam;
     private JLabel lblChooseAthlete;
-    private  JLabel lblEditAthlete;
     private  JLabel lblAddAthleteTo;
     private  JButton btnAddAthleteTo;
 	
@@ -65,10 +64,6 @@ public class AddAthleteToTeamPanel extends MyJPanel {
 		super(PanelType.ADD_ATHLETE_TO_TEAM_PANEL, client);
 		setForeground(Color.BLUE);
 		setLayout(null);
-		
-			 lblEditAthlete = new JLabel();
-			lblEditAthlete.setBounds(258, 11, 340, 46);
-			add(lblEditAthlete);
 			
 		
 		
@@ -149,7 +144,7 @@ public void initbtn()
 	    	     }		
 			}
 		});
-		btnAddAthleteTo.setBounds(120, 236, 174, 30);
+		btnAddAthleteTo.setBounds(148, 223, 174, 40);
 		add(btnAddAthleteTo);
 		
 }

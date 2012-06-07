@@ -39,6 +39,7 @@ import Server.Message.MessageGetPlannedTeamTrainingByTrainingIdReplay;
 import Server.Message.MessageGetPlannedTrainingByTrainingId;
 import Server.Message.MessageGetPlannedTrainingByTrainingIdReplay;
 import javax.swing.UIManager;
+import java.awt.SystemColor;
 
 
 public class ViewPerformedTeamTrainingPanel extends MyJPanel {

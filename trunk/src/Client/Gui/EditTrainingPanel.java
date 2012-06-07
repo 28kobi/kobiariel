@@ -51,6 +51,9 @@ import javax.swing.table.TableColumn;
 import javax.swing.JTextPane;
 import java.awt.Font;
 import java.awt.Color;
+import javax.swing.UIManager;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 
 
 public class EditTrainingPanel extends MyJPanel {
@@ -96,7 +99,6 @@ public class EditTrainingPanel extends MyJPanel {
 	private JLabel lblDetails ;
 	private JLabel lblDuration;
 	private JLabel lblDistance;
-	private JLabel lblTime ;
 	private JTextField textFieldDetails;
 	private JTextField textFieldDuration;
 	private JTextField textFieldDistance ;
@@ -119,17 +121,16 @@ public class EditTrainingPanel extends MyJPanel {
 	private JTextPane textPaneDistance ;
 	private JLabel lblHereYouCan;
 	private JButton btnUpdateTraining;
+	private JLabel lblEditTraining;
+	private JLabel lblPerformedTraining;
 	
 	
 	public EditTrainingPanel(ClientIF client) {
 		super(PanelType.EDIT_TRAINING_PANEL, client);
-		setLayout(null);
 	
 	
-			JLabel lblPerformedTraining = new JLabel();
+			lblPerformedTraining = new JLabel();
 			lblPerformedTraining.setFont(new Font("Arial", Font.PLAIN, 15));
-			lblPerformedTraining.setBounds(477, 11, 12, 43);
-			add(lblPerformedTraining);
 			
 	
 	
@@ -166,172 +167,109 @@ public class EditTrainingPanel extends MyJPanel {
 
 		lblChooseTraining_1 = new JLabel("Choose Taining:");
 		lblChooseTraining_1.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblChooseTraining_1.setBounds(10, 85, 134, 25);
-
-		add(lblChooseTraining_1);
 		
 		lblDetails = new JLabel("Details: ");
 		lblDetails.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblDetails.setBounds(6, 390, 109, 25);
-		add(lblDetails);
 				
 		lblDuration = new JLabel("Duration: ");
 		lblDuration.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblDuration.setBounds(6, 420, 82, 25);
-		add(lblDuration);
 				
 		lblDistance = new JLabel("Distance:");
 		lblDistance.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblDistance.setBounds(6, 450, 82, 25);
-		add(lblDistance);
 		
 		lblTrainingDate = new JLabel("Training Date:");
 		lblTrainingDate.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblTrainingDate.setBounds(6, 270, 105, 25);
-		add(lblTrainingDate);
 		
 		lblDay = new JLabel("Day:");
 		lblDay.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblDay.setBounds(110, 270, 46, 25);
-		add(lblDay);
 		
 		lblMonth = new JLabel("Month:");
 		lblMonth.setFont(new Font("Arial", Font.PLAIN, 15));
-
-		lblMonth.setBounds(244, 270, 46, 25);
-
-		
-
-		add(lblMonth);
 		
 		lblYear = new JLabel("Year:");
 		lblYear.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblYear.setBounds(410, 268, 46, 25);
-		
 
-		add(lblYear);
+
+		lblYear.setBounds(410, 268, 46, 25);
+
 		
 		lblHour = new JLabel("Hour:");
 		lblHour.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblHour.setBounds(93, 300, 53, 25);
-		add(lblHour);
 		
 		lblMi = new JLabel("Min:");
 		lblMi.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblMi.setBounds(265, 298, 46, 25);
-		
-		add(lblMi);
-		
-		lblTime = new JLabel("Time:");
-		lblTime.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblTime.setBounds(6, 300, 68, 25);
-		add(lblTime);
 		
 		lblTrainingType = new JLabel("Training Type :");
 		lblTrainingType.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblTrainingType.setBounds(6, 360, 105, 25);
-		add(lblTrainingType);
 		
 		lblActivityType = new JLabel("Activity Type:");
 		lblActivityType.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblActivityType.setBounds(6, 328, 105, 25);
-		add(lblActivityType);
 		
 		lblActivityName = new JLabel("Activity Name:");
 		lblActivityName.setFont(new Font("Arial", Font.PLAIN, 15));
 		lblActivityName.setBackground(Color.WHITE);
-		lblActivityName.setBounds(6, 125, 109, 25);
-		add(lblActivityName);
 		
 		
 		
 		lblTraining = new JLabel("Training Name:");
 		lblTraining.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblTraining.setBounds(208, 120, 126, 25);
-		add(lblTraining);
 		
 		
 		
 		lblDate = new JLabel("Date:");
 		lblDate.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblDate.setBounds(413, 122, 78, 25);
-		add(lblDate);
 		
 		
 		
 		lblTime_1 = new JLabel("Time:");
 		lblTime_1.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblTime_1.setBounds(15, 165, 37, 25);
-		add(lblTime_1);
 		
 		
 		
 		lblDetails_1 = new JLabel("Details:");
 		lblDetails_1.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblDetails_1.setBounds(165, 165, 70, 25);
-		add(lblDetails_1);
 		
 		lblDuration_1 = new JLabel("Duration:");
 		lblDuration_1.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblDuration_1.setBounds(331, 165, 99, 25);
-		add(lblDuration_1);
 		
 		
 		lblDistance_1 = new JLabel("Distance:");
 		lblDistance_1.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblDistance_1.setBounds(559, 165, 71, 20);
-		add(lblDistance_1);
 		
 		lblHereYouCan = new JLabel(" New Training Details:");
 		lblHereYouCan.setBackground(Color.LIGHT_GRAY);
 		lblHereYouCan.setFont(new Font("Arial", Font.PLAIN, 20));
-		lblHereYouCan.setBounds(6, 229, 249, 30);
-		add(lblHereYouCan);
 		
 		
 	}
 public void initTextPane(){
 	textPaneDuration = new JTextPane();
-	textPaneDuration.setBounds(423, 165, 87, 25);
 	textPaneDuration.setFont(new Font("Tahoma", Font.BOLD, 14));
-	textPaneDuration.setBackground(Color.lightGray);
-	add(textPaneDuration);
+	textPaneDuration.setBackground(UIManager.getColor("Button.background"));
 	
 	textPaneDistance = new JTextPane();
-	textPaneDistance.setBounds(640, 165, 71, 25);
 	textPaneDistance.setFont(new Font("Tahoma", Font.BOLD, 14));
-	textPaneDistance.setBackground(Color.lightGray);
-	add(textPaneDistance);
+	textPaneDistance.setBackground(UIManager.getColor("Button.background"));
 	
 	textPaneDate = new JTextPane();
-	textPaneDate.setBounds(449, 122, 97, 25);
 	textPaneDate.setFont(new Font("Tahoma", Font.BOLD, 14));
-	textPaneDate.setBackground(Color.lightGray);
-	add(textPaneDate);
+	textPaneDate.setBackground(UIManager.getColor("Button.background"));
 	
 	textPaneDetails = new JTextPane();
-	textPaneDetails.setBounds(245, 161, 63, 25);
 	textPaneDetails.setFont(new Font("Tahoma", Font.BOLD, 14));
-	textPaneDetails.setBackground(Color.lightGray);
-	add(textPaneDetails);
+	textPaneDetails.setBackground(UIManager.getColor("Button.background"));
 	
 	textPaneTime = new JTextPane();
-	textPaneTime.setBounds(62, 162, 71, 25);
 	textPaneTime.setFont(new Font("Tahoma", Font.BOLD, 14));
-	textPaneTime.setBackground(Color.lightGray);
-	add(textPaneTime);
+	textPaneTime.setBackground(UIManager.getColor("Button.background"));
 	
 	textPaneActivity = new JTextPane();
 	textPaneActivity.setFont(new Font("Tahoma", Font.BOLD, 14));
-	textPaneActivity.setBounds(123, 120, 88, 25);
-	textPaneActivity.setBackground(Color.lightGray);
-	add(textPaneActivity);
+	textPaneActivity.setBackground(UIManager.getColor("Button.background"));
 	
 	textPaneTraining = new JTextPane();
-	textPaneTraining.setBounds(321, 122, 89, 25);
 	textPaneTraining.setFont(new Font("Tahoma", Font.BOLD, 14));
-	textPaneTraining.setBackground(Color.lightGray);
-	add(textPaneTraining);
+	textPaneTraining.setBackground(UIManager.getColor("Button.background"));
 	
 	
 	
@@ -341,20 +279,12 @@ public void initTextPane(){
 public void initTextField(){
 		
 		textFieldDistance = new JTextField();
-		textFieldDistance.setBounds(150, 450, 184, 24);
-		textFieldDistance.setBounds(150, 450, 153, 24);
-		add(textFieldDistance);
 		
 		
 		textFieldDuration = new JTextField();
-		textFieldDuration.setBounds(150, 420, 163, 23);
-		textFieldDuration.setBounds(150, 420, 184, 23);
-		add(textFieldDuration);
 		
 		
 		textFieldDetails = new JTextField();
-		textFieldDetails.setBounds(150, 390, 184, 25);
-		add(textFieldDetails);
 		
 	}
 	public void initBtn(){
@@ -444,10 +374,6 @@ public void initTextField(){
 			});
 		
 		
-		btnW.setBounds(311, 81, 178, 30);
-		add(btnW);
-		
-		
 		btnUpdateTraining = new JButton("Update training");
 		btnUpdateTraining.setForeground(Color.BLUE);
 		btnUpdateTraining.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -522,7 +448,7 @@ public void initTextField(){
 					getClient().sendMsgToServer(new MessageUpdateTeamTraining(updatedTraining));
 					MessageUpdateTeamTrainingReplay rep7= (MessageUpdateTeamTrainingReplay) getClient().getMessageFromServer();
 					if(rep7.getint()==1){
-						msg="training has been upDated..";
+						msg="training has been UpDated..";
 						popUp(msg);	
 						getClient().swapFromBack(pushPanel());
 					}
@@ -613,8 +539,6 @@ public void initTextField(){
 				}
 			}
 		});
-		btnUpdateTraining.setBounds(199, 485, 197, 30);
-		add(btnUpdateTraining);
 	}
 	 public void initJRadioButton(){
 			
@@ -637,8 +561,6 @@ public void initTextField(){
 		    				
 		    	}
 		    });
-			rdbtnTeamTraining.setBounds(6, 29, 138, 25);
-			add(rdbtnTeamTraining);
 			
 			rdbtnPersonalTraining = new JRadioButton("Personal Training");
 			rdbtnPersonalTraining.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -662,10 +584,7 @@ public void initTextField(){
 			if(rdbtnTeamTraining.isSelected())
 				comboBoxTeams.setEnabled(true);
 			else 
-				comboBoxTeams.setEnabled(false);	
-
-			rdbtnPersonalTraining.setBounds(6, 53, 138, 25);
-			add(rdbtnPersonalTraining); 
+				comboBoxTeams.setEnabled(false);
 			
 			
 	 }
@@ -676,18 +595,16 @@ public void initTextField(){
 		 	comboBoxDay.setFont(new Font("Arial", Font.PLAIN, 15));
 		 	comboBoxDay.setBackground(Color.WHITE);
 
-			
-
-			comboBoxDay.setBounds(151, 270, 87, 20);
-
 			comboBoxDay.setEnabled(false);
-			add(comboBoxDay);
 			
 			comboBoxMonth = new JComboBox();
 			comboBoxMonth.setFont(new Font("Arial", Font.PLAIN, 15));
 			comboBoxMonth.setBackground(Color.WHITE);
 
+
+
 			comboBoxMonth.setBounds(300, 268, 100, 20);			
+
 
 			
 
@@ -696,11 +613,12 @@ public void initTextField(){
 					if (i==0) comboBoxMonth.addItem("Choose..");
 					else comboBoxMonth.addItem(month[i-1]);
 					}
-			add(comboBoxMonth);
 			
 			comboBoxYear = new JComboBox();
 			comboBoxYear.setFont(new Font("Arial", Font.PLAIN, 15));
 			comboBoxYear.setBackground(Color.WHITE);
+
+
 
 			comboBoxYear.setBounds(477, 270, 98, 20);
 
@@ -711,13 +629,10 @@ public void initTextField(){
 					if (j==0) comboBoxYear.addItem("Choose..");
 					else comboBoxYear.addItem(year[j-1]);
 					}
-			add(comboBoxYear);
 			
 			comboBoxHour = new JComboBox();
 			comboBoxHour.setFont(new Font("Arial", Font.PLAIN, 15));
 			comboBoxHour.setBackground(Color.WHITE);
-
-			comboBoxHour.setBounds(151, 300, 104, 20);
 
 			
 
@@ -726,11 +641,11 @@ public void initTextField(){
 				else comboBoxHour.addItem(Integer.toString(hour));
 				
 			}
-			add(comboBoxHour);
 						
 			comboBoxMin = new JComboBox();
 			comboBoxMin.setFont(new Font("Arial", Font.PLAIN, 15));
 			comboBoxMin.setBackground(Color.WHITE);
+
 
 			comboBoxMin.setBounds(300, 298, 104, 20);
 
@@ -741,48 +656,31 @@ public void initTextField(){
 				else comboBoxMin.addItem(Integer.toString(min));
 				
 			}
-			add(comboBoxMin);
 			
 			comboBoxActivityType = new JComboBox();		
 			comboBoxActivityType.setFont(new Font("Arial", Font.PLAIN, 15));
 			comboBoxActivityType.setBackground(Color.WHITE);
-
-			comboBoxActivityType.setBounds(150, 330, 105, 20);
-
-			
-		
-
-			add(comboBoxActivityType);
 						
 			comboBoxTrainingType = new JComboBox();
 			comboBoxTrainingType.setFont(new Font("Arial", Font.PLAIN, 15));
 			comboBoxTrainingType.setBackground(Color.WHITE);
-			comboBoxTrainingType.setBounds(150, 360, 105, 20);
-			add(comboBoxTrainingType);
 			comboBoxTrainingType.setEnabled(false);
 
 			comboBoxTraining = new JComboBox();
 			comboBoxTraining.setFont(new Font("Arial", Font.PLAIN, 15));
 			comboBoxTraining.setBackground(Color.WHITE);
-			comboBoxTraining.setBounds(175,84, 104, 20);
 			comboBoxTraining.setEnabled(false);
-			add(comboBoxTraining);
 			comboBoxTraining.setEnabled(false);
 			
 		    comboBoxTeams = new JComboBox();
 		    comboBoxTeams.setFont(new Font("Arial", Font.PLAIN, 15));
 		    comboBoxTeams.setBackground(Color.WHITE);
-		    
-			comboBoxTeams.setBounds(175, 29, 104, 20);
-			add(comboBoxTeams);
 			comboBoxTeams.setEnabled(false);
 			
 			comboBoxAthlete = new JComboBox();
 			comboBoxAthlete.setFont(new Font("Arial", Font.PLAIN, 15));
 			comboBoxAthlete.setBackground(Color.WHITE);
-			comboBoxAthlete.setBounds(175,53, 104, 20);
 			comboBoxAthlete.setEnabled(false);
-			add(comboBoxAthlete);
 			comboBoxAthlete.setEnabled(false);
 			
 			
@@ -801,6 +699,237 @@ public void initTextField(){
 	    comboBoxTrainingType.addItem("Choose..");
 	    comboBoxDay.addItem("Choose..");
 	    comboBoxTraining.addItem("Choose..");
+	    
+	    lblEditTraining = new JLabel("Edit Training:");
+	    lblEditTraining.setFont(new Font("Arial", Font.PLAIN, 20));
+	    GroupLayout groupLayout = new GroupLayout(this);
+	    groupLayout.setHorizontalGroup(
+	    	groupLayout.createParallelGroup(Alignment.LEADING)
+	    		.addGroup(groupLayout.createSequentialGroup()
+	    			.addGap(18)
+	    			.addComponent(lblEditTraining, GroupLayout.PREFERRED_SIZE, 138, GroupLayout.PREFERRED_SIZE)
+	    			.addGap(321)
+	    			.addComponent(lblPerformedTraining, GroupLayout.PREFERRED_SIZE, 12, GroupLayout.PREFERRED_SIZE))
+	    		.addGroup(groupLayout.createSequentialGroup()
+	    			.addGap(6)
+	    			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+	    				.addComponent(rdbtnTeamTraining, GroupLayout.PREFERRED_SIZE, 138, GroupLayout.PREFERRED_SIZE)
+	    				.addComponent(rdbtnPersonalTraining, GroupLayout.PREFERRED_SIZE, 138, GroupLayout.PREFERRED_SIZE))
+	    			.addGap(31)
+	    			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+	    				.addComponent(comboBoxTeams, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)
+	    				.addComponent(comboBoxAthlete, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE))
+	    			.addGap(32)
+	    			.addComponent(btnW, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE))
+	    		.addGroup(groupLayout.createSequentialGroup()
+	    			.addGap(6)
+	    			.addComponent(lblChooseTraining_1, GroupLayout.PREFERRED_SIZE, 134, GroupLayout.PREFERRED_SIZE)
+	    			.addGap(35)
+	    			.addComponent(comboBoxTraining, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE))
+	    		.addGroup(groupLayout.createSequentialGroup()
+	    			.addGap(6)
+	    			.addComponent(lblActivityName, GroupLayout.PREFERRED_SIZE, 109, GroupLayout.PREFERRED_SIZE)
+	    			.addGap(8)
+	    			.addComponent(textPaneActivity, GroupLayout.PREFERRED_SIZE, 108, GroupLayout.PREFERRED_SIZE)
+	    			.addGap(13)
+	    			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+	    				.addComponent(lblTime_1, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
+	    				.addGroup(groupLayout.createSequentialGroup()
+	    					.addGap(57)
+	    					.addComponent(textPaneTime, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)))
+	    			.addGap(10)
+	    			.addComponent(lblDate, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
+	    			.addGap(13)
+	    			.addComponent(textPaneDate, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
+	    			.addGap(10)
+	    			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+	    				.addGroup(groupLayout.createSequentialGroup()
+	    					.addGap(67)
+	    					.addComponent(textPaneDistance, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE))
+	    				.addComponent(lblDistance_1, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)))
+	    		.addGroup(groupLayout.createSequentialGroup()
+	    			.addGap(6)
+	    			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+	    				.addComponent(lblTraining, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
+	    				.addGroup(groupLayout.createSequentialGroup()
+	    					.addGap(116)
+	    					.addComponent(textPaneTraining, GroupLayout.PREFERRED_SIZE, 109, GroupLayout.PREFERRED_SIZE)))
+	    			.addGap(13)
+	    			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+	    				.addComponent(lblDetails_1, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+	    				.addGroup(groupLayout.createSequentialGroup()
+	    					.addGap(57)
+	    					.addComponent(textPaneDetails, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)))
+	    			.addGap(10)
+	    			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+	    				.addComponent(lblDuration_1, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
+	    				.addGroup(groupLayout.createSequentialGroup()
+	    					.addGap(66)
+	    					.addComponent(textPaneDuration, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE))))
+	    		.addGroup(groupLayout.createSequentialGroup()
+	    			.addGap(6)
+	    			.addComponent(lblHereYouCan, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE))
+	    		.addGroup(groupLayout.createSequentialGroup()
+	    			.addGap(6)
+	    			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+	    				.addGroup(groupLayout.createSequentialGroup()
+	    					.addGap(145)
+	    					.addComponent(comboBoxDay, GroupLayout.PREFERRED_SIZE, 122, GroupLayout.PREFERRED_SIZE))
+	    				.addGroup(groupLayout.createSequentialGroup()
+	    					.addGap(104)
+	    					.addComponent(lblDay, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE))
+	    				.addComponent(lblTrainingDate, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE))
+	    			.addGap(10)
+	    			.addComponent(lblMonth, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
+	    			.addGap(10)
+	    			.addComponent(comboBoxMonth, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
+	    			.addGap(21)
+	    			.addComponent(lblYear, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
+	    			.addGap(10)
+	    			.addComponent(comboBoxYear, GroupLayout.PREFERRED_SIZE, 98, GroupLayout.PREFERRED_SIZE))
+	    		.addGroup(groupLayout.createSequentialGroup()
+	    			.addGap(6)
+	    			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+	    				.addComponent(lblActivityType, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)
+	    				.addGroup(groupLayout.createSequentialGroup()
+	    					.addGap(97)
+	    					.addComponent(lblHour, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)))
+	    			.addGap(7)
+	    			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+	    				.addGroup(groupLayout.createSequentialGroup()
+	    					.addGap(1)
+	    					.addComponent(comboBoxHour, GroupLayout.PREFERRED_SIZE, 122, GroupLayout.PREFERRED_SIZE))
+	    				.addComponent(comboBoxActivityType, GroupLayout.PREFERRED_SIZE, 123, GroupLayout.PREFERRED_SIZE))
+	    			.addGap(10)
+	    			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+	    				.addGroup(groupLayout.createSequentialGroup()
+	    					.addComponent(lblMi, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
+	    					.addGap(10)
+	    					.addComponent(comboBoxMin, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE))
+	    				.addGroup(groupLayout.createSequentialGroup()
+	    					.addComponent(lblTrainingType, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)
+	    					.addGap(3)
+	    					.addComponent(comboBoxTrainingType, GroupLayout.PREFERRED_SIZE, 123, GroupLayout.PREFERRED_SIZE))))
+	    		.addGroup(groupLayout.createSequentialGroup()
+	    			.addGap(6)
+	    			.addComponent(lblDuration, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)
+	    			.addGap(62)
+	    			.addComponent(textFieldDuration, GroupLayout.PREFERRED_SIZE, 123, GroupLayout.PREFERRED_SIZE)
+	    			.addGap(10)
+	    			.addComponent(lblDistance, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)
+	    			.addGap(26)
+	    			.addComponent(textFieldDistance, GroupLayout.PREFERRED_SIZE, 123, GroupLayout.PREFERRED_SIZE))
+	    		.addGroup(groupLayout.createSequentialGroup()
+	    			.addGap(6)
+	    			.addComponent(lblDetails, GroupLayout.PREFERRED_SIZE, 109, GroupLayout.PREFERRED_SIZE)
+	    			.addGap(35)
+	    			.addComponent(textFieldDetails, GroupLayout.PREFERRED_SIZE, 364, GroupLayout.PREFERRED_SIZE))
+	    		.addGroup(groupLayout.createSequentialGroup()
+	    			.addGap(238)
+	    			.addComponent(btnUpdateTraining, GroupLayout.PREFERRED_SIZE, 197, GroupLayout.PREFERRED_SIZE))
+	    );
+	    groupLayout.setVerticalGroup(
+	    	groupLayout.createParallelGroup(Alignment.LEADING)
+	    		.addGroup(groupLayout.createSequentialGroup()
+	    			.addGap(11)
+	    			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+	    				.addGroup(groupLayout.createSequentialGroup()
+	    					.addGap(13)
+	    					.addComponent(lblEditTraining, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
+	    				.addComponent(lblPerformedTraining, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
+	    			.addGap(4)
+	    			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+	    				.addGroup(groupLayout.createSequentialGroup()
+	    					.addComponent(rdbtnTeamTraining, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+	    					.addGap(3)
+	    					.addComponent(rdbtnPersonalTraining, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
+	    				.addGroup(groupLayout.createSequentialGroup()
+	    					.addComponent(comboBoxTeams, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+	    					.addGap(3)
+	    					.addComponent(comboBoxAthlete, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
+	    				.addComponent(btnW, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE))
+	    			.addGap(9)
+	    			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+	    				.addComponent(lblChooseTraining_1, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+	    				.addComponent(comboBoxTraining, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
+	    			.addGap(12)
+	    			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+	    				.addComponent(lblActivityName, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+	    				.addComponent(textPaneActivity, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+	    				.addComponent(lblTime_1, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+	    				.addComponent(textPaneTime, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+	    				.addComponent(lblDate, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+	    				.addComponent(textPaneDate, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+	    				.addComponent(textPaneDistance, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+	    				.addGroup(groupLayout.createSequentialGroup()
+	    					.addGap(2)
+	    					.addComponent(lblDistance_1, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)))
+	    			.addGap(11)
+	    			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+	    				.addComponent(lblTraining, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+	    				.addComponent(textPaneTraining, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+	    				.addComponent(lblDetails_1, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+	    				.addComponent(textPaneDetails, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+	    				.addComponent(lblDuration_1, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+	    				.addComponent(textPaneDuration, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
+	    			.addGap(11)
+	    			.addComponent(lblHereYouCan, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+	    			.addGap(9)
+	    			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+	    				.addGroup(groupLayout.createSequentialGroup()
+	    					.addGap(2)
+	    					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+	    						.addComponent(comboBoxDay, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+	    						.addComponent(lblDay, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+	    						.addComponent(lblTrainingDate, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)))
+	    				.addComponent(lblMonth, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+	    				.addComponent(comboBoxMonth, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+	    				.addComponent(lblYear, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+	    				.addGroup(groupLayout.createSequentialGroup()
+	    					.addGap(2)
+	    					.addComponent(comboBoxYear, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)))
+	    			.addGap(3)
+	    			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+	    				.addGroup(groupLayout.createSequentialGroup()
+	    					.addGap(8)
+	    					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+	    						.addGroup(groupLayout.createSequentialGroup()
+	    							.addGap(22)
+	    							.addComponent(lblActivityType, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
+	    						.addComponent(lblHour, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)))
+	    				.addGroup(groupLayout.createSequentialGroup()
+	    					.addGap(2)
+	    					.addComponent(comboBoxHour, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+	    					.addGap(5)
+	    					.addComponent(comboBoxActivityType, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
+	    				.addGroup(groupLayout.createSequentialGroup()
+	    					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+	    						.addComponent(lblMi, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+	    						.addComponent(comboBoxMin, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
+	    					.addGap(7)
+	    					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+	    						.addComponent(lblTrainingType, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+	    						.addComponent(comboBoxTrainingType, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))))
+	    			.addGap(10)
+	    			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+	    				.addComponent(lblDuration, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+	    				.addGroup(groupLayout.createSequentialGroup()
+	    					.addGap(1)
+	    					.addComponent(textFieldDuration, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
+	    				.addComponent(lblDistance, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+	    				.addGroup(groupLayout.createSequentialGroup()
+	    					.addGap(1)
+	    					.addComponent(textFieldDistance, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)))
+	    			.addGap(12)
+	    			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+	    				.addComponent(lblDetails, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+	    				.addGroup(groupLayout.createSequentialGroup()
+	    					.addGap(1)
+	    					.addComponent(textFieldDetails, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)))
+	    			.addGap(11)
+	    			.addComponent(btnUpdateTraining, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
+	    );
+	    setLayout(groupLayout);
 		 for (int i=0; i<=allTeamArray.size(); i++)
 			{
 				if (i==0) comboBoxTeams.addItem("Choose..");

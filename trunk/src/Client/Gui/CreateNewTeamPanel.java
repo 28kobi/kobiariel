@@ -179,7 +179,7 @@ public void initButton(){
 				
 			}
 		});
-		btnCreate.setBounds(176, 323, 89, 30);
+		btnCreate.setBounds(208, 309, 101, 40);
 		add(btnCreate);
 		
 	    verifyavailabilty = new JButton("Verify Availability");

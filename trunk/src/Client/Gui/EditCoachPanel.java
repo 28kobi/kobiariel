@@ -110,17 +110,17 @@ public class EditCoachPanel extends MyJPanel {
 
 	lblPrivilige = new JLabel("Privilige:");
 	lblPrivilige.setFont(new Font("Arial", Font.PLAIN, 15));
-	lblPrivilige.setBounds(23, 260, 92, 25);
+	lblPrivilige.setBounds(23, 191, 92, 25);
 	add(lblPrivilige);
 	
 	lblPhoneNumber = new JLabel("Phone Number:");
 	lblPhoneNumber.setFont(new Font("Arial", Font.PLAIN, 15));
-	lblPhoneNumber.setBounds(23, 295, 109, 25);
+	lblPhoneNumber.setBounds(23, 227, 109, 25);
 	add(lblPhoneNumber);
 	
 	lblAddress = new JLabel("Address:");
 	lblAddress.setFont(new Font("Arial", Font.PLAIN, 15));
-	lblAddress.setBounds(23, 330, 64, 25);
+	lblAddress.setBounds(23, 263, 64, 25);
 	add(lblAddress);
 		
 	}
@@ -148,19 +148,19 @@ public class EditCoachPanel extends MyJPanel {
 
     	textFieldPrivilge = new JTextField();
     	textFieldPrivilge.setFont(new Font("Arial", Font.PLAIN, 15));
-    	textFieldPrivilge.setBounds(141, 255, 200, 25);
+    	textFieldPrivilge.setBounds(141, 191, 200, 25);
     	add(textFieldPrivilge);
     	textFieldPrivilge.setColumns(10);
     	
     	textFieldPhoneNumber = new JTextField();
     	textFieldPhoneNumber.setFont(new Font("Arial", Font.PLAIN, 15));
-    	textFieldPhoneNumber.setBounds(141, 290, 200, 25);
+    	textFieldPhoneNumber.setBounds(141, 227, 200, 25);
     	add(textFieldPhoneNumber);
     	textFieldPhoneNumber.setColumns(10);
     	
     	textFieldAddress = new JTextField();
     	textFieldAddress.setFont(new Font("Arial", Font.PLAIN, 15));
-    	textFieldAddress.setBounds(141, 330, 200, 74);
+    	textFieldAddress.setBounds(141, 263, 200, 74);
     	add(textFieldAddress);
     	textFieldAddress.setColumns(10);
     	
@@ -204,7 +204,7 @@ public class EditCoachPanel extends MyJPanel {
 	   			   		
 	   	}
 	   });
-		btnUpdate.setBounds(170, 432, 89, 30);
+		btnUpdate.setBounds(197, 373, 89, 40);
 		add(btnUpdate);
 		btnUpdate.setEnabled(false);
 		

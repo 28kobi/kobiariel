@@ -216,7 +216,7 @@ public class EditAthletePanel extends MyJPanel {
 	   			   			
 	   		}
 	   	});
-		btnUpdate.setBounds(197, 446, 89, 30);
+		btnUpdate.setBounds(197, 434, 89, 40);
 		add(btnUpdate);
 		
 		lblNewLabel_1 = new JLabel("Edit Athlete Details:");
