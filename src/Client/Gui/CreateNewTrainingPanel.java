@@ -102,20 +102,7 @@ public class CreateNewTrainingPanel extends MyJPanel {
 		super(PanelType.CREAT_NEW_TRAINING_PANEL, client);
 		setBackground(Color.WHITE);
 		setLayout(null);
-		BufferedImage myPic;
-		try {
-			myPic = ImageIO.read(new File("image"+ File.separator+"home.jpg"));
-		
-			JLabel lblPerformedTraining = new JLabel(new ImageIcon(myPic), JLabel.CENTER);
-			lblPerformedTraining.setFont(new Font("Arial", Font.PLAIN, 15));
-			lblPerformedTraining.setBounds(321, 7, 98, 23);
-			add(lblPerformedTraining);
-					
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	
 		
 		 init();
 	   
