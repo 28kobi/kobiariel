@@ -240,7 +240,7 @@ public class EditTeamPanel extends MyJPanel {
 		    		}		   			
 		    	}
 			   });
-			   btnUpdate.setBounds(191, 397, 89, 25);
+			   btnUpdate.setBounds(236, 327, 89, 40);
 				  add(btnUpdate);
 				  btnUpdate.setEnabled(false);
 		   }

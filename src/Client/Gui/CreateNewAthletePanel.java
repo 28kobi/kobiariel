@@ -267,7 +267,7 @@ public void initLabels(){
 	   		}	
 	   			
 	   		} });
-	   btnCreate.setBounds(119, 390, 201, 30);
+	   btnCreate.setBounds(146, 390, 201, 40);
 		add(btnCreate);
 		
 		JLabel lblPleaseFill = new JLabel("(*) Please Fill All Field.");

@@ -152,7 +152,7 @@ public class AddActivityMethodPanel extends MyJPanel {
 	 			
 	 	   		}	 		
 	 	   	} });
-	 	   btnCreate.setBounds(151, 248, 214, 30);
+	 	   btnCreate.setBounds(151, 232, 214, 40);
 	 		add(btnCreate);
 	 		
 	 		 lblInsertActivityName = new JLabel("Add Activity Method:");

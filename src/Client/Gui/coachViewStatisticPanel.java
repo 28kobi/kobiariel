@@ -79,18 +79,12 @@ public class coachViewStatisticPanel extends MyJPanel {
 	private JComboBox comboBoxTraining;
 	private JLabel lblChooseTraining ;
 	private JLabel lblViewStatisticFor;
-	private JLabel lblStatistic;
 	public coachViewStatisticPanel(ClientIF client) {
 		super(PanelType.COACH_VIEW_STATISTIC_PANEL, client);
 		setLayout(null);
 		BufferedImage myPic;
 		try {
 			myPic = ImageIO.read(new File("image"+ File.separator+"home.jpg"));
-		
-			 lblStatistic = new JLabel(new ImageIcon(myPic), JLabel.CENTER);
-			lblStatistic.setFont(new Font("Arial", Font.PLAIN, 15));
-			lblStatistic.setBounds(511, 7, 49, 47);
-			add(lblStatistic);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -114,7 +108,7 @@ public class coachViewStatisticPanel extends MyJPanel {
 		}
 	
 		public void initLabel(){
-			lblChooseTraining = new JLabel("choose Training:");
+			lblChooseTraining = new JLabel("Choose Training:");
 			lblChooseTraining.setFont(new Font("Arial", Font.PLAIN, 15));
 			lblChooseTraining.setBounds(6, 196, 138, 25);
 			add(lblChooseTraining);
@@ -247,7 +241,7 @@ public class coachViewStatisticPanel extends MyJPanel {
 					    }
 					}
 				});
-				btnViewStatistic.setBounds(163, 259, 155, 30);
+				btnViewStatistic.setBounds(163, 259, 155, 40);
 				add(btnViewStatistic);
 				
 				
@@ -256,6 +250,7 @@ public class coachViewStatisticPanel extends MyJPanel {
 	public void  initComboBox(){
 		
 	    comboBoxTeams = new JComboBox();
+	    comboBoxTeams.setBackground(Color.WHITE);
 	    comboBoxTeams.setFont(new Font("Agency FB", Font.PLAIN, 15));
 	    
 		comboBoxTeams.setBounds(175, 97, 117, 25);
@@ -263,6 +258,7 @@ public class coachViewStatisticPanel extends MyJPanel {
 		comboBoxTeams.setEnabled(false);
 		
 		comboBoxAthlete = new JComboBox();
+		comboBoxAthlete.setBackground(Color.WHITE);
 		comboBoxAthlete.setFont(new Font("Agency FB", Font.PLAIN, 15));
 		
 		comboBoxAthlete.setBounds(175,139, 117, 25);
@@ -271,6 +267,7 @@ public class coachViewStatisticPanel extends MyJPanel {
 		comboBoxAthlete.setEnabled(false);
 		
 		comboBoxTraining = new JComboBox();
+		comboBoxTraining.setBackground(Color.WHITE);
 		comboBoxTraining.setFont(new Font("Agency FB", Font.PLAIN, 15));
 		comboBoxTraining.setBounds(175,195, 117, 25);
 		comboBoxTraining.setEnabled(false);

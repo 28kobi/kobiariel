@@ -372,7 +372,7 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 				comboBoxYear = new JComboBox();
 				comboBoxYear.setFont(new Font("Arial", Font.PLAIN, 15));
 				comboBoxYear.setBackground(Color.WHITE);
-				comboBoxYear.setBounds(626, 258, 87, 25);
+				comboBoxYear.setBounds(626, 258, 103, 25);
 				 for (int j=0; j<=year.length; j++)
 					{
 						if (j==0) comboBoxYear.addItem("Choose..");
@@ -803,7 +803,7 @@ public class AthleteReportTrainingPanel extends MyJPanel {
 			
 		
 					});
-					btnReportTrainingDetail.setBounds(237, 474, 191, 30);
+					btnReportTrainingDetail.setBounds(237, 474, 191, 40);
 					add(btnReportTrainingDetail);	
 					
 		 

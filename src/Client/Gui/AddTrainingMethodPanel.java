@@ -47,15 +47,10 @@ public class AddTrainingMethodPanel extends MyJPanel {
 	private JLabel lblTrainingName;
 	private JButton btnCreate;
 	private JLabel lblAddTrainingMethod_1;
-	private JLabel lblAddTrainingMethod;
 	
 	
 	public AddTrainingMethodPanel(ClientIF client) {
 		super(PanelType.ADD_TRAINING_METHOD_PANEL, client);
-		
-			 lblAddTrainingMethod = new JLabel();
-			lblAddTrainingMethod.setBounds(487, 13, 110, 32);
-			add(lblAddTrainingMethod);
 			
 			str = getClient().getUser().toString();
 			
@@ -177,7 +172,7 @@ public class AddTrainingMethodPanel extends MyJPanel {
 		 	   			}
 				}
 			});
-			btnCreate.setBounds(195, 263, 177, 30);
+			btnCreate.setBounds(225, 263, 177, 40);
 			add(btnCreate);
 			{
 				lblAddTrainingMethod_1 = new JLabel("Add Training Method Panel:");
