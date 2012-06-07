@@ -489,11 +489,11 @@ public class ViewPerformedTrainingPanel extends MyJPanel {
 								duration=AthletTraining.getDuration();
 								distance=AthletTraining.getDistance();
 								details=AthletTraining.getDetails();
-								if(isplaned.equals("true")){
+								if(isplaned.toString().equalsIgnoreCase("true")){
 									textisPlanned.setText("Yes");
 									rdbtnWacthTheOriginal.setEnabled(true);
 									}
-								if(isplaned.equals("flase")){
+								if(isplaned.toString().equalsIgnoreCase("false")){
 									textisPlanned.setText("no");
 									rdbtnWacthTheOriginal.setEnabled(false);
 									}
