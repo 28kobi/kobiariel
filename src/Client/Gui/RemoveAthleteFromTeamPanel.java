@@ -68,11 +68,6 @@ public class RemoveAthleteFromTeamPanel extends MyJPanel {
 		BufferedImage myPic;
 		try {
 			myPic = ImageIO.read(new File("image"+ File.separator+"home.jpg"));
-		
-			JLabel lblRemoveAthlete = new JLabel(new ImageIcon(myPic), JLabel.CENTER);
-			lblRemoveAthlete.setFont(new Font("Arial", Font.PLAIN, 15));
-			lblRemoveAthlete.setBounds(149, 11, 340, 46);
-			add(lblRemoveAthlete);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
