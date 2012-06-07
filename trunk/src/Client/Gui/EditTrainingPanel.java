@@ -187,12 +187,12 @@ public class EditTrainingPanel extends MyJPanel {
 		
 		lblTrainingDate = new JLabel("Training Date:");
 		lblTrainingDate.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblTrainingDate.setBounds(6, 270, 82, 25);
+		lblTrainingDate.setBounds(6, 270, 105, 25);
 		add(lblTrainingDate);
 		
 		lblDay = new JLabel("Day:");
 		lblDay.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblDay.setBounds(98, 270, 46, 25);
+		lblDay.setBounds(110, 270, 46, 25);
 		add(lblDay);
 		
 		lblMonth = new JLabel("Month:");
@@ -240,21 +240,21 @@ public class EditTrainingPanel extends MyJPanel {
 		lblActivityName = new JLabel("Activity Name:");
 		lblActivityName.setFont(new Font("Arial", Font.PLAIN, 15));
 		lblActivityName.setBackground(Color.WHITE);
-		lblActivityName.setBounds(6, 125, 82, 25);
+		lblActivityName.setBounds(6, 125, 109, 25);
 		add(lblActivityName);
 		
 		
 		
 		lblTraining = new JLabel("Training Name:");
 		lblTraining.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblTraining.setBounds(190, 125, 90, 25);
+		lblTraining.setBounds(208, 120, 126, 25);
 		add(lblTraining);
 		
 		
 		
 		lblDate = new JLabel("Date:");
 		lblDate.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblDate.setBounds(383, 125, 78, 25);
+		lblDate.setBounds(413, 122, 78, 25);
 		add(lblDate);
 		
 		
@@ -268,18 +268,18 @@ public class EditTrainingPanel extends MyJPanel {
 		
 		lblDetails_1 = new JLabel("Details:");
 		lblDetails_1.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblDetails_1.setBounds(150, 165, 46, 25);
+		lblDetails_1.setBounds(165, 165, 70, 25);
 		add(lblDetails_1);
 		
 		lblDuration_1 = new JLabel("Duration:");
 		lblDuration_1.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblDuration_1.setBounds(314, 165, 53, 25);
+		lblDuration_1.setBounds(331, 165, 99, 25);
 		add(lblDuration_1);
 		
 		
 		lblDistance_1 = new JLabel("Distance:");
 		lblDistance_1.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblDistance_1.setBounds(522, 125, 71, 20);
+		lblDistance_1.setBounds(559, 165, 71, 20);
 		add(lblDistance_1);
 		
 		lblHereYouCan = new JLabel(" New Training Details:");
@@ -292,43 +292,43 @@ public class EditTrainingPanel extends MyJPanel {
 	}
 public void initTextPane(){
 	textPaneDuration = new JTextPane();
-	textPaneDuration.setBounds(391, 162, 87, 25);
+	textPaneDuration.setBounds(423, 165, 87, 25);
 	textPaneDuration.setFont(new Font("Tahoma", Font.BOLD, 14));
 	textPaneDuration.setBackground(Color.lightGray);
 	add(textPaneDuration);
 	
 	textPaneDistance = new JTextPane();
-	textPaneDistance.setBounds(590, 125, 71, 25);
+	textPaneDistance.setBounds(640, 165, 71, 25);
 	textPaneDistance.setFont(new Font("Tahoma", Font.BOLD, 14));
 	textPaneDistance.setBackground(Color.lightGray);
 	add(textPaneDistance);
 	
 	textPaneDate = new JTextPane();
-	textPaneDate.setBounds(420, 122, 97, 25);
+	textPaneDate.setBounds(449, 122, 97, 25);
 	textPaneDate.setFont(new Font("Tahoma", Font.BOLD, 14));
 	textPaneDate.setBackground(Color.lightGray);
 	add(textPaneDate);
 	
 	textPaneDetails = new JTextPane();
-	textPaneDetails.setBounds(214, 156, 63, 25);
+	textPaneDetails.setBounds(245, 161, 63, 25);
 	textPaneDetails.setFont(new Font("Tahoma", Font.BOLD, 14));
 	textPaneDetails.setBackground(Color.lightGray);
 	add(textPaneDetails);
 	
 	textPaneTime = new JTextPane();
-	textPaneTime.setBounds(62, 162, 53, 25);
+	textPaneTime.setBounds(62, 162, 71, 25);
 	textPaneTime.setFont(new Font("Tahoma", Font.BOLD, 14));
 	textPaneTime.setBackground(Color.lightGray);
 	add(textPaneTime);
 	
 	textPaneActivity = new JTextPane();
 	textPaneActivity.setFont(new Font("Tahoma", Font.BOLD, 14));
-	textPaneActivity.setBounds(93, 122, 88, 25);
+	textPaneActivity.setBounds(123, 120, 88, 25);
 	textPaneActivity.setBackground(Color.lightGray);
 	add(textPaneActivity);
 	
 	textPaneTraining = new JTextPane();
-	textPaneTraining.setBounds(274, 122, 89, 25);
+	textPaneTraining.setBounds(321, 122, 89, 25);
 	textPaneTraining.setFont(new Font("Tahoma", Font.BOLD, 14));
 	textPaneTraining.setBackground(Color.lightGray);
 	add(textPaneTraining);
@@ -676,7 +676,7 @@ public void initTextField(){
 		 	comboBoxDay.setFont(new Font("Arial", Font.PLAIN, 15));
 		 	comboBoxDay.setBackground(Color.WHITE);
 
-			comboBoxDay.setBounds(162, 267, 60, 25);
+			comboBoxDay.setBounds(151, 270, 104, 20);
 
 			comboBoxDay.setBounds(151, 270, 60, 20);
 
@@ -702,7 +702,7 @@ public void initTextField(){
 			comboBoxYear.setFont(new Font("Arial", Font.PLAIN, 15));
 			comboBoxYear.setBackground(Color.WHITE);
 
-			comboBoxYear.setBounds(522, 270, 117, 20);
+			comboBoxYear.setBounds(407, 490, 98, 20);
 
 			comboBoxYear.setBounds(391, 270, 71, 20);
 
