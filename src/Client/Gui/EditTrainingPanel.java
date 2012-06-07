@@ -206,7 +206,7 @@ public class EditTrainingPanel extends MyJPanel {
 		
 		lblYear = new JLabel("Year:");
 		lblYear.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblYear.setBounds(392, 270, 46, 25);
+		lblYear.setBounds(410, 268, 46, 25);
 		
 
 		add(lblYear);
@@ -687,7 +687,7 @@ public void initTextField(){
 			comboBoxMonth.setFont(new Font("Arial", Font.PLAIN, 15));
 			comboBoxMonth.setBackground(Color.WHITE);
 
-			comboBoxMonth.setBounds(300, 268, 82, 25);			
+			comboBoxMonth.setBounds(300, 268, 100, 20);			
 
 			
 
@@ -702,7 +702,7 @@ public void initTextField(){
 			comboBoxYear.setFont(new Font("Arial", Font.PLAIN, 15));
 			comboBoxYear.setBackground(Color.WHITE);
 
-			comboBoxYear.setBounds(439, 270, 98, 20);
+			comboBoxYear.setBounds(477, 270, 98, 20);
 
 		
 
@@ -732,7 +732,7 @@ public void initTextField(){
 			comboBoxMin.setFont(new Font("Arial", Font.PLAIN, 15));
 			comboBoxMin.setBackground(Color.WHITE);
 
-			comboBoxMin.setBounds(300, 298, 96, 25);
+			comboBoxMin.setBounds(300, 298, 104, 20);
 
 		
 
