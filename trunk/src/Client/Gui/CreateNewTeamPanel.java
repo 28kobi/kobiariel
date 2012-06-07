@@ -67,11 +67,6 @@ public class CreateNewTeamPanel extends MyJPanel {
         BufferedImage myPic;
         myPic = ImageIO.read(new File("image"+ File.separator+"home.jpg"));
         
-        JLabel lblAddClass = new JLabel(new ImageIcon(myPic), JLabel.CENTER);
-        lblAddClass.setFont(new Font("Arial", Font.PLAIN, 15));
-        lblAddClass.setBounds(478, 13, 259, 99);
-        add(lblAddClass);
-        
         getClient().getUser().toString();
 
       } catch (IOException e) {
