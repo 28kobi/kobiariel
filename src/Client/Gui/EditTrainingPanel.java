@@ -166,7 +166,7 @@ public class EditTrainingPanel extends MyJPanel {
 
 		lblChooseTraining_1 = new JLabel("Choose Taining:");
 		lblChooseTraining_1.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblChooseTraining_1.setBounds(10, 85, 105, 25);
+		lblChooseTraining_1.setBounds(10, 85, 134, 25);
 
 		add(lblChooseTraining_1);
 		
@@ -198,16 +198,16 @@ public class EditTrainingPanel extends MyJPanel {
 		lblMonth = new JLabel("Month:");
 		lblMonth.setFont(new Font("Arial", Font.PLAIN, 15));
 
-		lblMonth.setBounds(256, 183, 46, 25);
+		lblMonth.setBounds(244, 270, 46, 25);
 
-		lblMonth.setBounds(222, 270, 46, 14);
+		
 
 		add(lblMonth);
 		
 		lblYear = new JLabel("Year:");
 		lblYear.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblYear.setBounds(392, 183, 46, 25);
-		lblYear.setBounds(350, 270, 46, 14);
+		lblYear.setBounds(392, 270, 46, 25);
+		
 
 		add(lblYear);
 		
@@ -218,8 +218,8 @@ public class EditTrainingPanel extends MyJPanel {
 		
 		lblMi = new JLabel("Min:");
 		lblMi.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblMi.setBounds(258, 213, 46, 25);
-		lblMi.setBounds(258, 300, 46, 14);
+		lblMi.setBounds(265, 298, 46, 25);
+		
 		add(lblMi);
 		
 		lblTime = new JLabel("Time:");
@@ -676,9 +676,9 @@ public void initTextField(){
 		 	comboBoxDay.setFont(new Font("Arial", Font.PLAIN, 15));
 		 	comboBoxDay.setBackground(Color.WHITE);
 
-			comboBoxDay.setBounds(151, 270, 104, 20);
+			
 
-			comboBoxDay.setBounds(151, 270, 60, 20);
+			comboBoxDay.setBounds(151, 270, 87, 20);
 
 			comboBoxDay.setEnabled(false);
 			add(comboBoxDay);
@@ -687,9 +687,9 @@ public void initTextField(){
 			comboBoxMonth.setFont(new Font("Arial", Font.PLAIN, 15));
 			comboBoxMonth.setBackground(Color.WHITE);
 
-			comboBoxMonth.setBounds(310, 236, 61, 25);			
+			comboBoxMonth.setBounds(300, 268, 82, 25);			
 
-			comboBoxMonth.setBounds(274, 270, 61, 20);			
+			
 
 			 for (int i=0; i<=month.length; i++)
 				{
@@ -702,9 +702,9 @@ public void initTextField(){
 			comboBoxYear.setFont(new Font("Arial", Font.PLAIN, 15));
 			comboBoxYear.setBackground(Color.WHITE);
 
-			comboBoxYear.setBounds(407, 490, 98, 20);
+			comboBoxYear.setBounds(439, 270, 98, 20);
 
-			comboBoxYear.setBounds(391, 270, 71, 20);
+		
 
 			 for (int j=0; j<=year.length; j++)
 				{
@@ -719,7 +719,7 @@ public void initTextField(){
 
 			comboBoxHour.setBounds(151, 300, 104, 20);
 
-			comboBoxHour.setBounds(151, 300, 71, 20);
+			
 
 			for(int hour=0;hour<25;hour++){
 				if(hour==0) comboBoxHour.addItem("Choose..");
@@ -732,9 +732,9 @@ public void initTextField(){
 			comboBoxMin.setFont(new Font("Arial", Font.PLAIN, 15));
 			comboBoxMin.setBackground(Color.WHITE);
 
-			comboBoxMin.setBounds(296, 330, 71, 25);
+			comboBoxMin.setBounds(300, 298, 96, 25);
 
-			comboBoxMin.setBounds(300, 300, 71, 20);
+		
 
 			for(int min=0;min<75;min=min+15){
 				if(min==0) comboBoxMin.addItem("Choose..");
@@ -747,24 +747,24 @@ public void initTextField(){
 			comboBoxActivityType.setFont(new Font("Arial", Font.PLAIN, 15));
 			comboBoxActivityType.setBackground(Color.WHITE);
 
-			comboBoxActivityType.setBounds(150, 330, 71, 20);
+			comboBoxActivityType.setBounds(150, 330, 105, 20);
 
 			
-			comboBoxActivityType.setBounds(150, 330, 105, 20);
+		
 
 			add(comboBoxActivityType);
 						
 			comboBoxTrainingType = new JComboBox();
 			comboBoxTrainingType.setFont(new Font("Arial", Font.PLAIN, 15));
 			comboBoxTrainingType.setBackground(Color.WHITE);
-			comboBoxTrainingType.setBounds(146, 360, 109, 25);
+			comboBoxTrainingType.setBounds(150, 360, 105, 20);
 			add(comboBoxTrainingType);
 			comboBoxTrainingType.setEnabled(false);
 
 			comboBoxTraining = new JComboBox();
 			comboBoxTraining.setFont(new Font("Arial", Font.PLAIN, 15));
 			comboBoxTraining.setBackground(Color.WHITE);
-			comboBoxTraining.setBounds(175,84, 117, 25);
+			comboBoxTraining.setBounds(175,84, 104, 20);
 			comboBoxTraining.setEnabled(false);
 			add(comboBoxTraining);
 			comboBoxTraining.setEnabled(false);
@@ -773,14 +773,14 @@ public void initTextField(){
 		    comboBoxTeams.setFont(new Font("Arial", Font.PLAIN, 15));
 		    comboBoxTeams.setBackground(Color.WHITE);
 		    
-			comboBoxTeams.setBounds(175, 29, 117, 25);
+			comboBoxTeams.setBounds(175, 29, 104, 20);
 			add(comboBoxTeams);
 			comboBoxTeams.setEnabled(false);
 			
 			comboBoxAthlete = new JComboBox();
 			comboBoxAthlete.setFont(new Font("Arial", Font.PLAIN, 15));
 			comboBoxAthlete.setBackground(Color.WHITE);
-			comboBoxAthlete.setBounds(175,48, 117, 25);
+			comboBoxAthlete.setBounds(175,53, 104, 20);
 			comboBoxAthlete.setEnabled(false);
 			add(comboBoxAthlete);
 			comboBoxAthlete.setEnabled(false);
