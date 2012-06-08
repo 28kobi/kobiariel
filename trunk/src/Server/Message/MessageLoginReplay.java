@@ -5,7 +5,7 @@ import Server.logic.Message;
 
 public class MessageLoginReplay extends Message{
 	/**********************************************
-	 * (BDT)Baglama Developer Team software
+	 * Kobi & Ariel
 	 * @author 
 	 **** 
 	 ******          

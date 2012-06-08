@@ -6,7 +6,7 @@ import Server.logic.Message;
 public class MessageLogout extends Message{
 
 	/**********************************************
-	 * (BDT)Baglama Developer Team software
+	 * Kobi & Ariel
 	 * @author 
 	 **** 
 	 ******          
