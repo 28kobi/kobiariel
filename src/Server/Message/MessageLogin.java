@@ -3,7 +3,7 @@ package Server.Message;
 import Server.logic.Message;
 
 /**********************************************
- * (BDT)Baglama Developer Team software
+ * Kobi & Ariel
  * @author 
  **** 
  ******          
